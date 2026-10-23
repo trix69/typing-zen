@@ -4,8 +4,8 @@
 Usage:  python3 tools/bundle.py OUT.html
 
 Inlines style.css and the three scripts, and drops the doctype/html/head/body
-wrapper (the artifact host adds its own). The NAS copy doesn't need this; it
-serves the folder as it is.
+wrapper (the artifact host adds its own). The GitHub Pages copy doesn't need this;
+it serves the folder as it is.
 """
 import re
 import sys

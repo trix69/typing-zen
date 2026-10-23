@@ -244,7 +244,7 @@
 
   function loadItem() {
     const it = game.items[game.idx];
-    Object.assign(game, { typed: "", posErr: 0, revealed: false, itemErr: 0, itemStart: null, wait: false });
+    Object.assign(game, { typed: "", posErr: 0, revealed: false, itemErr: 0, itemStart: null, wait: false, leaving: null });
     $("#msg").className = "msg";
     $("#msg").innerHTML = "";
     $("#line").className = "line" + (it.target.length > 24 ? " small" : "");
@@ -452,7 +452,10 @@
     $("#clearConfirm").hidden = true;
     const tricky = Object.keys(profile.tricky).length;
     $("#trickyBtn").hidden = tricky === 0;
-    $("#trickyInfo").textContent = `${tricky} word${tricky === 1 ? "" : "s"} you found hard. Spell each one right to clear it.`;
+    // A word missed in several rounds needs that many clean spellings to clear.
+    const repeats = Object.values(profile.tricky).some((n) => n > 1);
+    $("#trickyInfo").textContent = `${tricky} word${tricky === 1 ? "" : "s"} you found hard. Spell ${tricky === 1 ? "it" : "each one"} right to clear it` +
+      (repeats ? ", or a few times if you missed it more than once." : ".");
     showSoundIcon();
   }
 
@@ -475,7 +478,14 @@
     if (!$("#results").hidden && e.key === "Enter") { e.preventDefault(); return start(game.mode); }
     if (!$("#results").hidden && e.key === "Escape") return show("home");
     if (!playing || !game) return;
-    if (e.key === "Escape") return show("home");
+    if (e.key === "Escape") return leave();
+    if (game.leaving) {
+      // Any other key means "stay": put the message back, and type the key as normal.
+      $("#msg").className = game.leaving.cls;
+      $("#msg").innerHTML = game.leaving.html;
+      game.leaving = null;
+      if (e.key === "Enter" && game.wait !== "enter") { e.preventDefault(); return; }
+    }
     if (game.wait === "enter") { if (e.key === "Enter") { e.preventDefault(); next(); } return; }
     if (game.wait || e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key.length !== 1) return;
@@ -483,6 +493,15 @@
     if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
     press(e.key);
   });
+
+  // Esc asks first, so a stray press doesn't throw away the round. A second Esc leaves.
+  function leave() {
+    if (game.leaving || (game.idx === 0 && !game.typed)) return show("home");
+    const msg = $("#msg");
+    game.leaving = { cls: msg.className, html: msg.innerHTML };
+    msg.className = "msg";
+    msg.innerHTML = `Leave this round? Press <kbd>Esc</kbd> again to go home, or keep typing to stay.`;
+  }
 
   $("#name").addEventListener("input", (e) => { profile.name = tidyName(e.target.value); save(); });
   $("#name").addEventListener("change", (e) => { e.target.value = profile.name; });
