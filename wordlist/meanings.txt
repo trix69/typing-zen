@@ -1,0 +1,1717 @@
+a|one of something|I saw a fox in the garden.
+I|the word you use for yourself|Mum said I could stay up late.
+go|to move from one place to another|We go swimming on Fridays.
+he|a boy or man you are talking about|My brother says he is hungry.
+if|on the condition that|You can play if you finish your homework.
+in|inside something|The cat is asleep in the box.
+is|a form of be, used for one thing|The sky is blue today.
+it|a thing you are talking about|I found a shell and kept it.
+me|the word for yourself after a verb|Can you pass the ball to me?
+my|belonging to me|This is my favourite book.
+no|not any, or the opposite of yes|There is no milk left.
+of|belonging to, or made from|I drank a glass of water.
+up|towards a higher place|The kite flew up into the sky.
+we|you and other people together|We are going to the beach.
+bad|not good|The milk smelt bad.
+bee|a buzzing insect that makes honey|A bee landed on the flower.
+big|large in size|An elephant is a big animal.
+box|a container with flat sides|The toys are in the box.
+boy|a young male child|The boy kicked the ball.
+but|a joining word that shows a difference|I like apples but not pears.
+can|to be able to|I can ride a bike.
+car|a vehicle with four wheels and an engine|Dad parked the car outside.
+cry|to have tears come from your eyes|The baby started to cry.
+cup|a small container you drink from|I had a cup of hot chocolate.
+did|the past tense of do|I did my homework after tea.
+dog|an animal that barks and wags its tail|Our dog loves long walks.
+dot|a tiny round mark|Put a dot at the end of the line.
+due|expected at a certain time|The library book is due back today.
+end|the last part of something|We cheered at the end of the film.
+few|a small number of|A few children stayed behind.
+fit|healthy and strong, or the right size|These shoes fit me well.
+fly|to move through the air with wings|Birds fly south in the winter.
+fun|something you enjoy|We had fun at the park.
+got|the past tense of get|I got a new bike for my birthday.
+gun|a weapon that fires bullets|The soldier in the museum painting held a gun.
+has|a form of have, used for one thing|She has a pet rabbit.
+hat|something you wear on your head|Wear a hat when it is sunny.
+her|belonging to a girl or woman|Mia lost her glove.
+him|a boy or man, after a verb|I gave him a high five.
+hoe|a garden tool for loosening soil|Grandad used a hoe to weed the garden.
+hot|very warm|The soup is too hot to eat.
+ice|frozen water|The pond was covered in ice.
+key|a metal tool that opens a lock|I used the key to open the door.
+kid|a child, or a young goat|The kid fed the goats at the farm.
+lay|to put something down gently|Lay the baby in the cot.
+leg|the part of the body you walk with|I hurt my leg playing football.
+lot|a large amount|We ate a lot of popcorn.
+may|might, or to be allowed to|You may go out to play.
+men|more than one man|Three men carried the piano.
+new|not old|I have a new pencil case.
+nut|a hard-shelled seed you can eat|The squirrel buried a nut.
+old|having lived or existed a long time|The castle is very old.
+out|not inside|The dog ran out of the gate.
+own|belonging to you|I have my own bedroom.
+pay|to give money for something|We pay for our lunch at the till.
+pet|an animal kept at home|My pet hamster sleeps all day.
+put|to place something somewhere|Put your coat on the hook.
+ran|the past tense of run|The fox ran across the field.
+rid|free from something unwanted|We got rid of the old sofa.
+run|to move fast on your feet|I can run very fast.
+sad|unhappy|I felt sad when my friend moved away.
+saw|the past tense of see, or a cutting tool|I saw a rainbow this morning.
+say|to speak words|What did you say?
+sir|a polite way to speak to a man|Thank you, sir.
+sit|to rest on a chair or the floor|Please sit on the carpet.
+six|the number after five|An insect has six legs.
+ten|the number after nine|I have ten fingers.
+the|a word used before a particular thing|The sun is shining.
+top|the highest part|We climbed to the top of the hill.
+use|to do something with a thing|Use a ruler to draw the line.
+vat|a very large tank for liquids|The cheese was made in a big vat.
+vet|an animal doctor|We took our cat to the vet.
+war|fighting between countries|Many people lost their homes in the war.
+was|the past tense of is|It was cold yesterday.
+why|for what reason|Why is the sky blue?
+airy|full of fresh air and light|The new classroom is bright and airy.
+back|the rear part, or to return|Sit at the back of the bus.
+bark|the sound a dog makes, or the skin of a tree|The bark on the tree was rough.
+base|the bottom part that holds something up|The vase has a heavy base.
+bias|unfairly favouring one side|The referee must not show any bias.
+bike|a bicycle|I ride my bike to school.
+body|all the parts of a person or animal|Exercise keeps your body healthy.
+born|started life|I was born in the summer.
+both|the two of them together|Both of my shoes are muddy.
+care|to look after, or to feel that something matters|We take care of our garden.
+case|a box or bag for keeping things|My glasses live in a case.
+clap|to hit your hands together|Clap along to the music.
+copy|to make something the same as another|Copy the date from the board.
+cost|the price of something|How much does the comic cost?
+dawn|the start of the day when it gets light|The birds sing at dawn.
+deep|going a long way down|The swimming pool is deep at this end.
+done|finished|Is your painting done?
+drag|to pull something along the ground|Don't drag your bag in the mud.
+draw|to make a picture with a pencil or pen|I love to draw dragons.
+drip|a small drop of liquid falling|A drip fell from the tap.
+drop|to let something fall|Don't drop the eggs!
+drum|a musical instrument you hit|He played the drum in the band.
+else|other or different|Would you like anything else?
+even|equal, or smooth and flat|Share the sweets out so it is even.
+evil|very wicked and cruel|The evil witch cast a spell.
+eyes|the parts of your face you see with|Close your eyes and make a wish.
+feel|to touch, or to have an emotion|I feel happy today.
+firm|solid and not soft|The bed has a firm mattress.
+free|costing nothing, or not trapped|Entry to the museum is free.
+from|starting at a place or person|I got a letter from Gran.
+gain|to get more of something|Puppies gain weight quickly.
+game|an activity you play for fun|Let's play a board game.
+hand|the part at the end of your arm|Raise your hand to answer.
+harm|to hurt someone or something|The spider will not harm you.
+have|to own or hold something|I have two sisters.
+held|the past tense of hold|She held the puppy carefully.
+help|to make something easier for someone|Can you help me carry this?
+huge|very, very big|A whale is a huge animal.
+hunt|to search for, or chase to catch|We went on an Easter egg hunt.
+iron|a strong metal, or a tool to smooth clothes|The gate is made of iron.
+joke|something said to make people laugh|Dad told a silly joke.
+just|only, or a moment ago|I just finished my lunch.
+keep|to hold on to something|You can keep the change.
+land|the ground, or to come down from the air|The plane will land soon.
+left|the opposite of right, or went away|Turn left at the shop.
+lets|allows|Mum lets me stay up on Fridays.
+list|words written one under another|I wrote a shopping list.
+long|measuring a lot from end to end|The snake was very long.
+love|to like someone or something very much|I love my grandparents.
+make|to build or create|Let's make a sandcastle.
+many|a large number of|There are many stars in the sky.
+more|a bigger amount|Can I have more custard?
+much|a large amount|There is too much noise.
+next|coming straight after|You are next in the queue.
+nice|pleasant or kind|It is a nice sunny day.
+norm|what is usual or normal|Rain is the norm in April.
+once|one time|I have been to France once.
+open|not closed|The shop door is open.
+over|above, or finished|The plane flew over the house.
+park|a green space to play, or to stop a car|We fed the ducks in the park.
+pelt|to throw lots of things quickly|The children pelt each other with snowballs.
+play|to have fun with games or toys|Can we play outside?
+pond|a small area of still water|Frogs live in the pond.
+pose|to stay still for a photo|Pose for the camera!
+rare|not seen very often|Snow leopards are rare.
+rest|to relax, or what is left|Have a rest after the race.
+rude|not polite|It is rude to interrupt.
+rule|something that tells you what you must do|The rule is no running in the corridor.
+safe|away from danger|The puppy is safe at home.
+said|the past tense of say|She said hello.
+same|exactly alike|We have the same trainers.
+save|to rescue, or to keep for later|I save my pocket money.
+shed|a small hut in the garden|The bikes are in the shed.
+shut|closed|Please shut the door.
+sick|ill|I stayed at home because I was sick.
+side|the left or right part of something|Walk on the side of the path.
+sign|a board with words or a picture on it|The sign said Keep Out.
+size|how big or small something is|What size shoes do you wear?
+slip|to slide by accident|Don't slip on the wet floor.
+spot|a small round mark, or to notice|Can you spot the difference?
+such|so much, or of that kind|It was such a lovely day.
+sure|certain|Are you sure you locked the door?
+swim|to move through water|Fish swim in the river.
+that|the one over there|Look at that rainbow!
+then|after that|We had tea, then we watched a film.
+this|the one here|This is my best friend.
+tiny|very small|An ant is tiny.
+tube|a long hollow pipe|We squeezed paint from the tube.
+verb|a doing or being word|Jump is a verb.
+warn|to tell someone about danger|The sign will warn people about the ice.
+wave|to move your hand to say hello, or a moving ridge of sea|A huge wave crashed on the beach.
+were|the past tense of are|We were late for school.
+west|the direction where the sun sets|The sun sets in the west.
+wife|the woman someone is married to|The farmer and his wife milked the cows.
+wing|the part a bird uses to fly|The bird hurt its wing.
+wish|to want something to happen|I wish it would snow.
+with|together alongside|I went to the park with Dad.
+worn|the past tense of wear, or damaged by use|My jeans are worn at the knees.
+Xbox|a games console|We played a racing game on the Xbox.
+X-ray|a picture of the inside of your body|The X-ray showed a broken bone.
+yard|an outdoor area next to a building|The dog plays in the yard.
+zany|silly and funny in a crazy way|The clown wore a zany wig.
+aisle|a walkway between rows of seats or shelves|The cereal is in the next aisle.
+based|built on, or where something is|The story is based on a true event.
+batch|a group of things made at one time|We baked a batch of cookies.
+birds|animals with feathers and wings|The birds sang in the trees.
+blase|not excited about something, as if bored|He was blase about winning the prize.
+blend|to mix things together|Blend the fruit to make a smoothie.
+block|a solid piece of something|We built a tower with every block.
+bonus|an extra good thing|We got a bonus point for neat writing.
+brain|the part inside your head you think with|Your brain controls your body.
+brand|the name of a company's products|What brand of trainers do you like?
+bring|to carry something with you|Bring your PE kit tomorrow.
+broke|the past tense of break|The vase broke into pieces.
+build|to make by putting parts together|Let's build a den.
+burst|to break open suddenly|The balloon burst with a bang.
+catch|to grab something that is moving|Can you catch the ball?
+cause|the reason something happens|Ice was the cause of the fall.
+chase|to run after someone|The dog likes to chase its tail.
+child|a young person|Every child got a sticker.
+clerk|someone who keeps records in an office|The clerk stamped the form.
+crack|a thin line where something has broken|There is a crack in my phone screen.
+crash|a loud bang, or to hit something|The cars did not crash, luckily.
+crawl|to move on your hands and knees|Babies crawl before they walk.
+crime|something that is against the law|Stealing is a crime.
+crown|a gold band a king or queen wears|The queen wore a sparkling crown.
+ditch|a long narrow hole for water|The tractor got stuck in the ditch.
+evoke|to bring a feeling or memory to mind|The smell of toast can evoke happy mornings.
+facet|one side or part of something|Each facet of the diamond sparkled.
+fairy|a tiny magical creature with wings|The fairy granted three wishes.
+false|not true|Is this sentence true or false?
+fever|a high body temperature when you are ill|I stayed in bed with a fever.
+first|before all the others|I came first in the race.
+flies|moves through the air, or more than one fly|The eagle flies high.
+force|a push or a pull|Gravity is a force.
+found|the past tense of find|I found my lost sock.
+front|the part that faces forward|Sit at the front of the class.
+fruit|the sweet part of a plant we can eat|An apple is a fruit.
+gauge|a tool that measures something|The fuel gauge showed empty.
+glare|to look at someone angrily, or strong light|The glare of the sun hurt my eyes.
+globe|a ball-shaped map of the world|Find Spain on the globe.
+grade|a mark or score for your work|She got a top grade in maths.
+grand|large and impressive|The palace had a grand staircase.
+greed|wanting more than you need|The dragon's greed for gold was famous.
+habit|something you do often without thinking|Biting your nails is a bad habit.
+harsh|rough, cruel or unkind|The winter was harsh and freezing.
+haste|great speed or hurry|In her haste, she forgot her bag.
+horse|a large animal people ride|I rode a horse on holiday.
+house|a building where people live|Our house has a red door.
+juice|the liquid from fruit|I drank a glass of orange juice.
+large|big|An ostrich lays a large egg.
+laser|a very narrow, strong beam of light|The cat chased the red laser dot.
+liked|the past tense of like|I liked the film a lot.
+lunch|the meal in the middle of the day|We have lunch at twelve o'clock.
+match|a game, or a small stick that makes a flame|We won the football match.
+moral|the lesson a story teaches|The moral of the story is to be kind.
+noise|a sound, often a loud one|What is that strange noise?
+noisy|making a lot of sound|The playground is noisy at break.
+north|the direction at the top of a map|Scotland is north of England.
+pause|to stop for a short time|Pause the film, please.
+peers|people the same age as you|She is taller than her peers.
+place|a position or area|This is a nice place for a picnic.
+point|the sharp end, or to show with your finger|Point to the answer on the board.
+price|how much something costs|The price of the toy was five pounds.
+prove|to show that something is true|Can you prove your answer?
+queue|a line of people waiting|We waited in the queue for ice cream.
+quite|fairly, or completely|The test was quite easy.
+raise|to lift up|Raise your hand if you know.
+round|shaped like a circle or ball|A football is round.
+sense|one of sight, hearing, smell, taste or touch|A dog has a strong sense of smell.
+share|to let others have some|Please share your crayons.
+sharp|having an edge that can cut|Be careful, the knife is sharp.
+shirt|a piece of clothing for the top half|He wore a white shirt to the wedding.
+shock|a sudden surprise|The loud bang gave me a shock.
+shoes|things you wear on your feet|Put your shoes on.
+sixth|number six in order|My sister is in the sixth year.
+skirt|clothing that hangs from the waist|She wore a spotty skirt.
+sleep|to rest with your eyes closed|I sleep for ten hours a night.
+sound|something you can hear|I heard the sound of rain.
+space|an empty area, or where the planets are|Astronauts travel into space.
+stage|a raised floor where people perform|The actors walked onto the stage.
+stand|to be on your feet|Please stand in a line.
+stars|bright points of light in the night sky|The stars twinkled above us.
+start|to begin|The race will start soon.
+state|how something is, or a part of a country|My room is in a messy state.
+stone|a small piece of rock|I skimmed a stone across the lake.
+strip|a long thin piece|Cut a strip of paper.
+study|to learn about something|We study the Romans in history.
+terms|words with special meanings, or parts of the school year|We have three terms in a school year.
+theme|the main idea or topic|The party had a pirate theme.
+thick|wide from one side to the other|The castle had thick walls.
+thing|an object|What is that thing on the table?
+those|the ones over there|Those birds are geese.
+thump|to hit hard, or a dull heavy sound|I heard a thump upstairs.
+tiger|a big wild cat with stripes|The tiger hid in the long grass.
+trade|to swap, or a type of job|Let's trade football cards.
+trick|a clever act to fool someone|The magician did a card trick.
+tries|attempts, or scores in rugby|She tries her best every day.
+truth|what is really true|Always tell the truth.
+twice|two times|I brushed my teeth twice today.
+valid|acceptable, or allowed to be used|The ticket is valid for one week.
+video|moving pictures you can watch|We watched a video about volcanoes.
+voice|the sound you make when you speak|She has a lovely singing voice.
+volts|units for measuring electricity|The battery gives one and a half volts.
+waive|to give up a rule or a right|The museum will waive the fee for children.
+watch|to look at, or a small clock on your wrist|We watch the birds from the window.
+wheel|a round object that turns|My bike has a flat wheel.
+while|during the time that|Read a book while you wait.
+width|how wide something is|Measure the width of the table.
+world|the Earth and everything on it|We looked at a map of the world.
+worse|less good|My cold is worse today.
+worth|having a value|The coin is worth a lot of money.
+yacht|a boat with sails|The yacht sailed across the bay.
+barter|to swap goods without using money|In the past, people would barter for food.
+burned|damaged by fire or heat|I burned the toast again.
+change|to make or become different|Caterpillars change into butterflies.
+choice|the act of picking between things|You have a choice of three desserts.
+church|a building where Christians worship|The church bells rang.
+curled|bent into a round shape|The cat curled up by the fire.
+elapse|to pass, when talking about time|Two hours will elapse before the train comes.
+emerge|to come out|The chick will emerge from its egg.
+ground|the surface of the earth|The leaves fell to the ground.
+jerked|moved with a sudden sharp pull|The bus jerked forward.
+jumped|leapt into the air|The frog jumped into the pond.
+lawyer|a person who helps people with the law|The lawyer spoke to the judge.
+length|how long something is|Measure the length of the room.
+litany|a long list of things said one after another|Dad gave a litany of jobs to do.
+minute|sixty seconds|Wait a minute, please.
+oblige|to do something to help someone|I am happy to oblige.
+picked|chose, or pulled off a plant|I picked some strawberries.
+plains|large areas of flat land|Buffalo roamed across the plains.
+pounds|money in the UK, or a measure of weight|The book cost five pounds.
+proven|shown to be true|It is a proven fact that exercise is good for you.
+pushed|moved something away from you|He pushed the door open.
+quaint|charming and old-fashioned|We stayed in a quaint little cottage.
+quench|to stop your thirst with a drink|Water will quench your thirst.
+racist|treating people unfairly because of their race|Being racist is wrong and hurtful.
+refuse|to say no to something|I refuse to eat sprouts!
+rewind|to wind back to an earlier point|Rewind the song to the start.
+scheme|a plan|The fox had a clever scheme.
+scrape|to rub against something rough|I fell and got a scrape on my knee.
+speech|a talk given to an audience|The head teacher gave a speech.
+spoilt|ruined, or given too much|The rain spoilt our picnic.
+sprawl|to spread out in a lazy way|The cat likes to sprawl on the sofa.
+stairs|steps going from one floor to another|Walk carefully down the stairs.
+street|a road with buildings along it|We live on a busy street.
+strong|having lots of power|Ants are very strong for their size.
+talked|spoke|We talked about our holidays.
+whilst|while|Read quietly whilst I mark your work.
+zenith|the highest point|The sun reached its zenith at midday.
+I'd|short for I would or I had|I'd like a glass of water, please.
+checked|looked to make sure something is right|I checked my spelling.
+episode|one part of a TV series|We watched the final episode.
+frankly|honestly|Frankly, I did not enjoy the film.
+monarch|a king or queen|The monarch lives in a palace.
+naivety|lack of experience of the world|In his naivety, he believed the trick.
+singing|making music with your voice|We love singing in the car.
+smarter|cleverer, or neater|You look smarter in your new uniform.
+species|a type of animal or plant|The tiger is an endangered species.
+strange|unusual or odd|We heard a strange noise.
+tantrum|an angry outburst, often by a child|The toddler had a tantrum in the shop.
+am|a form of be, used with I|I am nine years old.
+an|one, used before a vowel sound|I ate an orange.
+as|in the same way, or while|She is as tall as her mum.
+at|in or near a place or time|Meet me at the gate.
+he's|short for he is or he has|He's my best friend.
+I've|short for I have|I've finished my book.
+we'd|short for we would or we had|We'd love to come to your party.
+grandeur|great beauty and size|We gazed at the grandeur of the mountains.
+and|a word that joins things|I like fish and chips.
+any|some, or one of many|Do you have any pets?
+are|a form of be, used with you, we or they|We are going home.
+ask|to put a question to someone|Ask your teacher for help.
+can't|short for cannot|I can't reach the top shelf.
+let's|short for let us|Let's go to the park.
+she'd|short for she would or she had|She'd like to be a vet.
+she's|short for she is or she has|She's coming to tea.
+we're|short for we are|We're going on holiday.
+won't|short for will not|The door won't open.
+strangest|the most unusual|That was the strangest dream ever.
+ages|a very long time, or how old people are|We waited for ages.
+army|a large group of soldiers|The army marched across the bridge.
+away|to or at a distance|The bird flew away.
+axle|the rod that wheels turn on|The cart's axle snapped.
+ball|a round object used in games|Kick the ball to me.
+best|better than all the others|You are my best friend.
+data|facts and numbers|We collected data about our favourite fruits.
+doll|a toy that looks like a person|My little sister loves her doll.
+dull|boring, or not bright|It was a dull, grey day.
+ever|at any time|Have you ever seen a whale?
+fell|the past tense of fall|I fell off my bike.
+fill|to make something full|Fill the jug with water.
+fuel|something burned to make power|Petrol is a fuel for cars.
+full|holding as much as possible|My plate is full.
+into|to the inside of|The frog jumped into the pond.
+jury|a group of people who decide a court case|The jury said he was not guilty.
+lady|a polite word for a woman|The lady at the bakery gave us a bun.
+miss|to fail to hit or catch, or to feel sad someone is gone|I miss my cousins.
+only|just one, or no more than|I only have one sock.
+pull|to move something towards you|Pull the rope hard.
+tall|high, from bottom to top|The giraffe is very tall.
+ugly|not nice to look at|The ugly duckling became a swan.
+undo|to open or reverse something|Can you undo this knot?
+upon|on|Once upon a time, there was a dragon.
+very|really|It is very cold today.
+want|to wish to have|I want a puppy.
+wary|careful because of possible danger|Be wary of strangers.
+went|the past tense of go|We went to the zoo.
+will|shows something is going to happen|It will rain later.
+yell|to shout loudly|Don't yell in the library.
+zero|nothing, the number 0|Five take away five is zero.
+get|to receive or fetch|Please get your coat.
+how|in what way|How do you make pancakes?
+now|at this moment|Tidy your room now.
+you|the person being spoken to|Thank you for the present.
+zoo|a place where wild animals are kept|We saw lions at the zoo.
+about|on the subject of, or nearly|The book is about space.
+above|higher than|The plane flew above the clouds.
+adapt|to change to suit something new|Animals adapt to their habitats.
+again|one more time|Can we play that again?
+agree|to think the same|I agree with you.
+alone|without anyone else|The cat sat alone on the wall.
+along|from one end towards the other|We walked along the beach.
+among|in the middle of a group|The fox hid among the trees.
+amuse|to make someone smile or laugh|The puppets will amuse the children.
+apron|clothing worn to keep you clean when cooking|Put on your apron before baking.
+avoid|to keep away from|Avoid the puddles.
+award|a prize|She won an award for her poem.
+aware|knowing about something|Are you aware of the time?
+cabin|a small wooden house|We stayed in a cabin in the woods.
+cross|to go over, or angry|Look both ways before you cross the road.
+dance|to move to music|Let's dance in the kitchen!
+delta|land where a river splits before the sea|The river delta was full of birds.
+dress|clothing for a girl or woman, or to put clothes on|She wore a blue dress.
+empty|with nothing inside|The biscuit tin is empty.
+enjoy|to like doing something|I enjoy reading comics.
+exact|completely correct|Tell me the exact time.
+exist|to be real|Do dragons exist?
+fence|a barrier around a garden or field|The horse jumped over the fence.
+final|the last one|This is the final question.
+focus|to give all your attention to something|Focus on your work.
+going|moving to a place|We are going to the cinema.
+icing|a sweet coating on cakes|The cake had pink icing.
+imply|to suggest without saying directly|Are you trying to imply that I am late?
+incur|to bring something on yourself|You will incur a fine if the book is late.
+ivory|the creamy white material of elephant tusks|The piano keys looked like ivory.
+jewel|a precious stone|The crown had a red jewel in the middle.
+limit|the most that is allowed|The speed limit is twenty miles an hour.
+local|nearby, in your area|We shop at the local market.
+lunar|to do with the moon|We watched a lunar eclipse.
+major|very important or big|The storm caused major damage.
+merit|a good quality that deserves praise|She got a merit sticker for kindness.
+metal|a hard, shiny material like iron or gold|The spoon is made of metal.
+minor|small and not very important|It was only a minor scratch.
+model|a small copy of something|I built a model plane.
+money|coins and notes used to buy things|I saved my money in a jar.
+motel|a roadside hotel|We stayed at a motel on the long drive.
+never|not ever|I will never forget this day.
+often|many times|We often walk the dog.
+older|having lived longer|My brother is older than me.
+orbit|the path of something going round a planet or star|The Moon is in orbit around the Earth.
+other|different, or the rest|Where is my other glove?
+paper|thin material for writing on|Write your name on the paper.
+party|a celebration with friends|I am having a birthday party.
+piano|a large musical instrument with keys|She plays the piano every day.
+plant|a living thing that grows in soil|Water the plant every day.
+power|strength or energy|The storm cut off the power.
+query|a question|I have a query about my homework.
+relax|to rest and feel calm|Relax and take a deep breath.
+river|a large stream of water flowing to the sea|We paddled in the river.
+robot|a machine that can do jobs by itself|The robot hoovered the floor.
+royal|belonging to a king or queen|We saw the royal carriage.
+seven|the number after six|There are seven days in a week.
+shall|will|Shall we go to the park?
+skill|the ability to do something well|Juggling takes a lot of skill.
+smell|what you sense with your nose|I love the smell of fresh bread.
+solar|to do with the sun|The roof has solar panels.
+spent|used up, past tense of spend|I spent all my pocket money.
+sugar|a sweet food|Too much sugar is bad for your teeth.
+super|excellent|That was a super idea!
+taken|the past tense of take|Someone has taken my pencil.
+tells|says to someone|Gran tells the best stories.
+total|the whole amount|The total was twenty pounds.
+uncle|the brother of your mum or dad|My uncle lives in Wales.
+under|below|The cat is under the table.
+unfit|not healthy or not suitable|The old bridge is unfit to cross.
+until|up to the time that|Wait until the bell rings.
+upset|unhappy or worried|She was upset when she lost her toy.
+urban|to do with towns and cities|Foxes live in urban areas too.
+usage|the way something is used|Our water usage goes up in summer.
+value|how much something is worth|The value of the painting is huge.
+visit|to go and see someone or somewhere|We visit Grandma on Sundays.
+water|a clear liquid that we drink|Plants need water to grow.
+women|more than one woman|Three women ran in the race.
+haven't|short for have not|I haven't seen that film.
+there's|short for there is|There's a spider in the bath!
+they've|short for they have|They've gone to the shops.
+haemoglobin|the part of blood that carries oxygen|Haemoglobin makes your blood red.
+by|next to, or done by|The book was written by my favourite author.
+so|very, or for that reason|I was so tired that I fell asleep.
+to|towards|We walked to school.
+book|pages with writing, joined together|I am reading a funny book.
+city|a very large town|London is a busy city.
+door|you open it to go into a room|Knock on the door.
+each|every one|Each child got a medal.
+east|the direction where the sun rises|The sun rises in the east.
+easy|not hard|The puzzle was easy.
+edge|the outside line or end of something|Don't stand near the edge of the cliff.
+fear|a feeling of being afraid|He has a fear of spiders.
+food|what people and animals eat|We need food to live.
+gift|a present|Thank you for the lovely gift.
+good|nice or well done|You did a good job.
+head|the top part of your body|Wear a helmet to protect your head.
+idea|a thought or plan|I have a great idea!
+knee|the joint in the middle of your leg|I grazed my knee.
+look|to use your eyes|Look at the stars.
+mean|unkind, or to have a meaning|It is mean to call people names.
+milk|a white drink that comes from cows|I have milk on my cereal.
+myth|an old story, or something untrue|The myth told of a great flood.
+near|close by|The shop is near our house.
+noun|a naming word|Table is a noun.
+numb|unable to feel anything|My fingers were numb with cold.
+ooze|to flow out slowly|Jam began to ooze out of the doughnut.
+room|a part of a building with walls|My room is very messy.
+show|to let someone see|Show me your drawing.
+talk|to speak|Let's talk about it later.
+tied|fastened with a knot|I tied my shoelaces.
+took|the past tense of take|I took my dog for a walk.
+type|a kind, or to press keys on a keyboard|I can type quickly.
+view|what you can see from a place|The view from the top was amazing.
+walk|to move on foot|We walk to school.
+wrap|to cover something with paper or cloth|Let's wrap the presents.
+afraid|scared|Are you afraid of the dark?
+around|on every side, or in a circle|We ran around the field.
+author|a person who writes books|Roald Dahl is my favourite author.
+basket|a container made of woven material|She filled the basket with apples.
+border|the line between two places|We crossed the border into France.
+burden|a heavy load or worry|The donkey carried a heavy burden.
+buying|paying money for something|We are buying a new sofa.
+candle|wax with a wick that you light|Blow out the candle and make a wish.
+carpet|a soft floor covering|The dog slept on the carpet.
+chance|a possibility, or an opportunity|There is a chance of rain.
+condor|a very large vulture from the Americas|A condor soared above the mountains.
+crisis|a time of great danger or difficulty|The town faced a water crisis.
+custom|something people usually do|It is a custom to eat cake on birthdays.
+damage|harm done to something|The storm caused damage to the roof.
+desert|a very dry place with little rain|Camels live in the desert.
+digest|to break down food in your body|Your stomach helps you digest food.
+direct|straight, or to show the way|Is there a direct train to London?
+diving|jumping head first into water|She is good at diving.
+donate|to give something to help others|We donate old toys to charity.
+during|while something is happening|Don't talk during the film.
+engage|to take part in, or to hold attention|The story will engage the class.
+engine|a machine that makes something move|The car engine roared.
+ensure|to make certain|Ensure the door is locked.
+escape|to get away|The hamster tried to escape.
+esteem|respect and admiration|She is held in high esteem by her friends.
+except|not including|Everyone came except Tom.
+expect|to think something will happen|I expect it will rain.
+expert|someone who knows a lot about something|He is an expert on dinosaurs.
+expose|to uncover or show|Don't expose your skin to too much sun.
+father|a dad|My father makes pancakes.
+figure|a number, or a shape|Write the figure seven.
+forest|a large area covered with trees|Deer live in the forest.
+forget|to not remember|Don't forget your lunch.
+formal|serious and following rules|We wore formal clothes to the wedding.
+fulfil|to make something happen as promised|I will fulfil my promise.
+futile|useless, with no chance of working|It was futile to argue with the referee.
+garden|land near a house where plants grow|We grow tomatoes in the garden.
+global|to do with the whole world|Pollution is a global problem.
+handle|the part you hold, or to deal with|The mug has a broken handle.
+hardly|almost not|I could hardly see in the fog.
+hugged|held someone tightly in your arms|Grandma hugged me.
+humans|people|Humans need sleep.
+ignore|to pay no attention to|Ignore the noise and keep reading.
+inches|units for measuring length|The snow was six inches deep.
+income|money that someone earns|A job gives you an income.
+injury|damage to the body|He had a knee injury.
+inside|in something|Come inside, it's raining.
+invest|to put money or time into something|They invest time in their garden.
+invite|to ask someone to come|I will invite you to my party.
+jacket|a short coat|Zip up your jacket.
+joyful|very happy|It was a joyful day.
+justly|fairly|The judge acted justly.
+lastly|finally|Lastly, put the cake in the oven.
+latest|the newest|Have you read her latest book?
+likely|probably going to happen|It is likely to snow.
+lonely|sad because you are alone|The new boy felt lonely.
+lovely|beautiful or very nice|What a lovely day!
+mainly|mostly|Pandas eat mainly bamboo.
+manage|to be able to do something, or to be in charge|Can you manage that heavy bag?
+marker|a thick pen|Write it with a marker.
+market|a place with stalls selling things|We buy fruit at the market.
+master|to become very good at something|You will master typing with practice.
+medium|in the middle, not big or small|I would like a medium pizza.
+member|someone who belongs to a group|She is a member of the choir.
+mental|to do with the mind|We did some mental maths.
+mobile|able to move, or a phone|Mum's mobile is ringing.
+modern|new and up to date|They live in a modern house.
+mother|a mum|My mother is a nurse.
+muscle|part of your body that helps you move|Exercise makes your muscle stronger.
+nectar|sweet liquid in flowers|Bees drink nectar from flowers.
+newest|the most new|This is our newest classroom.
+nicely|in a pleasant way|Ask nicely and you might get one.
+normal|usual or ordinary|It was a normal school day.
+notice|to see, or a written sign|Did you notice the new sign?
+object|a thing you can see or touch|Name an object that is red.
+pardon|a polite way to ask someone to repeat|Pardon? I didn't hear you.
+passed|went by, or succeeded in a test|She passed her swimming test.
+pencil|a tool for writing and drawing|Sharpen your pencil.
+people|more than one person|Lots of people came to the fair.
+person|a human being|She is a very kind person.
+police|people whose job is to keep the law|The police helped find the lost dog.
+potato|a vegetable that grows underground|I'd like a baked potato.
+pulled|moved something towards you|He pulled the rope.
+punish|to make someone suffer for doing wrong|It is not fair to punish everyone.
+reduce|to make smaller|Turn off lights to reduce waste.
+remote|far away, or a TV controller|Pass me the remote.
+repair|to fix|Dad will repair my bike.
+report|an account of something|I wrote a report about bats.
+return|to come or go back|Please return the book on Monday.
+reward|something given for good work|You will get a reward for your effort.
+safety|being safe from harm|Wear a helmet for safety.
+saving|keeping money for later|I am saving up for a game.
+second|number two in order, or a tiny part of a minute|She came second in the race.
+secret|something you keep hidden|Can you keep a secret?
+sexist|treating people unfairly because they are a boy or a girl|It is sexist to say only boys can play football.
+shower|a spray of water to wash under, or a short fall of rain|I have a shower every morning.
+signal|a sign that sends a message|The referee gave the signal to start.
+simple|easy to understand or do|The instructions were simple.
+simply|in an easy way, or just|Simply add water and stir.
+single|only one|There was a single apple left.
+sister|a girl who has the same parents as you|My sister is two years older than me.
+solely|only|The garden is solely for the use of guests.
+staple|a small wire for fixing paper together|Put a staple in the corner of the pages.
+stress|a feeling of worry, or to put weight on something|Try not to stress about the test.
+sunset|the time when the sun goes down|The sky turned pink at sunset.
+surely|certainly|Surely you have finished by now?
+tomato|a soft red fruit used in salads|I put a tomato in my sandwich.
+travel|to go from one place to another|We travel to Spain by plane.
+tribal|to do with a tribe|They played a tribal drum.
+trying|attempting|I am trying to learn French.
+tundra|a huge, cold, treeless area|Reindeer live on the tundra.
+useful|helpful|A torch is useful in a power cut.
+vanish|to disappear suddenly|The magician made the coin vanish.
+wilful|stubborn, or done on purpose|The wilful puppy would not come back.
+winter|the coldest season of the year|It snows in winter.
+wonder|to think about, or something amazing|I wonder what is for tea.
+zapped|hit with a quick burst of energy|The alien zapped the spaceship.
+buy|to get something by paying for it|I want to buy a comic.
+for|meant to belong to or help someone|This present is for you.
+fur|the soft hair on an animal|The kitten has soft fur.
+not|a word that makes something negative|I am not tired.
+one|the number 1|I have one brother.
+paw|an animal's foot|The dog gave me its paw.
+sum|a maths problem, or the total|The sum of two and three is five.
+two|the number 2|I have two cats.
+way|a path, or how to do something|Is this the way to the beach?
+badge|a small sign you pin on your clothes|I got a badge for swimming.
+blood|the red liquid that flows in your body|Your heart pumps blood.
+boost|to make something better or higher|A good breakfast will boost your energy.
+cheap|not costing much|The sweets were cheap.
+clean|not dirty|Keep your room clean.
+clear|easy to see through or understand|The water was clear.
+climb|to go up using hands and feet|We climb the hill on Sundays.
+cloud|a white or grey mass floating in the sky|A dark cloud covered the sun.
+could|was able to|She could swim at four.
+crowd|a large group of people|The crowd cheered loudly.
+dream|pictures in your mind while you sleep|I had a dream about dragons.
+earth|soil, or the planet we live on|Worms wriggle through the earth.
+field|an open area of grass|Cows grazed in the field.
+floor|the surface you walk on in a room|Don't leave toys on the floor.
+graph|a chart that shows information|We drew a graph of the class's pets.
+great|very good, or very big|We had a great time.
+group|several people or things together|Work in a group of four.
+growl|a deep angry sound an animal makes|The dog gave a low growl.
+guide|someone who shows you the way|Our guide led us through the cave.
+judge|a person who decides in a court or contest|The judge chose the best cake.
+knife|a tool with a blade for cutting|Use a knife to cut the bread.
+knock|to hit a door to ask to come in|Knock before you come in.
+known|recognised by many people|She is known for her kindness.
+learn|to find out or get better at something|I want to learn to skate.
+least|the smallest amount|I have the least homework today.
+leave|to go away from|Please leave the room quietly.
+might|could happen, or great strength|It might rain later.
+moose|a very large deer with flat antlers|A moose walked through the forest.
+movie|a film|We watched a movie on Saturday.
+ocean|a huge area of salt water|Whales swim in the ocean.
+phase|a stage in a process|The moon is in its full phase.
+phone|a device for calling people|My phone is ringing.
+proof|facts that show something is true|Where is your proof?
+seize|to grab suddenly|Seize the chance to try something new.
+shook|the past tense of shake|The dog shook water everywhere.
+south|the direction opposite to north|Birds fly south for the winter.
+speak|to say words|Speak clearly, please.
+style|a way of doing something|I like your hair style.
+sweat|liquid on your skin when you are hot|I was covered in sweat after the race.
+touch|to feel with your fingers|Don't touch the oven.
+treat|something special, or to act towards someone|We had ice cream as a treat.
+whose|belonging to which person|Whose coat is this?
+wrist|the joint between your hand and arm|I wear a watch on my wrist.
+wrong|not right|That answer is wrong.
+yearn|to want something very much|I yearn for the summer holidays.
+yield|to give way|Cars must yield to buses here.
+young|not old|The young bird could not fly.
+youth|the time when you are young|Grandad played football in his youth.
+balcony|a platform outside an upstairs window|We had breakfast on the balcony.
+bargain|something bought cheaply|The bike was a real bargain.
+brevity|being short|The speech was praised for its brevity.
+brother|a boy who has the same parents as you|My brother is a great cook.
+chuckle|a quiet laugh|The joke made Grandad chuckle.
+climate|the usual weather of a place|The desert has a hot climate.
+compare|to look at how things are alike or different|Compare the two pictures.
+complex|complicated, with many parts|The puzzle was very complex.
+concern|a worry|My only concern is the weather.
+conduct|behaviour, or to lead an orchestra|She will conduct the school band.
+consist|to be made of|A sandwich can consist of just bread and cheese.
+console|to comfort someone, or a games machine|I tried to console my sad friend.
+contain|to have inside|These boxes contain books.
+control|to make something do what you want|Can you control the remote car?
+culprit|the person who did something wrong|The dog was the culprit who ate the cake.
+curtain|cloth hanging at a window|Close the curtain, please.
+display|to show, or a show of things|Our art is on display.
+expanse|a wide open area|We looked out at the expanse of sea.
+explain|to make something clear|Can you explain how it works?
+explode|to burst with a loud bang|Fireworks explode in the sky.
+exploit|to use unfairly, or a brave adventure|The knight told of his daring exploit.
+extinct|no longer living anywhere|Dinosaurs are extinct.
+fashion|the style of clothes that is popular|She loves fashion.
+feeling|an emotion|I have a feeling it will be fun.
+firstly|to begin with|Firstly, wash your hands.
+fragile|easily broken|The glass is fragile.
+freedom|being free to do what you want|The bird flew off to freedom.
+further|more far, or more|Don't go any further.
+grumble|to complain in a moany way|Don't grumble about your chores.
+handful|as much as you can hold in one hand|I ate a handful of grapes.
+harmful|causing damage or hurt|Smoking is harmful.
+hundred|the number 100|There are a hundred pages in this book.
+hunting|chasing animals to catch them|The owl was hunting for mice.
+improve|to get better|Practice will improve your typing.
+include|to make part of something|Include your name on the form.
+inspire|to fill someone with ideas or the wish to do something|Great books inspire me to write.
+islands|pieces of land surrounded by water|Scotland has many islands.
+keeping|holding on to|I am keeping my old toys.
+laundry|clothes that need washing|Put the laundry in the basket.
+machine|a device that does a job|The washing machine is broken.
+migrate|to move to another place at a certain time of year|Swallows migrate to Africa.
+mistake|something done wrong|Everyone makes a mistake sometimes.
+morning|the early part of the day|I walk the dog every morning.
+neutral|not taking sides|The referee must stay neutral.
+nothing|not anything|There is nothing in the fridge.
+obscure|hard to see or not well known|The path was obscure in the fog.
+observe|to watch carefully|We observe the birds in the garden.
+opinion|what you think about something|In my opinion, cats are best.
+parents|your mum and dad|My parents came to the play.
+parties|celebrations|We went to two parties this weekend.
+penalty|a punishment, or a free kick in football|He scored from the penalty.
+perfect|with no mistakes|Your spelling is perfect.
+planets|large round objects that travel round a star|There are eight planets in our solar system.
+playful|full of fun|The kitten is playful.
+poverty|being very poor|The charity helps families living in poverty.
+prepare|to get ready|Prepare for the spelling test.
+present|a gift, or here now|Thank you for my present.
+problem|something that is difficult to sort out|Let's solve the problem together.
+process|a series of steps|Making bread is a long process.
+procure|to get hold of something|We need to procure more paint.
+produce|to make|Cows produce milk.
+product|something that is made to be sold|This product is made from recycled plastic.
+program|instructions for a computer|We wrote a program to move the robot.
+protect|to keep safe|A helmet will protect your head.
+provide|to give or supply|The school will provide lunch.
+purpose|the reason for something|What is the purpose of this button?
+pursuit|chasing, or an activity|The police were in hot pursuit.
+quarter|one of four equal parts|I ate a quarter of the pizza.
+quickly|fast|Come here quickly!
+racquet|a bat with strings for tennis|She swung her racquet at the ball.
+rapidly|very fast|The ice melted rapidly in the sun.
+reflect|to throw back light, or to think carefully|Mirrors reflect light.
+require|to need|Plants require sunlight.
+reserve|to keep for later|We reserve a table at the restaurant.
+results|what happens at the end, or scores|The test results are in.
+revenge|hurting someone back for something they did|The villain wanted revenge.
+revenue|money a business earns|The shop's revenue went up at Christmas.
+richest|having the most money|He was the richest man in the town.
+rolling|turning over and over|The ball kept rolling down the hill.
+selfish|only thinking about yourself|It is selfish not to share.
+service|help given to people, or a church event|The hotel has great service.
+shaping|giving something a form|She was shaping the clay into a bowl.
+someone|a person|Someone left their coat here.
+started|began|The film started at six.
+stopped|ended or halted|The rain stopped at last.
+subject|a topic, like maths or science|My favourite subject is art.
+subside|to go down or get less|The flood water will subside soon.
+survive|to stay alive|Cacti survive in the desert.
+tallest|the most tall|The giraffe is the tallest animal.
+verdict|a decision made by a judge or jury|The jury gave its verdict.
+welcome|a friendly greeting|Welcome to our school!
+welfare|health and happiness|Teachers care about your welfare.
+without|not having|I went out without my coat.
+bare|not covered|I walked on the sand in bare feet.
+does|a form of do|What does this word mean?
+fair|treating everyone equally|It is not fair!
+fury|great anger|He was full of fury.
+hair|what grows on your head|She has long curly hair.
+hare|an animal like a big rabbit|The hare ran across the field.
+here|in this place|Come and sit here.
+hope|to want something to happen|I hope it snows.
+I'll|short for I will|I'll help you tidy up.
+live|to be alive, or to have your home somewhere|We live near the sea.
+lose|to not be able to find, or to not win|Don't lose your key.
+main|the most important|The main road is busy.
+meet|to come together with someone|Let's meet at the park.
+pair|two things that go together|I need a new pair of socks.
+pray|to talk to God|They pray every evening.
+prey|an animal hunted by another|Mice are prey for owls.
+pure|not mixed with anything|The jumper is made of pure wool.
+seem|to appear to be|You seem happy today.
+some|a few, or a small amount|Have some grapes.
+wait|to stay until something happens|Wait for the green man.
+cheque|a written order to pay money from a bank|Grandad paid with a cheque.
+colour|red, blue, green and so on|Blue is my favourite colour.
+fourth|number four in order|I came fourth in the race.
+friend|someone you like and trust|My friend shared her lunch with me.
+growth|getting bigger|We measured the growth of the bean plant.
+guilty|having done something wrong|The dog looked guilty.
+health|how well your body and mind are|Fruit is good for your health.
+labour|hard work|Building the wall took weeks of labour.
+looked|used your eyes|I looked out of the window.
+opaque|not able to be seen through|The bathroom window is opaque.
+please|a polite word when asking|Please may I have a drink?
+poured|made a liquid flow from a container|She poured the milk.
+school|a place where children learn|We walk to school.
+scream|a loud high shout|I heard a scream from the ghost train.
+should|ought to|You should wear a coat.
+showed|let someone see|She showed me her drawing.
+source|where something comes from|The sun is a source of light.
+stream|a small river|We paddled in the stream.
+unique|the only one of its kind|Every snowflake is unique.
+wealth|a lot of money or riches|The king had great wealth.
+airplane|an aeroplane|The airplane flew over the sea.
+backyard|a garden behind a house|We camped in the backyard.
+birthday|the day you were born each year|My birthday is in May.
+cheerful|happy and bright|She has a cheerful smile.
+children|more than one child|The children sang together.
+complete|finished, with nothing missing|My puzzle is complete.
+conflict|a fight or disagreement|The two teams were in conflict.
+consumer|someone who buys and uses things|Every shopper is a consumer.
+contrast|a big difference|There is a contrast between night and day.
+convince|to make someone believe|Can you convince Mum to let us go?
+disagree|to have a different opinion|I disagree with you.
+erasable|able to be rubbed out|I write with an erasable pen.
+folklore|old stories and beliefs passed down|Dragons appear in Welsh folklore.
+hometown|the town where you grew up|Leeds is my hometown.
+instinct|something you do naturally without learning|Birds build nests by instinct.
+jeopardy|danger|The storm put the boats in jeopardy.
+kayaking|paddling a small narrow boat|We went kayaking on the lake.
+language|words used by people to talk|French is a beautiful language.
+maintain|to keep something in good condition|We maintain our bikes carefully.
+penalise|to punish for breaking a rule|The referee will penalise a foul.
+persuade|to make someone agree|Can I persuade you to stay?
+platform|a raised flat area, like at a station|The train is at platform two.
+plethora|far more than needed|There was a plethora of cakes at the party.
+portrait|a picture of a person|I painted a portrait of my dog.
+progress|moving forward or improving|You have made great progress.
+purchase|to buy|We will purchase a new tent.
+standard|a level of quality|Your work is of a high standard.
+sunshine|light from the sun|We played in the sunshine.
+surprise|something you did not expect|The party was a big surprise.
+teenager|someone aged 13 to 19|My cousin is a teenager.
+add|to put together, or to find the total|Add four and five.
+board|a flat piece of wood, or a game board|Write it on the board.
+bored|not interested|I was bored on the long drive.
+close|near, or to shut|Please close the gate.
+he'll|short for he will|He'll be here soon.
+isn't|short for is not|It isn't fair.
+steel|a very strong metal|The bridge is made of steel.
+waste|to use carelessly, or rubbish|Don't waste food.
+we'll|short for we will|We'll see you tomorrow.
+where|in what place|Where are my shoes?
+brusque|short and rude in speaking|The shopkeeper gave a brusque reply.
+grownup|an adult|Ask a grownup for help.
+leisure|free time for fun|What do you do in your leisure time?
+reached|arrived at, or stretched out to touch|We reached the top of the hill.
+younger|less old|My brother is younger than me.
+hopscotch|a game of hopping into squares|We played hopscotch at break.
+longevity|a long life|Tortoises are famous for their longevity.
+perimeter|the distance around the edge of a shape|Measure the perimeter of the square.
+recognise|to know someone or something you have seen before|I didn't recognise you in that hat!
+something|a thing|I have something to tell you.
+sometimes|now and then|Sometimes I walk to school.
+telescope|a tube that makes faraway things look closer|We looked at the moon through a telescope.
+therefore|for that reason|It is raining. Therefore, we will stay in.
+yardstick|a standard used to judge something|Test scores are not the only yardstick of success.
+able|can do something|Are you able to come?
+also|as well|I also like swimming.
+bell|a metal object that rings|The school bell rang.
+she'll|short for she will|She'll be home soon.
+wasn't|short for was not|It wasn't me!
+skateboard|a board with wheels you ride on|He rode his skateboard to the park.
+themselves|those people and no one else|The children made lunch themselves.
+transfixed|unable to move because of shock or wonder|We were transfixed by the fireworks.
+worthwhile|worth the time or effort|Learning to swim is worthwhile.
+added|put together|I added sugar to my tea.
+after|later than|We play after lunch.
+angry|cross or mad|The bull looked angry.
+basic|simple|We learned some basic French.
+began|started|The show began at seven.
+begin|to start|Let's begin the lesson.
+carry|to hold and move something|Can you carry this bag?
+every|each one|Every child got a sticker.
+funny|making you laugh|That joke is funny.
+happy|feeling glad|I am happy today.
+issue|a problem, or one copy of a magazine|The leaking roof is a big issue.
+lasso|a rope with a loop for catching animals|The cowboy threw his lasso.
+mimic|to copy someone|Parrots can mimic voices.
+music|sounds arranged to be pleasant|I listen to music when I draw.
+occur|to happen|When did the accident occur?
+offer|to hold out something for someone to take|Offer your guest a drink.
+panic|sudden fear|Don't panic, it's just a spider.
+penny|a small coin|I found a penny on the floor.
+puppy|a young dog|The puppy chewed my slipper.
+story|a tale about events|Tell me a story.
+table|furniture with a flat top and legs|Set the table for dinner.
+topic|a subject|Our topic this term is the Vikings.
+usual|normal|I woke up at the usual time.
+they'll|short for they will|They'll be here at six.
+whether|if, when there are choices|I don't know whether to laugh or cry.
+favourite|the one you like best|Blue is my favourite colour.
+area|a part of a place, or the space inside a shape|This is the reading area.
+debt|money that you owe|He paid off his debt.
+it's|short for it is|It's time for bed.
+real|true, not pretend|Is that a real diamond?
+active|busy and moving about|Squirrels are active in autumn.
+advice|ideas to help someone decide|Gran gave me good advice.
+almost|nearly|I am almost finished.
+always|every time|I always brush my teeth.
+answer|a reply to a question|She knew the answer.
+aspect|one part or side of something|Drawing is my favourite aspect of art.
+become|to start to be|Tadpoles become frogs.
+before|earlier than|Wash your hands before lunch.
+behave|to act in a certain way|Please behave on the trip.
+behind|at the back of|The cat hid behind the sofa.
+belong|to be owned by, or to fit in|These boots belong to me.
+bigger|larger|My feet are bigger than yours.
+bottom|the lowest part|The treasure was at the bottom of the sea.
+cannot|is not able to|I cannot find my shoe.
+common|happening often|Sparrows are common birds.
+debate|a discussion where people give different views|We had a debate about school uniform.
+debris|broken pieces left after something is destroyed|Debris was scattered after the storm.
+decide|to make up your mind|You decide what we play.
+define|to explain what a word means|Can you define the word habitat?
+degree|a unit for measuring temperature or angles|It went up by one degree.
+depend|to rely on|You can depend on me.
+detail|a small part or fact|Add more detail to your drawing.
+device|a machine or gadget|A phone is a useful device.
+dollar|money used in America|The sweets cost one dollar.
+effect|a result|The medicine had a quick effect.
+effort|hard work and trying|Put lots of effort into your work.
+enable|to make it possible|Glasses enable me to read.
+energy|power or strength|Bananas give you energy.
+excess|more than is needed|Wipe off the excess paint.
+extent|how big or far something is|We could not believe the extent of the damage.
+family|parents, children and relatives|My family went to the beach.
+future|the time that is to come|In the future, I want to be a pilot.
+happen|to take place|What will happen next?
+hotter|more hot|Today is hotter than yesterday.
+invent|to make something new|I want to invent a flying car.
+ironic|the opposite of what you would expect|It was ironic that the fire station burned down.
+kitten|a young cat|The kitten chased the string.
+little|small|A little mouse ran past.
+luxury|something expensive and nice but not needed|The hotel was pure luxury.
+middle|the centre|Stand in the middle of the circle.
+mirror|glass that shows your reflection|Look in the mirror.
+modify|to change a little|We will modify the plan.
+nation|a country and its people|The whole nation cheered.
+office|a room where people work at desks|Mum works in an office.
+option|a choice|You have one more option.
+public|for everyone|The library is open to the public.
+recent|happening not long ago|Have you seen her recent painting?
+social|to do with being with other people|Bees are social insects.
+stable|steady, or a building for horses|The horse is in the stable.
+supply|to give what is needed|The farm will supply the milk.
+unable|not able|I was unable to come.
+vision|the ability to see|Carrots are said to help your vision.
+wallet|a small case for money and cards|Dad lost his wallet.
+winner|the one who wins|The winner gets a cup.
+bayou|a slow, marshy stream in the southern USA|Alligators swim in the bayou.
+being|a living creature, or existing|A human being needs sleep.
+civil|polite, or to do with ordinary people|Please be civil to each other.
+cycle|to ride a bike, or a repeating pattern|We learned about the water cycle.
+don't|short for do not|Don't forget your coat.
+gizmo|a gadget|What does this gizmo do?
+guess|to give an answer you are not sure of|Guess how many sweets are in the jar.
+quiet|making little noise|Be quiet in the library.
+weary|very tired|The weary travellers sat down.
+abandon|to leave behind for ever|Never abandon a pet.
+abolish|to get rid of a law or system|They voted to abolish the rule.
+acquire|to get|You will acquire new skills.
+auction|a sale where people bid against each other|The painting was sold at auction.
+awesome|amazing|The fireworks were awesome!
+because|for the reason that|I smiled because I was happy.
+besides|as well as|Besides cake, there were biscuits.
+between|in the space in the middle of two things|Sit between Tom and Ava.
+bottles|containers for liquids|Recycle the plastic bottles.
+charity|a group that helps people in need|We raised money for charity.
+clarify|to make clearer|Can you clarify the question?
+collect|to gather together|I collect stamps.
+correct|right, with no mistakes|That answer is correct.
+culture|the ideas and customs of a group of people|We learned about Chinese culture.
+deprive|to take something away from someone|Don't deprive the plant of water.
+deserve|to have earned something|You deserve a prize.
+destroy|to ruin completely|The storm could destroy the hut.
+discuss|to talk about|Let's discuss the story.
+economy|the money and business of a country|Tourism helps the economy.
+educate|to teach|Schools educate children.
+exactly|completely correct|That is exactly right.
+examine|to look at closely|The doctor will examine your ear.
+example|something that shows what others are like|Give me an example of a noun.
+express|to show feelings or ideas|Express your ideas clearly.
+federal|to do with the central government of a country|America has a federal government.
+formula|a rule written in numbers or letters|We used a formula to find the area.
+gravity|the force that pulls things towards the ground|Gravity makes apples fall.
+hallway|the passage inside the front door|Hang your coat in the hallway.
+impress|to make people admire you|She tried to impress the judges.
+library|a place where you borrow books|We borrow books from the library.
+limited|only a small amount|Tickets are limited.
+liquefy|to turn into a liquid|Heat will liquefy the chocolate.
+magnify|to make something look bigger|A lens can magnify a bug.
+massive|very big|The whale was massive.
+maximum|the most allowed|The maximum speed is thirty.
+mention|to say something briefly|Did she mention the party?
+mineral|a natural substance from the ground|Salt is a mineral.
+minimum|the least allowed|You need a minimum of four players.
+mixture|things mixed together|Stir the cake mixture.
+morally|in a way that is right and good|It is morally wrong to steal.
+natural|from nature, not made by people|Wool is a natural material.
+obesity|being very overweight|Exercise helps to prevent obesity.
+payment|money paid for something|The shop took my payment.
+pennies|small coins|I saved my pennies in a jar.
+picture|a painting, drawing or photo|Draw a picture of your house.
+plastic|a light material made in factories|The bottle is made of plastic.
+popular|liked by many people|Football is a popular sport.
+prevent|to stop something happening|Sun cream can prevent sunburn.
+quality|how good something is|The shoes are good quality.
+recover|to get better|I hope you recover quickly.
+remnant|a small part left over|We found a remnant of the old castle wall.
+rubbish|things thrown away|Put the rubbish in the bin.
+running|moving quickly on your feet|I love running on the beach.
+satisfy|to please someone by giving what they need|The snack will satisfy your hunger.
+settled|calm and comfortable, or decided|The baby settled down to sleep.
+several|more than two but not many|I have several pencils.
+shopper|someone who goes shopping|The shopper filled her trolley.
+similar|almost the same|Our coats are similar.
+special|better or different from usual|Today is a special day.
+station|a place where trains or buses stop|We waited at the station.
+support|to hold up or help|I support my local team.
+suppose|to think something is probably true|I suppose you are right.
+tension|a feeling of worry, or tightness|You could feel the tension before the final.
+useless|of no use|A broken umbrella is useless.
+vehicle|something that carries people, like a car|A bus is a large vehicle.
+version|one form of something|This is a newer version of the game.
+village|a small group of houses in the country|We live in a small village.
+witness|someone who saw something happen|She was a witness to the accident.
+know|to have learned something|I know my times tables.
+amount|how much there is|Add a small amount of salt.
+center|the middle (American spelling of centre)|The city center was busy.
+centre|the middle|The fountain is in the centre of town.
+citrus|fruits like oranges and lemons|Citrus fruits are full of vitamin C.
+column|a tall pillar, or a line going down|Add up the numbers in the column.
+couple|two people, or a few|A couple of birds sat on the wall.
+cowboy|a man who looks after cattle on horseback|The cowboy rode across the plains.
+create|to make something new|Let's create a comic.
+either|one or the other|You can have either cake or ice cream.
+gadget|a small useful tool|This gadget peels apples.
+genius|a very clever person|Einstein was a genius.
+gentle|soft and kind|Be gentle with the kitten.
+ginger|a spicy root, or orange-coloured|We made ginger biscuits.
+honest|always telling the truth|Thank you for being honest.
+louder|making more noise|Can you sing louder?
+obtain|to get|Where did you obtain that rare card?
+reason|why something happens|What is the reason you are late?
+review|to look at again, or a report on a film or book|I wrote a review of the book.
+season|spring, summer, autumn or winter|Autumn is my favourite season.
+shadow|a dark shape made when light is blocked|My shadow follows me.
+subtly|in a quiet, hard to notice way|She subtly winked at me.
+system|a set of parts working together|The solar system has eight planets.
+trophy|a cup or prize for winning|Our team won the trophy.
+window|glass in a wall to let light in|Open the window.
+acquaint|to get to know|Let me acquaint you with the rules.
+baseball|a game with a bat and a ball, played in America|We played baseball in the park.
+boundary|the edge or limit of an area|The ball went over the boundary.
+business|a company that sells things or services|My aunt runs a cake business.
+colorful|full of colour (American spelling of colourful)|The parrot is very colorful.
+colossal|enormous|The ship was colossal.
+computer|a machine that stores and works with information|I typed my story on the computer.
+consider|to think carefully about|Consider every answer.
+continue|to keep going|Continue reading to the end.
+discover|to find something for the first time|Scientists discover new species every year.
+distance|how far it is between two places|The distance to school is one mile.
+electric|powered by electricity|We have an electric car.
+entirely|completely|The cake is entirely made of chocolate.
+everyone|every person|Everyone loves a holiday.
+exciting|making you feel eager and happy|The ride was exciting.
+exercise|activity that keeps you fit|Exercise is good for you.
+explorer|someone who travels to find new places|The explorer crossed the jungle.
+exposure|being uncovered or unprotected|Too much exposure to the sun can burn you.
+families|more than one family|Families came to watch the play.
+fraction|a part of a whole number|One half is a fraction.
+fracture|a crack or break, especially in a bone|The X-ray showed a fracture.
+hesitate|to pause before doing something|Don't hesitate to ask for help.
+holidays|time off school or work|We go camping in the holidays.
+improper|not right or suitable|Shouting in class is improper.
+instance|an example|For instance, a robin is a bird.
+interact|to talk and do things with others|The children interact well in groups.
+interest|wanting to know more|I have a great interest in space.
+magazine|a thin book with pictures and articles|I read a comic magazine.
+millions|thousands of thousands|There are millions of stars.
+momentum|the force that keeps something moving|The sledge gained momentum down the hill.
+monopoly|total control of something by one person or company|One company had a monopoly on the trains.
+national|to do with a whole country|It was on the national news.
+navigate|to find the way|Sailors used stars to navigate.
+nuisance|something annoying|The fly is a nuisance.
+optimist|someone who expects good things to happen|She is an optimist and always smiles.
+organise|to arrange or plan|Let's organise a party.
+organize|to arrange or plan (American spelling)|We need to organize the books.
+original|the first one, or new and unusual|This is the original painting.
+particle|a tiny piece|A particle of dust floated past.
+peculiar|strange or unusual|The soup had a peculiar smell.
+personal|belonging to one person|Keep your personal things in your locker.
+positive|good, or sure|Stay positive!
+powerful|very strong|A lion is a powerful animal.
+presence|being somewhere|We felt the presence of a ghost!
+properly|in the right way|Tie your laces properly.
+quantity|an amount|A large quantity of rain fell.
+question|something that you ask|Put your hand up if you have a question.
+rainfall|the amount of rain that falls|There was heavy rainfall last night.
+rational|sensible and based on reason|Try to make a rational choice.
+reflexes|quick automatic movements|Goalkeepers need fast reflexes.
+regulate|to control|A thermostat helps regulate the heat.
+remember|to keep in your mind|Remember to bring your PE kit.
+ricochet|to bounce off a surface|The ball will ricochet off the wall.
+sabotage|to damage something on purpose|The villain tried to sabotage the race.
+separate|apart, not together|Keep the paints separate.
+settlers|people who make a home in a new place|The settlers built a village by the river.
+simplify|to make easier|Let's simplify the instructions.
+strategy|a plan to achieve something|Our team has a good strategy.
+suitable|right for the purpose|Wear suitable shoes.
+summoned|called to come|The head teacher summoned the class.
+surround|to be all around|Trees surround the lake.
+swimming|moving through water|We go swimming on Saturdays.
+tenderly|gently and lovingly|She tenderly stroked the puppy.
+together|with each other|Let's work together.
+unfairly|in a way that is not fair|He was treated unfairly.
+valuable|worth a lot|The ring is very valuable.
+vitamins|substances in food that keep you healthy|Fruit is full of vitamins.
+our|belonging to us|This is our house.
+sea|the salty water that covers much of the Earth|We swam in the sea.
+too|also, or more than enough|I want to come too.
+doubt|a feeling of not being sure|I doubt it will rain.
+eight|the number 8|A spider has eight legs.
+laugh|to make a happy sound when something is funny|The joke made me laugh.
+ought|should|You ought to say sorry.
+achieve|to succeed in doing|You can achieve anything with practice.
+central|in the middle|The shop is in a central spot.
+certain|completely sure|I am certain I locked the door.
+circuit|a path for electricity, or a track|The bulb lit up when the circuit was complete.
+country|a land with its own government|France is a country in Europe.
+emptied|made empty|I emptied my bag.
+foreign|from another country|She speaks a foreign language.
+highest|the most high|Everest is the highest mountain.
+highway|a main road|The highway was busy.
+insight|a clear understanding|The book gave me insight into life in space.
+instead|in place of|Have water instead of juice.
+involve|to include as a part|The game will involve everyone.
+journey|a trip from one place to another|The journey took three hours.
+leaving|going away|We are leaving at noon.
+measure|to find the size of something|Measure the table.
+nearest|the closest|Where is the nearest shop?
+neither|not one or the other|Neither of us was hungry.
+outcome|the result|What was the outcome of the match?
+outside|not inside|Let's play outside.
+rainbow|an arch of colours in the sky|A rainbow appeared after the rain.
+rancour|bitter anger that lasts a long time|They shook hands without rancour.
+realise|to suddenly understand|I didn't realise it was so late.
+receive|to get something given to you|Did you receive my letter?
+release|to let go|Release the balloon.
+relieve|to make pain or worry less|This cream will relieve the itching.
+shouted|said loudly|He shouted for help.
+teacher|someone who helps people learn|My teacher is very kind.
+they're|short for they are|They're coming to tea.
+towards|in the direction of|The dog ran towards me.
+trouble|problems or difficulty|The puppy got into trouble.
+whereas|but on the other hand|I like peas, whereas my sister hates them.
+wrapped|covered in paper or cloth|I wrapped the present.
+wrinkle|a small line or fold|There is a wrinkle in my shirt.
+writing|putting words on paper|I love writing stories.
+calculate|to work out with numbers|Calculate the total cost.
+cognitive|to do with thinking and learning|Puzzles are good for your cognitive skills.
+entertain|to keep people interested and amused|The clown will entertain the children.
+establish|to set up|They will establish a new club.
+extremely|very|It is extremely cold today.
+fulfilled|made happen, or satisfied|She fulfilled her dream of becoming a vet.
+guarantee|a promise that something will happen|I guarantee you will love it.
+implicate|to show someone is involved in something|The footprints implicate the fox.
+juxtapose|to place side by side to compare|Juxtapose the old photo and the new one.
+manoeuvre|a skilful movement|Parking the bus was a tricky manoeuvre.
+miniature|very small|She has a miniature pony.
+orchestra|a large group of musicians|The orchestra played beautifully.
+painfully|in a way that hurts|He stubbed his toe painfully.
+regarding|about|I have a question regarding homework.
+remainder|what is left over|Seven divided by two is three, remainder one.
+replenish|to fill up again|Replenish the bird feeder.
+reproduce|to copy, or to have babies|Plants reproduce using seeds.
+statement|a sentence that tells you something|A statement ends with a full stop.
+structure|something that has been built|The bridge is a strong structure.
+travelled|went on a journey|We travelled to Scotland.
+uncertain|not sure|I am uncertain about the answer.
+vegetable|a plant we eat, like a carrot|Eat every vegetable on your plate.
+bear|a big furry wild animal|The bear caught a fish.
+four|the number 4|A dog has four legs.
+hear|to sense sounds with your ears|I can hear the birds.
+high|far up|The kite flew high.
+knot|a tie made in string or rope|Tie a knot in the rope.
+lead|to go in front, or a dog's strap|Put the dog on its lead.
+poor|having little money|The poor man had no shoes.
+wear|to have clothes on|Wear your wellies in the rain.
+your|belonging to you|Is this your bag?
+aren't|short for are not|We aren't ready yet.
+flower|the colourful part of a plant|She picked a yellow flower.
+hoping|wanting something to happen|I am hoping for snow.
+lessen|to make less|A cold flannel will lessen the pain.
+living|being alive|A cat is a living thing.
+profit|money made after costs are paid|The cake sale made a profit.
+purely|only|I did it purely for fun.
+rhythm|a regular beat in music|Clap to the rhythm.
+taught|the past tense of teach|Dad taught me to swim.
+zephyr|a soft gentle breeze|A zephyr rustled the leaves.
+bookcase|shelves for keeping books|The bookcase is full.
+cylinder|a shape like a tube with round ends|A tin of beans is a cylinder.
+downside|a bad part of something|The downside of camping is the cold.
+earnings|money earned from work|She saved her earnings.
+fighting|struggling against someone|The kittens were play fighting.
+fountain|water shooting up into the air|We threw a coin in the fountain.
+frenzied|wild and out of control|The sharks were in a frenzied rush for food.
+frighten|to scare|Don't frighten the birds.
+graphics|pictures and designs, especially on a screen|The game has amazing graphics.
+intrigue|to make someone curious|The mystery box will intrigue you.
+notebook|a small book for writing notes|I wrote it in my notebook.
+nowadays|at the present time|Nowadays, most people have phones.
+pleasure|a feeling of happiness|It was a pleasure to meet you.
+research|careful study to find facts|We did research on owls.
+resource|something useful you can use|Water is a precious resource.
+shoulder|the joint where your arm meets your body|The parrot sat on his shoulder.
+treasure|gold, jewels and riches|The pirates buried their treasure.
+controller|a handheld device for playing games|Pass me the controller.
+discomfort|a feeling of mild pain|The tight shoes caused discomfort.
+kilometres|units for measuring long distances|We walked five kilometres.
+prevalence|how common something is|The prevalence of colds rises in winter.
+privileged|lucky to have special advantages|I feel privileged to be team captain.
+understand|to know what something means|Do you understand the question?
+annoy|to bother someone|Flies annoy me.
+apply|to put on, or to ask for formally|Apply sun cream before you go out.
+break|to split into pieces, or a short rest|We play outside at break time.
+cried|had tears in your eyes|The baby cried all night.
+dried|made dry|I dried the dishes.
+flour|a powder made from wheat, used for baking|Add flour to the cake mix.
+loose|not tight|My tooth is loose.
+night|the dark time between evening and morning|Owls hunt at night.
+peace|calm and quiet, with no fighting|The garden is full of peace.
+piece|a part of something|Can I have a piece of cake?
+right|correct, or the opposite of left|You got the right answer.
+whole|all of something|He ate the whole pizza!
+drought|a long time without rain|The plants died in the drought.
+laughed|made a happy sound at something funny|We laughed at the clown.
+naughty|badly behaved|The naughty puppy chewed my slipper.
+thought|an idea in your mind|I had a happy thought.
+weighed|found out how heavy something was|We weighed the flour.
+lightning|a flash of light in a storm|The lightning lit up the sky.
+mountains|very high hills|We climbed the mountains in Wales.
+ourselves|us and nobody else|We built the den ourselves.
+paragraph|a group of sentences about one idea|Start a new paragraph for each idea.
+technique|a way of doing something skilfully|Practise your swimming technique.
+wearisome|making you tired or bored|The long wait was wearisome.
+complaining|saying you are not happy about something|Stop complaining and eat your dinner.
+demonstrate|to show how something works|Can you demonstrate the trick?
+misconstrue|to misunderstand|Don't misconstrue my joke as unkind.
+thermometer|a tool that measures temperature|The thermometer showed it was freezing.
+accept|to take something offered, or to agree|Please accept this gift.
+action|doing something|The film was full of action.
+affect|to change or have an influence on|The rain will affect our picnic.
+afford|to have enough money for|We can't afford a new car.
+arctic|very cold, or the area round the North Pole|Polar bears live in the arctic.
+assist|to help|I will assist the teacher.
+atomic|to do with atoms|An atomic clock is very accurate.
+better|more good|I feel better today.
+choose|to pick|Choose a book to read.
+course|a series of lessons, or a path|I'm doing a swimming course.
+memory|the ability to remember|I have a good memory for names.
+mutual|shared by two or more people|We have a mutual friend.
+occupy|to fill time or space|Puzzles will occupy you on the train.
+theory|an idea that tries to explain something|I have a theory about the missing biscuits.
+you'll|short for you will|You'll love this book.
+you've|short for you have|You've done a great job.
+yourselves|you and nobody else, for more than one person|Help yourselves to cake.
+argue|to disagree using words|Please don't argue.
+below|under|The fish swam below the boat.
+ability|being able to do something|She has the ability to sing well.
+another|one more|Can I have another biscuit?
+attempt|a try|This is my first attempt.
+average|ordinary, or the middle amount|The average age in our class is nine.
+benefit|a good result or help|One benefit of exercise is better sleep.
+buffalo|a large wild ox|The buffalo grazed by the river.
+capable|able to do something|You are capable of great things.
+comment|something you say about something|Thank you for your kind comment.
+current|happening now, or a flow of water|The river current was strong.
+decimal|a number with a dot, like 2.5|Write the answer as a decimal.
+defence|protecting from attack|The castle walls were its defence.
+develop|to grow or change|Tadpoles develop into frogs.
+element|a basic part of something|Water is a key element of life.
+factory|a building where things are made|The chocolate factory smelt amazing.
+finally|at last|We finally reached the beach.
+history|things that happened in the past|We learned about Roman history.
+horrify|to shock and scare|The ghost story will horrify you.
+illegal|against the law|It is illegal to drop litter.
+logical|making sense|That is a logical answer.
+musical|to do with music, or a show with songs|We saw a musical in London.
+possess|to own|Do you possess a library card?
+success|getting what you aimed for|The party was a success.
+sundial|a clock that uses the sun's shadow|The garden has an old sundial.
+urgency|a need to act quickly|There was urgency in her voice.
+victory|a win|Our team celebrated the victory.
+virtual|made by a computer, not real|We went on a virtual tour of the museum.
+biodegradable|able to rot away naturally|Paper bags are biodegradable.
+borrow|to take something you will give back|Can I borrow a pen?
+cellar|a room under a house|We keep old toys in the cellar.
+didn't|short for did not|I didn't hear you.
+easily|without difficulty|She won easily.
+famous|known by lots of people|The famous singer waved.
+follow|to go after|Follow me!
+giggle|to laugh in a silly way|The baby started to giggle.
+wholly|completely|I wholly agree with you.
+willow|a tree with long drooping branches|We sat under the willow by the river.
+abnormal|not normal|The weather is abnormal for June.
+artistic|good at art|My sister is very artistic.
+behavior|the way you act (American spelling of behaviour)|The dog's behavior has improved.
+brutally|in a very harsh way|The wind was brutally cold.
+capacity|how much something can hold|The jug has a capacity of one litre.
+decorate|to make something look nicer|Let's decorate the tree.
+definite|certain|Is that a definite yes?
+demolish|to knock down|They will demolish the old building.
+division|splitting into parts, or sharing in maths|We practised division in maths.
+donation|something given to help|We made a donation to the animal shelter.
+evidence|facts that show something is true|The muddy paw prints are evidence.
+formally|in a proper, serious way|We were formally invited.
+insolent|rude and disrespectful|The insolent boy stuck out his tongue.
+joyfully|in a very happy way|The children sang joyfully.
+judicial|to do with courts and judges|The judicial system decides court cases.
+literacy|the ability to read and write|Literacy is an important skill.
+majority|more than half|The majority of the class chose pizza.
+maturity|being grown up and sensible|She showed great maturity.
+minority|less than half|Only a minority wanted to go home.
+negative|bad, or less than zero|Minus three is a negative number.
+normally|usually|I normally walk to school.
+obsesses|thinks about something all the time|He obsesses over football.
+ordinary|normal, not special|It was an ordinary day.
+parallel|side by side and never meeting|Railway tracks are parallel.
+portable|easy to carry|We have a portable speaker.
+position|where something is|Get into position for the race.
+priority|the most important thing|Safety is our first priority.
+probable|likely to happen|Rain is probable later.
+punctual|on time|Please be punctual.
+relevant|connected to the subject|Only include relevant facts.
+reusable|able to be used again|Bring a reusable bag.
+solution|the answer to a problem|We found a solution.
+suddenly|quickly and unexpectedly|Suddenly, the lights went out.
+violence|actions that hurt people|Violence is never the answer.
+furry|covered in fur|The hamster is soft and furry.
+balloon|a rubber bag filled with air|My balloon floated away.
+believe|to think something is true|I believe in you.
+bullied|hurt or scared on purpose by others|Tell an adult if you are bullied.
+carried|held and moved|Dad carried the shopping.
+delight|great happiness|She squealed with delight.
+doesn't|short for does not|It doesn't matter.
+feature|an important part of something|The best feature of the house is the garden.
+general|about most things, or an army leader|The general led the army.
+gesture|a movement that shows a meaning|A wave is a friendly gesture.
+getting|becoming, or receiving|It is getting dark.
+giraffe|a very tall African animal with a long neck|The giraffe ate leaves from the tree.
+however|but|I like dogs. However, I prefer cats.
+hurried|went quickly|We hurried to catch the bus.
+married|joined as husband and wife|My aunt got married in June.
+mystery|something hard to explain|Who took the cookies is a mystery.
+nervous|worried or scared|I was nervous before the show.
+worried|feeling anxious|Don't be worried about the test.
+advantage|something that helps you do better|Being tall is an advantage in netball.
+available|free to be used|Is this seat available?
+awareness|knowing about something|We raised awareness about recycling.
+awkwardly|in a clumsy way|He stood awkwardly by the door.
+butterfly|an insect with large colourful wings|A butterfly landed on my hand.
+carefully|with great care|Carry the eggs carefully.
+condition|the state something is in|The bike is in good condition.
+customary|usual|It is customary to shake hands.
+desperate|in great need|The thirsty dog was desperate for water.
+difficult|hard to do|The puzzle was difficult.
+direction|the way something is going|Which direction is north?
+discovery|finding something new|The discovery of a dinosaur bone was big news.
+enjoyable|fun|We had an enjoyable day.
+explosion|a sudden loud burst|The volcano explosion was huge.
+formation|the way things are arranged|The geese flew in a V formation.
+furniture|tables, chairs, beds and so on|We moved the furniture.
+helpfully|in a helpful way|She helpfully held the door.
+hesitance|being slow to act because you are unsure|I could hear the hesitance in his voice.
+hopefully|in a hopeful way|Hopefully, it will be sunny.
+important|matters a lot|It is important to wash your hands.
+influence|the power to change what others do|Friends can have a big influence.
+insurance|paying money to be protected if something goes wrong|We have insurance for our car.
+intention|a plan or aim|My intention was to help.
+interrupt|to stop someone while they are talking|Please don't interrupt.
+jewellery|rings, necklaces and bracelets|She keeps her jewellery in a box.
+mediaeval|from the Middle Ages|We visited a mediaeval castle.
+mentality|a way of thinking|She has a winning mentality.
+negligent|careless, not taking proper care|The negligent driver left the car unlocked.
+numerator|the top number in a fraction|In three quarters, the numerator is three.
+nutrition|the food you need to grow and be healthy|Good nutrition helps you grow.
+obsessive|thinking about one thing too much|He is obsessive about his football cards.
+quotation|words said or written by someone else|Put the quotation in speech marks.
+recommend|to suggest as good|I recommend this book.
+reference|a mention, or a source of information|Use a dictionary for reference.
+reluctant|not wanting to do something|The cat was reluctant to get in the bath.
+repayment|paying back money|The bank wants its repayment.
+represent|to stand for, or act for others|The flag can represent a country.
+resurrect|to bring back to life or into use|They want to resurrect the old tradition.
+sanctuary|a safe place|The farm is a sanctuary for rescued animals.
+technical|to do with machines or special skills|We had a technical problem with the projector.
+temporary|lasting only a short time|This is a temporary classroom.
+traumatic|very upsetting and shocking|The storm was a traumatic event for the town.
+undecided|not yet decided|I am undecided about which film to watch.
+lesson|a time when you are taught something|We have a music lesson today.
+myself|me and nobody else|I made it myself.
+you're|short for you are|You're my best friend.
+decrease|to get smaller|The temperature will decrease tonight.
+emphasis|special importance|Put the emphasis on the first word.
+enormous|very large|The dinosaur was enormous.
+euphoric|extremely happy and excited|The fans were euphoric after the goal.
+football|a game where you kick a ball|We play football at lunch.
+goodness|being good and kind|She helped out of the goodness of her heart.
+precious|very valuable|This ring is precious to me.
+quotient|the answer to a division sum|The quotient of ten divided by two is five.
+scissors|a tool with two blades for cutting|Cut the paper with scissors.
+subtlety|something small and hard to notice|The subtlety of the joke made me smile.
+wondrous|wonderful|It was a wondrous sight.
+adrenaline|a chemical your body makes when excited or scared|The roller coaster gave me an adrenaline rush.
+basketball|a game where you throw a ball through a hoop|We played basketball in PE.
+brilliance|great cleverness or brightness|We admired the brilliance of the stars.
+comparison|looking at how things are alike or different|We made a comparison of the two stories.
+conclusion|the end, or a decision after thinking|In conclusion, I liked the book.
+confidence|believing in yourself|She spoke with confidence.
+continuity|staying the same over time|The story has good continuity.
+correspond|to match, or to write letters|The pictures correspond to the words.
+disappoint|to make someone sad by not doing what they hoped|I didn't want to disappoint my team.
+disposable|meant to be thrown away after use|We used disposable cups.
+electronic|using electricity and tiny circuits|A tablet is an electronic device.
+facilities|buildings and equipment for a purpose|The school has great sports facilities.
+government|the people who run a country|The government made a new law.
+importance|being important|Never forget the importance of kindness.
+irrational|not sensible or logical|My fear of moths is irrational.
+narcissist|someone who loves themselves too much|The narcissist talked only about himself.
+nonchalant|calm and not worried|She was nonchalant about the big test.
+particular|one special one|I want this particular book.
+prosperity|being successful and rich|The town enjoyed years of prosperity.
+punishment|what happens to someone who does wrong|Missing playtime was his punishment.
+relaxation|resting and feeling calm|Reading is my favourite relaxation.
+simplicity|being simple|I like the simplicity of the design.
+television|a screen for watching programmes|We watched television after tea.
+thankfully|luckily|Thankfully, it stopped raining.
+aloud|out loud|Read the poem aloud.
+rough|not smooth|The sea was rough.
+heavier|weighing more|An elephant is heavier than a horse.
+hygiene|keeping clean to stay healthy|Washing hands is good hygiene.
+ourself|ourselves (not often used)|We did it all by ourself.
+bountiful|plentiful|The harvest was bountiful.
+classroom|the room where a class is taught|Our classroom has a fish tank.
+everybody|every person|Everybody loves ice cream.
+haphazard|without order or planning|The books were stacked in a haphazard way.
+hazardous|dangerous|Ice on the road is hazardous.
+honorably|in an honest and good way|He behaved honorably.
+judgement|a decision or opinion|Use your judgement.
+litigious|quick to take people to court|The litigious man sued his neighbour over a fence.
+mysteries|things that are hard to explain|The ocean is full of mysteries.
+nutrients|things in food that help you grow|Plants take nutrients from the soil.
+prototype|the first model of an invention|We built a prototype of our robot.
+sovereign|a king or queen, or ruling itself|The country is a sovereign nation.
+comfortable|relaxed and free from pain|This sofa is comfortable.
+consequence|a result of an action|If you don't revise, there may be a consequence.
+contraption|a strange machine|He built a contraption to feed the cat.
+controversy|a big disagreement|The new rule caused controversy.
+detrimental|harmful|Too much screen time can be detrimental.
+improvement|getting better|Your writing shows great improvement.
+incorporate|to include as part of something|Incorporate your ideas into the story.
+inexpensive|cheap|This pen is inexpensive.
+opinionated|with strong opinions|My uncle is very opinionated about football.
+participate|to take part|Everyone can participate in the game.
+pessimistic|expecting bad things to happen|Don't be so pessimistic.
+spectacular|amazing to see|The fireworks were spectacular.
+traditional|done in the same way for a long time|We had a traditional Christmas dinner.
+access|a way in|Use the ramp for access.
+assess|to judge or test|The teacher will assess our work.
+enough|as much as you need|Have you had enough to eat?
+outdoors|outside|We love playing outdoors.
+yourself|you and nobody else|Did you make it yourself?
+camouflage|colours that help something hide|The lizard's camouflage hid it on the rock.
+changeable|likely to change|The weather is changeable today.
+courageous|brave|The courageous firefighter saved the cat.
+discipline|training to follow rules|Karate takes a lot of discipline.
+everywhere|in all places|There was glitter everywhere.
+photograph|a picture taken with a camera|I took a photograph of the sunset.
+recreation|things you do for fun|The park is used for recreation.
+ridiculous|very silly|That hat is ridiculous!
+underneath|below|The ball rolled underneath the car.
+understood|knew the meaning of|I understood the instructions.
+consequently|as a result|It rained. Consequently, the match was cancelled.
+disadvantage|something that makes things harder|Being short is a disadvantage in basketball.
+disagreement|when people don't agree|We had a disagreement about the rules.
+inconsolable|so upset that nobody can comfort you|She was inconsolable when her goldfish died.
+questionable|doubtful or not certain|His story was questionable.
+relationship|how people are connected|They have a close relationship.
+unfathomable|impossible to understand fully|The ocean depths are unfathomable.
+weigh|to find how heavy something is|Weigh the apples on the scales.
+summary|a short version of the main points|Write a summary of the story.
+principal|most important, or a head teacher|The principal reason was the rain.
+principle|a basic rule or belief|Honesty is an important principle.
+threatening|saying you will cause harm, or looking dangerous|The sky looked dark and threatening.
+overstatement|saying something is bigger than it is|Saying it was the worst day ever was an overstatement.
+appear|to come into sight|Stars appear at night.
+bought|the past tense of buy|I bought a new comic.
+really|very, or in truth|I really like your drawing.
+weight|how heavy something is|The vet checked the weight of my cat.
+activity|something you do|Swimming is a fun activity.
+allocate|to give out for a purpose|We will allocate a job to each person.
+argument|a disagreement|They had an argument about the remote.
+category|a group of similar things|Put each animal in the right category.
+decision|a choice you make|It was a hard decision.
+material|what something is made of|Wood is a strong material.
+possible|able to happen|Is it possible to fly to the moon?
+terrible|very bad|The weather was terrible.
+stationery|pens, pencils and paper|I love buying new stationery.
+kaleidoscope|a tube with mirrors that makes colourful patterns|Look through the kaleidoscope.
+account|a description of events, or a bank record|She gave an account of the trip.
+barrier|something that blocks the way|The barrier lifted to let the car through.
+brought|the past tense of bring|I brought cakes for the class.
+curious|wanting to know more|The curious cat peeked in the box.
+obvious|easy to see or understand|The answer was obvious.
+reality|what is real|Dreams are not reality.
+serious|not joking, or very bad|This is a serious matter.
+typical|usual for that kind of thing|It was a typical Monday morning.
+various|several different|We tried various flavours.
+appalling|shockingly bad|The mess was appalling.
+associate|to connect in your mind|I associate the smell of pine with Christmas.
+basically|mainly, in simple terms|Basically, we need more time.
+benefited|was helped by|The plants benefited from the rain.
+committed|working hard and loyal to something|She is a committed member of the team.
+community|people living in the same area|Our community has a summer fair.
+debatable|not certain, open to argument|It is debatable which film is best.
+different|not the same|Every snowflake is different.
+essential|absolutely needed|Water is essential for life.
+ethically|in a way that is morally right|The company works ethically.
+happiness|feeling happy|Puppies bring so much happiness.
+immediate|happening straight away|We need an immediate answer.
+invisible|unable to be seen|Air is invisible.
+irritably|in an annoyed way|The tired man spoke irritably.
+necessary|needed|It is necessary to wear a helmet.
+situation|what is happening at a time|It was a tricky situation.
+unethical|morally wrong|Cheating is unethical.
+unnatural|not natural|The pond was an unnatural green colour.
+audience|people watching a show|The audience clapped loudly.
+gigantic|huge|The giant had gigantic feet.
+happiest|the most happy|This is the happiest day of my life!
+humorous|funny|He told a humorous story.
+numerous|many|There were numerous stars.
+obedient|doing what you are told|The obedient dog sat down.
+prettier|more pretty|This dress is prettier than that one.
+rigorous|very careful and thorough|The test was rigorous.
+tomorrow|the day after today|We are going to the zoo tomorrow.
+absolutely|completely|I absolutely love chocolate.
+benevolent|kind and generous|The benevolent king helped the poor.
+confession|telling the truth about something you did|He made a confession about the broken vase.
+difference|how things are not the same|Spot the difference between the pictures.
+especially|more than usual|I especially like strawberries.
+exaggerate|to make something sound bigger than it is|Don't exaggerate, it was a tiny spider.
+incredible|amazing, hard to believe|The view was incredible.
+indecision|not being able to decide|Her indecision made us late.
+industrial|to do with factories|It is an industrial town.
+moderation|not too much or too little|Eat sweets in moderation.
+motivation|the reason or wish to do something|Stickers are good motivation.
+permission|being allowed to do something|Ask permission before you leave.
+personally|in my own opinion, or in person|Personally, I prefer cats.
+vocabulary|all the words you know|Reading improves your vocabulary.
+vulnerable|easily hurt|Baby birds are vulnerable.
+earlier|before the usual time|We left earlier than usual.
+easiest|the most easy|This is the easiest puzzle.
+science|the study of the natural world|We did an experiment in science.
+agreeable|pleasant, or willing to agree|It was an agreeable afternoon.
+behaviour|the way you act|Your behaviour today was excellent.
+dangerous|likely to cause harm|Crossing here is dangerous.
+disappear|to go out of sight|The magician made the rabbit disappear.
+hurriedly|very quickly|She hurriedly packed her bag.
+notoriety|being famous for something bad|The pirate gained notoriety for his raids.
+obnoxious|very unpleasant|The obnoxious smell came from the bin.
+sceptical|doubting that something is true|I am sceptical about ghosts.
+combination|things joined together|Green is a combination of blue and yellow.
+competition|a contest|I won the art competition.
+description|words that tell what something is like|Write a description of your bedroom.
+educational|helping you learn|The museum trip was educational.
+embarrassed|feeling silly in front of others|I was embarrassed when I tripped.
+environment|the world around us|We must protect the environment.
+explanation|words that make something clear|Thank you for the explanation.
+explanatory|helping to explain|Read the explanatory notes.
+hallucinate|to see things that are not there|The thirsty explorer began to hallucinate.
+imagination|making pictures and ideas in your mind|Use your imagination.
+information|facts|We found information about bats.
+interaction|talking or working together|Bees have amazing interaction in the hive.
+interrogate|to question closely|The detective will interrogate the suspect.
+magnificent|very beautiful and impressive|The palace was magnificent.
+manufacture|to make in a factory|They manufacture toys.
+responsible|in charge of, or sensible|I am responsible for feeding the fish.
+supervision|watching over people to keep them safe|Swimming is allowed under supervision.
+temperature|how hot or cold something is|The temperature dropped below zero.
+therapeutic|helping you feel better|Gardening can be therapeutic.
+guillotine|a machine with a blade for cutting|The teacher cut the card with the guillotine.
+iridescent|showing shimmering rainbow colours|The bubble was iridescent.
+manageable|able to be done|The homework is manageable.
+noticeable|easy to see|There is a noticeable stain on my shirt.
+outrageous|shocking|The price of the ticket was outrageous.
+previously|before|I had previously been to Paris.
+silhouette|a dark outline against a light background|We saw the silhouette of a cat on the wall.
+tournament|a series of games to find a winner|We won the football tournament.
+ubiquitous|found everywhere|Phones are ubiquitous nowadays.
+constitution|the basic laws of a country|The constitution sets out people's rights.
+exhilarating|very exciting|The roller coaster was exhilarating.
+independence|being free from control|The country celebrates its independence.
+introduction|the start of a book or speech|Read the introduction first.
+nevertheless|even so|It was cold. Nevertheless, we went swimming.
+significance|importance|What is the significance of this date?
+unparalleled|better than anything else|The view was unparalleled.
+beautiful|very lovely|The butterfly had beautiful wings.
+conscious|awake and aware|He was conscious after the fall.
+endeavour|to try hard|We will endeavour to finish on time.
+laughable|so silly it makes you laugh|His excuse was laughable.
+dangerously|in a dangerous way|The car drove dangerously fast.
+fascinating|very interesting|Space is fascinating.
+measurement|a size found by measuring|Write down each measurement.
+resuscitate|to bring someone back to consciousness|The lifeguard knew how to resuscitate people.
+scintillate|to sparkle|Diamonds scintillate in the light.
+complementary|going well together|Blue and orange are complementary colours.
+concentration|giving all your attention|Chess takes a lot of concentration.
+controversial|causing disagreement|The decision was controversial.
+mathematician|an expert in maths|She wants to be a mathematician.
+strategically|in a planned way|He placed his players strategically.
+temperamental|having moods that change quickly|Our old car is temperamental.
+uncomfortable|not comfortable|The chair was uncomfortable.
+unfortunately|sadly|Unfortunately, it rained.
+actually|in fact|Actually, I'm nine, not eight.
+addition|adding numbers together|We practised addition in maths.
+outweigh|to be more important than|The good points outweigh the bad.
+thorough|careful and complete|She gave the room a thorough clean.
+conscience|the feeling that tells you right from wrong|My conscience told me to own up.
+stationary|not moving|The bus was stationary at the lights.
+understatement|saying something is less than it is|Saying it was a bit wet was an understatement.
+zoology|the study of animals|She studied zoology at university.
+addiction|a need you cannot stop|Too much gaming can become an addiction.
+attention|listening and looking carefully|Pay attention, please.
+knowledge|all the things that you know|Reading grows your knowledge.
+neighbour|someone who lives next to you|Our neighbour has a cat.
+territory|an area owned or guarded|The robin defends its territory.
+mischievous|playfully naughty|The mischievous monkey stole my hat.
+syllable|a beat in a word|Clap once for each syllable.
+accumulate|to gather over time|Dust will accumulate under the bed.
+annihilate|to destroy completely|The asteroid could annihilate the planet in the film.
+appreciate|to be grateful for|I appreciate your help.
+artificial|made by people, not natural|The pitch has artificial grass.
+attachment|a strong liking, or something added|I have an attachment to my old teddy.
+beneficial|helpful|Sleep is beneficial for your brain.
+colloquial|used in everyday chat, not formal|Gonna is a colloquial word.
+dependency|needing something too much|The plant has a dependency on sunlight.
+depression|a long feeling of deep sadness|Depression is an illness that doctors can help with.
+elliptical|shaped like an oval|The planet has an elliptical orbit.
+individual|one single person|Each individual got a prize.
+irrelevant|not connected to the subject|That fact is irrelevant.
+occurrence|something that happens|Snow is a rare occurrence here.
+opposition|the other side in a contest|The opposition scored first.
+uneducated|not having had much schooling|He was uneducated but very wise.
+ambiguous|having more than one meaning|The sentence was ambiguous.
+deficient|lacking something needed|The soil is deficient in water.
+efficient|working well without waste|This is an efficient way to sort the books.
+hilarious|very funny|The film was hilarious.
+acquisition|something you have got|The museum's new acquisition is a dinosaur skull.
+appropriate|right for the situation|Wear appropriate clothes for hiking.
+connotation|an idea a word makes you think of|Home has a connotation of warmth.
+denominator|the bottom number in a fraction|In one third, the denominator is three.
+opportunity|a good chance|This is a great opportunity.
+unethically|in a morally wrong way|The player acted unethically.
+adolescent|a young person growing into an adult|My cousin is an adolescent.
+experience|something that happens to you, or skill gained|The trip was an amazing experience.
+generation|people born around the same time|My grandparents' generation had no internet.
+sufficient|enough|We have sufficient food for the trip.
+belligerence|eagerness to fight|The goose showed belligerence towards the dog.
+dramatically|in a big, sudden way|The weather changed dramatically.
+humanitarian|helping people who are suffering|They sent humanitarian aid after the flood.
+invulnerable|impossible to hurt|The superhero seemed invulnerable.
+remuneration|payment for work|Her remuneration was paid each month.
+allowed|permitted|Are we allowed to play outside?
+geography|the study of places and the Earth|We drew maps in geography.
+quiescent|quiet and still|The volcano is quiescent for now.
+celebration|a party for something special|We had a big celebration.
+coordinator|someone who organises people|The coordinator planned the trip.
+fluorescent|very bright, glowing colour|He wore a fluorescent jacket.
+luminescent|giving off light|The jellyfish was luminescent.
+reminiscent|reminding you of something|The smell is reminiscent of the seaside.
+technological|to do with technology|We live in a technological age.
+although|even though|Although it rained, we played outside.
+unbelievable|hard to believe|The magic trick was unbelievable.
+multiplication|times tables, or repeated adding|We practised multiplication.
+acknowledge|to accept or recognise|She will acknowledge your help.
+unconscious|not awake|The boxer was knocked unconscious.
+undoubtedly|certainly|She is undoubtedly the best player.
+inconsequential|not important|The mistake was inconsequential.
+psychiatrist|a doctor who helps people with their mental health|The psychiatrist helped her feel better.
+unnecessary|not needed|Bringing a coat was unnecessary.
+appearance|how someone or something looks|The cat's appearance was scruffy.
+accelerating|going faster|The car was accelerating.
+occasionally|sometimes|We occasionally eat out.
+irresponsible|not sensible or careful|It was irresponsible to leave the gate open.
+physically|to do with the body|Swimming keeps you physically fit.
+psychology|the study of the mind|She studies psychology.
+advantageous|helpful|An early start is advantageous.
+effervescent|bubbly and fizzy, or lively|The lemonade was effervescent.
+unintentionally|not on purpose|I unintentionally stepped on his foot.
+indecipherable|impossible to read|His handwriting was indecipherable.
+stereotypically|in a way that matches a fixed, common idea|Pirates are stereotypically shown with parrots.
+disadvantageously|in a way that makes things harder|The team was disadvantageously placed on the muddy side.
+realistically|in a sensible, practical way|Realistically, we can't finish today.
+generalisation|a statement that is too broad|Saying all cats hate water is a generalisation.

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Typing Zen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- HOME -->
+  <section id="home" class="screen">
+    <header class="brand">
+      <div class="pebbles" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div>
+        <h1>Typing Zen</h1>
+        <p class="tag">Calm fingers, clever words.</p>
+      </div>
+    </header>
+
+    <div class="hello">
+      <label for="name">Your name</label>
+      <input id="name" type="text" maxlength="20" autocomplete="off" placeholder="Type your name">
+      <div class="history">
+        <p class="stats" id="homeStats"></p>
+        <button class="ghost small" id="clearBtn" hidden>Clear history</button>
+        <span class="confirm" id="clearConfirm" hidden>
+          Clear all stars, best speed and tricky words?
+          <button class="danger small" id="clearYes">Yes, clear</button>
+          <button class="ghost small" id="clearNo">Cancel</button>
+        </span>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2 class="label">Spelling level</h2>
+      <div class="levels" id="levels" role="radiogroup" aria-label="Spelling level"></div>
+    </div>
+
+    <div class="block">
+      <h2 class="label">Choose a game</h2>
+      <div class="modes">
+        <button class="mode" data-mode="warm"><span class="ico">⌨️</span><b>Warm-up</b><span>Home row and finger drills</span></button>
+        <button class="mode" data-mode="words"><span class="ico">🌼</span><b>Word Garden</b><span>Type a word and learn what it means</span></button>
+        <button class="mode" data-mode="spell"><span class="ico">🐝</span><b>Spelling Bee</b><span>Listen, then spell it from memory</span></button>
+        <button class="mode" data-mode="sentences"><span class="ico">🌊</span><b>Sentence Stream</b><span>Type whole sentences with capitals and full stops</span></button>
+        <button class="mode" data-mode="fixit"><span class="ico">🔧</span><b>Fix-It</b><span>Find the grammar mistake and type it correctly</span></button>
+        <button class="mode" data-mode="tricky" id="trickyBtn" hidden><span class="ico">🎯</span><b>Tricky Words</b><span id="trickyInfo">Words you found hard</span></button>
+      </div>
+    </div>
+
+    <p class="note">Works best with a real keyboard. Press <kbd>Esc</kbd> during a game to come back here.</p>
+  </section>
+
+  <!-- PLAY -->
+  <section id="play" class="screen" hidden>
+    <div class="topbar">
+      <button class="ghost" id="backBtn">← Home</button>
+      <div class="title" id="modeTitle"></div>
+      <div class="live"><span id="liveWpm">0</span> wpm · <span id="liveAcc">100</span>%</div>
+      <button class="ghost sound" id="muteBtn"></button>
+    </div>
+    <div class="trail" id="trail" aria-label="Progress"></div>
+
+    <div class="stage">
+      <div class="card" id="card"></div>
+      <div class="line" id="line" aria-live="polite"></div>
+      <div class="msg" id="msg"></div>
+    </div>
+
+    <div class="finger" id="finger"></div>
+    <div class="kbd" id="kbd" aria-hidden="true"></div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="screen" hidden>
+    <div class="result">
+      <div class="stars" id="stars"></div>
+      <h2 id="resTitle">Round complete</h2>
+      <div class="figures">
+        <div><b id="resWpm">0</b><span>words per minute</span></div>
+        <div><b id="resAcc">0%</b><span>accuracy</span></div>
+        <div><b id="resItems">0</b><span>done</span></div>
+      </div>
+      <div id="resTricky"></div>
+      <div class="actions">
+        <button class="primary" id="againBtn">Play again <kbd>Enter</kbd></button>
+        <button class="ghost" id="homeBtn">Home <kbd>Esc</kbd></button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="words.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
