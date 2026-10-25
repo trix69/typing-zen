@@ -525,6 +525,41 @@
     save();
     renderHome();
   });
+  // ---------- Settings ----------
+  // Appearance is Light, Dark or Automatic. THEME (set up in index.html's <head>) saves it to
+  // typingZen.theme, apart from the progress in typingZen.v1.
+  const sheet = $("#sheet");
+  function syncSheet() {
+    for (const b of $("#segApp").children) b.setAttribute("aria-checked", String(b.dataset.themeMode === THEME.mode));
+  }
+  function openSheet() {
+    syncSheet();
+    sheet.hidden = false;
+    document.addEventListener("keydown", onSheetKey);
+    $("#sheetCard").focus();
+  }
+  function closeSheet() {
+    sheet.hidden = true;
+    document.removeEventListener("keydown", onSheetKey);
+    $("#settingsBtn").focus();
+  }
+  // Esc closes the sheet, and Tab stays inside it.
+  function onSheetKey(e) {
+    if (e.key === "Escape") { e.preventDefault(); return closeSheet(); }
+    if (e.key !== "Tab") return;
+    const items = [...sheet.querySelectorAll("button")];
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === $("#sheetCard"))) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+  $("#settingsBtn").addEventListener("click", openSheet);
+  $("#sheetDone").addEventListener("click", closeSheet);
+  sheet.addEventListener("click", (e) => { if (e.target === sheet) closeSheet(); });
+  $("#segApp").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (b) { THEME.set(b.dataset.themeMode); syncSheet(); }
+  });
+
   $("#backBtn").addEventListener("click", () => show("home"));
   $("#homeBtn").addEventListener("click", () => show("home"));
   $("#againBtn").addEventListener("click", () => start(game.mode));

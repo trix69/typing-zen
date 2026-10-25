@@ -3,10 +3,11 @@
 
 Usage:  python3 tools/bundle.py OUT.html
 
-Inlines style.css and the three scripts, and drops the doctype/html/head/body
-wrapper (the artifact host adds its own). The GitHub Pages copy doesn't need this;
+Inlines style.css (with the fonts in fonts/ as data URIs) and the three scripts,
+and drops the doctype/html/head/body wrapper (the artifact host adds its own). The GitHub Pages copy doesn't need this;
 it serves the folder as it is.
 """
+import base64
 import re
 import sys
 from pathlib import Path
@@ -20,6 +21,17 @@ def main():
         sys.exit(__doc__)
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     css = (ROOT / "style.css").read_text(encoding="utf-8")
+    fonts = 0
+
+    def inline_font(m):
+        nonlocal fonts
+        fonts += 1
+        data = base64.b64encode((ROOT / "fonts" / m.group(1)).read_bytes()).decode()
+        return f'url(data:font/woff2;base64,{data})'
+
+    css = re.sub(r'url\("fonts/([\w.-]+\.woff2)"\)', inline_font, css)
+    if fonts == 0 or 'url("fonts/' in css:
+        sys.exit("style.css no longer has the expected url(\"fonts/...\") rules; update tools/bundle.py")
     js = "\n".join((ROOT / f).read_text(encoding="utf-8") for f in SCRIPTS)
 
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
@@ -29,7 +41,7 @@ def main():
     html = html.replace('<link rel="stylesheet" href="style.css">', "<style>\n" + css + "</style>")
     html = html.replace(tags, "<script>\n" + js + "</script>")
     Path(sys.argv[1]).write_text(html.strip() + "\n", encoding="utf-8")
-    print(f"Wrote {sys.argv[1]}")
+    print(f"Wrote {sys.argv[1]} ({fonts} fonts inlined)")
 
 
 if __name__ == "__main__":
