@@ -11,6 +11,7 @@ The live site (main, trix69.github.io/typing-zen/) and the artifact are not touc
 The test copy differs from the live one in a few ways:
 - the title is "Typing Zen (Test)", it has an orange TEST ribbon and a noindex tag;
 - the version shows as the coming number plus "-test" (1.01-test); VERSION is not bumped;
+- a Spelling Bee session lasts TEST_MINUTES (2) instead of 20, so a whole session can be tried quickly;
 - progress is saved as typingZen.v1-test. Both sites share the trix69.github.io origin, so
   without this, trying the test site in Luke's browser would change his real progress.
   The theme (typingZen.theme) is a setting, so the two sites share it on purpose.
@@ -31,6 +32,7 @@ REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", ".nojekyll"]
 PROGRESS = "typingZen.v1"
+LIVE_MINUTES, TEST_MINUTES = 20, 2  # Spelling Bee session length: app.js (live) and the test build
 SHARED = {"typingZen.theme"}
 RIBBON = ('<div class="test-ribbon" aria-hidden="true">TEST</div>\n'
           '<style>.test-ribbon { position: fixed; z-index: 300; top: 0; left: 50%; transform: translateX(-50%); '
@@ -60,11 +62,13 @@ def build(out):
     html, n = version.SHOWN.subn(r"\g<1>" + shown + r"\g<3>", html)
     if n != 1:
         sys.exit('test build: index.html needs exactly one <span id="appVersion">')
+    html = must(html, f"in {LIVE_MINUTES} minutes", f"in {TEST_MINUTES} minutes", f'"in {LIVE_MINUTES} minutes" on the Spelling Bee card')
     (out / "index.html").write_text(html, encoding="utf-8")
 
     # Keep the test site's progress apart from Luke's, and make any new storage key a conscious choice.
     js = (out / "app.js").read_text(encoding="utf-8")
     js = must(js, f'"{PROGRESS}"', f'"{PROGRESS}-test"', f'"{PROGRESS}" key in app.js')
+    js = must(js, f"const MINUTES = {{ spell: {LIVE_MINUTES} }};", f"const MINUTES = {{ spell: {TEST_MINUTES} }}; // test build only (live: {LIVE_MINUTES})", "MINUTES line in app.js")
     keys = set(re.findall(r"""["'`](typingZen[.\w-]*)""", js + html))
     unknown = sorted(k for k in keys if k not in SHARED and not k.endswith("-test"))
     if unknown:
