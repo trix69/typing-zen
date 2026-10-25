@@ -98,7 +98,8 @@ button.small { font-size: 0.85rem; padding: 3px 10px; border-radius: 8px; }
   background: var(--surface); border: 2px solid transparent; border-radius: var(--r); padding: 14px 16px;
   transition: transform .15s, border-color .15s;
 }
-.mode:hover { border-color: var(--moss); transform: translateY(-2px); }
+.mode:hover:not(:disabled) { border-color: var(--moss); transform: translateY(-2px); }
+.mode:disabled { opacity: .45; filter: grayscale(1); cursor: not-allowed; }
 .mode .ico { grid-row: span 2; font-size: 2rem; }
 .mode b { font: 600 1.25rem var(--display); }
 .mode span:last-child { font-size: 0.9rem; color: var(--muted); }
