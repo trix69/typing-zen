@@ -146,13 +146,14 @@
   const toWord = ([word, meaning, sentence, why]) => ({ word, meaning, sentence, why: why === "simple, phonetic" ? "" : why });
   const allWords = () => WORD_GROUPS.flatMap((g) => g.words.map(toWord));
   // One level per school year (wordlist/years.txt), with hand-picked sample words.
+  // `name` matches words.js and the saved level; `label` is what the button shows.
   const BUCKETS = [
-    { name: "Y1", sample: "dog, house, friend" },
-    { name: "Y2", sample: "because, people, water" },
-    { name: "Y3", sample: "answer, remember, young" },
-    { name: "Y4", sample: "believe, surprise, library" },
-    { name: "Y5", sample: "queue, receive, doubt" },
-    { name: "Y6", sample: "necessary, rhythm, conscience" },
+    { name: "Y1", label: "YEAR1", sample: "dog, house, friend" },
+    { name: "Y2", label: "YEAR2", sample: "because, people, water" },
+    { name: "Y3", label: "YEAR3", sample: "answer, remember, young" },
+    { name: "Y4", label: "YEAR4", sample: "believe, surprise, library" },
+    { name: "Y5", label: "YEAR5", sample: "queue, receive, doubt" },
+    { name: "Y6", label: "YEAR6", sample: "necessary, rhythm, conscience" },
   ];
   for (const b of BUCKETS) b.words = WORD_GROUPS.filter((g) => g.level === b.name).flatMap((g) => g.words);
   const currentBucket = () => BUCKETS.find((b) => b.name === profile.bucket) || BUCKETS[0];
@@ -510,7 +511,7 @@
   $("#name").addEventListener("change", (e) => { e.target.value = profile.name; });
   $("#name").addEventListener("keydown", (e) => { if (e.key === "Enter") e.target.blur(); });
   $("#levels").innerHTML = BUCKETS.map((b) =>
-    `<button class="level" data-bucket="${b.name}" role="radio"><b>${b.name}</b><span>${b.words.length} words, like ${b.sample}</span></button>`).join("");
+    `<button class="level" data-bucket="${b.name}" role="radio"><b>${b.label}</b><span>${b.words.length} words, like ${b.sample}</span></button>`).join("");
   $("#levels").addEventListener("click", (e) => {
     const b = e.target.closest(".level");
     if (b) { profile.bucket = b.dataset.bucket; save(); renderHome(); }
