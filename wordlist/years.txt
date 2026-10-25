@@ -1,0 +1,154 @@
+# Which school year (England, National Curriculum) each spelling word belongs to.
+# Read by build_words.py. Every word in the spreadsheet must appear here exactly once.
+# Words on the statutory lists (Y1 and Y2 common exception words, the Y3-4 and Y5-6
+# word lists) are in those years. Others go in the year that teaches their spelling
+# pattern, and rare or adult words go up to Y6. Within a year, the order is the
+# spreadsheet's. Format: a "Y1:" line, then that year's words separated by spaces.
+
+Y1:
+a I go he if in is it me my no of up we bad bee big box boy but can car cry cup did dog dot end few
+fit fly fun got gun has hat her him hot kid lay leg lot may men new nut out own pay pet put ran rid
+run sad saw say sir sit six ten the top use vet was why back bark bike born care clap cost dawn deep
+drag draw drip drop drum feel firm free from gain game hand harm have held help hunt joke just keep
+land left list long love make more much next once open over park play pond rest rude rule safe said
+same save shed shut sick side slip spot such swim that then this tube wave were west wife wing wish
+with yard birds blend block brain brand bring broke burst chase crack crash crawl crime crown fairy
+first found glare globe grade grand greed harsh horse house liked lunch noise north point round
+share sharp shirt shock skirt sleep sound stand stars start state stone strip thick thing those
+thump tiger trade trick truth wheel while church curled ground jumped picked plains pounds pushed
+speech street strong checked singing am an as at and are ask army away ball best doll dull ever fell
+fill full into lady miss pull tall undo upon very went will yell get how now you zoo about along
+cabin cross dress enjoy going never older paper party power river robot seven shall skill smell
+spent taken tells under unfit until upset visit by so to book each east easy fear food gift good
+look mean milk near room show took around basket carpet garden inside market pulled shower sister
+sunset winter for fur not one paw way boost cheap clean clear cloud crowd dream growl least leave
+might shook south speak treat feeling hunting keeping morning started without hair here hope live
+some friend looked please school scream showed stream birthday sunshine add where reached bell being
+window our outside rainbow shouted high your flower fighting night
+
+Y2:
+ice key old war base body both case copy done else even eyes huge lets many nice pose rare size sure
+tiny verb warn worn Xbox based batch bonus catch child ditch false fever flies force front habit
+large match noisy place price prove quite shoes sixth space stage study tries twice video voice
+watch world worse worth burned change choice jerked scrape spoilt stairs talked I'd smarter he's
+I've we'd any can't let's she'd she's we're won't ages only ugly want zero above again agree alone
+apron avoid award aware dance empty exact fence final icing limit local metal model money other
+piano plant relax royal sugar super total uncle water haven't there's they've city door edge head
+idea knee noun ooze talk tied type walk wrap afraid border buying candle chance diving during father
+forest forget handle hardly hugged humans inches invite jacket joyful lastly latest likely lonely
+lovely mainly marker master member mother newest nicely pencil people person punish report return
+safety saving second secret simple single stress travel trying useful wonder zapped buy sum two
+badge climb could floor great judge knife knock known moose movie phone proof wrist wrong youth
+brother firstly freedom grumble handful harmful hundred improve nothing parents parties planets
+playful quickly richest rolling selfish shaping someone stopped tallest welcome bare does hare I'll
+lose pure seem wait growth poured should backyard cheerful children hometown board bored close he'll
+isn't we'll hopscotch something sometimes able also she'll wasn't skateboard added after angry began
+begin carry every funny happy offer penny puppy story table they'll it's real almost always become
+before behind belong bigger bottom cannot family happen hotter kitten little middle wallet winner
+don't because between bottles hallway payment pennies rubbish running shopper station useless know
+cowboy gentle ginger louder shadow everyone rainfall swimming together sea too highest highway
+leaving nearest teacher they're wrapped writing bear four hear poor wear aren't hoping living
+bookcase notebook annoy break cried dried right whole better you'll you've below another borrow
+didn't follow giggle willow furry carried doesn't getting butterfly myself you're football goodness
+classroom everybody outdoors yourself everywhere beautiful
+
+Y3:
+due hoe vat airy evil iron pelt sign X-ray build cause fruit haste juice laser moral pause raise
+sense terms theme width lawyer length refuse rewind sprawl whilst frankly strange tantrum strangest
+fuel among amuse exist focus jewel major motel often orbit solar value women myth numb view author
+burden custom damage desert direct donate engage engine escape except expect expert expose figure
+ignore injury justly manage mobile modern normal object pardon passed police reduce remote repair
+reward signal simply staple surely tomato vanish blood earth field graph group guide learn ocean
+style sweat touch whose yearn young chuckle compare contain control curtain display explain explode
+fashion further include mistake perfect prepare present problem protect provide rapidly results
+subject fair main meet pair pray prey colour health wealth airplane complete disagree platform
+standard teenager waste grownup younger telescope yardstick themselves basic music panic topic usual
+whether area active answer behave common decide detail future invent mirror nation office public
+stable supply unable guess quiet awesome besides collect correct destroy discuss exactly example
+limited picture plastic prevent recover settled support village amount couple gadget reason season
+baseball computer discover families holidays millions powerful remember unfairly eight laugh country
+emptied instead measure towards trouble wrinkle knot purely downside fountain frighten pleasure
+treasure understand apply flour peace piece laughed mountains ourselves accept action choose memory
+yourselves argue factory finally sundial victory easily joyfully normally suddenly balloon bullied
+delight giraffe however hurried married mystery worried carefully helpfully hopefully lesson
+basketball punishment television thankfully heavier ourself improvement underneath understood appear
+really happiness happiest prettier tomorrow earlier easiest actually
+
+Y4:
+norm zany clerk peers valid volts emerge minute proven quench scheme episode axle data jury adapt
+delta ivory lunar minor urban usage condor crisis digest ensure formal global income invest medium
+mental nectar notice potato tribal phase yield balcony climate complex concern conduct consist
+console culprit extinct inspire islands laundry machine observe opinion process produce product
+program purpose quarter reflect reserve revenge service survive fury fourth guilty labour source
+unique conflict contrast kayaking maintain portrait progress purchase surprise therefore worthwhile
+issue mimic favourite debate degree depend dollar effort energy option recent vision civil cycle
+gizmo abandon charity culture deserve examine express impress library massive mention mixture
+natural popular quality several similar special suppose tension witness center centre create honest
+review trophy boundary business colorful consider continue distance electric exciting exercise
+explorer fraction improper interact interest magazine peculiar personal positive properly question
+separate settlers surround tenderly central certain involve journey outcome realise release
+extremely painfully remainder statement travelled uncertain lead taught earnings graphics nowadays
+research controller discomfort loose naughty thought weighed paragraph complaining afford assist
+course ability attempt buffalo comment current decimal element history illegal musical possess
+success cellar famous artistic decorate division donation negative ordinary position reusable
+solution believe feature general gesture nervous awareness condition difficult direction discovery
+enjoyable explosion formation furniture important intention repayment undecided decrease enormous
+disappoint electronic particular relaxation mysteries enough photograph disagreement weigh summary
+threatening weight activity decision material possible account curious serious various different
+permission science dangerous disappear imagination information measurement addition attention
+knowledge experience although
+
+Y5:
+bias aisle evoke facet gauge queue barter quaint racist monarch species wary imply merit query
+esteem fulfil sexist solely tundra wilful expanse exploit fragile migrate penalty poverty require
+subside verdict welfare consumer convince erasable folklore instinct penalise steel perimeter lasso
+debt advice aspect define device effect enable luxury modify social weary auction clarify educate
+formula gravity magnify maximum mineral minimum morally satisfy version citrus column either genius
+obtain entirely exposure fracture hesitate instance national navigate organise organize original
+presence quantity reflexes simplify suitable summoned valuable vitamins doubt ought insight neither
+receive relieve whereas calculate entertain orchestra regarding reproduce structure lessen profit
+cylinder resource kilometres drought demonstrate thermometer affect arctic atomic theory benefit
+capable defence horrify logical urgency virtual abnormal behavior brutally demolish evidence
+formally literacy majority minority portable priority probable punctual violence advantage influence
+insurance jewellery numerator nutrition quotation reference reluctant represent technical temporary
+precious scissors wondrous brilliance comparison conclusion confidence disposable facilities
+importance simplicity aloud rough bountiful hazardous judgement nutrients comfortable contraption
+inexpensive spectacular traditional access changeable courageous recreation ridiculous disadvantage
+questionable relationship overstatement bought argument terrible barrier brought obvious reality
+typical basically debatable essential invisible situation unnatural audience gigantic humorous
+numerous obedient absolutely confession difference incredible industrial motivation personally
+vocabulary agreeable behaviour hurriedly combination description educational interaction responsible
+supervision previously tournament introduction laughable dangerously uncomfortable unfortunately
+outweigh addiction territory syllable attachment depression opposition uneducated hilarious
+generation dramatically allowed geography celebration unbelievable multiplication
+
+Y6:
+blase waive yacht elapse litany oblige zenith naivety grandeur incur haemoglobin futile muscle seize
+bargain brevity neutral obscure procure pursuit racquet revenue cheque opaque jeopardy language
+persuade plethora brusque leisure longevity recognise transfixed occur debris excess extent ironic
+bayou abolish acquire deprive economy federal liquefy obesity remnant vehicle subtly system acquaint
+colossal momentum monopoly nuisance optimist particle rational regulate ricochet sabotage strategy
+achieve circuit foreign rancour cognitive establish fulfilled guarantee implicate juxtapose
+manoeuvre miniature replenish vegetable rhythm zephyr frenzied intrigue shoulder prevalence
+privileged lightning technique wearisome misconstrue mutual occupy average develop biodegradable
+wholly capacity definite insolent judicial maturity obsesses parallel relevant available awkwardly
+customary desperate hesitance interrupt mediaeval mentality negligent obsessive recommend resurrect
+sanctuary traumatic emphasis euphoric quotient subtlety adrenaline continuity correspond government
+irrational narcissist nonchalant prosperity hygiene haphazard honorably litigious prototype
+sovereign consequence controversy detrimental incorporate opinionated participate pessimistic assess
+camouflage discipline consequently inconsolable unfathomable principal principle allocate category
+stationery kaleidoscope appalling associate benefited committed community ethically immediate
+irritably necessary unethical rigorous benevolent especially exaggerate indecision moderation
+vulnerable notoriety obnoxious sceptical competition embarrassed environment explanation explanatory
+hallucinate interrogate magnificent manufacture temperature therapeutic guillotine iridescent
+manageable noticeable outrageous silhouette ubiquitous constitution exhilarating independence
+nevertheless significance unparalleled conscious endeavour fascinating resuscitate scintillate
+complementary concentration controversial mathematician strategically temperamental thorough
+conscience stationary understatement zoology neighbour mischievous accumulate annihilate appreciate
+artificial beneficial colloquial dependency elliptical individual irrelevant occurrence ambiguous
+deficient efficient acquisition appropriate connotation denominator opportunity unethically
+adolescent sufficient belligerence humanitarian invulnerable remuneration quiescent coordinator
+fluorescent luminescent reminiscent technological acknowledge unconscious undoubtedly
+inconsequential psychiatrist unnecessary appearance accelerating occasionally irresponsible
+physically psychology advantageous effervescent unintentionally indecipherable stereotypically
+disadvantageously realistically generalisation

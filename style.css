@@ -216,7 +216,7 @@ button.small { font-size: 0.85rem; padding: 3px 10px; border-radius: 8px; }
   .kbd .key.named { font-size: 0.6rem; padding: 0 0 3px 4px; }
   .line { font-size: 1.7rem; }
   .line.small { font-size: 1.3rem; }
-  .levels { grid-template-columns: 1fr; }
+  .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .brand h1 { font-size: 2.1rem; }
 }
 
