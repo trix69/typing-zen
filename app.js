@@ -148,12 +148,12 @@
   // One level per school year (wordlist/years.txt), with hand-picked sample words.
   // `name` matches words.js and the saved level; `label` is what the button shows.
   const BUCKETS = [
-    { name: "Y1", label: "YEAR1", sample: "dog, house, friend" },
-    { name: "Y2", label: "YEAR2", sample: "because, people, water" },
-    { name: "Y3", label: "YEAR3", sample: "answer, remember, young" },
-    { name: "Y4", label: "YEAR4", sample: "believe, surprise, library" },
-    { name: "Y5", label: "YEAR5", sample: "queue, receive, doubt" },
-    { name: "Y6", label: "YEAR6", sample: "necessary, rhythm, conscience" },
+    { name: "Y1", label: "Year 1", sample: "dog, house, friend" },
+    { name: "Y2", label: "Year 2", sample: "because, people, water" },
+    { name: "Y3", label: "Year 3", sample: "answer, remember, young" },
+    { name: "Y4", label: "Year 4", sample: "believe, surprise, library" },
+    { name: "Y5", label: "Year 5", sample: "queue, receive, doubt" },
+    { name: "Y6", label: "Year 6", sample: "necessary, rhythm, conscience" },
   ];
   for (const b of BUCKETS) b.words = WORD_GROUPS.filter((g) => g.level === b.name).flatMap((g) => g.words);
   const currentBucket = () => BUCKETS.find((b) => b.name === profile.bucket) || BUCKETS[0];
