@@ -198,15 +198,11 @@
     <div class="choices sounds" role="radiogroup" aria-labelledby="lblSound" id="segSound"></div>
     <div id="voiceRow">
       <h3 id="lblVoice">Voice for words and sentences</h3>
-      <div class="segc" role="radiogroup" aria-labelledby="lblVoice" id="segVoice">
-        <button type="button" role="radio" aria-checked="false" data-voice="">Automatic</button>
-        <button type="button" role="radio" aria-checked="false" data-voice="female">Female</button>
-        <button type="button" role="radio" aria-checked="false" data-voice="male">Male</button>
-      </div>
       <div class="voice-row">
         <select id="voiceSel" aria-labelledby="lblVoice"></select>
         <button type="button" class="ghost small" id="voiceTry">Try</button>
       </div>
+      <p class="note" id="voiceNote" hidden>These voices aren't on this device, so it uses its own English voice.</p>
     </div>
     <h3 id="lblApp">Appearance</h3>
     <div class="segc" role="radiogroup" aria-labelledby="lblApp" id="segApp">
