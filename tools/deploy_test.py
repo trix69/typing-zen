@@ -59,6 +59,9 @@ def build(out):
     if (out / "fonts").exists():
         shutil.rmtree(out / "fonts")
     shutil.copytree(ROOT / "fonts", out / "fonts")
+    if (out / "sounds").exists():
+        shutil.rmtree(out / "sounds")
+    shutil.copytree(ROOT / "sounds", out / "sounds")
     stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES)).hexdigest()[:10]
     (out / "version.json").write_text('{"version": "%s", "build": "%s"}\n' % (shown, stamp), encoding="utf-8")
 

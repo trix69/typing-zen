@@ -3,11 +3,13 @@
 
 Usage:  python3 tools/bundle.py OUT.html
 
-Inlines style.css (with the fonts in fonts/ as data URIs) and the three scripts,
+Inlines style.css (with the fonts in fonts/ as data URIs), the three scripts, and the key sounds in
+sounds/ (as window.TZ_SOUNDS, a map of path to data URI that app.js fetches from),
 and drops the doctype/html/head/body wrapper (the artifact host adds its own). The GitHub Pages copy doesn't need this;
 it serves the folder as it is.
 """
 import base64
+import json
 import re
 import sys
 from pathlib import Path
@@ -33,6 +35,13 @@ def main():
     if fonts == 0 or 'url("fonts/' in css:
         sys.exit("style.css no longer has the expected url(\"fonts/...\") rules; update tools/bundle.py")
     js = "\n".join((ROOT / f).read_text(encoding="utf-8") for f in SCRIPTS)
+    sounds = {
+        p.relative_to(ROOT).as_posix(): "data:audio/mpeg;base64," + base64.b64encode(p.read_bytes()).decode()
+        for p in sorted((ROOT / "sounds").rglob("*.mp3"))
+    }
+    if not sounds:
+        sys.exit("no sounds/*.mp3 found; update tools/bundle.py")
+    js = "window.TZ_SOUNDS = " + json.dumps(sounds) + ";\n" + js
 
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = re.sub(r'(href|src)="([\w.]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
@@ -42,7 +51,7 @@ def main():
     html = html.replace('<link rel="stylesheet" href="style.css">', "<style>\n" + css + "</style>")
     html = html.replace(tags, "<script>\n" + js + "</script>")
     Path(sys.argv[1]).write_text(html.strip() + "\n", encoding="utf-8")
-    print(f"Wrote {sys.argv[1]} ({fonts} fonts inlined)")
+    print(f"Wrote {sys.argv[1]} ({fonts} fonts and {len(sounds)} sounds inlined)")
 
 
 if __name__ == "__main__":
