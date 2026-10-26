@@ -35,6 +35,7 @@ def main():
     js = "\n".join((ROOT / f).read_text(encoding="utf-8") for f in SCRIPTS)
 
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
+    html = re.sub(r'(href|src)="([\w.]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
     tags = "\n".join(f'<script src="{f}"></script>' for f in SCRIPTS)
     if tags not in html or '<link rel="stylesheet" href="style.css">' not in html:
         sys.exit("index.html no longer has the expected <link>/<script> tags; update tools/bundle.py")

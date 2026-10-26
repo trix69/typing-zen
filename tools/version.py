@@ -2,7 +2,7 @@
 """Keep the app version in step across VERSION, version.json and index.html.
 
 Usage:
-  python3 tools/version.py           check that all three agree (exits 1 if not)
+  python3 tools/version.py           check that all agree (exits 1 if not), including the ?v= stamps
   python3 tools/version.py bump      next version: 1.0, 1.01 ... 1.09, 1.10 ... 1.99, 2.0
   python3 tools/version.py set 1.0   set an exact version
 
@@ -20,6 +20,8 @@ JSON = ROOT / "version.json"
 HTML = ROOT / "index.html"
 # The version line in the Settings sheet.
 SHOWN = re.compile(r'(<span id="appVersion">)([^<]*)(</span>)')
+# The files index.html loads carry ?v=<version>, so a new release is fetched fresh, not reused from the cache.
+ASSETS = re.compile(r'((?:href|src)="(?:style\.css|words\.js|data\.js|app\.js))(?:\?v=[^"]*)?"')
 
 
 def bumped(v):
@@ -31,10 +33,12 @@ def bumped(v):
 def found():
     html = HTML.read_text(encoding="utf-8")
     m = SHOWN.search(html)
+    stamps = set(re.findall(r'(?:style\.css|words\.js|data\.js|app\.js)\?v=([^"]*)"', html))
     return {
         "VERSION": VERSION.read_text(encoding="utf-8").strip(),
         "version.json": json.loads(JSON.read_text(encoding="utf-8"))["version"],
         "index.html": m.group(2) if m else None,
+        "file stamps": stamps.pop() if len(stamps) == 1 and len(ASSETS.findall(html)) == 4 else "missing or mixed",
     }
 
 
@@ -47,6 +51,9 @@ def write(v):
     html, n = SHOWN.subn(r"\g<1>" + v + r"\g<3>", html)
     if n != 1:
         sys.exit('index.html needs exactly one <span id="appVersion">')
+    html, n = ASSETS.subn(r'\g<1>?v=' + v + '"', html)
+    if n != 4:
+        sys.exit("index.html should load style.css, words.js, data.js and app.js; update tools/version.py")
     HTML.write_text(html, encoding="utf-8")
     print(f"Version {v}")
 

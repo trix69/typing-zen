@@ -11,12 +11,16 @@ The live site (main, trix69.github.io/typing-zen/) and the artifact are not touc
 The test copy differs from the live one in a few ways:
 - the title is "Typing Zen (Test)", it has an orange TEST ribbon and a noindex tag;
 - the version shows as the coming number plus "-test" (1.01-test); VERSION is not bumped;
+- a build stamp (a fingerprint of the app files, so the same code always gives the same stamp) goes in
+  version.json, on the version line (data-build) and on the files' ?v=, so "Check for updates" sees each
+  new test build and the browser fetches it fresh;
 - a Spelling Bee session lasts TEST_MINUTES (2) instead of 20, so a whole session can be tried quickly;
 - progress is saved as typingZen.v2-test (and a 1.0 profile is read from typingZen.v1-test). Both
   sites share the trix69.github.io origin, so without this, trying the test site in Luke's browser
   would change his real progress.
   The theme (typingZen.theme) is a setting, so the two sites share it on purpose.
 """
+import hashlib
 import re
 import shutil
 import subprocess
@@ -55,7 +59,8 @@ def build(out):
     if (out / "fonts").exists():
         shutil.rmtree(out / "fonts")
     shutil.copytree(ROOT / "fonts", out / "fonts")
-    (out / "version.json").write_text('{"version": "%s"}\n' % shown, encoding="utf-8")
+    stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES)).hexdigest()[:10]
+    (out / "version.json").write_text('{"version": "%s", "build": "%s"}\n' % (shown, stamp), encoding="utf-8")
 
     html = (out / "index.html").read_text(encoding="utf-8")
     html = must(html, "<title>Typing Zen</title>", '<title>Typing Zen (Test)</title>\n<meta name="robots" content="noindex">', "<title>")
@@ -63,6 +68,10 @@ def build(out):
     html, n = version.SHOWN.subn(r"\g<1>" + shown + r"\g<3>", html)
     if n != 1:
         sys.exit('test build: index.html needs exactly one <span id="appVersion">')
+    html = must(html, '<span id="appVersion">', f'<span id="appVersion" data-build="{stamp}">', "appVersion span")
+    html, n = version.ASSETS.subn(r'\g<1>?v=' + stamp + '"', html)
+    if n != 4:
+        sys.exit("test build: index.html should load style.css, words.js, data.js and app.js with ?v=")
     html = must(html, f"in {LIVE_MINUTES} minutes", f"in {TEST_MINUTES} minutes", f'"in {LIVE_MINUTES} minutes" on the Spelling Bee card')
     (out / "index.html").write_text(html, encoding="utf-8")
 
