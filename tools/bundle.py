@@ -41,7 +41,10 @@ def main():
     }
     if not sounds:
         sys.exit("no sounds/*.mp3 found; update tools/bundle.py")
-    js = "window.TZ_SOUNDS = " + json.dumps(sounds) + ";\n" + js
+    # The MIT licence asks for its notice in every copy, so the single-file artifact carries it too.
+    notice = (ROOT / "sounds" / "LICENSE-kbsim.md").read_text(encoding="utf-8").replace("*/", "* /")
+    js = ("/* Key sounds: recordings from kbsim by Thomas Lai, https://github.com/tplai/kbsim (see sounds/SOURCE.md).\n"
+          + notice + "\n*/\nwindow.TZ_SOUNDS = " + json.dumps(sounds) + ";\n" + js)
 
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = re.sub(r'(href|src)="([\w.]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
