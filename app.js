@@ -438,11 +438,24 @@
       case "words":
         return freshPick(pool, n, byWord).map((w) => ({ ...w, target: w.word }));
       case "spell": {
-        // Each batch: up to 3 tricky words from this level come back for another go; the rest are fresh
-        // words. Words already in this session are left out, so nothing repeats in 20 minutes.
-        const used = new Set(game && game.mode === "spell" ? game.items.map((it) => it.word) : []);
-        const left = pool.filter((w) => !used.has(w.word));
-        const tricky = pickN(left.filter((w) => profile.tricky[w.word]), 3);
+        // Each batch (a "round" of 10): up to 3 words come back for another go, then Word Garden words, then
+        // fresh ones. Words already in this session are left out, except the retries.
+        const playing = game && game.mode === "spell";
+        const round = playing ? game.batch + 1 : 0;
+        const missedIn = playing ? game.missedIn : {};
+        const used = new Set(playing ? game.items.map((it) => it.word) : []);
+        // Twice right first try in a row today: not picked again today, unless the level runs out of other
+        // words, and then only as many as the round needs (user's request, 2026-10-28).
+        const clean = beeToday().clean;
+        const doneToday = (w) => (clean[w.word] || 0) >= 2;
+        let left = pool.filter((w) => !used.has(w.word) && !doneToday(w));
+        const spare = pool.filter((w) => !used.has(w.word) && doneToday(w));
+        // Missed today (in this session or an earlier one): back in a later round, but not the very next one
+        // after the miss (user's request, 2026-10-28).
+        const missedToday = new Set([...(missedByDay(profile)[new Date().toDateString()] || []), ...Object.keys(missedIn)]);
+        const retry = pickN(pool.filter((w) => missedToday.has(w.word) && !doneToday(w) && missedIn[w.word] !== round - 1), 3);
+        left = left.filter((w) => !retry.includes(w));
+        const tricky = [...retry, ...pickN(left.filter((w) => profile.tricky[w.word]), 3 - retry.length)];
         // Words learned in Word Garden in the last 7 days come next, before fresh ones (user's request,
         // 2026-10-28). A word leaves profile.learned once it has been spelled here.
         const week = Date.now() - 7 * 864e5;
@@ -452,7 +465,9 @@
         // words are taken by their run of right-first-try spellings, shortest first, then the usual rotation.
         const fresh = freshPick(left.filter((w) => !tricky.includes(w) && !learned.includes(w)), n - tricky.length - learned.length,
           byWord, (w) => profile.streak[w.word] || 0);
-        return shuffle([...tricky, ...learned, ...fresh]).map((w) => ({ ...w, target: w.word, hidden: true }));
+        const short = n - tricky.length - learned.length - fresh.length;
+        const topUp = short > 0 ? freshPick(spare, short, byWord, (w) => profile.streak[w.word] || 0) : [];
+        return shuffle([...tricky, ...learned, ...fresh, ...topUp]).map((w) => ({ ...w, target: w.word, hidden: true }));
       }
       case "tricky": {
         const tricky = allWords().filter((w) => profile.tricky[w.word]);
@@ -487,7 +502,7 @@
     loadSwitch(currentSwitch()); // fetch the key sounds now (a click), so the first key isn't silent
     const items = buildItems(mode);
     if (!items.length) return;
-    game = { mode, length, items, idx: 0, correct: 0, errors: 0, ms: 0, missed: new Set(), firstTry: [], struggled: [], over: false };
+    game = { mode, length, items, batch: 0, missedIn: {}, idx: 0, correct: 0, errors: 0, ms: 0, missed: new Set(), firstTry: [], struggled: [], over: false };
     game.minutes = mode === "spell" ? LENGTHS[length] || LENGTHS.long : 0;
     if (game.minutes) game.endsAt = Date.now() + game.minutes * 60000;
     $("#modeTitle").textContent = TITLES[mode];
@@ -603,6 +618,10 @@
 
   // Practice's five dots, filled for each clean go.
   const repsDots = (it) => Array.from({ length: PRACTISE_REPS }, (_, i) => `<i class="${i < it.reps ? "on" : ""}"></i>`).join("");
+  function showReps(it) {
+    const box = $("#card .reps");
+    if (box) { box.innerHTML = repsDots(it); box.setAttribute("aria-label", `${it.reps} of ${PRACTISE_REPS} done`); }
+  }
 
   function renderLine() {
     const it = game.items[game.idx];
@@ -692,6 +711,8 @@
       line.classList.remove("shake"); void line.offsetWidth; line.classList.add("shake");
       if (k) { k.classList.add("miss"); setTimeout(() => k.classList.remove("miss"), 200); }
       if (it.hidden && game.revealed) $("#msg").textContent = "Here's a hint: type the orange letter.";
+      // Practice: any wrong key starts this word's 5 again, here and in the saved count (user's request, 2026-10-28).
+      if (game.mode === "practise") { it.reps = 0; showReps(it); savePractice(practiceDay, it.word, 0, true); }
     }
     renderLine();
   }
@@ -717,14 +738,23 @@
       // The run of right-first-try spellings: one more, or back to 0 after a miss.
       if (game.itemErr) delete profile.streak[it.word];
       else profile.streak[it.word] = (profile.streak[it.word] || 0) + 1;
+      const today = new Date().toDateString(), day = beeToday();
+      if (game.itemErr) {
+        game.missedIn[it.word] = game.batch; // its round, so it skips the next one
+        delete day.clean[it.word]; // a miss in between: the two right-first-try spellings start again
+      }
+      else {
+        // Spelled right after being missed today: that counts as one of its 5 Practice goes (user's request).
+        const missedEarlier = (missedByDay(profile)[today] || []).includes(it.word) || game.struggled.includes(it.word);
+        if (missedEarlier) savePractice(today, it.word, (practisedOn(profile, today)[it.word] || 0) + 1);
+        day.clean[it.word] = (day.clean[it.word] || 0) + 1;
+      }
     }
 
     // Practice counts the clean goes; copying a word doesn't change the tricky words.
     if (game.mode === "practise" && !game.itemErr) {
       it.reps++;
-      // Fill the dot now, with the message, not on the next go (so the fifth one shows too; Hermes R20.2).
-      const box = $("#card .reps");
-      if (box) { box.innerHTML = repsDots(it); box.setAttribute("aria-label", `${it.reps} of ${PRACTISE_REPS} done`); }
+      showReps(it); // fill the dot now, with the message, not on the next go (so the fifth one shows too; Hermes R20.2)
       savePractice(practiceDay, it.word, it.reps); // every clean go is kept, not just the fifth
     }
     if (it.word && game.mode !== "sentences" && game.mode !== "practise") {
@@ -750,7 +780,7 @@
       game.wait = "enter";
     } else if (game.mode === "practise") {
       msg.className = "msg good";
-      msg.textContent = game.itemErr ? "That one had a slip, so it doesn't count. Type it again."
+      msg.textContent = game.itemErr ? "A slip starts the count again. Type it again."
         : it.reps < PRACTISE_REPS ? `✓ ${it.reps} of ${PRACTISE_REPS}. ${praise}` : `✓ ${it.word}: all ${PRACTISE_REPS} done! ${praise}`;
       setTimeout(next, game.itemErr ? 1200 : 700);
     } else {
@@ -769,7 +799,7 @@
     if (game.mode === "practise" && game.items[game.idx].reps < PRACTISE_REPS) return loadItem(); // the same word again
     game.idx++;
     // A timed game never runs out of words: add another batch (if the level has any left).
-    if (game.endsAt && game.idx >= game.items.length) game.items.push(...buildItems(game.mode));
+    if (game.endsAt && game.idx >= game.items.length) { game.items.push(...buildItems(game.mode)); game.batch++; }
     if (game.idx >= game.items.length) finish();
     else loadItem();
   }
@@ -966,7 +996,7 @@
   $("#clearNo").addEventListener("click", renderHome);
   $("#clearYes").addEventListener("click", () => {
     // Keeps the name, level, mute, key sound and voice; wipes scores, tricky words and the session history.
-    Object.assign(profile, { bestWpm: 0, stars: 0, rounds: 0, tricky: {}, seen: {}, sessions: [], practised: {}, learned: {}, streak: {} });
+    Object.assign(profile, { bestWpm: 0, stars: 0, rounds: 0, tricky: {}, seen: {}, sessions: [], practised: {}, learned: {}, streak: {}, beeToday: null });
     save();
     renderHome();
   });
@@ -1152,6 +1182,12 @@
     return Object.fromEntries(Object.entries(days).filter(([, l]) => l.length)
       .sort(([a], [b]) => new Date(b) - new Date(a)));
   }
+  // Spelling Bee today: { day, clean: { word: times right first try today } }; starts again each new day.
+  function beeToday() {
+    const day = new Date().toDateString();
+    if (!profile.beeToday || profile.beeToday.day !== day) profile.beeToday = { day, clean: {} };
+    return profile.beeToday;
+  }
   // Practice progress: profile.practised maps a day (as in missedByDay) to { word: clean goes so far }. A word
   // with all 5 stays in Words to practise, shown in green (user's request, 2026-10-27); fewer show as "2/5".
   // Days older than 7 are dropped. Builds from before 2026-10-28 saved a list of finished words instead.
@@ -1159,9 +1195,11 @@
     const v = (u.practised || {})[day];
     return Array.isArray(v) ? Object.fromEntries(v.map((w) => [w, PRACTISE_REPS])) : { ...v };
   }
-  function savePractice(day, word, reps) {
+  // exact: set the count as given (a slip sets it to 0); otherwise it only goes up.
+  function savePractice(day, word, reps, exact = false) {
     const d = practisedOn(profile, day);
-    d[word] = Math.max(d[word] || 0, reps);
+    d[word] = exact ? reps : Math.max(d[word] || 0, reps);
+    if (!d[word]) delete d[word];
     profile.practised[day] = d;
     const from = new Date();
     from.setHours(0, 0, 0, 0);
