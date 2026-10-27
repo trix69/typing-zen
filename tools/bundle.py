@@ -46,6 +46,10 @@ def main():
     js = ("/* Key sounds: recordings from kbsim by Thomas Lai, https://github.com/tplai/kbsim (see sounds/SOURCE.md).\n"
           + notice + "\n*/\nwindow.TZ_SOUNDS = " + json.dumps(sounds) + ";\n" + js)
 
+    # The home-screen app and offline copy need real files beside the page; the artifact has none.
+    html, n = re.subn(r"<!-- pwa:.*?<!-- /pwa -->\n", "", html, flags=re.S)
+    if n != 1:
+        sys.exit("index.html no longer has one <!-- pwa: ... <!-- /pwa --> block; update tools/bundle.py")
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = re.sub(r'(href|src)="([\w.]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
     tags = "\n".join(f'<script src="{f}"></script>' for f in SCRIPTS)

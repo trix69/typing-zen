@@ -35,6 +35,18 @@
   window.THEME.apply();
 })();
 </script>
+<!-- pwa: the home-screen app and its offline copy, like Violin Toolkit (tools/bundle.py leaves this out) -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Typing Zen">
+<script>
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+}
+</script>
+<!-- /pwa -->
 <link rel="stylesheet" href="style.css?v=1.02">
 </head>
 <body>
@@ -227,7 +239,7 @@
       </div>
     </div>
     <div id="installRow" hidden>
-      <h3 id="lblInstall">Add to home screen</h3>
+      <h3 id="lblInstall">Use offline</h3>
       <p class="note" id="installHint"></p>
     </div>
     <button type="button" class="ver" id="verBtn"><span>Version <span id="appVersion">1.02</span></span> · <span id="verMsg">Check for updates</span></button>

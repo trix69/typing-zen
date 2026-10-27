@@ -56,6 +56,9 @@ def write(v):
         sys.exit("index.html should load style.css, words.js, data.js and app.js; update tools/version.py")
     HTML.write_text(html, encoding="utf-8")
     print(f"Version {v}")
+    # The offline copy lists the files with their new ?v= stamps, so sw.js changes with every version.
+    import subprocess
+    subprocess.check_call([sys.executable, str(ROOT / "tools" / "make_sw.py")])
 
 
 def main():

@@ -30,6 +30,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True  # no tools/__pycache__ from importing version.py
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import version  # noqa: E402  (tools/version.py)
+import make_sw  # noqa: E402  (tools/make_sw.py)
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "dist" / "test-site"
@@ -62,12 +63,22 @@ def build(out):
     if (out / "sounds").exists():
         shutil.rmtree(out / "sounds")
     shutil.copytree(ROOT / "sounds", out / "sounds")
+    if (out / "icons").exists():
+        shutil.rmtree(out / "icons")
+    shutil.copytree(ROOT / "icons", out / "icons")
+    # Its own home-screen app: another name and id, so it installs beside the live one.
+    manifest = (ROOT / "manifest.webmanifest").read_text(encoding="utf-8")
+    manifest = must(manifest, '"name": "Typing Zen"', '"name": "Typing Zen (Test)"', "manifest name")
+    manifest = must(manifest, '"short_name": "Typing Zen"', '"short_name": "TZ Test"', "manifest short_name")
+    manifest = must(manifest, '"id": "/typing-zen/"', '"id": "/typing-zen-test/"', "manifest id")
+    (out / "manifest.webmanifest").write_text(manifest, encoding="utf-8")
     stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES)).hexdigest()[:10]
     (out / "version.json").write_text('{"version": "%s", "build": "%s"}\n' % (shown, stamp), encoding="utf-8")
 
     html = (out / "index.html").read_text(encoding="utf-8")
     html = must(html, "<title>Typing Zen</title>", '<title>Typing Zen (Test)</title>\n<meta name="robots" content="noindex">', "<title>")
     html = must(html, "<body>\n", "<body>\n" + RIBBON, "<body>")
+    html = must(html, '<meta name="apple-mobile-web-app-title" content="Typing Zen">', '<meta name="apple-mobile-web-app-title" content="TZ Test">', "home-screen title")
     html, n = version.SHOWN.subn(r"\g<1>" + shown + r"\g<3>", html)
     if n != 1:
         sys.exit('test build: index.html needs exactly one <span id="appVersion">')
@@ -86,7 +97,10 @@ def build(out):
     unknown = sorted(k for k in keys if k not in SHARED and not k.endswith("-test"))
     if unknown:
         sys.exit("test build: decide whether these keys are shared settings or kept apart: " + ", ".join(unknown))
+    # Its own offline copies: the live site's sw.js and update button never touch typing-zen-test-*, nor this one theirs.
+    js = must(js, 'const CACHE_PREFIX = "typing-zen-";', 'const CACHE_PREFIX = "typing-zen-test-";', "CACHE_PREFIX in app.js")
     (out / "app.js").write_text(js, encoding="utf-8")
+    (out / "sw.js").write_text(make_sw.source(out, "typing-zen-test-"), encoding="utf-8")
     return shown
 
 
@@ -114,7 +128,7 @@ def main():
 
     shown = build(SITE)
     src = git("rev-parse", "--short", "HEAD", cwd=ROOT)
-    dirty = " + uncommitted changes" if git("status", "--porcelain", "--", *FILES, "fonts", cwd=ROOT) else ""
+    dirty = " + uncommitted changes" if git("status", "--porcelain", "--", *FILES, "fonts", "sounds", "icons", "manifest.webmanifest", cwd=ROOT) else ""
     git("add", "-A")
     if not git("status", "--porcelain"):
         print("Test site unchanged")
