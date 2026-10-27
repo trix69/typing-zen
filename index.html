@@ -162,10 +162,13 @@
       <div class="card" id="card"></div>
       <div class="line" id="line"></div>
       <div class="msg" id="msg" aria-live="polite"></div>
+      <!-- Touch screens type through this hidden box, which brings up the device's own keyboard. -->
+      <input class="typer" id="typer" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-label="Type here">
     </div>
 
     <div class="finger" id="finger"></div>
     <div class="kbd" id="kbd" aria-hidden="true"></div>
+    <button type="button" class="kbd-toggle" id="kbdToggle" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M6 10h1M10 10h1M14 10h1M18 10h1M6 13.5h1M10 13.5h1M14 13.5h1M18 13.5h1M8 16.5h8"/></svg></button>
   </section>
 
   <!-- RESULTS -->
