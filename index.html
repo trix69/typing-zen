@@ -144,8 +144,8 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
         <button class="mode" data-mode="words"><span class="ico">🌼</span><b>Word Garden</b></button>
         <button class="mode" data-mode="spell" aria-haspopup="dialog"><span class="ico">🐝</span><b>Spelling Bee</b></button>
         <button class="mode" data-mode="practise" id="practiseBtn" disabled><span class="ico">✏️</span><b>Practice</b><span id="practiseInfo"></span></button>
-        <button class="mode" disabled data-mode="sentences"><span class="ico">🌊</span><b>Sentence Stream</b></button>
-        <button class="mode" disabled data-mode="fixit"><span class="ico">🔧</span><b>Fix-It</b></button>
+        <button class="mode" disabled hidden data-mode="sentences"><span class="ico">🌊</span><b>Sentence Stream</b></button>
+        <button class="mode" disabled hidden data-mode="fixit"><span class="ico">🔧</span><b>Fix-It</b></button>
         <button class="mode" disabled data-mode="tricky" id="trickyBtn" hidden><span class="ico">🎯</span><b>Tricky Words</b><span id="trickyInfo"></span></button>
       </div>
     </div>

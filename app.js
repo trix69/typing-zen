@@ -903,7 +903,7 @@
     if (profile.rounds) parts.push(`⭐ ${profile.stars} stars`, `🏃 best ${profile.bestWpm} wpm`, `${profile.rounds} rounds played`);
     $("#homeStats").textContent = parts.join("   ·   ");
     const tricky = Object.keys(profile.tricky).length;
-    $("#trickyBtn").hidden = tricky === 0;
+    // Sentence Stream, Fix-It and Tricky Words are hidden on home (user's request, 2026-10-28); their code stays.
     // Practice: today's words that weren't right first try. Other days are chosen in View stats.
     const todays = (missedByDay(profile)[new Date().toDateString()] || []).length;
     $("#practiseBtn").disabled = !todays;
