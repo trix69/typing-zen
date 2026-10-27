@@ -14,7 +14,7 @@ The test copy differs from the live one in a few ways:
 - a build stamp (a fingerprint of the app files, so the same code always gives the same stamp) goes in
   version.json, on the version line (data-build) and on the files' ?v=, so "Check for updates" sees each
   new test build and the browser fetches it fresh;
-- a Spelling Bee session lasts TEST_MINUTES (2) instead of 20, so a whole session can be tried quickly;
+- Spelling Bee's two sessions last TEST_LENGTHS (1 and 2 minutes) instead of 10 and 20, so a whole session can be tried quickly;
 - progress is saved as typingZen.v2-test (and a 1.0 profile is read from typingZen.v1-test). Both
   sites share the trix69.github.io origin, so without this, trying the test site in Luke's browser
   would change his real progress.
@@ -37,7 +37,7 @@ REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", ".nojekyll"]
 PROGRESS = ["typingZen.v2", "typingZen.v1"]  # the users store, and the 1.0 profile it is made from
-LIVE_MINUTES, TEST_MINUTES = 20, 2  # Spelling Bee session length: app.js (live) and the test build
+LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ short: 1, long: 2 }"  # Spelling Bee lengths in minutes: live and test
 SHARED = {"typingZen.theme"}
 RIBBON = ('<div class="test-ribbon" aria-hidden="true">TEST</div>\n'
           '<style>.test-ribbon { position: fixed; z-index: 300; top: 0; left: 50%; transform: translateX(-50%); '
@@ -81,7 +81,7 @@ def build(out):
     js = (out / "app.js").read_text(encoding="utf-8")
     for key in PROGRESS:
         js = must(js, f'"{key}"', f'"{key}-test"', f'"{key}" key in app.js')
-    js = must(js, f"const MINUTES = {{ spell: {LIVE_MINUTES} }};", f"const MINUTES = {{ spell: {TEST_MINUTES} }}; // test build only (live: {LIVE_MINUTES})", "MINUTES line in app.js")
+    js = must(js, f"const LENGTHS = {LIVE_LENGTHS};", f"const LENGTHS = {TEST_LENGTHS}; // test build only (live: {LIVE_LENGTHS})", "LENGTHS line in app.js")
     keys = set(re.findall(r"""["'`](typingZen[.\w-]*)""", js + html))
     unknown = sorted(k for k in keys if k not in SHARED and not k.endswith("-test"))
     if unknown:

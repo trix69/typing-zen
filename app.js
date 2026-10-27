@@ -13,7 +13,8 @@
   let practiceDay = ""; // the day being practised, as Date.toDateString()
   // Timed games: Spelling Bee is a 20-minute session with as many words as Luke can manage.
   // Words come in batches of ROUND.spell, and none repeats within a session.
-  const MINUTES = { spell: 20 };
+  // Two Spelling Bee cards, each with its own length (user's request, 2026-10-28: 10 and 20 minutes).
+  const LENGTHS = { short: 10, long: 20 };
   // The time bar flashes red for the last 2.5% of a session: 30 s of 20 minutes, 3 s of 2 (the test build).
   const ENDING = 0.025;
   // When time runs out mid-word, Luke gets up to 10 s more to finish that word (user's request, 2026-10-26).
@@ -464,13 +465,15 @@
   // ---------- Game state ----------
   let game = null;
 
-  function start(mode) {
+  // length: "short" or "long" for Spelling Bee (its card's data-length); kept for Play again.
+  function start(mode, length) {
     game = null; // a new session must not see the last one's words as used
     loadSwitch(currentSwitch()); // fetch the key sounds now (a click), so the first key isn't silent
     const items = buildItems(mode);
     if (!items.length) return;
-    game = { mode, items, idx: 0, correct: 0, errors: 0, ms: 0, missed: new Set(), firstTry: [], struggled: [], over: false };
-    if (MINUTES[mode]) game.endsAt = Date.now() + MINUTES[mode] * 60000;
+    game = { mode, length, items, idx: 0, correct: 0, errors: 0, ms: 0, missed: new Set(), firstTry: [], struggled: [], over: false };
+    game.minutes = mode === "spell" ? LENGTHS[length] || LENGTHS.long : 0;
+    if (game.minutes) game.endsAt = Date.now() + game.minutes * 60000;
     $("#modeTitle").textContent = TITLES[mode];
     $("#trail").innerHTML = game.endsAt ? '<i class="time"><b></b></i>' : items.map(() => "<i></i>").join("");
     $("#clock").hidden = !game.endsAt;
@@ -490,7 +493,7 @@
     clock.classList.toggle("low", secs <= 60);
     clock.classList.toggle("paused", !!game.pausedAt);
     // The bar fills from the left as time passes, and flashes red near the end.
-    const total = MINUTES[game.mode] * 60000;
+    const total = game.minutes * 60000;
     const bar = $("#trail .time b");
     if (bar) {
       bar.style.width = ((total - left) / total) * 100 + "%";
@@ -748,10 +751,10 @@
     if (!game || !game.endsAt || game.saved) return;
     game.saved = true;
     const now = game.pausedAt || Date.now(); // leaving from the paused question: the pause isn't counted
-    const minutes = Math.round((Math.min(now, game.endsAt) - (game.endsAt - MINUTES[game.mode] * 60000)) / 60000);
+    const minutes = Math.round((Math.min(now, game.endsAt) - (game.endsAt - game.minutes * 60000)) / 60000);
     if (!finished && !game.firstTry.length && !game.struggled.length) return; // left before doing anything
     profile.sessions.push({
-      date: new Date().toISOString(), game: game.mode, level: currentBucket().name, minutes, finished,
+      date: new Date().toISOString(), game: game.mode, level: currentBucket().name, minutes, length: game.minutes, finished,
       firstTry: game.firstTry.length, struggled: game.struggled.length,
       firstTryWords: game.firstTry, struggledWords: game.struggled,
     });
@@ -854,7 +857,7 @@
   document.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT") return; // typing a name on the welcome screen
     const playing = !$("#play").hidden;
-    if (!$("#results").hidden && e.key === "Enter") { e.preventDefault(); return start(game.mode); }
+    if (!$("#results").hidden && e.key === "Enter") { e.preventDefault(); return start(game.mode, game.length); }
     if (!$("#results").hidden && e.key === "Escape") return show("home");
     if (!playing || !game) return;
     if (e.key === "Escape") return leave();
@@ -898,8 +901,13 @@
   document.querySelectorAll(".mode").forEach((b) => b.addEventListener("click", () => {
     b.blur();
     if (b.dataset.mode === "practise") practiceDay = new Date().toDateString();
-    start(b.dataset.mode);
+    start(b.dataset.mode, b.dataset.length);
   }));
+  // Each Spelling Bee card shows its length (from LENGTHS, so the test build's short sessions show too).
+  document.querySelectorAll(".mode[data-length]").forEach((b) => {
+    const m = LENGTHS[b.dataset.length];
+    b.insertAdjacentHTML("beforeend", `<span>${m} minute${m === 1 ? "" : "s"}</span>`);
+  });
   $("#clearBtn").addEventListener("click", () => { $("#clearBtn").hidden = true; $("#clearConfirm").hidden = false; });
   $("#clearNo").addEventListener("click", renderHome);
   $("#clearYes").addEventListener("click", () => {
@@ -1034,7 +1042,7 @@
 
   $("#backBtn").addEventListener("click", () => show("home"));
   $("#homeBtn").addEventListener("click", () => show("home"));
-  $("#againBtn").addEventListener("click", () => start(game.mode));
+  $("#againBtn").addEventListener("click", () => start(game.mode, game.length));
   $("#muteBtn").addEventListener("click", (e) => {
     profile.mute = !profile.mute; save();
     showSoundIcon();
