@@ -75,7 +75,6 @@ def build(out):
     html, n = version.ASSETS.subn(r'\g<1>?v=' + stamp + '"', html)
     if n != 4:
         sys.exit("test build: index.html should load style.css, words.js, data.js and app.js with ?v=")
-    html = must(html, f"in {LIVE_MINUTES} minutes", f"in {TEST_MINUTES} minutes", f'"in {LIVE_MINUTES} minutes" on the Spelling Bee card')
     (out / "index.html").write_text(html, encoding="utf-8")
 
     # Keep the test site's progress apart from Luke's, and make any new storage key a conscious choice.
