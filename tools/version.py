@@ -2,7 +2,7 @@
 """Keep the app version in step across VERSION, version.json and index.html.
 
 Usage:
-  python3 tools/version.py           check that all agree (exits 1 if not), including the ?v= stamps
+  python3 tools/version.py           check that all agree (exits 1 if not), including the ?v= stamps and sw.js
   python3 tools/version.py bump      next version: 1.0, 1.01 ... 1.09, 1.10 ... 1.99, 2.0
   python3 tools/version.py set 1.0   set an exact version
 
@@ -67,7 +67,13 @@ def main():
         seen = found()
         if len(set(seen.values())) != 1:
             sys.exit("Versions differ: " + ", ".join(f"{k} {v}" for k, v in seen.items()))
-        print(f"Version {seen['VERSION']}")
+        # The offline copy must list today's files, or devices keep the old copy (Hermes' note on R28).
+        sys.dont_write_bytecode = True
+        sys.path.insert(0, str(ROOT / "tools"))
+        import make_sw
+        if not (ROOT / "sw.js").exists() or (ROOT / "sw.js").read_text(encoding="utf-8") != make_sw.source(ROOT, make_sw.PREFIX):
+            sys.exit("sw.js is out of date: run python3 tools/make_sw.py")
+        print(f"Version {seen['VERSION']}, sw.js up to date")
     elif args == ["bump"]:
         write(bumped(found()["VERSION"]))
     elif len(args) == 2 and args[0] == "set":
