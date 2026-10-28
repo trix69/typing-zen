@@ -61,6 +61,7 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
         <h1>Typing Zen</h1>
         <p class="tag">Calm fingers, clever words.</p>
       </div>
+      <button type="button" class="icon-btn" id="welcomeSettingsBtn" aria-label="Settings" title="Settings" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
 
     <div class="intro" id="intro-new" hidden>
@@ -208,6 +209,7 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
       <button type="button" role="radio" aria-checked="false" data-lang="en" lang="en">English</button>
       <button type="button" role="radio" aria-checked="false" data-lang="da" lang="da">Dansk</button>
     </div>
+    <p class="note" id="langNote" hidden></p>
     <div class="clear-confirm" id="langConfirm" role="alert" hidden>
       <p id="langAsk"></p>
       <div class="user-row">
@@ -215,11 +217,11 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
         <button type="button" class="ghost small" id="langNo">Cancel</button>
       </div>
     </div>
-    <h3 id="lblYear">Your year</h3>
-    <div class="choices" role="radiogroup" aria-labelledby="lblYear" id="segYear"></div>
-    <h3 id="lblSound">Key sound</h3>
-    <div class="choices sounds" role="radiogroup" aria-labelledby="lblSound" id="segSound"></div>
-    <div id="voiceRow">
+    <h3 class="user-only" id="lblYear">Your year</h3>
+    <div class="choices user-only" role="radiogroup" aria-labelledby="lblYear" id="segYear"></div>
+    <h3 class="user-only" id="lblSound">Key sound</h3>
+    <div class="choices sounds user-only" role="radiogroup" aria-labelledby="lblSound" id="segSound"></div>
+    <div class="user-only" id="voiceRow">
       <h3 id="lblVoice">Voice for words and sentences</h3>
       <div class="voice-row">
         <select id="voiceSel" aria-labelledby="lblVoice"></select>
@@ -228,8 +230,8 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
       <p class="note" id="voiceNote" hidden>This device has no English voice, so words are read in its own voice.</p>
       <p class="note" id="silentNote" hidden>No sound? Check that the iPhone or iPad isn't on silent, and turn the volume up.</p>
     </div>
-    <h3 id="lblOrder">Practice order</h3>
-    <div class="segc" role="radiogroup" aria-labelledby="lblOrder" id="segOrder">
+    <h3 class="user-only" id="lblOrder">Practice order</h3>
+    <div class="segc user-only" role="radiogroup" aria-labelledby="lblOrder" id="segOrder">
       <button type="button" role="radio" aria-checked="false" data-order="order">In order</button>
       <button type="button" role="radio" aria-checked="false" data-order="random">Random</button>
     </div>
@@ -239,8 +241,8 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
       <button type="button" role="radio" aria-checked="false" data-theme-mode="dark">Dark</button>
       <button type="button" role="radio" aria-checked="false" data-theme-mode="auto">Automatic</button>
     </div>
-    <h3 id="lblUser">User</h3>
-    <div class="user-row">
+    <h3 class="user-only" id="lblUser">User</h3>
+    <div class="user-row user-only">
       <button type="button" class="ghost small" id="switchUserBtn">Switch user</button>
       <button type="button" class="ghost small" id="clearBtn">Clear history</button>
     </div>
