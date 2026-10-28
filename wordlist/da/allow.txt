@@ -1,0 +1,2 @@
+# Names and correct words the macOS Danish dictionary doesn't know (build_words_da.py).
+Rachel Emil Bob Mis Ida Walther

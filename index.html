@@ -203,6 +203,18 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
   <div class="sheet-card" id="sheetCard" tabindex="-1">
     <div class="sheet-body">
     <h2 id="sheetTitle">Settings</h2>
+    <h3 id="lblLang">Language · Sprog</h3>
+    <div class="segc" role="radiogroup" aria-labelledby="lblLang" id="segLang">
+      <button type="button" role="radio" aria-checked="false" data-lang="en" lang="en">English</button>
+      <button type="button" role="radio" aria-checked="false" data-lang="da" lang="da">Dansk</button>
+    </div>
+    <div class="clear-confirm" id="langConfirm" role="alert" hidden>
+      <p id="langAsk"></p>
+      <div class="user-row">
+        <button type="button" class="danger small" id="langYes"></button>
+        <button type="button" class="ghost small" id="langNo">Cancel</button>
+      </div>
+    </div>
     <h3 id="lblYear">Your year</h3>
     <div class="choices" role="radiogroup" aria-labelledby="lblYear" id="segYear"></div>
     <h3 id="lblSound">Key sound</h3>
@@ -308,6 +320,7 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
   </div>
 </div>
 <script src="words.js?v=1.04"></script>
+<script src="words-da.js?v=1.04"></script>
 <script src="data.js?v=1.04"></script>
 <script src="app.js?v=1.04"></script>
 </body>

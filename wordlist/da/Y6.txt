@@ -1,0 +1,268 @@
+# 5. klasse (the same age as Year 6): the hardest words: loanwords (ch, c, y, eu, ou), -sion and -tion, silent
+# letters in long words, double consonants and abstract words. The word is always in its sentence in the same form.
+rytme|et fast mønster i musik|Sangen har en god rytme.|y'et lyder som ø
+melodi|tonerne i en sang|Jeg kan ikke huske en melodi.|
+harmoni|når noget passer godt sammen|Vi lever i harmoni.|
+symfoni|et langt musikstykke for orkester|Orkestret spiller en symfoni.|y'et lyder som y
+orkester|mange musikere, der spiller sammen|Hun spiller i et orkester.|
+dirigent|en, der leder et orkester|En dirigent løfter sin pind.|
+applaus|klap fra publikum|Der var stor applaus.|au
+premiere|første gang, noget bliver vist|Filmen har premiere i dag.|
+succes|når noget lykkes|Festen var en stor succes.|cc lyder som ks, og c lyder som s
+chance|en mulighed|Giv mig en chance til.|ch lyder som "sj", og c lyder som s
+charmerende|sød og rar på en vindende måde|Han er meget charmerende.|ch lyder som "sj"
+chokeret|meget overrasket|Jeg blev chokeret over nyheden.|ch lyder som "sj"
+champignon|en svamp, man spiser|Der er champignon på pizzaen.|ch lyder som "sj", og gn lyder som "nj"
+genre|en slags bog, film eller musik|Hvilken genre kan du lide?|g lyder som "sj"
+geni|en meget klog person|Hun er et geni i matematik.|g lyder som "sj"
+general|en høj leder i hæren|En general giver ordrer.|g lyder som "g"
+ingeniør|en, der bygger broer og maskiner|Min mor er ingeniør.|g lyder som "sj"
+garage|et hus til bilen|Bilen holder i en garage.|det sidste g lyder som "sj"
+etage|et lag i et hus|Vi bor på tredje etage.|g lyder som "sj"
+bagage|kufferter og tasker på en rejse|Husk din bagage.|g lyder som "sj"
+massage|når nogen gnider ens muskler|Mor fik en massage.|to s'er, og g lyder som "sj"
+passager|en, der rejser med|En passager sidder bag chaufføren.|to s'er, og g lyder som "sj"
+fysik|faget om kræfter og energi|I fysik lærer vi om lys.|y'et lyder som y
+psykolog|en, man kan tale med om sine tanker|Hun taler med en psykolog.|p'et kan ikke høres
+symbol|et tegn, der betyder noget|Hjertet er et symbol på kærlighed.|y'et lyder som y
+system|en måde at ordne noget på|Vi har et system til at rydde op.|y'et lyder som y
+typisk|som det plejer at være|Det er typisk ham at komme for sent.|y'et lyder som y
+mystisk|hemmelighedsfuld|Der skete noget mystisk i nat.|y'et lyder som y
+olympisk|fra de olympiske lege|Hun vil vinde en olympisk medalje.|y'et lyder som y
+pyramide|en bygning med fire trekantede sider|En pyramide står i Egypten.|y'et lyder som y
+cyklus|noget, der gentager sig|Vandets cyklus går rundt og rundt.|c lyder som s
+cylinder|en figur som en rund dåse|En dåse er en cylinder.|c lyder som s
+cement|et pulver, der bliver hårdt som sten|Muren er lavet af cement.|c lyder som s
+cigar|en stor rullet tobak|Bedstefar røg en cigar.|c lyder som s
+civil|ikke militær|Politimanden var i civil.|c lyder som s
+facade|forsiden af et hus|Huset har en flot facade.|c lyder som s
+accent|en måde at udtale et sprog på|Hun taler med accent.|cc lyder som ks
+acceptere|sige ja til noget|Du må acceptere reglerne.|cc lyder som ks
+ekstra|mere end normalt|Vil du have en ekstra bolle?|
+eksamen|en stor prøve|Hun skal til eksamen.|
+eksplosion|når noget sprænger med et brag|Der lød en eksplosion.|si lyder som "sj"
+ekspert|en, der ved meget om noget|Han er ekspert i dinosaurer.|
+eksotisk|fra et fjernt land|Vi spiste en eksotisk frugt.|
+eventuelt|måske|Vi kan eventuelt tage bussen.|eu siges e-u
+neutral|på ingen af siderne|Han holdt sig neutral i striden.|eu siges e-u
+europæisk|fra Europa|Danmark er et europæisk land.|eu
+bureau|et kontor|Vi bestiller rejsen hos et bureau.|eau lyder som o
+niveau|hvor højt eller godt noget er|Hun spiller på et højt niveau.|eau lyder som o
+plateau|et fladt område højt oppe|De gik op på et plateau.|eau lyder som o
+interview|når man stiller spørgsmål til nogen|Avisen lavede et interview.|ew lyder som "ju"
+computerspil|et spil på computeren|Jeg spiller computerspil.|c lyder som k
+mission|en vigtig opgave|Agenten har en hemmelig mission.|si lyder som "sj"
+version|en udgave|Det er en ny version af spillet.|si lyder som "sj"
+illusion|noget, der snyder øjet|Det var en optisk illusion.|si lyder som "sj"
+religion|en tro på en eller flere guder|Vi lærer om religion.|gi lyder som "gj"
+region|en del af et land|Vi bor i en stor region.|gi lyder som "gj"
+legion|en stor gruppe soldater|Romerne havde en legion.|gi lyder som "gj"
+reaktion|det, man gør, når noget sker|Hvad var hans reaktion?|ti lyder som "sj"
+konstruktion|noget, der er bygget|Broen er en stærk konstruktion.|ti lyder som "sj"
+instruktion|en vejledning|Læs en instruktion først.|ti lyder som "sj"
+generation|mennesker født på samme tid|Min generation elsker spil.|g lyder som "g", og ti lyder som "sj"
+population|alle af en slags et sted|Ulvens population vokser.|ti lyder som "sj"
+evolution|hvordan arter ændrer sig over tid|Darwin skrev om evolution.|ti lyder som "sj"
+revolution|en stor og hurtig forandring|Der var en revolution i Frankrig.|ti lyder som "sj"
+civilisation|et samfund med byer og kultur|Romerne havde en stor civilisation.|c lyder som s, og ti lyder som "sj"
+opposition|dem, der er imod regeringen|Han sidder i opposition.|to p'er, og ti lyder som "sj"
+kultur|kunst, sprog og skikke|Hvert land har sin kultur.|
+samfund|alle mennesker, der lever sammen|Vi lever i et frit samfund.|d'et kan ikke høres
+befolkning|alle, der bor i et land|Byen har en stor befolkning.|
+million|tusind gange tusind|Der bor en million mennesker i byen.|to l'er
+milliard|tusind millioner|Det kostede en milliard.|to l'er
+procent|en del af hundrede|Halvtreds procent er det halve.|c lyder som s
+statistik|tal, der viser noget|Vi laver statistik over vores klasse.|
+gennemsnit|det midterste tal|Hvad er dit gennemsnit?|to n'er
+diagram|en tegning med tal|Tegn et diagram over vejret.|
+brøk|en del af en helhed, fx en halv|En halv er en brøk.|
+decimal|tallet efter kommaet|Skriv et tal med en decimal.|c lyder som s
+geometri|matematik om figurer|I geometri tegner vi trekanter.|
+symmetri|når to halvdele er ens|En sommerfugl har symmetri.|y'et lyder som y, og to m'er
+parallel|to linjer, der aldrig mødes|Tegn en parallel linje.|to l'er i midten
+vinkel|hjørnet mellem to linjer|En ret vinkel er halvfems grader.|
+omkreds|længden hele vejen rundt|Find cirklens omkreds.|d'et kan ikke høres
+areal|hvor stor en flade er|Beregn et areal.|
+volumen|hvor meget der kan være i noget|Hvad er kassens volumen?|
+beregne|regne ud|Kan du beregne svaret?|g'et lyder som "j"
+ligning|et regnestykke med et ukendt tal|Løs en ligning.|g'et lyder som "j"
+facit|det rigtige svar|Tjek dit svar med facit.|c lyder som s
+hypotese|et gæt, man kan teste|Vores hypotese var forkert.|y'et lyder som y
+analyse|når man undersøger noget nøje|Vi laver en analyse af digtet.|y'et lyder som y
+konklusion|det, man til sidst finder ud af|Hvad er din konklusion?|si lyder som "sj"
+argument|en grund til at mene noget|Det er et godt argument.|
+holdning|det, man mener|Hvad er din holdning?|d'et kan ikke høres
+påstand|noget, man siger er sandt|Det er en vild påstand.|d'et kan ikke høres
+bevis|noget, der viser, at noget er sandt|Har du et bevis?|
+troværdig|man kan stole på den|Er kilden troværdig?|d'et og g'et kan ikke høres
+kritisk|tænker sig om, før man tror på noget|Vær kritisk over for nyheder.|
+nyhed|noget nyt, der er sket|Har du hørt en nyhed?|y'et lyder som y, og d'et er blødt
+begivenhed|noget, der sker|Det var en stor begivenhed.|d'et er blødt
+oplysning|en lille smule viden|Tak for en oplysning.|y'et lyder som ø
+viden|det, man ved|Hun har stor viden.|
+erfaring|det, man har lært ved at prøve|Han har stor erfaring.|
+uddannelse|det, man lærer for at få et job|Hun tager en lang uddannelse.|to d'er og to n'er
+universitet|en skole for voksne|Min søster læser på et universitet.|
+fremmedsprog|et sprog fra et andet land|Engelsk er et fremmedsprog.|to m'er
+oversætte|skrive noget på et andet sprog|Kan du oversætte det til engelsk?|to t'er
+udenlandsk|fra et andet land|Vi har en udenlandsk elev.|d'erne kan ikke høres
+udlandet|andre lande|Vi rejser til udlandet.|d'erne kan ikke høres
+international|mellem flere lande|Det er en international skole.|ti lyder som "sj"
+grænse|der, hvor to lande mødes|Vi kører over en grænse.|
+pas|et papir, man rejser med|Husk dit pas.|
+ambassade|et kontor for et land i et andet land|Vi besøgte en ambassade.|to s'er
+turist|en, der rejser for at se|En turist tager billeder.|
+seværdighed|et sted, der er værd at se|Den lille havfrue er en seværdighed.|d'et og g'et kan ikke høres
+monument|et minde, der er bygget|Der står et monument på pladsen.|
+arkæolog|en, der graver gamle ting op|En arkæolog fandt et sværd.|kæ lyder som "kæ"
+middelalder|tiden for ca. tusind til fem hundrede år siden|Borgen er fra middelalder.|to d'er og to l'er
+renæssance|tiden efter middelalderen|Slottet er fra renæssance.|to s'er, og c lyder som s
+årtusinde|tusind år|Det er et årtusinde siden.|d'et kan ikke høres
+krig|når lande kæmper mod hinanden|Det var en lang krig.|g'et kan ikke høres
+fred|når der ikke er krig|Vi ønsker fred i verden.|d'et er blødt
+soldat|en, der er i hæren|En soldat står vagt.|
+flygtning|en, der er flygtet fra sit land|En flygtning fik et nyt hjem.|y'et lyder som ø, og g'erne kan ikke høres
+modstand|det at kæmpe imod|Der var modstand mod planen.|d'erne kan ikke høres
+befrielse|når et land bliver frit igen|Det var en stor befrielse.|
+sejr|det at vinde|Holdet fejrede sin sejr.|ej lyder som "aj"
+nederlag|det at tabe|Det var et stort nederlag.|g'et lyder svagt
+skurk|en ond person i en historie|En skurk stjæler diamanten.|
+hemmelig|som ingen må vide|Det er en hemmelig plan.|to m'er, og g'et kan ikke høres
+mysterium|noget, ingen kan forklare|Det er et stort mysterium.|y'et lyder som y
+spion|en, der hemmeligt holder øje med andre|En spion lytter ved døren.|
+detektiv|en, der opklarer forbrydelser|En detektiv leder efter spor.|
+forbrydelse|noget ulovligt, man gør|Tyveri er en forbrydelse.|y'et lyder som ø
+tyveri|det at stjæle|Der var et tyveri i butikken.|y'et lyder som y
+mistænkt|en, man tror har gjort noget|Politiet har en mistænkt.|
+vidne|en, der har set noget ske|Hun var vidne til ulykken.|d'et kan ikke høres
+retfærdig|når alle får det, de har ret til|Dommeren var retfærdig.|d'et og g'et kan ikke høres
+uretfærdig|ikke retfærdig|Straffen var uretfærdig.|d'et og g'et kan ikke høres
+konsekvens|det, der sker bagefter|Det har en konsekvens.|kv
+alvorlig|ikke sjov, vigtig|Det er en alvorlig sag.|g'et kan ikke høres
+ansvarlig|en, der har ansvar|Hvem er ansvarlig?|g'et kan ikke høres
+selvstændig|kan klare sig selv|Hun er meget selvstændig.|v'et og d'et og g'et kan ikke høres
+tålmodighed|det at kunne vente|Det kræver tålmodighed.|d'et er blødt, og g'et kan ikke høres
+nysgerrighed|lysten til at vide mere|Hun har stor nysgerrighed.|to r'er, og g'et kan ikke høres
+fantastisk|helt vildt god|Det var en fantastisk dag.|
+enestående|helt særlig|Det er en enestående chance.|d'et kan ikke høres
+utrolig|svær at tro|Det er en utrolig historie.|g'et kan ikke høres
+ekstraordinær|helt ud over det sædvanlige|Det var en ekstraordinær præstation.|
+præstation|det, man har udrettet|Det var en flot præstation.|ti lyder som "sj"
+ambition|et stort mål|Hun har en ambition om at blive læge.|ti lyder som "sj"
+motivation|lysten til at gøre noget|Jeg mangler motivation.|ti lyder som "sj"
+inspiration|noget, der giver nye idéer|Naturen giver mig inspiration.|ti lyder som "sj"
+kreativ|god til at finde på|Hun er meget kreativ.|
+kreativitet|evnen til at finde på|Kunst kræver kreativitet.|
+talent|en særlig evne|Han har talent for musik.|
+træning|det at øve sig|Jeg har træning i aften.|g'et lyder som "j"
+konkurrent|en, man konkurrerer mod|Hun slog sin konkurrent.|to r'er
+fordel|noget, der hjælper|Det er en fordel at være høj.|
+ulempe|noget, der gør det sværere|Det er en ulempe at være lille.|
+balance|når man ikke vælter|Hun har god balance.|c lyder som s
+koordination|når kroppens dele arbejder sammen|Jonglering kræver koordination.|oo, og ti lyder som "sj"
+udholdenhed|evnen til at blive ved længe|Løb giver udholdenhed.|d'erne kan ikke høres
+temperament|hvor hurtigt man bliver vred eller glad|Han har et heftigt temperament.|
+personlighed|den, man er inde i sig selv|Hun har en stærk personlighed.|g'et kan ikke høres
+identitet|det, der gør dig til dig|Sproget er en del af vores identitet.|
+selvtillid|troen på sig selv|Ros giver selvtillid.|v'et og d'et kan ikke høres
+ensomhed|det at være ensom|Han følte ensomhed.|d'et kan ikke høres
+mobning|når nogen bliver drillet igen og igen|Mobning er ikke i orden.|g'et lyder som "j"
+konflikt|en strid mellem to eller flere|Vi løste en konflikt.|
+kompromis|når begge giver sig lidt|Vi fandt et kompromis.|
+forhandle|tale sig frem til en aftale|Vi skal forhandle om prisen.|d'et kan ikke høres
+aftale|noget, man er blevet enige om|Vi har en aftale.|
+løfte|noget, man siger, man vil gøre|Jeg giver dig et løfte.|
+tillid|troen på, at nogen er ærlig|Jeg har tillid til dig.|to l'er, og d'et kan ikke høres
+loyal|trofast|Hunden er loyal over for sin ejer.|y'et lyder som "j"
+diskret|stille og uden at andre opdager det|Vær diskret.|
+privat|kun for dig selv|Min dagbog er privat.|
+offentlig|for alle|Det er en offentlig park.|to f'er, og g'et kan ikke høres
+personlig|om én selv|Hun gav mig en personlig gave.|g'et kan ikke høres
+anonym|uden navn|Afsenderen var anonym.|y'et lyder som y
+adgangskode|et hemmeligt ord til en computer|Fortæl ingen din adgangskode.|d'et er blødt
+virus|en lille ting, der gør syg, eller et skadeligt program|Computeren har fået en virus.|
+program|noget, en computer kører|Vi bruger et program til at tegne.|
+programmere|skrive kode til en computer|Jeg vil lære at programmere.|to m'er
+digital|på computer eller nettet|Vi har en digital tavle.|
+elektronisk|med strøm og computerchips|Det er et elektronisk spil.|
+teknik|måden at gøre noget på|Svømning kræver god teknik.|
+mekanisk|med tandhjul og fjedre|Uret er mekanisk.|
+automatisk|af sig selv|Døren åbner automatisk.|
+vindmølle|en mølle, der laver strøm af vind|En vindmølle drejer langsomt.|d'et kan ikke høres, og to l'er
+solcelle|laver strøm af sollys|Taget har en solcelle.|c lyder som s, og to l'er
+bæredygtig|godt for naturen i lang tid|Det er en bæredygtig løsning.|y'et lyder som ø, og g'et kan ikke høres
+atmosfære|luften omkring jorden|Jorden har en atmosfære.|
+galakse|mange millioner stjerner sammen|Vi bor i en galakse.|
+univers|alt, der findes|Hvor stort er et univers?|
+satellit|en ting, der kredser om jorden|En satellit sender tv.|to l'er
+teleskop|man ser langt ud i rummet med det|Vi kigger på månen i et teleskop.|
+mikroskop|man ser små ting store i det|Vi ser en celle i et mikroskop.|
+bakterie|en meget lille levende ting|En bakterie kan gøre dig syg.|ie
+celle|den mindste levende del|En celle er meget lille.|c lyder som s, og to l'er
+organ|en del af kroppen, fx hjertet|Hjertet er et organ.|
+nervesystem|nerverne i kroppen|Hjernen styrer vores nervesystem.|y'et lyder som y
+fordøjelse|når kroppen bruger maden|Han har dårlig fordøjelse.|øj lyder som "åj"
+ilt|det i luften, vi skal bruge|Planter laver ilt.|
+kuldioxid|en luftart, vi ånder ud|Træer optager kuldioxid.|x lyder som ks
+fotosyntese|når planter laver mad af sollys|Planter laver fotosyntese.|y'et lyder som y
+økosystem|dyr og planter, der lever sammen|Skoven er et økosystem.|y'et lyder som y
+art|en slags dyr eller plante|Det er en sjælden art.|
+udryddet|findes ikke mere|Dinosaurerne er udryddet.|d'erne kan ikke høres, og to d'er
+truet|i fare for at forsvinde|Isbjørnen er truet.|
+naturfredet|beskyttet af loven|Området er naturfredet.|d'et er blødt
+nationalpark|et stort fredet naturområde|Vi besøger en nationalpark.|ti lyder som "sj"
+landskab|hvordan landet ser ud|Det er et smukt landskab.|d'et kan ikke høres
+horisont|der, hvor himmel og jord mødes|Vi ser mod horisont.|
+geografisk|om lande og steder|Vi laver et geografisk kort.|
+kontinent|en stor del af jorden|Europa er et kontinent.|
+ækvator|en tænkt linje midt om jorden|Det er varmt ved ækvator.|kv
+klimaforandring|når klimaet ændrer sig|Klimaforandring er et stort problem.|g'et lyder som "j"
+nedbør|regn og sne|Der kommer meget nedbør i dag.|d'et er blødt
+tørke|når det ikke regner længe|Der var tørke hele sommeren.|
+katastrofe|en stor ulykke|Jordskælvet var en katastrofe.|
+redning|det at redde nogen|Det var en flot redning.|d'et er blødt, og g'et lyder som "j"
+frivillig|gør det uden at få penge|Hun er frivillig i Røde Kors.|to l'er, og g'et kan ikke høres
+velgørenhed|at give til dem, der har brug for det|Vi samler penge ind til velgørenhed.|g'et lyder som "j", og d'et er blødt
+demokratisk|hvor folket bestemmer|Danmark er et demokratisk land.|
+diktator|en, der bestemmer alt alene|En diktator tager magten.|
+parlament|landets folkevalgte forsamling|Folketinget er Danmarks parlament.|
+folketing|Danmarks parlament|Hun sidder i et folketing.|g'et lyder svagt
+minister|en, der leder et område i regeringen|En minister holder tale.|
+statsminister|lederen af regeringen|En statsminister leder regeringen.|
+monarki|et land med konge eller dronning|Danmark er et monarki.|
+kongehus|kongens familie|Det danske kongehus er gammelt.|
+tronfølger|den, der skal være konge eller dronning|Prinsen er tronfølger.|
+kronprins|den prins, der skal være konge|En kronprins skal blive konge.|
+økonomi|penge og handel|Familiens økonomi er god.|
+budget|en plan over penge|Vi laver et budget for festen.|t'et kan ikke høres, og u'et lyder som y
+investering|når man bruger penge for at få flere|Huset var en god investering.|
+import|varer, der kommer fra udlandet|Der er meget import af frugt.|
+eksport|varer, der sendes til udlandet|Danmark har stor eksport af svinekød.|
+industri|fabrikker, der laver varer|Byen har meget industri.|
+landbrug|det at dyrke jorden og have dyr|Landbrug er vigtigt i Danmark.|d'et kan ikke høres, og g'et kan ikke høres
+fiskeri|det at fange fisk|Byen lever af fiskeri.|
+håndværk|arbejde med hænderne|Snedkeri er et håndværk.|d'et kan ikke høres
+psykologi|læren om tanker og følelser|Hun læser psykologi.|p'et kan ikke høres
+filosofi|tænkning om livets store spørgsmål|Vi taler om filosofi.|
+biologi|læren om levende ting|I biologi lærer vi om celler.|
+kemi|læren om stoffer|I kemi blander vi væsker.|
+geologi|læren om sten og jord|En geolog arbejder med geologi.|
+astronomi|læren om stjerner og planeter|Astronomi er spændende.|
+matematiker|en, der arbejder med matematik|Hun er en dygtig matematiker.|
+videnskab|viden, man har fundet ved forsøg|Det er spændende videnskab.|d'et er blødt
+forsker|en, der undersøger ny viden|En forsker studerer hvaler.|
+laboratorium|et rum til forsøg|Forskeren arbejder i et laboratorium.|
+opdagelse|noget nyt, man har fundet|Det var en stor opdagelse.|
+fænomen|noget, der sker i naturen|Nordlys er et smukt fænomen.|
+nordlys|lys på himlen langt mod nord|Vi så nordlys i Norge.|d'et kan ikke høres
+solformørkelse|når månen dækker solen|Vi så en solformørkelse.|
+tyngdekraft|kraften, der trækker os mod jorden|Uden tyngdekraft svæver man.|y'et lyder som ø
+gravitation|tyngdekraft|Gravitation holder månen i kredsløb.|ti lyder som "sj"
+kredsløb|en bane rundt om noget|Månen er i kredsløb om jorden.|d'et kan ikke høres
+lysår|hvor langt lyset når på et år|Et lysår er meget langt.|y'et lyder som y
+meteor|et stjerneskud|En meteor lyste på himlen.|eo
+asteroide|en stor sten i rummet|En asteroide fløj forbi jorden.|oi siges o-i
+komet|en isklump i rummet med en hale|En komet har en lang hale.|
+astronom|en, der studerer stjerner|En astronom kigger i teleskop.|
+rumstation|en station i rummet|Astronauterne bor på en rumstation.|ti lyder som "sj"
+rumfærge|et fly til rummet|En rumfærge lettede.|g'et lyder som "j"

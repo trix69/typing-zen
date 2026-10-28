@@ -1,0 +1,332 @@
+# 1. klasse (the same age as Year 2): common words with silent letters (hv, hj, d after l and n), soft d,
+# double consonants and the -er, -e endings. The word is always in its sentence in the same form.
+fordi|sådan er grunden|Jeg er glad, fordi det er weekend.|d'et kan ikke høres
+hvorfor|spørgeord om grunden|Hvorfor er himlen blå?|h'et kan ikke høres
+hvordan|spørgeord om måden|Hvordan har du det?|h'et og d'et kan ikke høres
+hvilken|spørgeord om, hvem af flere|Hvilken farve kan du bedst lide?|h'et kan ikke høres
+hvornår|spørgeord om tiden|Hvornår skal vi spise?|h'et kan ikke høres
+hvide|i farven hvid|Jeg har hvide sko.|h'et kan ikke høres
+hval|det største dyr i havet|En hval kan være lige så lang som en bus.|h'et kan ikke høres
+hvalp|en ung hund|Vi har fået en hvalp.|h'et kan ikke høres
+hvede|korn, man laver mel af|Bonden høster hvede.|h'et kan ikke høres
+hjerte|det banker i brystet|Mit hjerte banker hurtigt.|h'et kan ikke høres
+hjemme|i sit hjem|Er din mor hjemme?|h'et kan ikke høres, to m'er
+hjelm|beskytter hovedet|Husk din hjelm, når du cykler.|h'et kan ikke høres
+hjørne|der, hvor to sider mødes|Kosten står i et hjørne.|h'et kan ikke høres
+hjort|et stort dyr med gevir|Vi så en hjort i skoven.|h'et kan ikke høres
+hjælpe|gøre noget for en anden|Vil du hjælpe mig?|h'et kan ikke høres
+holde|have fast i hånden|Kan du holde min taske?|d'et kan ikke høres
+falde|ryge ned|Pas på ikke at falde.|d'et kan ikke høres
+kalde|råbe på nogen|Mor vil kalde os ind.|d'et kan ikke høres
+fjeld|et stort bjerg i Norge|De går op ad et fjeld.|d'et kan ikke høres
+guld|et gult, dyrt metal|Kongen har en krone af guld.|d'et kan ikke høres
+held|når noget går godt af sig selv|Sikke et held!|d'et kan ikke høres
+kilde|der, hvor vand vælder op|Vandet kommer fra en kilde.|d'et kan ikke høres
+mand|en voksen dreng|Der står en mand ved døren.|d'et kan ikke høres
+land|et sted med sin egen konge eller regering|Danmark er et lille land.|d'et kan ikke høres
+strand|sand ved havet|Vi bygger slotte på en strand.|d'et kan ikke høres
+blandt|midt i en gruppe|Hun sidder blandt sine venner.|d'et kan ikke høres
+binde|lave en knude|Kan du binde dine snørebånd?|d'et kan ikke høres
+grund|årsagen, eller jorden et hus står på|Der er en god grund til det.|d'et kan ikke høres
+vende|dreje rundt|Du skal vende siden.|
+sende|lade noget rejse til en anden|Jeg vil sende et brev.|
+ende|der, hvor noget slutter|Vi står i den anden ende af gården.|
+bonde|en, der har en gård|En bonde har mange dyr.|d'et kan ikke høres
+blød|ikke hård|Puden er blød.|d'et er blødt
+gade|en vej i en by|Vi bor på en stille gade.|d'et er blødt
+side|i en bog, eller ved siden af|Slå op på side ti.|d'et er blødt
+gode|rare eller dygtige|Vi er gode venner.|d'et er blødt
+røde|i farven rød|Jeg har røde støvler.|d'et er blødt
+lade|lade noget være, eller en stor bygning|Hestene står i en lade.|d'et er blødt
+ride|sidde på en hest|Jeg lærer at ride.|d'et er blødt
+glæde|det at være glad|Hun hoppede af glæde.|d'et er blødt
+vide|kende til noget|Jeg vil gerne vide det.|d'et er blødt
+hvidt|i farven hvid|Huset er hvidt.|h'et kan ikke høres, og d'et kan ikke høres
+fuldt|helt fyldt|Glasset er fuldt.|d'et kan ikke høres
+koldt|ikke varmt|Det er koldt udenfor.|d'et kan ikke høres
+komme|nå frem til|Hvornår vil du komme?|to m'er
+tømme|gøre tom|Vi skal tømme skraldespanden.|to m'er
+glemme|ikke huske|Jeg må ikke glemme min madpakke.|to m'er
+gemme|lægge et sted, hvor ingen finder det|Hvor skal vi gemme skatten?|to m'er
+svømmer|bevæger sig i vandet|Anden svømmer i søen.|to m'er
+lomme|en lille pose i tøjet|Jeg har en sten i min lomme.|to m'er
+blomme|en frugt, eller det gule i ægget|En blomme er gul.|to m'er
+stemme|lyden, når man taler|Hun har en smuk stemme.|to m'er
+tromme|man slår på den|Han spiller på en tromme.|to m'er
+kappe|en stor kåbe uden ærmer|Troldmanden har en lang kappe.|to p'er
+lappe|sætte et stykke stof på et hul|Mor vil lappe mine bukser.|to p'er
+kopper|flere kopper|Der står kopper på bordet.|to p'er
+toppen|det øverste|Vi klatrer op til toppen.|to p'er
+sukker|sødt pulver|Kom sukker i dejen.|to k'er
+pakke|en gave i papir|Jeg fik en stor pakke.|to k'er
+lækker|smager godt|Kagen er lækker.|to k'er
+klokke|ringer|Skolens klokke ringer.|to k'er
+sokker|man har dem på fødderne|Mine sokker er våde.|to k'er
+takke|sige tak|Husk at takke for maden.|to k'er
+lykke|stor glæde|Held og lykke!|to k'er, og y'et lyder som ø
+bakke|en lille høj|Vi kælker ned ad en bakke.|to k'er
+pinde|små stykker træ|Vi samler pinde til bålet.|d'et kan ikke høres
+skulle|var nødt til|Vi skulle have været hjemme.|to l'er
+kunne|var i stand til|Jeg kunne ikke sove.|to n'er
+ville|havde lyst til|Hun ville gerne med.|to l'er
+bolle|et lille rundt brød|Jeg spiser en bolle med smør.|to l'er
+trille|rulle|Bolden kan trille ned ad bakken.|to l'er
+stille|uden lyd|Vær stille, babyen sover.|to l'er
+tallet|et bestemt tal|Tallet er syv.|to l'er
+kanel|et krydderi|Der er kanel på risengrøden.|
+banan|en gul frugt|Aben spiser en banan.|
+appelsin|en orange frugt|Jeg skræller en appelsin.|to p'er
+citron|en sur gul frugt|En citron er meget sur.|c lyder som s
+jordbær|et rødt bær|Vi plukker jordbær.|d'et kan ikke høres
+hindbær|et lille rødt bær|Jeg elsker hindbær.|d'et kan ikke høres
+blåbær|et lille blåt bær|Vi plukker blåbær i skoven.|
+kartoffel|en rodfrugt, man koger|Jeg skræller en kartoffel.|to f'er
+agurk|en lang grøn grøntsag|Der er agurk i salaten.|
+salat|grønne blade, man spiser|Vi spiser salat til maden.|
+frikadelle|en stegt bolle af hakket kød|Jeg kan godt lide en frikadelle.|to l'er
+pølse|aflang mad af kød|Vil du have en pølse?|
+smør|gult fedt af mælk|Kom smør på brødet.|
+honning|sød mad, som bier laver|Bierne laver honning.|to n'er
+morgenmad|maden om morgenen|Vi spiser havregryn til morgenmad.|
+frokost|maden midt på dagen|Hvad skal vi have til frokost?|
+aftensmad|maden om aftenen|Far laver aftensmad.|
+madpakke|mad, man har med|Jeg har glemt min madpakke.|to k'er
+køleskab|holder maden kold|Mælken står i et køleskab.|
+komfur|man laver mad på det|Pas på, et komfur er varmt.|
+ovn|man bager i den|Kagen er i en varm ovn.|v'et lyder som "u"
+køkken|der, hvor man laver mad|Vi spiser i et stort køkken.|to k'er i midten
+stue|et rum, hvor man hygger|Vi ser tv i en stue.|
+værelse|et rum i et hus|Mit værelse er blåt.|
+badeværelse|der, hvor man vasker sig|Tandbørsten ligger i et badeværelse.|
+toilet|der, hvor man tisser|Hvor er et toilet?|
+hegn|står rundt om en have|Hunden hopper over et hegn.|lyder som "hajn"
+port|en stor dør i et hegn eller en mur|Luk en port efter dig.|
+nøgle|man låser op med den|Jeg har tabt min nøgle.|g'et lyder svagt
+lås|holder en dør lukket|Der er en lås på cyklen.|
+skab|man har ting i det|Tøjet hænger i et skab.|
+skuffe|en kasse, man trækker ud|Skeerne ligger i en skuffe.|to f'er
+spejl|man ser sig selv i det|Jeg ser mig i et spejl.|ej lyder som "aj"
+billede|et maleri eller foto|Jeg har tegnet et billede.|to l'er
+tæppe|man lægger det på gulvet eller over sig|Katten ligger på et tæppe.|to p'er
+gardin|hænger for vinduet|Træk et gardin for.|
+legetøj|ting at lege med|Ryd dit legetøj op.|øj lyder som "åj"
+klodser|små byggeklodser|Vi bygger med klodser.|
+puslespil|et spil med brikker, der passer sammen|Jeg lægger et puslespil.|
+tegning|et billede tegnet med blyant|Se min tegning!|g'et lyder som "j"
+blyant|man skriver og tegner med den|Min blyant er knækket.|y'et lyder som ø
+viskelæder|man visker ud med det|Lån mig dit viskelæder.|
+lineal|man tegner lige streger med den|Brug en lineal.|
+penalhus|et hus til blyanter|Mit penalhus er fuldt.|
+skoletaske|en taske til skolen|Min skoletaske er tung.|
+lektier|opgaver hjemme|Jeg laver lektier.|
+opgave|noget, man skal løse|Det er en svær opgave.|
+elev|en, der går i skole|Hun er en flink elev.|
+frikvarter|en pause i skolen|Vi leger i et frikvarter.|
+gymnastik|sport i skolen|Vi har gymnastik i dag.|y'et lyder som ø
+musik|toner og sange|Jeg kan godt lide musik.|
+dansk|sproget i Danmark|Vi har dansk i første time.|
+matematik|regning med tal|I matematik lærer vi at lægge tal sammen.|
+regne|lægge tal sammen, eller vand fra himlen|Kan du regne det ud?|g'et lyder som "j"
+bogstaver|a, b, c og de andre|Jeg kan alle bogstaver.|
+sætning|ord, der hænger sammen|Skriv en sætning.|
+spørge|stille et spørgsmål|Du må gerne spørge.|g'et lyder svagt
+svare|sige noget tilbage|Hvem kan svare?|
+forstå|vide, hvad noget betyder|Jeg kan ikke forstå det.|
+lære|blive klogere|Jeg vil lære at svømme.|
+tænke|bruge hovedet|Lad mig tænke.|
+huske|ikke glemme|Kan du huske mit navn?|
+kende|vide, hvem nogen er|Jeg vil gerne kende ham bedre.|
+mene|tro eller synes|Hvad vil du mene om det?|
+synes|tro eller mene|Hvad synes du?|y'et lyder som ø
+tro|mene, at noget er rigtigt|Jeg kan ikke tro det.|
+vise|lade nogen se|Kan du vise mig vejen?|
+bruge|gøre brug af|Må jeg bruge din saks?|g'et lyder svagt
+prøve|forsøge|Du må gerne prøve.|
+begynde|starte|Nu kan vi begynde.|y'et lyder som ø
+slutte|holde op|Filmen skal slutte nu.|to t'er
+stoppe|holde op|Bilen skal stoppe ved lyset.|to p'er
+sidde|være på en stol|Du kan sidde her.|to d'er, der ikke kan høres
+stå|være på benene|Vi skal stå i kø.|
+ligge|være ned på noget|Katten kan ligge i solen hele dagen.|to g'er
+lægge|putte noget ned|Du kan lægge bogen på bordet.|to g'er
+sætte|stille noget|Vil du sætte dig her?|to t'er
+bære|holde noget og gå med det|Kan du bære kassen?|
+trække|hive|Hesten kan trække vognen.|to k'er
+skubbe|puffe|Du må ikke skubbe.|to b'er
+tabe|miste noget eller ikke vinde|Jeg vil ikke tabe.|
+vinde|blive nummer et|Hvem skal vinde?|d'et kan ikke høres
+spille|lege et spil eller spille musik|Skal vi spille kort?|to l'er
+danse|bevæge sig til musik|Vi elsker at danse.|
+gynge|svinge frem og tilbage|Jeg vil gynge højt.|y'et lyder som ø
+kravle|bevæge sig på hænder og knæ|Babyen kan kravle.|
+fange|gribe|Kan du fange mig?|
+jagte|løbe efter|Katten kan jagte musen.|
+bide|tage fat med tænderne|Hunden vil ikke bide.|d'et er blødt
+gø|hundens lyd|Hunden begynder at gø.|
+brøle|løvens lyd|Løven kan brøle højt.|
+pibe|en fin lyd|Musen begynder at pibe.|
+mjave|kattens lyd|Katten vil mjave ved døren.|
+dyr|levende væsener|Hvilket dyr kan du bedst lide?|
+elefant|et stort gråt dyr med snabel|En elefant har en lang snabel.|
+giraf|et dyr med en meget lang hals|En giraf er meget høj.|
+zebra|en hest med striber|En zebra har sorte og hvide striber.|
+tiger|en stor kat med striber|En tiger er stribet.|
+krokodille|et farligt dyr med store tænder|En krokodille lever ved floden.|to l'er
+slange|et langt dyr uden ben|En slange kan hvæse.|
+frø|et grønt dyr, der hopper|En frø kvækker i søen.|
+snegl|et lille dyr med hus på ryggen|En snegl kravler langsomt.|g'et kan ikke høres
+edderkop|et dyr med otte ben|En edderkop spinder et net.|to d'er
+sommerfugl|et insekt med flotte vinger|En sommerfugl sidder på blomsten.|to m'er, og g'et kan ikke høres
+mariehøne|en rød bille med prikker|En mariehøne har sorte prikker.|
+pingvin|en fugl, der ikke kan flyve|En pingvin kan svømme.|
+papegøje|en farverig fugl, der kan tale|En papegøje kan sige hej.|øj lyder som "åj"
+delfin|et klogt dyr i havet|En delfin kan hoppe højt.|
+egern|et lille dyr med busket hale|Et egern samler nødder.|
+pindsvin|et lille dyr med pigge|Et pindsvin sover i haven.|d'et kan ikke høres
+ged|et dyr med horn og skæg|En ged spiser alt.|d'et er blødt
+æsel|et dyr, der ligner en lille hest|Et æsel har lange ører.|
+kylling|en ung høne|En kylling er gul og lille.|y'et lyder som ø, to l'er
+hane|en han-høne|En hane galer om morgenen.|
+kalv|en ung ko|En kalv drikker mælk.|v'et kan ikke høres
+føl|en ung hest|Et føl kan stå lige efter, det er født.|
+lam|et ungt får|Et lam er blødt og hvidt.|
+killing|en ung kat|En killing leger med et nøgle garn.|to l'er
+bondegård|et sted med marker og dyr|Vi besøger en bondegård.|d'et kan ikke høres
+traktor|en stor maskine på gården|En traktor kører på marken.|
+mark|et stort stykke jord med korn eller græs|Køerne går på en mark.|
+stald|et hus til dyr|Grisene bor i en stald.|d'et kan ikke høres
+blad|grønt på træet eller en side|Et blad falder af træet.|d'et er blødt
+gren|en del af et træ|Fuglen sidder på en gren.|
+rod|den del af planten, der er i jorden|En rod suger vand.|d'et er blødt
+bær|små frugter|Vi plukker bær.|
+svampe|vokser i skoven|Vi finder svampe i skoven.|
+bål|ild, man tænder udenfor|Vi sidder ved et bål.|
+ild|flammer, der brænder|Pas på, ild er farligt.|d'et kan ikke høres
+røg|kommer fra ild|Der kommer røg fra skorstenen.|g'et kan ikke høres
+lyn|et glimt på himlen ved uvejr|Et lyn lyser himlen op.|y'et lyder som ø
+torden|det brag, der kommer efter lynet|Jeg er bange for torden.|d'et kan ikke høres
+regnbue|en bue med farver på himlen|Se, en regnbue!|g'et lyder som "j"
+vejr|hvordan det er udenfor|Det er godt vejr i dag.|ej lyder som "aj"
+forår|årstiden efter vinter|Det er forår, og blomsterne kommer frem.|
+efterår|årstiden efter sommer|Det er efterår, og bladene falder.|
+mandag|ugens første dag|På mandag skal vi svømme.|d'et kan ikke høres
+tirsdag|ugens anden dag|I tirsdag var jeg syg.|
+onsdag|ugens tredje dag|Onsdag har vi idræt.|
+torsdag|ugens fjerde dag|På torsdag kommer mormor.|
+fredag|ugens femte dag|Fredag spiser vi pizza.|
+lørdag|ugens sjette dag|Lørdag sover jeg længe.|
+søndag|ugens sidste dag|Søndag går vi tur.|
+januar|årets første måned|I januar er det koldt.|
+måned|cirka fire uger|Om en måned har jeg fødselsdag.|d'et er blødt
+klokken|hvad tiden er|Hvad er klokken?|to k'er
+minut|60 sekunder|Vent et minut.|
+sekund|et meget kort øjeblik|Det tager kun et sekund.|d'et kan ikke høres
+tidlig|ikke sent|Jeg står tidlig op.|g'et kan ikke høres
+sent|ikke tidligt|Det er sent nu.|
+hurtig|meget fart|Geparden er hurtig.|g'et kan ikke høres
+langsom|ikke hurtig|Sneglen er langsom.|
+stærk|har mange kræfter|Far er stærk.|
+svag|har ikke mange kræfter|Jeg føler mig svag.|g'et lyder svagt
+modig|tør gøre noget farligt|Hun er modig.|d'et er blødt, og g'et kan ikke høres
+bange|frygter noget|Jeg er bange for mørke.|
+vred|sur og ophidset|Han blev vred.|d'et er blødt
+ked|trist|Jeg er ked af det.|d'et er blødt
+sulten|vil gerne spise|Jeg er sulten.|
+tørstig|vil gerne drikke|Jeg er tørstig.|g'et kan ikke høres
+venlig|rar mod andre|Hun er venlig.|g'et kan ikke høres
+dejlig|meget rar|Det er en dejlig dag.|ej lyder som "aj", og g'et kan ikke høres
+farlig|kan gøre skade|Vejen er farlig.|g'et kan ikke høres
+rigtig|korrekt|Det var rigtig godt.|g'et kan ikke høres
+forkert|ikke rigtig|Svaret er forkert.|
+svær|ikke nem|Opgaven er svær.|
+klog|ved meget|Uglen er klog.|g'et lyder svagt
+dum|ikke klog|Det var en dum leg.|
+smuk|meget pæn|Blomsten er smuk.|
+grim|ikke pæn|Trolden er grim.|
+gammel|har levet længe|Min farfar er gammel.|to m'er
+ung|ikke gammel|Hun er ung.|u'et lyder som å
+ens|helt magen til|De to sten er ens.|
+anden|ikke den samme|Jeg vil have en anden farve.|d'et kan ikke høres
+første|nummer et|Jeg er den første i køen.|
+sidste|til sidst|Det er den sidste kage.|d'et kan ikke høres
+næste|den, der kommer efter|Hvem er den næste?|
+hver|alle én for én|Hver elev får en blyant.|h'et kan ikke høres
+ingen|ikke nogen|Der er ingen hjemme.|
+nogen|en eller flere|Er der nogen hjemme?|g'et kan næsten ikke høres
+noget|en ting|Jeg har noget i lommen.|g'et kan næsten ikke høres
+nogle|et par stykker|Jeg har nogle kugler.|lyder som "nogen"
+intet|ikke noget|Der er intet i kassen.|
+alt|det hele|Alt er godt.|
+andre|de andre|De andre børn leger.|
+hinanden|den ene og den anden|Vi hjælper hinanden.|d'et kan ikke høres
+deres|som tilhører dem|Det er deres hund.|
+hans|som tilhører ham|Hans cykel er blå.|
+hendes|som tilhører hende|Hendes hår er langt.|d'et kan ikke høres
+vores|som tilhører os|Vores lærer er sød.|
+jeres|som tilhører jer|Er det jeres bold?|
+jer|flere, man taler til|Jeg kan se jer.|
+efter|bagefter|Vi spiser efter skole.|
+før|tidligere end|Vask hænder før maden.|
+mellem|i midten af to|Jeg sidder mellem mor og far.|to l'er
+omkring|rundt om|Vi sidder omkring bålet.|
+gennem|ind på den ene side og ud på den anden|Vi kører gennem tunnelen.|to n'er
+langs|ved siden af hele vejen|Vi går langs stranden.|
+hos|hjemme ved|Jeg sover hos mormor.|
+derfor|af den grund|Det regner, derfor er vi inde.|
+måske|det kan godt være|Måske kommer hun i morgen.|
+endnu|stadig, eller til nu|Er du ikke færdig endnu?|d'et kan ikke høres
+allerede|før man troede|Er du allerede færdig?|to l'er
+bagefter|senere|Vi spiser, og bagefter leger vi.|
+rundt|i en cirkel|Karrusellen kører rundt.|d'et kan ikke høres
+lige|ikke skæv|Tegn en lige streg.|g'et lyder svagt
+næsten|ikke helt|Jeg er næsten færdig.|
+gerne|med glæde|Jeg vil gerne have mere.|
+helt|fuldstændig|Jeg er helt træt.|
+rigtigt|på den rigtige måde|Du stavede det rigtigt.|g'et kan ikke høres
+hvorhen|til hvilket sted|Hvorhen skal vi gå?|h'et kan ikke høres
+derhjemme|hjemme hos sig selv|Jeg har en kat derhjemme.|h'et kan ikke høres
+udenfor|ude|Vi leger udenfor.|
+indenfor|inde|Kom indenfor!|
+ovenpå|på etagen over|Mit værelse er ovenpå.|
+nedenunder|på etagen under|Køkkenet er nedenunder.|
+venstre|den side, hvor hjertet er|Drej til venstre.|
+højre|den modsatte side af venstre|Drej til højre.|øj lyder som "åj"
+krone|danske penge, eller en konges hat|Kongen har en krone på hovedet.|
+penge|man køber ting for dem|Jeg sparer penge.|
+butik|et sted, hvor man køber ting|Vi går i en butik.|
+købmand|en lille butik med mad|Vi køber slik hos en købmand.|d'et kan ikke høres
+slik|søde ting|Vi spiser slik om fredagen.|
+kiosk|en lille butik|Jeg køber en avis i en kiosk.|
+bibliotek|der kan man låne bøger|Vi låner bøger på et bibliotek.|
+hospital|der kommer man, når man er syg|Hun ligger på et hospital.|
+læge|en, der gør syge raske|En læge hjælper syge børn.|g'et lyder som "j"
+politi|passer på, at reglerne bliver holdt|Der kom politi med blå blink.|
+brandmand|slukker ild|En brandmand er modig.|d'et kan ikke høres
+kirke|et hus, hvor man holder gudstjeneste|Klokkerne ringer i en kirke.|
+station|der holder tog og busser|Toget holder på en station.|ti lyder som "sj"
+lufthavn|der letter flyene|Vi kører til en lufthavn.|v'et lyder som "u"
+zoo|en have med vilde dyr|Vi så løver i zoo.|z lyder som s
+cirkus|et telt med klovne og akrobater|Vi var i cirkus.|c lyder som s
+klovn|en sjov person i cirkus|En klovn har en rød næse.|v'et lyder som "u"
+trold|et eventyrvæsen|En trold bor under broen.|d'et kan ikke høres
+heks|en kvinde med trylleri i eventyr|En heks flyver på en kost.|
+pirat|en sørøver|En pirat har en klap for øjet.|
+ridder|en kriger på hest i gamle dage|En ridder har et sværd.|to d'er
+sværd|et langt våben|Ridderen har et sværd.|d'et kan ikke høres
+skat|noget meget værdifuldt|Piraterne leder efter en skat.|
+eventyr|en historie om trolde og prinser|Mor læser et eventyr.|
+historie|en fortælling|Fortæl en historie!|
+fortælle|sige en historie|Vil du fortælle om din ferie?|to l'er
+ferie|fri fra skole|Vi skal på ferie.|
+rejse|tage et sted hen|Vi skal rejse til Norge.|ej lyder som "aj"
+kuffert|en taske til rejsen|Vi pakker en kuffert.|to f'er
+telt|man sover i det på camping|Vi sover i et telt.|
+sjippetov|et tov, man hopper over|Vi hopper i sjippetov.|sj lyder som i sjov
+rutsjebane|man glider ned ad den|Jeg kører på en rutsjebane.|tsj lyder som i tjek
+sandkasse|en kasse med sand at lege i|Vi leger i en sandkasse.|
+fodbold|et spil med en bold og to mål|Jeg spiller fodbold.|d'erne kan ikke høres
+mål|det, man skyder bolden ind i|Han scorede et mål.|
+hold|en gruppe, der spiller sammen|Vi er på samme hold.|d'et kan ikke høres
+kamp|når to hold spiller mod hinanden|Vi vandt en kamp.|
+løb|det at løbe|Vi har løb i idræt.|
+præmie|noget, man vinder|Hun vandt en præmie.|

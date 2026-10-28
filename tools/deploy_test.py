@@ -36,7 +36,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "dist" / "test-site"
 REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
-FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", ".nojekyll"]
+FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", ".nojekyll"]
 PROGRESS = ["typingZen.v2", "typingZen.v1"]  # the users store, and the 1.0 profile it is made from
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ short: 1, long: 2 }"  # Spelling Bee lengths in minutes: live and test
 SHARED = {"typingZen.theme"}
@@ -88,8 +88,8 @@ def build(out):
         sys.exit('test build: index.html needs exactly one <span id="appVersion">')
     html = must(html, '<span id="appVersion">', f'<span id="appVersion" data-build="{stamp}">', "appVersion span")
     html, n = version.ASSETS.subn(r'\g<1>?v=' + stamp + '"', html)
-    if n != 4:
-        sys.exit("test build: index.html should load style.css, words.js, data.js and app.js with ?v=")
+    if n != 5:
+        sys.exit("test build: index.html should load style.css, words.js, words-da.js, data.js and app.js with ?v=")
     (out / "index.html").write_text(html, encoding="utf-8")
 
     # Keep the test site's progress apart from Luke's, and make any new storage key a conscious choice.

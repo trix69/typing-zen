@@ -5,7 +5,7 @@ Usage:
   python3 tools/make_sw.py           write sw.js in the repo root (do this when shipping, after version.py bump)
   python3 tools/make_sw.py --check   exit 1 if sw.js doesn't match the files (it must, on main)
 
-The offline copy is every file the app uses: index.html, the four files it loads (with their ?v= stamps),
+The offline copy is every file the app uses: index.html, the five files it loads (with their ?v= stamps),
 the manifest and icons, the fonts and the key sounds. The cache name is a prefix plus a fingerprint of all of
 them, so any change makes a new sw.js, which phones notice and install; "Check for updates" in Settings asks
 for it straight away. The test build (deploy_test.py) writes its own with the prefix typing-zen-test-, so the
@@ -18,15 +18,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PREFIX = "typing-zen-"
-ASSET = re.compile(r'(?:href|src)="((?:style\.css|words\.js|data\.js|app\.js)\?v=[^"]*)"')
+ASSET = re.compile(r'(?:href|src)="((?:style\.css|words\.js|words-da\.js|data\.js|app\.js)\?v=[^"]*)"')
 
 
 def files(root):
     """The paths the offline copy needs, as the page asks for them (relative to the site root)."""
     html = (root / "index.html").read_text(encoding="utf-8")
     assets = ASSET.findall(html)
-    if len(assets) != 4:
-        sys.exit("make_sw: index.html should load style.css, words.js, data.js and app.js with ?v=")
+    if len(assets) != 5:
+        sys.exit("make_sw: index.html should load style.css, words.js, words-da.js, data.js and app.js with ?v=")
     rest = ["manifest.webmanifest"] + sorted(
         p.relative_to(root).as_posix()
         for d in ("icons", "fonts", "sounds")

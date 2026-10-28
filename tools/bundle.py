@@ -3,7 +3,7 @@
 
 Usage:  python3 tools/bundle.py OUT.html
 
-Inlines style.css (with the fonts in fonts/ as data URIs), the three scripts, and the key sounds in
+Inlines style.css (with the fonts in fonts/ as data URIs), the four scripts, and the key sounds in
 sounds/ (as window.TZ_SOUNDS, a map of path to data URI that app.js fetches from),
 and drops the doctype/html/head/body wrapper (the artifact host adds its own). The GitHub Pages copy doesn't need this;
 it serves the folder as it is.
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SCRIPTS = ["words.js", "data.js", "app.js"]
+SCRIPTS = ["words.js", "words-da.js", "data.js", "app.js"]
 
 
 def main():
@@ -51,7 +51,7 @@ def main():
     if n != 1:
         sys.exit("index.html no longer has one <!-- pwa: ... <!-- /pwa --> block; update tools/bundle.py")
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
-    html = re.sub(r'(href|src)="([\w.]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
+    html = re.sub(r'(href|src)="([\w.-]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
     tags = "\n".join(f'<script src="{f}"></script>' for f in SCRIPTS)
     if tags not in html or '<link rel="stylesheet" href="style.css">' not in html:
         sys.exit("index.html no longer has the expected <link>/<script> tags; update tools/bundle.py")
