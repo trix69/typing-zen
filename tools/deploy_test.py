@@ -72,7 +72,11 @@ def build(out):
     manifest = must(manifest, '"short_name": "Typing Zen"', '"short_name": "TZ Test"', "manifest short_name")
     manifest = must(manifest, '"id": "/typing-zen/"', '"id": "/typing-zen-test/"', "manifest id")
     (out / "manifest.webmanifest").write_text(manifest, encoding="utf-8")
-    stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES)).hexdigest()[:10]
+    # Every file the offline copy holds, so a change to only an icon, a font or a sound still counts as a new
+    # build for "Check for updates" (it would otherwise say "Up to date" while sw.js has changed).
+    extra = sorted(p for d in ("icons", "fonts", "sounds") for p in (ROOT / d).rglob("*") if p.is_file())
+    stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES + ["manifest.webmanifest"])
+                         + b"".join(p.read_bytes() for p in extra)).hexdigest()[:10]
     (out / "version.json").write_text('{"version": "%s", "build": "%s"}\n' % (shown, stamp), encoding="utf-8")
 
     html = (out / "index.html").read_text(encoding="utf-8")
