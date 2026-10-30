@@ -1,6 +1,6 @@
 /* Typing Zen service worker, written by tools/make_sw.py: do not edit by hand.
    It keeps an offline copy of every file the app uses. VERSION changes whenever any of them does. */
-const VERSION = "typing-zen-69cf3b5362";
+const VERSION = "typing-zen-fd8c817f2c";
 /* Only this site's caches: the live and test sites share trix69.github.io, so never touch the other's. */
 const MINE = (k) => /^typing\-zen\-[0-9a-f]{10}$/.test(k);
 const FILES = [
