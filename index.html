@@ -9,10 +9,11 @@
 <meta name="theme-color" content="#ffffff">
 <script>
 // Theme, set before the page draws so the wrong one never flashes. Saved apart from progress
-// (typingZen.v1) under typingZen.theme: "light", "dark" or "auto" (the default, follows the device).
+// (typingZen.v1) under typingZen.theme: "light" (the default since 2026-11-01, user's request), "dark" or "auto"
+// (follows the device). A device that chose one keeps it.
 (function () {
-  var root = document.documentElement, mode = "auto";
-  try { var s = localStorage.getItem("typingZen.theme"); if (s === "light" || s === "dark") mode = s; } catch (e) {}
+  var root = document.documentElement, mode = "light";
+  try { var s = localStorage.getItem("typingZen.theme"); if (s === "light" || s === "dark" || s === "auto") mode = s; } catch (e) {}
   window.THEME = {
     mode: mode,
     set: function (m) {
