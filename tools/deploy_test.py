@@ -15,6 +15,8 @@ The test copy differs from the live one in a few ways:
   version.json, on the version line (data-build) and on the files' ?v=, so "Check for updates" sees each
   new test build and the browser fetches it fresh;
 - Spelling Bee offers TEST_LENGTHS (5, 10 or 20 minutes) instead of the live 10 or 20, so a shorter session can be tried
+- A word is mastered after TEST_MASTER_RUN (2) right-first-try spellings in a row instead of the live 3, so mastery
+  can be tried quickly (user's request, 2026-11-01)
   (user's request, 2026-10-31);
 - progress is saved as typingZen.v2-test (and a 1.0 profile is read from typingZen.v1-test). Both
   sites share the trix69.github.io origin, so without this, trying the test site in Luke's browser
@@ -40,6 +42,7 @@ URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", ".nojekyll"]
 PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, and a Google sign-in under way from the home screen
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
+LIVE_MASTER_RUN, TEST_MASTER_RUN = 3, 2  # right-first-try spellings in a row that make a word mastered: live and test
 SHARED = {"typingZen.theme"}
 RIBBON = ('<div class="test-ribbon" aria-hidden="true">TEST</div>\n'
           '<style>.test-ribbon { position: fixed; z-index: 300; top: 0; left: 50%; transform: translateX(-50%); '
@@ -98,6 +101,7 @@ def build(out):
     for key in PROGRESS:
         js = must(js, f'"{key}"', f'"{key}-test"', f'"{key}" key in app.js')
     js = must(js, f"const LENGTHS = {LIVE_LENGTHS};", f"const LENGTHS = {TEST_LENGTHS}; // test build only (live: {LIVE_LENGTHS})", "LENGTHS line in app.js")
+    js = must(js, f"const MASTER_RUN = {LIVE_MASTER_RUN};", f"const MASTER_RUN = {TEST_MASTER_RUN}; // test build only (live: {LIVE_MASTER_RUN})", "MASTER_RUN line in app.js")
     keys = set(re.findall(r"""["'`](typingZen[.\w-]*)""", js + html))
     unknown = sorted(k for k in keys if k not in SHARED and not k.endswith("-test"))
     if unknown:
