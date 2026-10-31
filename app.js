@@ -1843,7 +1843,7 @@
     start("practise");
   });
   $("#switchBtn").addEventListener("click", () => showPanel("switch"));
-  $("#newBtn").addEventListener("click", () => showPanel("new"));
+  // No "I'm new here" on Welcome back (user's request, 2026-11-01): a new user starts from Switch user.
   $("#switchNew").addEventListener("click", () => showPanel("new"));
   $("#switchBack").addEventListener("click", () => showWelcome());
   $("#userList").addEventListener("click", (e) => { const b = e.target.closest(".user"); if (b) useProfile(b.dataset.id); });
@@ -2093,11 +2093,13 @@
   document.addEventListener("visibilitychange", () => syncNow());
   window.addEventListener("online", () => syncNow());
 
-  // Settings for a Google user: how the sync is going, and Log out.
+  // Settings for a Google user: how the sync is going, and Log out. A typed-name user gets Remove account in its
+  // place (user's request, 2026-11-01).
   function showSync() {
     const g = chosen && profile.google && cloudOn();
     $("#syncRow").hidden = !g;
-    $("#logoutBtn").hidden = !g;
+    $("#logoutBtn").hidden = !chosen;
+    $("#logoutBtn").textContent = profile.google ? tx("Log out", "Log ud") : tx("Remove account", "Fjern konto");
     if (!g) return;
     const cs = profile.cloud || {}, email = profile.google.email;
     const at = cs.at ? new Date(cs.at).toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" }) : "";
@@ -2129,16 +2131,25 @@
   // Log out warns first: this user and their history leave this device (they stay with the Google account and
   // come back on signing in again). Anything not yet synced is sent first; if that fails, it says it will be lost.
   const unsynced = () => { const cs = profile.cloud || {}; return (profile.updated || "") > (cs.at || "") || profile.sessions.some((x) => x.date > (cs.sentTo || "")); };
+  // Log out (a Google user) only asks to be sure: the progress stays with the Google account (user's request,
+  // 2026-11-01). Remove account (a typed name) warns: its progress lives only on this device and goes with it.
   function showLogout(on) {
     $("#logoutConfirm").hidden = !on;
     if (!on) return;
     const n = profile.name;
-    $("#logoutAsk").textContent = tx(
-      `Log ${n} out? ${n} and all of ${n}'s history (stars, best speed, tricky words, words to practise and the last 7 days) will be removed from this device. It stays saved with the Google account and comes back when ${n} signs in with Google again.`,
-      `Log ${n} ud? ${n} og hele ${owner(n)} historik (stjerner, bedste fart, svære ord, ord at øve og de sidste 7 dage) fjernes fra denne enhed. Den forbliver gemt på Google-kontoen og kommer tilbage, når ${n} logger ind med Google igen.`) +
-      (unsynced() ? " " + tx("Some progress from this device isn't saved to Google yet; it will be sent first, but if this device is offline it will be lost.",
-        "Nogle fremskridt fra denne enhed er ikke gemt på Google endnu; de sendes først, men hvis enheden er offline, går de tabt.") : "");
-    $("#logoutYes").textContent = tx("Log out", "Log ud");
+    if (profile.google) {
+      $("#logoutAsk").textContent = tx(
+        `Are you sure you want to log out? ${n}'s progress is still saved, and carries on from whichever device ${n} signs in on next.`,
+        `Er du sikker på, at du vil logge ud? ${owner(n)} fremskridt er stadig gemt og fortsætter på den enhed, ${n} logger ind på næste gang.`) +
+        (unsynced() ? " " + tx("Some progress from this device isn't saved to Google yet; it will be sent first, but if this device is offline it will be lost.",
+          "Nogle fremskridt fra denne enhed er ikke gemt på Google endnu; de sendes først, men hvis enheden er offline, går de tabt.") : "");
+      $("#logoutYes").textContent = tx("Log out", "Log ud");
+    } else {
+      $("#logoutAsk").textContent = tx(
+        `Remove ${n}? ${n} and all of ${n}'s progress (stars, best speed, tricky words, words to practise, mastered words and the history) will be deleted from this device. This can't be undone.`,
+        `Fjern ${n}? ${n} og alle ${owner(n)} fremskridt (stjerner, bedste fart, svære ord, ord at øve, mestrede ord og historikken) slettes fra denne enhed. Det kan ikke fortrydes.`);
+      $("#logoutYes").textContent = tx(`Remove ${n}`, `Fjern ${n}`);
+    }
     $("#logoutYes").focus();
   }
   $("#logoutBtn").addEventListener("click", () => { showClear(0); showLogout(true); });
@@ -2146,11 +2157,13 @@
   $("#logoutYes").addEventListener("click", async () => {
     const p = profile;
     $("#logoutYes").disabled = true;
-    await Promise.race([syncNow(), new Promise((r) => setTimeout(r, 8000))]);
-    try {
-      const c = await Promise.race([userCloud(p.google.uid), new Promise((r) => setTimeout(r, 3000))]);
-      if (c && c.auth.currentUser && c.auth.currentUser.uid === p.google.uid) await c.au.signOut(c.auth); // only this user
-    } catch { /* offline: the account is forgotten here anyway */ }
+    if (p.google && cloudOn()) {
+      await Promise.race([syncNow(), new Promise((r) => setTimeout(r, 8000))]);
+      try {
+        const c = await Promise.race([userCloud(p.google.uid), new Promise((r) => setTimeout(r, 3000))]);
+        if (c && c.auth.currentUser && c.auth.currentUser.uid === p.google.uid) await c.au.signOut(c.auth); // only this user
+      } catch { /* offline: the account is forgotten here anyway */ }
+    }
     $("#logoutYes").disabled = false;
     delete store.users[p.id];
     chosen = false;
