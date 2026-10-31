@@ -100,6 +100,8 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
           <p class="week-key" id="weekKey" aria-hidden="true" hidden><span><i class="first"></i>Right first try</span><span><i class="practised"></i>Practised</span><span><i class="again"></i>To practise</span></p>
           <button type="button" class="ghost small" id="missedBtn" aria-haspopup="dialog" hidden>See the words</button>
         </div>
+        <p class="week-line" id="masterLine" hidden></p>
+        <div class="master-chart" id="masterChart" hidden></div>
       </div>
       <div class="intro-actions">
         <button type="button" class="primary" id="continueBtn">Continue</button>
@@ -191,8 +193,9 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
       <div class="stars" id="stars"></div>
       <h2 id="resTitle">Round complete</h2>
       <div class="figures">
+        <div id="figMastered" hidden><b id="resMastered">0</b><span>new words mastered</span></div>
         <div id="figFirst" hidden><b id="resFirst">0</b><span>right first try</span></div>
-        <div id="figStruggled" hidden><b id="resStruggled">0</b><span>needed another try</span></div>
+        <div id="figStruggled" hidden><b id="resStruggled">0</b><span>needs more practice</span></div>
         <div><b id="resWpm">0</b><span>words per minute</span></div>
         <div><b id="resAcc">0%</b><span>accuracy (per key press)</span></div>
         <div id="figItems"><b id="resItems">0</b><span>done</span></div>
