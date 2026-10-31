@@ -1865,16 +1865,43 @@
   const CLOUD = "typingZen.users"; // the Firestore collection; the test build uses its own (deploy_test.py)
   const FIREBASE_SDK = "https://www.gstatic.com/firebasejs/10.12.2/firebase-";
   const cloudOn = () => !!FIREBASE && window.top === window;
-  let cloud = null; // Promise of { auth, db, au, fs }, once the SDK has loaded and knows who is signed in
-  function loadCloud() {
-    if (!cloud) {
-      cloud = Promise.all(["app", "auth", "firestore"].map((n) => import(`${FIREBASE_SDK}${n}.js`))).then(([app, au, fs]) => {
-        const a = app.initializeApp(FIREBASE), auth = au.getAuth(a);
+  // Each Google user keeps their own sign-in on the device (user's request, 2026-11-01): one Firebase app per
+  // user, named after their account, so signing in as someone else never signs them out. Signing in happens on
+  // the default app, and the account then moves to its own (keepSignIn). Builds before this kept everyone on the
+  // default app; userCloud() moves such a sign-in across the first time it's needed.
+  let sdk = null; // Promise of [app, auth, firestore] modules
+  const clouds = {}; // app name -> Promise of { auth, db, au, fs }, once that app knows who is signed in
+  function cloudFor(name) {
+    if (!sdk) {
+      sdk = Promise.all(["app", "auth", "firestore"].map((n) => import(`${FIREBASE_SDK}${n}.js`)));
+      sdk.catch(() => { sdk = null; }); // offline: try again next time
+    }
+    if (!clouds[name]) {
+      clouds[name] = sdk.then(([app, au, fs]) => {
+        const a = name === "[DEFAULT]" ? app.initializeApp(FIREBASE) : app.initializeApp(FIREBASE, name), auth = au.getAuth(a);
         return new Promise((done) => { const off = au.onAuthStateChanged(auth, () => { off(); done({ auth, db: fs.getFirestore(a), au, fs }); }); });
       });
-      cloud.catch(() => { cloud = null; }); // offline: try again next time
+      clouds[name].catch(() => { delete clouds[name]; });
     }
-    return cloud;
+    return clouds[name];
+  }
+  const loadCloud = () => cloudFor("[DEFAULT]");
+  const appOf = (uid) => "u-" + uid;
+  // The signed-in account u (on the default app) moves to its own app, and the default app is left signed out.
+  async function keepSignIn(u) {
+    const [mine, front] = await Promise.all([cloudFor(appOf(u.uid)), loadCloud()]);
+    await mine.au.updateCurrentUser(mine.auth, u);
+    if (front.auth.currentUser) await front.au.signOut(front.auth);
+    return mine;
+  }
+  // A Google user's own app, with their sign-in moved over from the default app if an older build left it there.
+  async function userCloud(uid) {
+    const mine = await cloudFor(appOf(uid));
+    if (!mine.auth.currentUser) {
+      const front = await loadCloud();
+      if (front.auth.currentUser && front.auth.currentUser.uid === uid) return keepSignIn(front.auth.currentUser);
+    }
+    return mine;
   }
   // At most 20 characters, as a typed name (Hermes R46.2): a longer full name becomes the first name.
   const googleName = (u) => {
@@ -1945,9 +1972,9 @@
     btn.disabled = true;
     try {
       const u = await (back || signInGoogle("start"));
+      const c = await keepSignIn(u);
       const mine = users().find((x) => x.google && x.google.uid === u.uid);
       if (mine) { mine.name = googleName(u); return useProfile(mine.id); }
-      const c = await loadCloud();
       const snap = await c.fs.getDoc(c.fs.doc(c.db, CLOUD, u.uid));
       if (snap.exists()) {
         const r = snap.data(), id = newId();
@@ -2020,7 +2047,7 @@
     cs.state = "busy";
     showSync();
     syncing = (async () => {
-      const c = await loadCloud(), { fs } = c;
+      const c = await userCloud(p.google.uid), { fs } = c;
       if (!c.auth.currentUser || c.auth.currentUser.uid !== p.google.uid) { cs.state = "out"; return; }
       const ref = fs.doc(c.db, CLOUD, p.google.uid), col = fs.collection(ref, "sessions");
       const sentTo = cs.sentTo || "", mine = p.sessions.filter((x) => x.date > sentTo); // made here since the last sync
@@ -2091,6 +2118,7 @@
           `Det er en anden Google-konto (${u.email}). Log ind som ${profile.google.email}.`);
         return;
       }
+      await keepSignIn(u);
       await syncNow();
     } catch (e) {
       const m = signInError(e);
@@ -2120,8 +2148,8 @@
     $("#logoutYes").disabled = true;
     await Promise.race([syncNow(), new Promise((r) => setTimeout(r, 8000))]);
     try {
-      const c = await Promise.race([loadCloud(), new Promise((r) => setTimeout(r, 3000))]);
-      if (c && c.auth.currentUser && c.auth.currentUser.uid === p.google.uid) await c.au.signOut(c.auth);
+      const c = await Promise.race([userCloud(p.google.uid), new Promise((r) => setTimeout(r, 3000))]);
+      if (c && c.auth.currentUser && c.auth.currentUser.uid === p.google.uid) await c.au.signOut(c.auth); // only this user
     } catch { /* offline: the account is forgotten here anyway */ }
     $("#logoutYes").disabled = false;
     delete store.users[p.id];
