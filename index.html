@@ -95,10 +95,10 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
       <h2>Welcome back, <span id="backName"></span>!</h2>
       <div class="week">
         <p class="week-line" id="weekLine"></p>
-        <ol class="week-chart" id="weekChart" aria-label="Words tested and right first try each day, last 7 days" hidden></ol>
+        <ol class="week-chart" id="weekChart" aria-label="Words tested each day, last 7 days: right first try, practised and to practise" hidden></ol>
         <div class="week-foot">
-          <p class="week-key" id="weekKey" aria-hidden="true" hidden><span><i class="first"></i>Right first try</span><span><i class="again"></i>Needed another try</span></p>
-          <button type="button" class="ghost small" id="missedBtn" aria-haspopup="dialog" hidden>Words to practise</button>
+          <p class="week-key" id="weekKey" aria-hidden="true" hidden><span><i class="first"></i>Right first try</span><span><i class="practised"></i>Practised</span><span><i class="again"></i>To practise</span></p>
+          <button type="button" class="ghost small" id="missedBtn" aria-haspopup="dialog" hidden>See the words</button>
         </div>
       </div>
       <div class="intro-actions">
@@ -328,12 +328,11 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
     <button type="button" class="sheet-done" id="lenCancel">Cancel</button>
   </div>
 </div>
-<!-- WORDS TO PRACTISE (over the stats on the welcome screen) -->
+<!-- THE WORDS OF THE LAST 7 DAYS: right first try and needs more practice (over the stats on the welcome screen) -->
 <div class="sheet" id="missedSheet" role="dialog" aria-modal="true" aria-labelledby="missedTitle" hidden>
   <div class="sheet-card" id="missedCard" tabindex="-1">
     <div class="sheet-body">
-    <h2 id="missedTitle">Words to practise</h2>
-    <p class="note">Not right first try, last 7 days.</p>
+    <h2 id="missedTitle">Last 7 days</h2>
     <div id="missedDays"></div>
     </div>
     <button type="button" class="sheet-done" id="missedDone">Done</button>
