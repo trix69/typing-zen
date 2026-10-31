@@ -73,7 +73,16 @@ def main():
         import make_sw
         if not (ROOT / "sw.js").exists() or (ROOT / "sw.js").read_text(encoding="utf-8") != make_sw.source(ROOT, make_sw.PREFIX):
             sys.exit("sw.js is out of date: run python3 tools/make_sw.py")
-        print(f"Version {seen['VERSION']}, sw.js up to date")
+        # An unmatched "}" silently ends a stylesheet: every rule after it is dropped (Hermes R47.1).
+        css = re.sub(r"/\*.*?\*/", "", (ROOT / "style.css").read_text(encoding="utf-8"), flags=re.S)
+        depth = 0
+        for line_no, line in enumerate(css.split("\n"), 1):
+            depth += line.count("{") - line.count("}")
+            if depth < 0:
+                sys.exit("style.css: unmatched } (rules after it are ignored by browsers)")
+        if depth:
+            sys.exit("style.css: unclosed {")
+        print(f"Version {seen['VERSION']}, sw.js up to date, style.css braces balanced")
     elif args == ["bump"]:
         write(bumped(found()["VERSION"]))
     elif len(args) == 2 and args[0] == "set":
