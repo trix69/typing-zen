@@ -38,7 +38,7 @@ SITE = ROOT / "dist" / "test-site"
 REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", ".nojekyll"]
-PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users"]  # the users store, the 1.0 profile it is made from, and the Firestore collection of Google users
+PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, and a Google sign-in under way from the home screen
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
 SHARED = {"typingZen.theme"}
 RIBBON = ('<div class="test-ribbon" aria-hidden="true">TEST</div>\n'
