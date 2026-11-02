@@ -1,11 +1,26 @@
 rules_version = '2';
 // Typing Zen's Firestore rules (paste into Firebase console > Firestore Database > Rules, then Publish).
 // Each Google user can read and write only their own progress: typingZen.users/{uid} and its sessions, on the
-// live site; typingZen.users-test/{uid} on the test site. Nothing else can be read or written.
+// live site; typingZen.users-test/{uid} on the test site.
+// The board (sharing, 2026-11-03): typingZen.board/{uid} (typingZen.board-test on the test site) holds one entry
+// per user who shares - a masked name, words tested per day for the last 7 days, and when it was written. Any
+// signed-in user can read the board; each user can write or delete only their own entry, in that shape.
+// Nothing else can be read or written.
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{col}/{uid}/{rest=**} {
       allow read, write: if (col == "typingZen.users" || col == "typingZen.users-test")
+        && request.auth != null && request.auth.uid == uid;
+    }
+    match /{col}/{uid} {
+      allow read: if (col == "typingZen.board" || col == "typingZen.board-test") && request.auth != null;
+      allow create, update: if (col == "typingZen.board" || col == "typingZen.board-test")
+        && request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(["name", "days", "updated"])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && request.resource.data.days is map && request.resource.data.days.size() <= 7
+        && request.resource.data.updated is string;
+      allow delete: if (col == "typingZen.board" || col == "typingZen.board-test")
         && request.auth != null && request.auth.uid == uid;
     }
   }
