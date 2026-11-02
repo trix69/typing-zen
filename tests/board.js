@@ -100,7 +100,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   async function signedIn(name, extra = {}) {
     const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
     ctx.account = LUKE;
-    await ctx.addInitScript(([K, u]) => { speechSynthesis.speak = (x) => setTimeout(() => x.onend && x.onend(), 5);
+    await ctx.addInitScript(([K, u]) => { window.__said = []; speechSynthesis.speak = (x) => { window.__said.push(x.text); setTimeout(() => x.onend && x.onend(), 5); };
       if (!localStorage.getItem(K)) { localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u } })); localStorage.setItem('fakeAuth:u-g-luke', JSON.stringify({ uid: 'g-luke', email: 'luke@example.com', displayName: 'Luke Smith' })); } },
       [KEY, { name: 'Luke Smith', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: lukeSessions, google: { uid: 'g-luke', email: 'luke@example.com' }, ...extra }]);
     await ctx.exposeFunction('__fakeDb', fakeDb);
@@ -110,9 +110,17 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
     await p.clock.install(); await p.goto(base); await p.clock.runFor(600);
     return { ctx, p };
   }
-  async function beeToEnd(p) {
-    await p.click('#continueBtn'); await p.clock.runFor(800); await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300);
+  // Spells one word (a Bee with no words done isn't asked about sharing), then lets the time run out.
+  async function spellOne(p) {
+    let w; for (let t = 0; t < 30 && !w; t++) { w = (await p.evaluate(() => (window.__said || []).find((x) => !/ /.test(x)))); if (!w) await p.clock.runFor(100); }
+    if (w) { for (const ch of w) { await p.keyboard.press(ch); await p.clock.runFor(60); } await p.clock.runFor(1600); }
+  }
+  async function beeToEnd(p, words = true) {
+    if (await p.isVisible('#continueBtn')) { await p.click('#continueBtn'); await p.clock.runFor(800); }
+    await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300);
+    await p.evaluate(() => { window.__said = []; });
     await p.click('#lenChoices button'); await p.clock.runFor(900);
+    if (words) await spellOne(p);
     await p.clock.fastForward('21:00'); await p.clock.runFor(3000);
   }
   // 1. First Bee: asked, Yes → the board.
@@ -123,12 +131,12 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await p.click('#shareYes'); await p.clock.runFor(1500);
   ok(await vis(p, '#boardSheet'), 'Yes opens the board');
   const mine = db[`${BOARD}/g-luke`];
-  ok(mine && mine.name === 'Lu*******h' && Object.values(mine.days).reduce((a, x) => a + x, 0) === 5, `my entry on the server: masked "${mine && mine.name}", ${mine && JSON.stringify(mine.days)}`);
+  ok(mine && mine.name === 'Lu*******h' && Object.values(mine.days).reduce((a, x) => a + x, 0) === 6, `my entry on the server: masked "${mine && mine.name}", ${mine && JSON.stringify(mine.days)}`);
   const pod = await p.$$eval('.podium .spot', (l) => l.map((s) => [s.className, s.querySelector('.who')?.textContent, s.querySelector('.stair')?.textContent, Math.round(s.querySelector('.stair')?.getBoundingClientRect().height || 0)]));
   ok(JSON.stringify(pod.map((x) => x.slice(0, 3))) === JSON.stringify([['spot p2', 'Be*n', '2'], ['spot p1', 'Am**y', '1'], ['spot p3', 'Ch*****e', '3']]) && pod[1][3] > pod[0][3] && pod[0][3] > pod[2][3],
     `podium: 2 left, 1 middle and highest, 3 right and lowest ${JSON.stringify(pod)}`);
   const list = await p.$$eval('.board-list li', (l) => l.map((x) => x.textContent.replace(/\s+/g, ' ').trim()));
-  ok(JSON.stringify(list) === JSON.stringify(['#4Da*d40 words', '#5El**a33 words', '…', '#8Ha****h9 words', '#9Luke Smith (you)5 words', '#10Iv*n2 words']), `list: ${JSON.stringify(list)}`);
+  ok(JSON.stringify(list) === JSON.stringify(['#4Da*d40 words', '#5El**a33 words', '…', '#8Ha****h9 words', '#9Luke Smith (you)6 words', '#10Iv*n2 words']), `list: ${JSON.stringify(list)}`);
   ok((await p.textContent('#boardBody .note')) === "You're #9 of 10.", `"${await p.textContent('#boardBody .note')}" (the user with only old days is left out)`);
   await p.click('#boardDone'); await p.clock.runFor(200);
   ok(await vis(p, '#boardBtn'), 'results now show "See where you rank"');
@@ -139,8 +147,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   let st = await store(p);
   ok(!db[`${BOARD}/g-luke`] && st.users.u.share === false && st.users.u.shareAsk === false, 'Settings No removes the entry from the board');
   await p.click('#sheetDone'); await p.clock.runFor(200);
-  await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300); await p.click('#lenChoices button'); await p.clock.runFor(900);
-  await p.clock.fastForward('21:00'); await p.clock.runFor(3000);
+  await beeToEnd(p);
   ok(await vis(p, '#results') && !(await vis(p, '#shareSheet')) && !(await vis(p, '#boardBtn')), 'after No in Settings: no question, no board button');
   await ctx.close();
   // 2. No → asked again next time; Don't remind me again → never asked.
@@ -148,12 +155,10 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await beeToEnd(p); await p.click('#shareNo'); await p.clock.runFor(300);
   st = await store(p);
   ok(st.users.u.share === undefined && !(await vis(p, '#boardBtn')), 'No: nothing shared');
-  await p.click('#againBtn'); await p.clock.runFor(300); await p.click('#lenChoices button').catch(() => {}); await p.clock.runFor(900);
-  await p.clock.fastForward('21:00'); await p.clock.runFor(3000);
+  await p.click('#homeBtn'); await p.clock.runFor(300); await beeToEnd(p);
   ok(await vis(p, '#shareSheet'), 'No: asked again after the next Bee');
   await p.click('#shareNever'); await p.clock.runFor(300);
-  await p.click('#againBtn'); await p.clock.runFor(300); await p.click('#lenChoices button').catch(() => {}); await p.clock.runFor(900);
-  await p.clock.fastForward('21:00'); await p.clock.runFor(3000);
+  await p.click('#homeBtn'); await p.clock.runFor(300); await beeToEnd(p);
   st = await store(p);
   ok(!(await vis(p, '#shareSheet')) && st.users.u.shareAsk === false && st.users.u.share === undefined, "Don't remind me again: not asked any more");
   await ctx.close();
@@ -162,9 +167,52 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await beeToEnd(p);
   ok(!(await vis(p, '#shareSheet')) && await vis(p, '#boardBtn') && db[`${BOARD}/g-luke`], 'a sharer: no question, the button, and the entry written');
   await ctx.close();
+  // Each section from here starts with an undecided user: drop the synced profile (share/shareAsk sync) and entry.
+  const forget = () => { for (const k of Object.keys(db)) if (k.startsWith(`${COL}/g-luke`) || k === `${BOARD}/g-luke`) delete db[k]; };
+  forget();
+  // 5. Hermes R73.1: leaving the results screen before the 0.6 s question cancels it, so it never opens over the
+  // next round or Home; a Bee with no words done doesn't ask at all.
+  ({ ctx, p } = await signedIn('E'));
+  await beeToEnd(p, false);
+  ok(await vis(p, '#results') && !(await vis(p, '#shareSheet')), 'no words done: not asked');
+  await p.click('#homeBtn'); await p.clock.runFor(300);
+  await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300); await p.evaluate(() => { window.__said = []; });
+  await p.click('#lenChoices button'); await p.clock.runFor(900); await spellOne(p);
+  await p.clock.fastForward('21:00'); await p.clock.runFor(100);
+  await p.waitForFunction(() => !document.querySelector('#results').hidden, null, { timeout: 5000 }).catch(() => {});
+  await p.keyboard.press('Enter'); await p.clock.runFor(1500); // straight into the next round, inside the 0.6 s
+  const clock0 = await p.textContent('#clock'); await p.clock.runFor(3000);
+  ok(await vis(p, '#play') && !(await vis(p, '#shareSheet')) && (await p.evaluate(() => document.activeElement.id)) !== 'shareYes', `Enter inside the 0.6 s: the next round, no question over it (clock ${clock0} → ${await p.textContent('#clock')})`);
+  await p.keyboard.press('Escape'); await p.clock.runFor(200); await p.click('#backBtn').catch(() => {}); await p.clock.runFor(300);
+  // Esc straight away (inside the 0.6 s): Home, no question over it.
+  await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300); await p.evaluate(() => { window.__said = []; });
+  await p.click('#lenChoices button'); await p.clock.runFor(900); await spellOne(p);
+  await p.clock.fastForward('21:00'); await p.clock.runFor(100);
+  await p.waitForFunction(() => !document.querySelector('#results').hidden, null, { timeout: 5000 }).catch(() => {});
+  await p.keyboard.press('Escape'); await p.clock.runFor(1500);
+  ok(await vis(p, '#home') && !(await vis(p, '#shareSheet')), 'Esc inside the 0.6 s: Home, no question over it');
+  await ctx.close();
+  forget();
+  // 6. Hermes R73.2: Tab stays inside both sheets; Esc on the question puts focus back on Play again.
+  ({ ctx, p } = await signedIn('F'));
+  await beeToEnd(p);
+  ok(await vis(p, '#shareSheet'), 'asked after a Bee with a word');
+  const inShare = []; for (let k = 0; k < 5; k++) { await p.keyboard.press('Tab'); inShare.push(await p.evaluate(() => document.querySelector('#shareSheet').contains(document.activeElement))); }
+  ok(inShare.every(Boolean), `Tab x5 stays in the share question (${inShare.join(',')})`);
+  await p.keyboard.press('Escape'); await p.clock.runFor(200);
+  ok(!(await vis(p, '#shareSheet')) && (await p.evaluate(() => document.activeElement.id)) === 'againBtn', `Esc closes it and focus goes to Play again (${await p.evaluate(() => document.activeElement.id)})`);
+  await p.evaluate(() => { const u = JSON.parse(localStorage.getItem(Object.keys(localStorage).find((k) => k.startsWith('typingZen.v2')))); });
+  await ctx.close();
+  ({ ctx, p } = await signedIn('G', { share: true }));
+  await beeToEnd(p); await p.click('#boardBtn'); await p.clock.runFor(1500);
+  const before = (await store(p)).users.u.bucket;
+  const inBoard = []; for (let k = 0; k < 6; k++) { await p.keyboard.press('Tab'); inBoard.push(await p.evaluate(() => document.querySelector('#boardSheet').contains(document.activeElement))); }
+  await p.keyboard.press('Enter'); await p.clock.runFor(300);
+  ok(inBoard.every(Boolean) && (await store(p)).users.u.bucket === before, `Tab x6 stays in the board, and Enter changes nothing behind it (${inBoard.join(',')})`);
+  await ctx.close();
   // 4. A typed-name user: never asked; Settings says sharing needs Google.
   const c4 = await b.newContext({ viewport: { width: 1180, height: 820 } });
-  await c4.addInitScript((K) => { speechSynthesis.speak = (x) => setTimeout(() => x.onend && x.onend(), 5); if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Mia', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: [] } } })); }, KEY);
+  await c4.addInitScript((K) => { window.__said = []; speechSynthesis.speak = (x) => { window.__said.push(x.text); setTimeout(() => x.onend && x.onend(), 5); }; if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Mia', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: [] } } })); }, KEY);
   const p4 = await c4.newPage(); p4.on('pageerror', (e) => errs.push('D: ' + e.message)); await p4.clock.install(); await p4.goto(base); await p4.clock.runFor(600);
   await beeToEnd(p4);
   ok(!(await vis(p4, '#shareSheet')) && !(await vis(p4, '#boardBtn')), 'typed-name user: not asked, no board button');
