@@ -1,7 +1,7 @@
 const { chromium, devices } = require('playwright');
 const base = process.argv[2] || 'http://localhost:8800/';
 const KEY = process.argv[3] || 'typingZen.v2';
-const shots = __dirname + '/';
+const shots = ''; // screenshots go to the folder the suite runs from (run.sh uses a throwaway one), never the repo
 const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process.exitCode = 1; };
 const greyed = (p) => p.evaluate(() => {
   const s = document.querySelector('#sheet');
