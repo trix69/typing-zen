@@ -1,6 +1,6 @@
 /* Typing Zen service worker, written by tools/make_sw.py: do not edit by hand.
    It keeps an offline copy of every file the app uses. VERSION changes whenever any of them does. */
-const VERSION = "typing-zen-a71cca03d8";
+const VERSION = "typing-zen-4704cd680d";
 /* Only this site's caches: the live and test sites share trix69.github.io, so never touch the other's. */
 const MINE = (k) => /^typing\-zen\-[0-9a-f]{10}$/.test(k);
 const FILES = [
@@ -19,6 +19,7 @@ const FILES = [
   "fonts/dm-sans-latin-wght-normal.woff2",
   "fonts/outfit-latin-wght-normal.woff2",
   "icons/apple-touch-icon.png",
+  "icons/bmc-qr.png",
   "icons/icon-192.png",
   "icons/icon-512-maskable.png",
   "icons/icon-512.png",

@@ -43,7 +43,7 @@ FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.j
 PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, and a Google sign-in under way from the home screen
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
 LIVE_MASTER_RUN, TEST_MASTER_RUN = 3, 2  # right-first-try spellings in a row that make a word mastered: live and test
-SHARED = {"typingZen.theme"}
+SHARED = {"typingZen.theme", "typingZen.autoUpd"}  # device settings, the same on both sites
 RIBBON = ('<div class="test-ribbon" aria-hidden="true">TEST</div>\n'
           '<style>.test-ribbon { position: fixed; z-index: 300; top: 0; left: 50%; transform: translateX(-50%); '
           'padding: 2px 10px; border-radius: 0 0 8px 8px; background: #c2410c; color: #fff; '

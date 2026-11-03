@@ -30,6 +30,7 @@ made-up users, so none of them changes anyone's real progress.
 | google, multi, homeapp, reset | Google sign-in and sync, two accounts on one device, home-screen sign-in, Clear history |
 | remove | Log out and Remove account |
 | board | sharing and the ranking board |
+| update | the update question on opening, Automatic update check On/Off, Buy me a coffee |
 | practice, practice2, pcard | Practice: counting, spoken spelling, the home card |
 | gap | the pause before Practice spells a word |
 | triumph | the fanfare for each star level |
