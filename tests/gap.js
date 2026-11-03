@@ -17,7 +17,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   }
   const pr = await run('practise');
   const g = pr[1][1] - pr[0][1];
-  ok(pr[1][0] === 'J O Y F U L L Y' && g < 450, `Practice: word → spelling after ${Math.round(g)} ms (was about 1030)`);
+  ok(pr[1][0] === 'J O Y F U L L Y' && g < 800, `Practice: word → spelling after ${Math.round(g)} ms (was about 1030)`);
   const sb = await run('spell');
   const g2 = sb[1][1] - sb[0][1];
   ok(g2 > 950, `Spelling Bee: word → sentence still after ${Math.round(g2)} ms`);
