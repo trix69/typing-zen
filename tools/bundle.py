@@ -52,6 +52,11 @@ def main():
         sys.exit("index.html no longer has one <!-- pwa: ... <!-- /pwa --> block; update tools/bundle.py")
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = re.sub(r'(href|src)="([\w.-]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
+    # The Support QR code (Settings) is the one image the page loads from icons/: inline it (Hermes R76.2).
+    qr = base64.b64encode((ROOT / "icons" / "bmc-qr.png").read_bytes()).decode()
+    html, n = re.subn(r'src="icons/bmc-qr\.png"', 'src="data:image/png;base64,' + qr + '"', html)
+    if n != 1:
+        sys.exit("index.html no longer has the Support QR code; update tools/bundle.py")
     tags = "\n".join(f'<script src="{f}"></script>' for f in SCRIPTS)
     if tags not in html or '<link rel="stylesheet" href="style.css">' not in html:
         sys.exit("index.html no longer has the expected <link>/<script> tags; update tools/bundle.py")

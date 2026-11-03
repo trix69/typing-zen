@@ -9,14 +9,14 @@ const NEWER = JSON.stringify({ version: '99.0', build: 'ffffffffff' });
   const b = await chromium.launch();
   const open = async (opts = {}) => {
     const ctx = await b.newContext({ viewport: { width: 1180, height: 820 }, serviceWorkers: 'block' });
-    await ctx.addInitScript(([K, off, lang]) => {
+    await ctx.addInitScript(([K, off, lang, fresh]) => {
       speechSynthesis.speak = () => {};
       if (!sessionStorage.done) {
         sessionStorage.done = 1;
-        localStorage.setItem(K, JSON.stringify({ current: 'u1', lang, users: { u1: { id: 'u1', name: 'Luke', year: 'Y3', lang } } }));
+        if (!fresh) localStorage.setItem(K, JSON.stringify({ current: 'u1', lang, users: { u1: { id: 'u1', name: 'Luke', year: 'Y3', lang } } }));
         if (off) localStorage.setItem('typingZen.autoUpd', 'off');
       }
-    }, [KEY, !!opts.off, opts.lang || 'en']);
+    }, [KEY, !!opts.off, opts.lang || 'en', !!opts.fresh]);
     const p = await ctx.newPage(), errs = [];
     p.on('pageerror', (e) => errs.push(e.message));
     let hits = 0, release;
@@ -117,6 +117,20 @@ const NEWER = JSON.stringify({ version: '99.0', build: 'ffffffffff' });
   await p.click('#welcomeSettingsBtn');
   ok(await p.textContent('#lblUpd') === 'Automatisk opdateringstjek' && /Giv mig en kop kaffe/.test(await p.textContent('#coffeeLink')), 'Danish Settings labels');
   ok(await p.getAttribute('.support-qr', 'alt') === 'QR-kode til buymeacoffee.com/trinks', 'Danish QR description');
+  ok(!errs.length, 'no errors ' + errs.join('|'));
+  await ctx.close();
+
+  // 9. A first visit with a name half typed: not asked while typing (Hermes R76.1); asked once the box is left empty.
+  ({ ctx, p, errs } = await open({ newer: true, fresh: true }));
+  await p.waitForTimeout(500);
+  await p.click('#newName'); await p.keyboard.type('Lu');
+  await p.waitForTimeout(2000);
+  ok(!(await shown(p)), 'not asked while a name is being typed');
+  await p.keyboard.type('ke');
+  ok(await p.inputValue('#newName') === 'Luke' && await p.evaluate(() => document.activeElement.id) === 'newName', 'the name keeps every letter and the caret');
+  await p.fill('#newName', ''); await p.evaluate(() => document.activeElement.blur());
+  await p.waitForTimeout(5500);
+  ok(await shown(p), 'asked once the name box is empty and left');
   ok(!errs.length, 'no errors ' + errs.join('|'));
   await ctx.close();
   await b.close();

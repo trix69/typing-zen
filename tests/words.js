@@ -54,6 +54,27 @@ const sess = (date, first, again) => ({ date, game: 'spell', level: 'Year 4', mi
       await ctx.close();
     }
   }
+  // No missed words (user's request, 2026-11-04): the button still shows when words were tested this week, and a
+  // day whose rounds kept no word lists shows its count.
+  for (const [what, sessions] of [['all right first try', [sess(day(1), ['early', 'river'], [])]],
+    ['no word lists kept', [{ date: day(2), game: 'spell', level: 'Year 4', minutes: 10, finished: true, firstTry: 4, struggled: 0 }]]]) {
+    const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await ctx.addInitScript(([K, v]) => { if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); speechSynthesis.speak = () => {}; },
+      [KEY, { current: 'u1', users: { u1: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u1', sessions } } }]);
+    const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
+    await p.goto(base); await p.waitForTimeout(500);
+    ok(await p.isVisible('#missedBtn'), `${what}: See the words shows`);
+    await p.click('#missedBtn'); await p.waitForTimeout(300);
+    const text = (await p.textContent('#missedDays')).replace(/\s+/g, ' ');
+    ok(what === 'all right first try' ? /Right first try \(2\)/.test(text) && !/To practise/.test(text) : /4 words tested\. The words themselves weren't kept for this day\./.test(text), `${what}: ${text.slice(0, 120)}`);
+    await ctx.close();
+  }
+  { const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await ctx.addInitScript(([K, v]) => { if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); },
+      [KEY, { current: 'u1', users: { u1: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u1', sessions: [sess(day(9), ['old'], ['older'])] } } }]);
+    const p = await ctx.newPage(); await p.goto(base); await p.waitForTimeout(500);
+    ok(!(await p.isVisible('#missedBtn')), 'nothing tested in the last 7 days: no See the words');
+    await ctx.close(); }
   ok(!errs.length, 'no page errors ' + errs.join(' | '));
   await b.close();
 })();

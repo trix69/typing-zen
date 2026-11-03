@@ -210,10 +210,26 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await p.keyboard.press('Enter'); await p.clock.runFor(300);
   ok(inBoard.every(Boolean) && (await store(p)).users.u.bucket === before, `Tab x6 stays in the board, and Enter changes nothing behind it (${inBoard.join(',')})`);
   await ctx.close();
-  // 4. A typed-name user: never asked; Settings says sharing needs Google.
+  // 7. The stats card (Welcome back) has "See where you rank" for a sharer (user's request, 2026-11-04).
+  ({ ctx, p } = await signedIn('H', { share: true }));
+  ok(await vis(p, '#intro-back') && await vis(p, '#rankBtn'), 'stats card: a sharer sees "See where you rank"');
+  await p.click('#rankBtn'); await p.clock.runFor(1500);
+  ok(await vis(p, '#boardSheet') && /^You're #\d+ of 10\.$/.test(await p.textContent('#boardBody .note')), `stats card: the board opens before Continue ("${await p.textContent('#boardBody .note')}")`);
+  ok(await p.$$eval('.board-list li.me', (l) => l.length) === 1 && /Luke Smith \(you\)/.test(await p.textContent('.board-list')), 'stats card: the board shows Luke Smith (you)');
+  await p.keyboard.press('Escape'); await p.clock.runFor(200);
+  ok(!(await vis(p, '#boardSheet')) && (await p.evaluate(() => document.activeElement.id)) === 'rankBtn' && await vis(p, '#intro-back'), 'stats card: Esc closes it, focus back on the button, still on Welcome back');
+  await ctx.close();
+  forget();
+  ({ ctx, p } = await signedIn('I'));
+  ok(await vis(p, '#intro-back') && !(await vis(p, '#rankBtn')), 'stats card: no rank button before saying Yes to sharing');
+  await ctx.close();
+  ({ ctx, p } = await signedIn('J', { share: false }));
+  ok(!(await vis(p, '#rankBtn')), 'stats card: no rank button after No');
+  await ctx.close();
   const c4 = await b.newContext({ viewport: { width: 1180, height: 820 } });
   await c4.addInitScript((K) => { window.__said = []; speechSynthesis.speak = (x) => { window.__said.push(x.text); setTimeout(() => x.onend && x.onend(), 5); }; if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Mia', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: [] } } })); }, KEY);
   const p4 = await c4.newPage(); p4.on('pageerror', (e) => errs.push('D: ' + e.message)); await p4.clock.install(); await p4.goto(base); await p4.clock.runFor(600);
+  ok(!(await vis(p4, '#rankBtn')), 'typed-name user: no rank button on the stats card');
   await beeToEnd(p4);
   ok(!(await vis(p4, '#shareSheet')) && !(await vis(p4, '#boardBtn')), 'typed-name user: not asked, no board button');
   await p4.click('#homeBtn'); await p4.clock.runFor(300); await p4.click('#settingsBtn'); await p4.clock.runFor(200);

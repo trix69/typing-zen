@@ -99,7 +99,10 @@ if ("serviceWorker" in navigator && location.protocol !== "file:") {
         <ol class="week-chart" id="weekChart" aria-label="Words tested each day, last 7 days: right first try, practised and to practise" hidden></ol>
         <div class="week-foot">
           <p class="week-key" id="weekKey" aria-hidden="true" hidden><span><i class="first"></i>Right first try</span><span><i class="practised"></i>Practised</span><span><i class="again"></i>To practise</span></p>
-          <button type="button" class="ghost small" id="missedBtn" aria-haspopup="dialog" hidden>See the words</button>
+          <div class="week-btns">
+            <button type="button" class="ghost small" id="missedBtn" aria-haspopup="dialog" hidden>See the words</button>
+            <button type="button" class="ghost small" id="rankBtn" aria-haspopup="dialog" hidden>🏆 See where you rank</button>
+          </div>
         </div>
         <p class="week-line" id="masterLine" hidden></p>
         <div class="master-chart" id="masterChart" hidden></div>
