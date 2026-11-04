@@ -1529,8 +1529,9 @@
   function askUpdate(live) {
     if (!autoUpd()) return;
     // A half-filled first-visit form counts as busy too, focused or not, so the question never takes the caret or
-    // Enter from it (Hermes R76.1, R76.3); it asks on home once the user has joined.
-    const typing = !$("#welcome").hidden && !$("#intro-new").hidden && !!$("#newName").value.trim();
+    // Enter from it (Hermes R76.1, R76.3, R76.4); it asks on home once the user has joined.
+    const typing = document.activeElement === $("#newName") // Hermes R76.4: the caret in the box, even empty
+      || (!$("#welcome").hidden && !$("#intro-new").hidden && !!$("#newName").value.trim());
     const busy = document.hidden || typing || ($("#welcome").hidden && $("#home").hidden) || [...document.querySelectorAll(".sheet")].some((el) => !el.hidden);
     if (busy) { setTimeout(() => askUpdate(live), 5000); return; }
     updPending = live; updOffered = live.build || live.version;

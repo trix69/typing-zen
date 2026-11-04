@@ -147,5 +147,14 @@ const NEWER = JSON.stringify({ version: '99.0', build: 'ffffffffff' });
   ok(await shown(p), 'asked on home after joining');
   ok(!errs.length, 'no errors ' + errs.join('|'));
   await ctx.close();
+  // 11. Clicked into the empty name box, then a pause (Hermes R76.4): not asked; the name then types in full.
+  ({ ctx, p, errs } = await open({ newer: true, fresh: true }));
+  await p.waitForTimeout(300);
+  await p.click('#newName'); await p.waitForTimeout(2500);
+  ok(!(await shown(p)) && await p.evaluate(() => document.activeElement.id) === 'newName', 'caret in the empty name box: not asked');
+  await p.keyboard.type('Luke', { delay: 60 });
+  ok(await p.inputValue('#newName') === 'Luke', 'the name types in full');
+  ok(!errs.length, 'no errors ' + errs.join('|'));
+  await ctx.close();
   await b.close();
 })();
