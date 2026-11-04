@@ -20,10 +20,10 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   const day = new Date().toISOString();
   // The word list itself.
   let p = await mk(null);
-  const list = await p.evaluate(() => WORD_GROUPS_ZH.map((g) => [g.level, g.words.length, g.words.every((w) => /^[a-z]+$/.test(w[5]) && w[1])]));
+  const list = await p.evaluate(() => WORD_GROUPS_ZH.map((g) => [g.level, g.words.length, g.words.every((w) => /^[a-z]+$/.test(w[5]) && w[1] && w[2].includes(w[0]))]));
   const total = list.reduce((n, x) => n + x[1], 0);
   ok(list.length === 6 && list.every((x, i) => x[0] === 'Y' + (i + 1) && x[1] >= 230 && x[2]) && total >= 1450,
-    `words-zh.js: Year 1-6, ${total} words (${list.map((x) => x[1]).join('/')}), every one with a meaning and a-z pinyin`);
+    `words-zh.js: Year 1-6, ${total} words (${list.map((x) => x[1]).join('/')}), every one with a meaning, a-z pinyin and a sentence containing it`);
   await p.context().close();
 
   // 1. An English user with history switches to 中文: asked first, history cleared, Mandarin voice.
@@ -48,12 +48,15 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
 
   // 2. Spelling Bee: the characters and meaning, no pinyin shown; typed as pinyin; capitals and u for ü count.
   await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
-  const card = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, meaning: document.querySelector('#card .meaning')?.textContent, pinyin: !!document.querySelector('#card .pinyin'), sentence: document.querySelectorAll('[data-say="sentence"]').length }));
+  const card = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, meaning: document.querySelector('#card .meaning')?.textContent, pinyin: !!document.querySelector('#card .pinyin'), sentence: document.querySelectorAll('[data-say="sentence"]').length, clue: document.querySelector('#card .zh-clue')?.textContent, mark: document.querySelector('#card .zh-clue mark')?.textContent }));
   const word = await p.evaluate((h) => WORD_GROUPS_ZH.flatMap((g) => g.words).find((w) => w[0] === h), card.hanzi);
   ok(/Type its pinyin, without tones \(ü is v\)/.test(await p.textContent('#finger')), 'hint: ' + await p.textContent('#finger'));
-  ok(word && /^It means /.test(card.meaning) && !card.pinyin && !card.sentence, `card: ${card.hanzi} "${card.meaning}", no pinyin, no sentence button`);
+  ok(word && /^It means /.test(card.meaning) && !card.pinyin, `card: ${card.hanzi} "${card.meaning}", no pinyin shown`);
+  ok(card.clue === word[2] && card.mark === card.hanzi && card.sentence === 1, `example sentence with the word marked: ${card.clue}, and a Hear the sentence button`);
   const said = await p.evaluate(() => window.__said);
-  ok(said.length && said[0][0] === card.hanzi && /^zh/.test(said[0][1]) && said.every((x) => x[0]), `spoken in Mandarin: ${JSON.stringify(said.slice(0, 2))}`);
+  await p.waitForTimeout(1300);
+  const said2 = await p.evaluate(() => window.__said);
+  ok(said2.length >= 2 && said2[0][0] === card.hanzi && said2[1][0] === word[2] && said2.every((x) => /^zh/.test(x[1])), `spoken in Mandarin, the word then its sentence: ${JSON.stringify(said2.slice(0, 2))}`);
   const gaps = await p.evaluate(() => document.querySelector('#line').textContent.length);
   ok(gaps >= word[5].length, `the line has room for ${word[5]} (${gaps})`);
   // Type it in capitals, ü as u.
@@ -100,7 +103,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   await p.click('.mode[data-mode="words"]'); await p.waitForTimeout(700);
   const g = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, pinyin: document.querySelector('#card .pinyin')?.textContent }));
   const gw = await p.evaluate((h) => WORD_GROUPS_ZH[0].words.find((w) => w[0] === h), g.hanzi);
-  ok(gw && g.pinyin === gw[4], `Word Garden: ${g.hanzi} with its pinyin ${g.pinyin}`);
+  ok(gw && g.pinyin === gw[4] && await p.textContent('#card .zh-clue') === gw[2], `Word Garden: ${g.hanzi} with its pinyin ${g.pinyin} and sentence ${gw[2]}`);
   ok(!p.errs.length, 'no errors ' + p.errs.join(' | '));
   await p.context().close();
 
@@ -119,5 +122,14 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   const fit = await p.evaluate(() => { const r = document.querySelector('#card .hanzi').getBoundingClientRect(); return [r.width, document.documentElement.scrollWidth]; });
   ok(fit[0] <= 375 && fit[1] <= 375, `375 px: characters ${Math.round(fit[0])} px wide, page ${fit[1]} px`);
   await p.context().close();
+  // 6. Wide, short screens: the characters, sentence and keyboard fit without scrolling (like English).
+  for (const [w, h] of [[1024, 700], [1366, 768], [1180, 820]]) {
+    p = await mk(zseed([]), '', w, h);
+    await p.click('#continueBtn'); await p.waitForTimeout(300);
+    await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
+    const sh = await p.evaluate(() => document.documentElement.scrollHeight);
+    ok(sh <= h, `${w}x${h}: no scrolling (page ${sh} px)`);
+    await p.context().close();
+  }
   await b.close();
 })();
