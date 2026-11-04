@@ -146,6 +146,19 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
   ok(ub.lang === 'zh' && ub.practiseOrder === 'random' && ub.sessions.length === 1 && ub.byLang.en.sessions.length === 2, `B: follows A's later choices (${ub.lang}, ${ub.practiseOrder}); histories intact`);
   ok(ua.keySound === ub.keySound || (await me(A.p)).keySound === ub.keySound, `B's key sound change is kept too (${ub.keySound})`);
 
+  // 5c. Hermes R84.1: B chooses English while A is in a round, and A syncs mid-round. A keeps its round and language,
+  // the cloud keeps B's choice (A doesn't write its copy over it), and A follows once the round is over.
+  await A.p.click('.mode[data-mode="spell"]'); await A.p.click('#lenChoices button'); await A.p.waitForTimeout(600);
+  await lang(B.p, 'en');
+  const sync = (p) => p.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
+  await sync(A.p); await A.p.waitForTimeout(2500);
+  const mid = await me(A.p), cloud = db[`${COL}/g-luke`].p;
+  ok(mid.lang === 'zh' && await A.p.isVisible('#play') && cloud.lang === 'en' && !!(cloud.setAt || {}).lang,
+    `mid-round sync: A stays in 中文 in its round; the cloud still has B's English and its time (${cloud.lang}, ${!!(cloud.setAt || {}).lang})`);
+  await A.p.keyboard.press('Escape'); await A.p.keyboard.press('Escape'); await A.p.waitForTimeout(400);
+  await sync(A.p); await A.p.waitForTimeout(2500);
+  ok((await me(A.p)).lang === 'en', `after the round A follows B to English (${(await me(A.p)).lang})`);
+
   // 6. Untagged sessions are English (user's request): a Danish user's old untagged session moves under English on load.
   { const ctx = await b.newContext(); const p = await ctx.newPage();
     await p.addInitScript(([K, v]) => { if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
