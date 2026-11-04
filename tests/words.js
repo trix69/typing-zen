@@ -12,7 +12,7 @@ const sess = (date, first, again) => ({ date, game: 'spell', level: 'Year 4', mi
       const ctx = await b.newContext({ viewport: { width: vw, height: vh } });
       const user = { name: 'Luke', year: 'Y4', bucket: 'Y4', lang, id: 'u1', created: day(9), lastUsed: day(0),
         sessions: [sess(day(0), ['because', 'friend', 'protect'], ['island']), sess(day(0, 1), ['island', 'example', 'friend'], ['answer']),
-          sess(day(1), ['early'], []), sess(day(2), [], ['library']), sess(day(3), [], ['kat', 'hund']), sess(day(9), ['old'], ['older'])],
+          sess(day(1), ['early'], []), sess(day(2), [], ['library']), sess(day(3), [], ['kat', 'hund']), sess(day(9), ['old'], ['older'])].map((x) => ({ ...x, lang })),
         practised: { [new Date(day(0)).toDateString()]: { answer: 5 }, [new Date(day(3)).toDateString()]: { kat: 5, hund: 5 } } };
       await ctx.addInitScript(([K, v]) => { if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); speechSynthesis.speak = () => {}; },
         [KEY, { current: 'u1', users: { u1: user } }]);

@@ -27,15 +27,12 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   ok(await p.evaluate(() => document.querySelectorAll('.kbd [data-key="["]').length === 1), 'English keyboard has [');
   await p.click('#settingsBtn'); await p.waitForTimeout(200);
   ok((await p.getAttribute('#segLang [data-lang=en]', 'aria-checked')) === 'true', 'English is checked');
-  await p.click('#segLang [data-lang=da]'); await p.waitForTimeout(200);
-  ok(await p.isVisible('#langConfirm'), 'confirm shown when there is history');
-  const ask = await p.textContent('#langAsk'); console.log('   ask:', ask);
-  ok(/clears Luke's history/.test(ask), 'the warning says history is cleared');
-  await p.click('#langNo'); await p.waitForTimeout(100);
-  ok(!(await p.isVisible('#langConfirm')) && (await p.getAttribute('#segLang [data-lang=en]', 'aria-checked')) === 'true', 'Cancel keeps English');
-  await p.click('#segLang [data-lang=da]'); await p.click('#langYes'); await p.waitForTimeout(300);
+  // Each language keeps its own history (user's request, 2026-11-04): no warning, English's is put away.
+  await p.click('#segLang [data-lang=da]'); await p.waitForTimeout(300);
+  ok(!(await p.$('#langConfirm')), 'no warning: switching clears nothing');
   const st = await p.evaluate((K) => JSON.parse(localStorage.getItem(K)).users.u1, KEY);
-  ok(st.lang === 'da' && st.stars === 0 && st.sessions.length === 0 && !Object.keys(st.tricky).length && st.voice === 'da-female' && st.name === 'Luke' && st.year === 'Y4', 'switched to Danish and history cleared, name and year kept');
+  ok(st.lang === 'da' && st.stars === 0 && st.sessions.length === 0 && !Object.keys(st.tricky).length && st.voice === 'da-female' && st.name === 'Luke' && st.year === 'Y4', 'Danish starts with its own (empty) history, name and year kept');
+  ok(st.byLang.en && st.byLang.en.stars === 7 && st.byLang.en.sessions.length === 1 && st.byLang.en.sessions[0].lang === 'en' && st.byLang.en.tricky.because === 1, 'English history put away, its session tagged en');
   ok((await p.textContent('#sheetTitle')) === 'Indstillinger' && (await p.evaluate(() => document.documentElement.lang)) === 'da', 'Settings in Danish, html lang da');
   ok((await p.textContent('#lblStar')) === 'Kan du lide appen?', 'static text translated');
   await p.click('#sheetDone'); await p.waitForTimeout(200);
@@ -64,10 +61,10 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   ok(true, 'tapped æ (no error)');
   await p.keyboard.press('Escape'); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
   ok((await p.textContent('#todayStats')).startsWith('I dag'), 'home stats in Danish');
-  // back to English: no history yet except seen, so may ask; switch and check English again
-  await p.click('#settingsBtn'); await p.click('#segLang [data-lang=en]'); await p.waitForTimeout(200);
-  if (await p.isVisible('#langConfirm')) { console.log('   ask(da):', await p.textContent('#langAsk')); ok(/Skift Luke til English\? Det sletter Lukes historik/.test(await p.textContent('#langAsk')), 'Danish warning text'); await p.click('#langYes'); }
-  await p.waitForTimeout(300);
+  // Back to English: English's history comes back, Danish's is put away.
+  await p.click('#settingsBtn'); await p.click('#segLang [data-lang=en]'); await p.waitForTimeout(300);
+  const back = await p.evaluate((K) => JSON.parse(localStorage.getItem(K)).users.u1, KEY);
+  ok(back.lang === 'en' && back.stars === 7 && back.bestWpm === 20 && back.sessions.length === 1 && back.tricky.because === 1 && back.voice !== 'da-female' && back.byLang.da && !back.byLang.en, 'back to English: its stars, best speed, session and tricky word are restored, Danish put away');
   ok((await p.textContent('#sheetTitle')) === 'Settings' && (await p.textContent('#lblStar')) === 'Like this app?', 'back to English text');
   ok(await p.evaluate(() => !!document.querySelector('.kbd [data-key="["]') && !document.querySelector('.kbd [data-key="æ"]')), 'English keyboard back');
   ok(p.errs.length === 0, 'no errors: ' + p.errs.join(' | '));
@@ -86,7 +83,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   await p.click('#settingsBtn'); await p.waitForTimeout(200); await p.screenshot({ path: 'dk-settings.png' });
   // no history: switching asks nothing
   await p.click('#segLang [data-lang=en]'); await p.waitForTimeout(200);
-  ok(!(await p.isVisible('#langConfirm')) && (await p.textContent('#sheetTitle')) === 'Settings', 'no history: switches without asking');
+  ok((await p.textContent('#sheetTitle')) === 'Settings', 'no history: switches without asking');
   await p.click('#segLang [data-lang=da]'); await p.waitForTimeout(200);
   await p.click('#sheetDone');
   await p.click('.mode[data-mode=spell]'); await p.waitForTimeout(200);

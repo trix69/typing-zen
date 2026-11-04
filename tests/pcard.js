@@ -16,7 +16,7 @@ const sess = (d, again) => ({ date: d.toISOString(), game: 'spell', level: 'Y3',
     const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
     await ctx.addInitScript(([K, v]) => { speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5); if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); },
       [KEY, { current: 'u', users: { u: { name: 'Luke', year: 'Y3', bucket: 'Y3', lang, id: 'u', practised: practised === 'one' ? { [today]: { answer: 5 } } : practised,
-        sessions: [sess(day(1), ['because']), sess(day(0), practised === 'one' ? ['answer'] : ['answer', 'young', 'remember'])] } } }]);
+        sessions: [sess(day(1), ['because']), sess(day(0), practised === 'one' ? ['answer'] : ['answer', 'young', 'remember'])].map((x) => ({ ...x, lang })) } } }]);
     const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(base); await p.waitForTimeout(400); await p.click('#continueBtn'); await p.waitForTimeout(300);
     const info = await p.textContent('#practiseInfo'), dis = await p.$eval('#practiseBtn', (x) => x.disabled);

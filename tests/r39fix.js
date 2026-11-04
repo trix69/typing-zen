@@ -29,7 +29,6 @@ const seed = (K, lang) => { if (!sessionStorage.done) { sessionStorage.done = 1;
     await p.goto(base); await p.waitForTimeout(300);
     await p.click('#welcomeSettingsBtn'); await p.click('#segLang [data-lang="da"]'); await p.click('#sheetDone'); // store.lang = da
     await p.click('#continueBtn'); await p.click('#settingsBtn'); await p.click('#segLang [data-lang="da"]'); await p.waitForTimeout(100);
-    if (await p.isVisible('#langConfirm')) await p.click('#langYes');
     await p.click('#sheetDone'); await p.reload(); await p.waitForTimeout(300);
     ok((await p.evaluate(() => document.documentElement.lang)) === 'da', 'R39.1b: Luke switched to Danish at home → Danish welcome after reload');
     await ctx.close();
@@ -45,8 +44,8 @@ const seed = (K, lang) => { if (!sessionStorage.done) { sessionStorage.done = 1;
     const dis = await p.evaluate(() => [...document.querySelectorAll('#sheet .user-only button, #sheet .user-only select')].filter(e => e.disabled).length);
     ok(dis === 2 && await p.isHidden('#langNote'), `R39.2: from View stats, Luke's settings usable (${dis} disabled: only Share, which needs Google)`);
     await p.click('#segLang [data-lang="da"]'); await p.waitForTimeout(100);
-    ok(await p.isVisible('#langConfirm'), 'R39.2: language change from View stats warns');
-    await p.click('#langYes'); await p.waitForTimeout(150);
+    ok(!(await p.$('#langConfirm')), 'R39.2: language change from View stats switches straight away (history kept per language)');
+    await p.waitForTimeout(150);
     ok((await p.evaluate((K) => JSON.parse(localStorage.getItem(K)).users.u1.lang, KEY)) === 'da', 'R39.2: Luke switched to Danish');
     await p.click('#sheetDone');
     ok(await p.evaluate(() => document.activeElement.id === 'welcomeSettingsBtn'), 'R39.2: focus back on the visible gear');

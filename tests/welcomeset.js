@@ -78,7 +78,7 @@ const greyed = (p) => p.evaluate(() => {
     ok(await p.evaluate(() => document.activeElement.id === 'welcomeSettingsBtn'), 'switch panel: Esc returns focus to welcome gear');
     await p.click('#userList .user'); await p.waitForTimeout(200);
     await p.click('#settingsBtn'); await p.click('#segLang [data-lang="da"]'); await p.waitForTimeout(100);
-    ok(await p.isVisible('#langConfirm'), 'home: switching a user\'s language still warns');
+    ok((await p.evaluate((K) => { const s = JSON.parse(localStorage.getItem(K)); return s.users[s.current].lang; }, KEY)) === 'da', 'home: switching a user\'s language switches it (no warning, history kept per language)');
     ok(!errs.length, 'back: no errors ' + errs.join('|'));
     await ctx.close();
   }

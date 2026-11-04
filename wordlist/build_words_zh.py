@@ -4,8 +4,9 @@
 
 Each line: characters|pinyin with tone marks, one syllable per character, spaces between|meaning in English.
 The word is shown in characters and typed as its pinyin without tones on an English keyboard, so the typed
-form (`type`) is the pinyin with the tone marks taken off, ü written v (as Chinese input methods do) and no
-spaces: 绿色 lǜ sè -> lvse.
+form (`type`) is the pinyin with the tone marks taken off, ü written v (as Chinese input methods do) and
+a space between the syllables, one per character: 绿色 lǜ sè -> lv se. The app types it without the spaces
+(lvse) and draws a gap between the syllables instead (user's requests, 2026-11-04).
 
 Each sentence line: word|example sentence, in the year's sentences file. Checks, failing the build:
 - every word has exactly one sentence and every sentence a word of that year; the sentence contains the word
@@ -106,9 +107,9 @@ def main():
                 marks = sum(1 for c in unicodedata.normalize("NFD", s0) if unicodedata.category(c) == "Mn" and c != "\u0308")
                 if bare(s0) not in plain or marks > 1:
                     errors.append(f"{where}: {word}: {s0} is not a pinyin syllable")
-            typed = bare(pinyin).replace("ü", "v").replace(" ", "")
-            if not re.fullmatch(r"[a-z]+", typed):
-                errors.append(f"{where}: {word}: typed form {typed!r} isn't plain a-z")
+            typed = bare(pinyin).replace("ü", "v")
+            if not re.fullmatch(r"[a-z]+( [a-z]+)*", typed):
+                errors.append(f"{where}: {word}: typed form {typed!r} isn't a-z syllables with single spaces")
             if word not in sentences:
                 errors.append(f"{where}: {word} has no sentence in sentences/{level}.txt")
             words.append([word, meaning, sentences.pop(word, ""), "", pinyin, typed])
