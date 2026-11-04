@@ -125,12 +125,18 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
   await B.p.click('#statsBtn'); await B.p.waitForTimeout(300);
   ok(/16 words/.test(await B.p.textContent('#weekLine')), `B: last 7 days counts English only: "${await B.p.textContent('#weekLine')}"`);
 
-  // 5. A syncs: B's later change in English switches A to English too, nothing mixed.
+  // 5. A syncs after B's later change in English: A stays in 中文 (the language is per device: user's bug report,
+  // 2026-11-04), and English's history there takes B's.
   await reopen(A.p); await A.p.waitForTimeout(1500);
   u = await me(A.p);
-  ok(u.lang === 'en' && u.sessions.length === 2 && u.sessions.every((x) => x.lang === 'en') && u.stars === 5 && u.byLang.zh.sessions.length === 1 && u.byLang.zh.stars === 2,
-    `A: follows B to English (${u.sessions.length} English sessions, ${u.stars} stars); 中文 kept (${u.byLang.zh.sessions.length} session, ${u.byLang.zh.stars} stars)`);
-
+  ok(u.lang === 'zh' && u.sessions.length === 1 && u.sessions[0].lang === 'zh' && u.stars === 2 && u.byLang.en.sessions.length === 2 && u.byLang.en.stars === 5 && u.byLang.en.tricky.because === 1,
+    `A: stays in 中文 (${u.sessions.length} session, ${u.stars} stars); English apart (${u.byLang.en.sessions.length} sessions, ${u.byLang.en.stars} stars)`);
+  ok((await A.p.evaluate(() => document.querySelector('#segLang [aria-checked=true]')?.dataset.lang || document.documentElement.dataset.wl || '')) !== 'en' && /你|的|是|一|好/.test(await A.p.textContent('#levels')),
+    'A: still showing Chinese words');
+  // B again (English): its language stays English after A's sync in Chinese.
+  await reopen(B.p); await B.p.waitForTimeout(1500);
+  u = await me(B.p);
+  ok(u.lang === 'en' && u.sessions.length === 2 && u.byLang.zh.sessions.length === 1, `B: stays in English (${u.lang}, ${u.sessions.length} sessions; 中文 ${u.byLang.zh.sessions.length})`);
   // 6. Untagged sessions are English (user's request): a Danish user's old untagged session moves under English on load.
   { const ctx = await b.newContext(); const p = await ctx.newPage();
     await p.addInitScript(([K, v]) => { if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
@@ -141,7 +147,38 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
       `untagged session filed under English, the Danish one stays (${r.sessions.length} da, ${r.byLang.en.sessions.length} en)`);
     ok(!errs.length, 'no page errors ' + errs.join(' | '));
     await ctx.close(); }
-  // 7. Clear history clears every language.
+  // 7. A Chinese round saved as English by 1.18 (a sync switched the language mid-round): moved back under Chinese
+  // at load, and practised as pinyin (user's bug report, 2026-11-04: Practice asked for 思考 itself).
+  { const ctx = await b.newContext(); const p = await ctx.newPage(); const e2 = [];
+    p.on('pageerror', (e) => e2.push(e.message));
+    await p.addInitScript(([K, v]) => { speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5); if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
+      [KEY, { current: 'u1', users: { u1: { id: 'u1', name: 'Mei', year: 'Y4', lang: 'en', sessions: [sess(day(1), 3, 0, 'en'), { ...sess(day(0, 30), 1, 1, 'en'), firstTryWords: ['历史'], struggledWords: ['思考'] }],
+        byLang: { zh: { stars: 1, sessions: [] } } } } }]);
+    await p.goto(base); await p.waitForTimeout(500);
+    let m = await me(p);
+    ok(m.sessions.length === 1 && m.sessions[0].lang === 'en' && m.byLang.zh.sessions.length === 1 && m.byLang.zh.sessions[0].lang === 'zh',
+      `the mis-filed Chinese session moved to Chinese (${m.sessions.length} en, ${m.byLang.zh.sessions.length} zh)`);
+    await p.click('#continueBtn'); await p.click('#settingsBtn'); await p.click('#segLang [data-lang=zh]'); await p.waitForTimeout(200); await p.click('#sheetDone');
+    await p.click('#statsBtn'); await p.waitForTimeout(300); await p.click('#missedBtn'); await p.waitForTimeout(300);
+    await p.click('#missedDays button[data-day]'); await p.waitForTimeout(700);
+    const pc = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, line: document.querySelector('#line').textContent }));
+    ok(pc.hanzi === '思考' && pc.line === 'sikao', `Practice: 思考 typed as ${pc.line}`);
+    ok(!e2.length, 'no page errors ' + e2.join(' | '));
+    await ctx.close(); }
+  // 8. The stats card shows only the language on screen (user's request, 2026-11-04).
+  { const ctx = await b.newContext(); const p = await ctx.newPage();
+    await p.addInitScript(([K, v]) => { speechSynthesis.speak = () => {}; if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
+      [KEY, { current: 'u1', users: { u1: { id: 'u1', name: 'Mei', year: 'Y4', lang: 'en', sessions: [{ ...sess(day(0, 50), 2, 1, 'en'), firstTryWords: ['dog', 'cat'], struggledWords: ['because'] }],
+        byLang: { zh: { sessions: [{ ...sess(day(0, 40), 3, 0, 'zh'), firstTryWords: ['你好', '朋友', '苹果'] }] } } } } }]);
+    await p.goto(base); await p.waitForTimeout(500);
+    const card = async () => { const w = await p.textContent('#weekLine'); await p.click('#missedBtn'); await p.waitForTimeout(300); const d = await p.textContent('#missedDays'); await p.keyboard.press('Escape'); await p.waitForTimeout(200); return [w, d]; };
+    const en = await card();
+    ok(/3 words/.test(en[0]) && /because/.test(en[1]) && !/你好/.test(en[1]), `English on screen: only English (${en[0].replace(/\s+/g, ' ')})`);
+    await p.click('#welcomeSettingsBtn'); await p.click('#segLang [data-lang=zh]'); await p.click('#sheetDone'); await p.waitForTimeout(300);
+    const zh = await card();
+    ok(/3 words/.test(zh[0]) && /你好/.test(zh[1]) && !/because|dog/.test(zh[1]), `中文 on screen: only Chinese (${zh[1].replace(/\s+/g, ' ').slice(0, 60)})`);
+    await ctx.close(); }
+  // 9. Clear history clears every language.
   await A.p.click('#settingsBtn'); await A.p.click('#clearBtn'); await A.p.click('#clearYes'); await A.p.click('#clearYes'); await A.p.waitForTimeout(300);
   u = await me(A.p);
   ok(!u.sessions.length && !Object.keys(u.byLang).length, 'Clear history: every language cleared');
