@@ -61,8 +61,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   const wantT = []; { let n = 0; for (const c of word[4].normalize('NFD')) { const m = { '\u0304': 'ˉ', '\u0301': 'ˊ', '\u030c': 'ˇ', '\u0300': 'ˋ' }[c]; if (m) wantT.push([n - 1, m]); else if (/[a-z]/i.test(c)) n++; } }
   ok(JSON.stringify(tones.map((x) => [x[0], x[1]])) === JSON.stringify(wantT) && tones.every((x) => x[2] === '_') && !(await p.$('#card .hint-pinyin')) && !(await p.textContent('#card')).includes(word[4]),
     `tone marks only, over the right dashes: ${word[4]} -> ${JSON.stringify(tones.map((x) => x[0] + x[1]))}; no pinyin letters shown`);
-  const above = await p.evaluate(() => { const s = document.querySelector('#line span[data-tone]'); if (!s) return true; const b = getComputedStyle(s, '::before'); return b.content.length > 2 && b.position === 'absolute'; });
-  ok(above, 'the mark is drawn above its dash');
+  const above = await p.evaluate(() => { const s = document.querySelector('#line span[data-tone]'); if (!s) return true; const b = getComputedStyle(s, '::before'); const mask = b.maskImage || b.webkitMaskImage || ''; return /^url\(/.test(mask) && b.position === 'absolute' && parseFloat(b.bottom) > 0; });
+  ok(above, 'the mark is drawn (a shape, not a font glyph) above its dash');
   ok(card.clue === word[2] && card.mark === card.hanzi && card.sentence === 1, `example sentence with the word marked: ${card.clue}, and a Hear the sentence button`);
   const said = await p.evaluate(() => window.__said);
   await p.waitForTimeout(1300);
