@@ -1038,7 +1038,6 @@ village|a small group of houses in the country|We live in a small village.
 witness|someone who saw something happen|She was a witness to the accident.
 know|to have learned something|I know my times tables.
 amount|how much there is|Add a small amount of salt.
-center|the middle (American spelling of centre)|The city center was busy.
 centre|the middle|The fountain is in the centre of town.
 citrus|fruits like oranges and lemons|Citrus fruits are full of vitamin C.
 column|a tall pillar, or a line going down|Add up the numbers in the column.

@@ -30,6 +30,8 @@ NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 # The spreadsheet stores some words in lower case or without punctuation.
 # Correct them so the child learns the proper spelling.
 FIXES = {"i": "I", "i'd": "I'd", "i've": "I've", "i'll": "I'll", "xbox": "Xbox", "xray": "X-ray"}
+# American spellings left out where the list already has the UK one (user's request, 2026-11-04: centre, not center).
+SKIP = {"center"}
 
 
 def read_sheet(path):
@@ -58,7 +60,7 @@ def read_sheet(path):
     out = []
     for r in rows[1:]:
         word = (r.get(col["Word"]) or "").strip()
-        if not word:
+        if not word or word in SKIP:
             continue
         out.append({
             "group": int(float(r[col["Group"]])),

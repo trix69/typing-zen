@@ -29,7 +29,7 @@
   // this version it becomes the first user (v1 itself is left as it was).
   const KEY = "typingZen.v2";
   const OLD_KEY = "typingZen.v1";
-  const DEFAULTS = () => ({ name: "", year: "", bucket: "Y1", bestWpm: 0, stars: 0, rounds: 0, tricky: {}, seen: {}, sessions: [], mute: false, keySound: "red", voice: "au-female", practised: {}, practiseOrder: "order", learned: {}, streak: {}, lang: "en", byLang: {} });
+  const DEFAULTS = () => ({ name: "", year: "", bucket: "Y1", bestWpm: 0, stars: 0, rounds: 0, tricky: {}, seen: {}, sessions: [], mute: false, keySound: "red", voice: "au-female", practised: {}, practiseOrder: "order", learned: {}, streak: {}, lang: "en", byLang: {}, setAt: {} });
   // Names start with a capital letter. A blank name stays blank: the welcome form asks for one.
   const tidyName = (n) => { n = (n || "").trim(); return n ? n[0].toUpperCase() + n.slice(1) : ""; };
   const newId = () => "u" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -59,6 +59,9 @@
   // cloud a few seconds later (onSave is set in the Google section).
   let onSave = null;
   const save = () => { saveLocal(); if (onSave) onSave(); };
+  // When each setting was last changed by hand (user's bug report, 2026-11-04: Practice order went back to In order
+  // after another device's sync). A sync keeps, setting by setting, the value changed last (mergeProfile).
+  const stamp = (...keys) => { profile.setAt = profile.setAt || {}; const t = new Date().toISOString(); for (const k of keys) profile.setAt[k] = t; };
   // A user's scores and history, as they are after Clear history or for a language not used yet.
   const FRESH = () => ({ bestWpm: 0, stars: 0, rounds: 0, tricky: {}, seen: {}, sessions: [], practised: {}, learned: {}, streak: {}, beeToday: null });
   // Each language keeps its own history and voice (user's request, 2026-11-04): the profile holds the current
@@ -1389,7 +1392,7 @@
   }
   $("#levels").addEventListener("click", (e) => {
     const b = e.target.closest(".level");
-    if (b && !b.disabled) { profile.bucket = b.dataset.bucket; save(); renderHome(); }
+    if (b && !b.disabled) { profile.bucket = b.dataset.bucket; stamp("bucket"); save(); renderHome(); }
   });
   document.querySelectorAll(".mode").forEach((b) => b.addEventListener("click", () => {
     b.blur();
@@ -1644,7 +1647,7 @@
   // Practice order (user's request, 2026-10-28): the day's words in the order they were missed, or shuffled.
   $("#segOrder").addEventListener("click", (e) => {
     const b = e.target.closest("button");
-    if (b) { profile.practiseOrder = b.dataset.order; save(); syncSheet(); }
+    if (b) { profile.practiseOrder = b.dataset.order; stamp("practiseOrder"); save(); syncSheet(); }
   });
   $("#segApp").addEventListener("click", (e) => {
     const b = e.target.closest("button");
@@ -1696,13 +1699,14 @@
     $("#voiceRow").hidden = !("speechSynthesis" in window);
   }
   if ("speechSynthesis" in window && speechSynthesis.addEventListener) speechSynthesis.addEventListener("voiceschanged", fillVoices);
-  $("#voiceSel").addEventListener("change", (e) => { profile.voice = e.target.value; save(); fillVoices(); speak(sample()); });
+  $("#voiceSel").addEventListener("change", (e) => { profile.voice = e.target.value; stamp("voice." + (profile.lang || "en")); save(); fillVoices(); speak(sample()); });
   $("#voiceTry").addEventListener("click", () => speak(sample()));
   // Key sound: choosing one plays a sample of it.
   $("#segSound").addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (!b) return;
     profile.keySound = b.dataset.sound;
+    stamp("keySound");
     save();
     syncSheet();
     // A sample: a letter's press, then its release.
@@ -1714,6 +1718,7 @@
     const b = e.target.closest("button");
     if (!b) return;
     profile.year = b.dataset.year;
+    stamp("year", "bucket");
     // Keep the chosen level if it's still open, otherwise practise the new year.
     if (!unlocked(profile.year).includes(profile.bucket)) profile.bucket = profile.year;
     save();
@@ -1725,7 +1730,7 @@
   $("#homeBtn").addEventListener("click", () => show("home"));
   $("#againBtn").addEventListener("click", () => start(game.mode, game.length));
   $("#muteBtn").addEventListener("click", (e) => {
-    profile.mute = !profile.mute; save();
+    profile.mute = !profile.mute; stamp("mute"); save();
     showSoundIcon();
     e.currentTarget.blur();
   });
@@ -2266,7 +2271,7 @@
   // was used in English elsewhere); `lang` is sent only so that a new device starts in the account's last language.
   const SYNC_SHARED = ["year", "bucket", "mute", "keySound", "practiseOrder", "share", "shareAsk"];
   const SYNC_PER_LANG = ["tricky", "streak", "beeToday", "voice"];
-  const SYNC_LATEST = [...SYNC_SHARED, ...SYNC_PER_LANG, "lang"]; // what the cloud copy carries
+  const SYNC_LATEST = [...SYNC_SHARED, ...SYNC_PER_LANG, "lang", "setAt"]; // what the cloud copy carries
   const SYNC_JOINED = ["seen", "learned", "practised"];
   const pickShared = (p) => ({ ...Object.fromEntries([...SYNC_MAX, ...SYNC_LATEST, ...SYNC_JOINED].filter((k) => k in p).map((k) => [k, p[k]])),
     byLang: Object.fromEntries(Object.entries(p.byLang || {}).map(([L, { sessions, ...rest }]) => [L, rest])) });
@@ -2282,6 +2287,11 @@
     const newer = !stale && r && (r.updated || "") > (p.updated || "");
     const cur = p.lang || "en", theirLang = rp.lang || "en";
     p.byLang = p.byLang || {};
+    // A setting takes the other copy's value when it was changed there later; with no times on either side (set before
+    // 2026-11-04), the copy changed last wins as before.
+    p.setAt = p.setAt || {};
+    const theirStamps = rp.setAt || {};
+    const later = (k, newer) => (theirStamps[k] || p.setAt[k] ? (theirStamps[k] || "") > (p.setAt[k] || "") : newer);
     // The cloud copy holds its device's language at the top and the others in byLang. Each language's part is merged
     // into the same language here: this device's current one at the top, the others in p.byLang. Nothing here
     // changes this device's language.
@@ -2291,7 +2301,8 @@
       if (!b) continue;
       const mine = L === cur ? p : (p.byLang[L] || (p.byLang[L] = { ...FRESH(), voice: DEFAULT_VOICE[L] }));
       for (const k of SYNC_MAX) mine[k] = Math.max(mine[k] || 0, b[k] || 0);
-      if (newer) for (const k of SYNC_PER_LANG) if (k in b) mine[k] = b[k];
+      if (newer) for (const k of ["tricky", "streak", "beeToday"]) if (k in b) mine[k] = b[k];
+      if ("voice" in b && later("voice." + L, newer)) mine.voice = b.voice; // a voice chosen later on another device
       mine.seen = mine.seen || {}; mine.learned = mine.learned || {}; mine.practised = mine.practised || {};
       for (const [k, n] of Object.entries(b.seen || {})) mine.seen[k] = Math.max(mine.seen[k] || 0, n);
       for (const [w, d] of Object.entries(b.learned || {})) if (!(mine.learned[w] >= d)) mine.learned[w] = d;
@@ -2301,10 +2312,9 @@
         mine.practised[day] = d;
       }
     }
-    if (newer) {
-      for (const k of SYNC_SHARED) if (k in rp) p[k] = rp[k];
-      p.updated = r.updated;
-    }
+    for (const k of SYNC_SHARED) if (k in rp && later(k, newer)) p[k] = rp[k];
+    for (const [k, t] of Object.entries(theirStamps)) if (t > (p.setAt[k] || "")) p.setAt[k] = t;
+    if (newer) p.updated = r.updated;
     // Sessions go under their own language (one saved before 2026-11-04 has none: English).
     const lists = { [cur]: p.sessions };
     for (const [L, b] of Object.entries(p.byLang)) lists[L] = b.sessions || [];
@@ -2494,13 +2504,14 @@
   }
   $("#shareYes").addEventListener("click", async () => {
     profile.share = true;
+    stamp("share");
     save();
     closeShare();
     $("#boardBtn").hidden = false;
     await openBoard();
   });
   $("#shareNo").addEventListener("click", () => closeShare()); // asked again next time
-  $("#shareNever").addEventListener("click", () => { profile.shareAsk = false; save(); closeShare(); });
+  $("#shareNever").addEventListener("click", () => { profile.shareAsk = false; stamp("shareAsk"); save(); closeShare(); });
   // After a Spelling Bee: share this week's count if the user shares, else ask (unless told not to).
   function afterBee(done) {
     cancelAsk();
@@ -2582,6 +2593,7 @@
     if (!b || b.disabled) return;
     const on = b.dataset.share === "yes";
     profile.share = on;
+    stamp("share", "shareAsk");
     if (!on) profile.shareAsk = false; // a clear No in Settings: don't ask after each Bee either
     save();
     showShare();

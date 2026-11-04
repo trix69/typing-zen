@@ -137,6 +137,14 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
   await reopen(B.p); await B.p.waitForTimeout(1500);
   u = await me(B.p);
   ok(u.lang === 'en' && u.sessions.length === 2 && u.byLang.zh.sessions.length === 1, `B: stays in English (${u.lang}, ${u.sessions.length} sessions; 中文 ${u.byLang.zh.sessions.length})`);
+  // 5b. Settings merge one by one (user's bug report, 2026-11-04: Practice order went back to In order): A picks
+  // Random; B then changes something else (its key sound) and syncs later; both keep Random.
+  await A.p.click('#settingsBtn'); await A.p.click('#segOrder [data-order=random]'); await A.p.waitForTimeout(200); await A.p.click('#sheetDone'); await A.p.waitForTimeout(5000);
+  await B.p.click('#settingsBtn'); await B.p.click('#segSound [data-sound=blue]').catch(() => B.p.click('#segSound button:last-child')); await B.p.waitForTimeout(200); await B.p.click('#sheetDone'); await B.p.waitForTimeout(5000);
+  await reopen(A.p); await A.p.waitForTimeout(1500); await reopen(B.p); await B.p.waitForTimeout(1500);
+  const ua = await me(A.p), ub = await me(B.p);
+  ok(ua.practiseOrder === 'random' && ub.practiseOrder === 'random', `Practice order Random on both after B's later change (A ${ua.practiseOrder}, B ${ub.practiseOrder})`);
+  ok(ua.keySound === ub.keySound && ub.keySound !== 'red', `B's key sound reached A (${ua.keySound})`);
   // 6. Untagged sessions are English (user's request): a Danish user's old untagged session moves under English on load.
   { const ctx = await b.newContext(); const p = await ctx.newPage();
     await p.addInitScript(([K, v]) => { if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
