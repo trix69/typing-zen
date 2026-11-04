@@ -8,7 +8,7 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
     const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
     await ctx.addInitScript(([K, w, l]) => { window.__said = []; speechSynthesis.speak = (u) => { window.__said.push(u.text); setTimeout(() => u.onend && u.onend(), 5); };
       if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Luke', year: 'Y2', bucket: 'Y2', lang: l, id: 'u',
-        sessions: [{ date: new Date().toISOString(), game: 'spell', level: 'Y2', minutes: 10, length: 10, finished: true, firstTry: 0, struggled: 1, firstTryWords: [], struggledWords: [w] }] } } })); }, [KEY, word, lang]);
+        sessions: [{ date: new Date().toISOString(), game: 'spell', lang: l, level: 'Y2', minutes: 10, length: 10, finished: true, firstTry: 0, struggled: 1, firstTryWords: [], struggledWords: [w] }] } } })); }, [KEY, word, lang]);
     const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(base); await p.waitForTimeout(400); await p.click('#continueBtn'); await p.waitForTimeout(300);
     await p.click('.mode[data-mode="practise"]'); await p.waitForTimeout(1600);

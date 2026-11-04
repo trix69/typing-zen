@@ -32,7 +32,8 @@ for t in $suites; do
   r=$(node "$here/$t.js" "$B" "$K" ${extra[$t]:-} 2>&1)
   p=$(print -r -- "$r" | grep -c '^PASS'); f=$(print -r -- "$r" | grep -c '^FAIL')
   e=$(print -r -- "$r" | grep -c 'Error')
-  printf '%-12s %3d pass %3d fail\n' "$t" "$p" "$f"
+  # A suite that throws stops early; say so on its row, so "0 fail" never hides it.
+  printf '%-12s %3d pass %3d fail%s\n' "$t" "$p" "$f" "$( (( e > 0 )) && print ' (stopped early: error)')"
   if (( f > 0 || p == 0 || e > 0 )); then failed=1; print -r -- "$r" | grep '^FAIL\|Error' | head -5 | sed 's/^/    /'; fi
 done
 rm -rf $out

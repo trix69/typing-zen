@@ -127,6 +127,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
   const fit = await p.evaluate(() => { const r = document.querySelector('#card .hanzi').getBoundingClientRect(); return [r.width, document.documentElement.scrollWidth]; });
   ok(fit[0] <= 375 && fit[1] <= 375, `375 px: characters ${Math.round(fit[0])} px wide, page ${fit[1]} px`);
+  const tall = await p.evaluate(() => document.documentElement.scrollHeight);
+  ok(tall <= 667, `375x667: no scrolling (page ${tall} px; Hermes R79.2)`);
   await p.context().close();
   // 6. Wide, short screens: the characters, sentence and keyboard fit without scrolling (like English).
   for (const [w, h] of [[1024, 700], [1366, 768], [1180, 820]]) {
@@ -136,6 +138,20 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
     const sh = await p.evaluate(() => document.documentElement.scrollHeight);
     ok(sh <= h, `${w}x${h}: no scrolling (page ${sh} px)`);
     await p.context().close();
+  }
+  // 7. No Mandarin voice on the device (Hermes R79.1): the note says Chinese; with Tingting it is hidden.
+  for (const [names, want] of [[['Daniel|en-GB', 'Samantha|en-US', 'Karen|en-AU'], true], [['Daniel|en-GB', 'Tingting|zh-CN'], false]]) {
+    const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await ctx.addInitScript(([K, seed, names]) => {
+      if (!sessionStorage.getItem('seeded')) { localStorage.setItem(K, JSON.stringify(seed)); sessionStorage.setItem('seeded', 1); }
+      const vs = names.map((x) => { const [name, lang] = x.split('|'); return { name, lang, voiceURI: name, localService: true, default: false }; });
+      speechSynthesis.getVoices = () => vs; speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5);
+    }, [KEY, zseed([]), names]);
+    p = await ctx.newPage(); await p.goto(base); await p.waitForTimeout(500);
+    await p.click('#continueBtn'); await p.click('#settingsBtn'); await p.waitForTimeout(300);
+    const note = await p.isVisible('#voiceNote') ? await p.textContent('#voiceNote') : '';
+    ok(want ? /no Chinese voice/.test(note) : !note, `${names.join(', ')}: ${want ? 'the note names Chinese: ' + note : 'no note'}`);
+    await ctx.close();
   }
   await b.close();
 })();
