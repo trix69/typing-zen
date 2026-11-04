@@ -133,5 +133,19 @@ const NEWER = JSON.stringify({ version: '99.0', build: 'ffffffffff' });
   ok(await shown(p), 'asked once the name box is empty and left');
   ok(!errs.length, 'no errors ' + errs.join('|'));
   await ctx.close();
+
+  // 10. Name typed and a year chosen, then a pause (Hermes R76.3): not asked; Enter joins; asked on home after.
+  ({ ctx, p, errs } = await open({ newer: true, fresh: true }));
+  await p.waitForTimeout(500);
+  await p.click('#newName'); await p.keyboard.type('Luke');
+  await p.click('#newYear button[data-year="Y4"]');
+  await p.waitForTimeout(6000);
+  ok(!(await shown(p)), 'name and year filled, focus on the year: not asked');
+  await p.keyboard.press('Enter'); await p.waitForTimeout(500);
+  ok(await p.isVisible('#home') && !/\?v=/.test(p.url()), 'Enter joins (home, no reload)');
+  await p.waitForTimeout(6000);
+  ok(await shown(p), 'asked on home after joining');
+  ok(!errs.length, 'no errors ' + errs.join('|'));
+  await ctx.close();
   await b.close();
 })();
