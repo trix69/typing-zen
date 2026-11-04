@@ -510,7 +510,9 @@
   // Sound is always on in Spelling Bee (it is spoken, and its mute button is hidden) and while Settings is open
   // (to try voices and key sounds). profile.mute itself is left as it was, so it applies again everywhere else
   // (user's request, 2026-10-28).
-  const muted = () => profile.mute && !(game && game.mode === "spell" && !$("#play").hidden) && $("#sheet").hidden;
+  // Spelling Bee and Practice always have sound (Practice: user's report, 2026-11-04, no word or key sound there when
+  // the account's mute was on): they are about hearing the word. Mute still applies to the other games.
+  const muted = () => profile.mute && !(game && (game.mode === "spell" || game.mode === "practise") && !$("#play").hidden) && $("#sheet").hidden;
   let speechRun = 0;
   let speakTimer = 0; // the short wait before a new item is spoken; cleared by stopSpeech()
   // texts are said one after another with a 1 s gap; sayThenSpell() uses a shorter one.
@@ -762,7 +764,7 @@
     $("#modeTitle").textContent = tx(...TITLES[mode]);
     $("#trail").innerHTML = game.endsAt ? '<i class="time"><b></b></i>' : items.map(() => "<i></i>").join("");
     $("#clock").hidden = !game.endsAt;
-    $("#muteBtn").hidden = mode === "spell";
+    $("#muteBtn").hidden = mode === "spell" || mode === "practise";
     show("play");
     // Phones type on their own keyboard by default (user's request, like TypingClub); tablets show the
     // on-screen one (see TABLET). This runs inside the tap that started the game, which iOS needs before it

@@ -43,5 +43,23 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   await p.waitForTimeout(800);
   ok(!(await p.isVisible('#results')) || await p.isVisible('#againBtn'), 'Word Garden still offers Play again');
   ok(!errs.length, 'no page errors ' + errs.join(' | '));
+  // Practice always has sound, even with the account muted (user's report, 2026-11-04): the word is said, keys sound,
+  // and there's no mute button, as in Spelling Bee.
+  { const ctx = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await ctx.addInitScript(([K]) => {
+      window.__said = []; window.__src = 0;
+      const C = window.AudioContext; window.AudioContext = function (...a) { const c = new C(...a); const o = c.createBufferSource.bind(c); c.createBufferSource = () => { window.__src++; return o(); }; return c; };
+      speechSynthesis.speak = (u) => { window.__said.push(u.text); setTimeout(() => u.onend && u.onend(), 5); };
+      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Luke', year: 'Y2', bucket: 'Y2', lang: 'en', id: 'u', mute: true,
+        sessions: [{ date: new Date().toISOString(), game: 'spell', lang: 'en', level: 'Y2', minutes: 10, length: 10, finished: true, firstTry: 0, struggled: 1, firstTryWords: [], struggledWords: ['because'] }] } } })); }, [KEY]);
+    const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
+    await p.goto(base); await p.waitForTimeout(400); await p.click('#continueBtn'); await p.waitForTimeout(300);
+    await p.click('.mode[data-mode="practise"]'); await p.waitForTimeout(2500);
+    const said = await p.evaluate(() => window.__said.slice());
+    const before = await p.evaluate(() => window.__src);
+    for (const ch of 'bec') { await p.keyboard.press(ch); await p.waitForTimeout(150); }
+    const sounds = (await p.evaluate(() => window.__src)) - before;
+    ok(said[0] === 'because' && sounds >= 3 && !(await p.isVisible('#muteBtn')), `muted account: Practice still says the word (${JSON.stringify(said.slice(0, 2))}), ${sounds} key sounds for 3 keys, no mute button`);
+    await ctx.close(); }
   await b.close();
 })();
