@@ -123,12 +123,21 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
     if (words) await spellOne(p);
     await p.clock.fastForward('21:00'); await p.clock.runFor(3000);
   }
+  // The board first syncs, then loads (the entry is written after a sync): wait until it has rows or a message, not
+  // a fixed time (over the network a sync can take longer than 1.5 s).
+  async function boardLoaded(p) {
+    for (let t = 0; t < 40; t++) {
+      await p.clock.runFor(250);
+      if (await p.evaluate(() => !!document.querySelector('#boardBody .podium') || /Couldn't|offline/.test(document.querySelector('#boardBody')?.textContent || ''))) return;
+      await p.waitForTimeout(50);
+    }
+  }
   // 1. First Bee: asked, Yes → the board.
   let { ctx, p } = await signedIn('A');
   await beeToEnd(p);
   ok(await vis(p, '#results') && await vis(p, '#shareSheet'), 'after a Spelling Bee a Google user is asked to share');
   ok((await p.$$eval('#shareSheet button', (l) => l.map((x) => x.textContent))).join('|') === "Yes|No|Don't remind me again", 'three choices: Yes, No, Don\'t remind me again');
-  await p.click('#shareYes'); await p.clock.runFor(1500);
+  await p.click('#shareYes'); await boardLoaded(p);
   ok(await vis(p, '#boardSheet'), 'Yes opens the board');
   const mine = db[`${BOARD}/g-luke`];
   ok(mine && mine.name === 'Lu*******h' && Object.values(mine.days).reduce((a, x) => a + x, 0) === 6, `my entry on the server: masked "${mine && mine.name}", ${mine && JSON.stringify(mine.days)}`);
@@ -206,7 +215,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await p.evaluate(() => { const u = JSON.parse(localStorage.getItem(Object.keys(localStorage).find((k) => k.startsWith('typingZen.v2')))); });
   await ctx.close();
   ({ ctx, p } = await signedIn('G', { share: true }));
-  await beeToEnd(p); await p.click('#boardBtn'); await p.clock.runFor(1500);
+  await beeToEnd(p); await p.click('#boardBtn'); await boardLoaded(p);
   const before = (await store(p)).users.u.bucket;
   const inBoard = []; for (let k = 0; k < 6; k++) { await p.keyboard.press('Tab'); inBoard.push(await p.evaluate(() => document.querySelector('#boardSheet').contains(document.activeElement))); }
   await p.keyboard.press('Enter'); await p.clock.runFor(300);
@@ -215,7 +224,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   // 7. The stats card (Welcome back) has "See where you rank" for a sharer (user's request, 2026-11-04).
   ({ ctx, p } = await signedIn('H', { share: true }));
   ok(await vis(p, '#intro-back') && await vis(p, '#rankBtn'), 'stats card: a sharer sees "See where you rank"');
-  await p.click('#rankBtn'); await p.clock.runFor(1500);
+  await p.click('#rankBtn'); await boardLoaded(p);
   ok(await vis(p, '#boardSheet') && /^You're #\d+ of 10\.$/.test(await p.textContent('#boardBody .note')), `stats card: the board opens before Continue ("${await p.textContent('#boardBody .note')}")`);
   ok(await p.$$eval('.board-list li.me', (l) => l.length) === 1 && /Luke Smith \(you\)/.test(await p.textContent('.board-list')), 'stats card: the board shows Luke Smith (you)');
   await p.keyboard.press('Escape'); await p.clock.runFor(200);
