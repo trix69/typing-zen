@@ -2264,7 +2264,7 @@
   // changed last (`updated`). Clear history sets `resetAt`, which wins over anything older on every device.
   // Each language's history is kept apart (byLang): the cloud copy carries the other languages' scores (their
   // sessions are in the sessions collection, tagged with their language). Each language's scores merge only into the
-  // same language, and a device's language is never changed by a sync.
+  // same language; a device's language changes only when it was chosen later on another device.
   const SYNC_MAX = ["bestWpm", "stars", "rounds"];
   // From the later copy: settings shared by every language, and this language's own (its voice too). The language
   // itself is per device (user's bug report, 2026-11-04: a Chinese iPhone flipped to English when the same account
@@ -2285,16 +2285,22 @@
     const stale = p.resetAt && (!r || (r.resetAt || "") < p.resetAt);
     const rp = (!stale && r && r.p) || {};
     const newer = !stale && r && (r.updated || "") > (p.updated || "");
-    const cur = p.lang || "en", theirLang = rp.lang || "en";
+    const theirLang = rp.lang || "en";
     p.byLang = p.byLang || {};
-    // A setting takes the other copy's value when it was changed there later; with no times on either side (set before
-    // 2026-11-04), the copy changed last wins as before.
+    // A setting takes the other copy's value when it was changed there later (user's request, 2026-11-04: every setting
+    // follows the cloud when the cloud's is newer); with no times on either side (set before 2026-11-04), the copy
+    // changed last wins as before.
     p.setAt = p.setAt || {};
     const theirStamps = rp.setAt || {};
     const later = (k, newer) => (theirStamps[k] || p.setAt[k] ? (theirStamps[k] || "") > (p.setAt[k] || "") : newer);
+    // The language too, but only when it was chosen later there (never just because the copy is newer: that flipped a
+    // Chinese device to English in 1.18), and not in the middle of a round on this device (it follows after).
+    const playing = p === profile && game && !game.over;
+    const langWaits = (theirStamps.lang || "") > (p.setAt.lang || "") && theirLang !== (p.lang || "en");
+    if (langWaits && !playing) { stashLang(p); restoreLang(p, theirLang); }
+    const cur = p.lang || "en";
     // The cloud copy holds its device's language at the top and the others in byLang. Each language's part is merged
-    // into the same language here: this device's current one at the top, the others in p.byLang. Nothing here
-    // changes this device's language.
+    // into the same language here: this device's current one at the top, the others in p.byLang.
     const parts = { ...(rp.byLang || {}) };
     if (Object.keys(rp).length) parts[theirLang] = Object.fromEntries(LANG_KEYS.filter((k) => k !== "sessions" && k in rp).map((k) => [k, rp[k]]));
     for (const [L, b] of Object.entries(parts)) {
@@ -2313,7 +2319,8 @@
       }
     }
     for (const k of SYNC_SHARED) if (k in rp && later(k, newer)) p[k] = rp[k];
-    for (const [k, t] of Object.entries(theirStamps)) if (t > (p.setAt[k] || "")) p.setAt[k] = t;
+    // (The language's time is kept back while a round holds the switch, so the next sync still makes it.)
+    for (const [k, t] of Object.entries(theirStamps)) if (t > (p.setAt[k] || "") && !(k === "lang" && langWaits && playing)) p.setAt[k] = t;
     if (newer) p.updated = r.updated;
     // Sessions go under their own language (one saved before 2026-11-04 has none: English).
     const lists = { [cur]: p.sessions };
@@ -2663,6 +2670,7 @@
   function switchLang(lang) {
     stashLang(profile);
     restoreLang(profile, lang);
+    stamp("lang"); // so the user's other devices follow this choice
     shownLang = store.lang = lang;
     seenTick = Math.max(0, ...Object.values(profile.seen));
     // A sharer's board entry follows: it counts the words of the language now in use.

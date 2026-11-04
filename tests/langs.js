@@ -125,26 +125,27 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
   await B.p.click('#statsBtn'); await B.p.waitForTimeout(300);
   ok(/16 words/.test(await B.p.textContent('#weekLine')), `B: last 7 days counts English only: "${await B.p.textContent('#weekLine')}"`);
 
-  // 5. A syncs after B's later change in English: A stays in 中文 (the language is per device: user's bug report,
-  // 2026-11-04), and English's history there takes B's.
+  // 5. B chose English by hand after A chose 中文: A follows at its next sync (user's request, 2026-11-04: every setting
+  // follows the cloud when the cloud's is newer); each language's history stays its own.
   await reopen(A.p); await A.p.waitForTimeout(1500);
   u = await me(A.p);
-  ok(u.lang === 'zh' && u.sessions.length === 1 && u.sessions[0].lang === 'zh' && u.stars === 2 && u.byLang.en.sessions.length === 2 && u.byLang.en.stars === 5 && u.byLang.en.tricky.because === 1,
-    `A: stays in 中文 (${u.sessions.length} session, ${u.stars} stars); English apart (${u.byLang.en.sessions.length} sessions, ${u.byLang.en.stars} stars)`);
-  ok((await A.p.evaluate(() => document.querySelector('#segLang [aria-checked=true]')?.dataset.lang || document.documentElement.dataset.wl || '')) !== 'en' && /你|的|是|一|好/.test(await A.p.textContent('#levels')),
-    'A: still showing Chinese words');
-  // B again (English): its language stays English after A's sync in Chinese.
-  await reopen(B.p); await B.p.waitForTimeout(1500);
-  u = await me(B.p);
-  ok(u.lang === 'en' && u.sessions.length === 2 && u.byLang.zh.sessions.length === 1, `B: stays in English (${u.lang}, ${u.sessions.length} sessions; 中文 ${u.byLang.zh.sessions.length})`);
-  // 5b. Settings merge one by one (user's bug report, 2026-11-04: Practice order went back to In order): A picks
-  // Random; B then changes something else (its key sound) and syncs later; both keep Random.
+  ok(u.lang === 'en' && u.sessions.length === 2 && u.sessions.every((x) => x.lang === 'en') && u.stars === 5 && u.byLang.zh.sessions.length === 1 && u.byLang.zh.stars === 2,
+    `A: follows B's later choice to English (${u.sessions.length} English sessions, ${u.stars} stars); 中文 kept (${u.byLang.zh.sessions.length} session, ${u.byLang.zh.stars} stars)`);
+
+  // 5b. The bug (user's reports): A chooses 中文 and Random; B, still in English, then changes only its key sound and
+  // syncs later. A must stay in 中文 with Random; B follows A's later choices.
+  await lang(A.p, 'zh');
   await A.p.click('#settingsBtn'); await A.p.click('#segOrder [data-order=random]'); await A.p.waitForTimeout(200); await A.p.click('#sheetDone'); await A.p.waitForTimeout(5000);
-  await B.p.click('#settingsBtn'); await B.p.click('#segSound [data-sound=blue]').catch(() => B.p.click('#segSound button:last-child')); await B.p.waitForTimeout(200); await B.p.click('#sheetDone'); await B.p.waitForTimeout(5000);
-  await reopen(A.p); await A.p.waitForTimeout(1500); await reopen(B.p); await B.p.waitForTimeout(1500);
-  const ua = await me(A.p), ub = await me(B.p);
-  ok(ua.practiseOrder === 'random' && ub.practiseOrder === 'random', `Practice order Random on both after B's later change (A ${ua.practiseOrder}, B ${ub.practiseOrder})`);
-  ok(ua.keySound === ub.keySound && ub.keySound !== 'red', `B's key sound reached A (${ua.keySound})`);
+  if (await B.p.isVisible('#continueBtn')) { await B.p.click('#continueBtn'); await B.p.waitForTimeout(600); }
+  await B.p.click('#settingsBtn'); await B.p.click('#segSound button:last-child'); await B.p.waitForTimeout(200); await B.p.click('#sheetDone'); await B.p.waitForTimeout(5000);
+  await reopen(A.p); await A.p.waitForTimeout(1500);
+  const ua = await me(A.p);
+  ok(ua.lang === 'zh' && ua.practiseOrder === 'random' && ua.voice === 'zh-female', `A: B's later activity leaves A in 中文, Random, Mandarin voice (${ua.lang}, ${ua.practiseOrder}, ${ua.voice})`);
+  await reopen(B.p); await B.p.waitForTimeout(1500);
+  const ub = await me(B.p);
+  ok(ub.lang === 'zh' && ub.practiseOrder === 'random' && ub.sessions.length === 1 && ub.byLang.en.sessions.length === 2, `B: follows A's later choices (${ub.lang}, ${ub.practiseOrder}); histories intact`);
+  ok(ua.keySound === ub.keySound || (await me(A.p)).keySound === ub.keySound, `B's key sound change is kept too (${ub.keySound})`);
+
   // 6. Untagged sessions are English (user's request): a Danish user's old untagged session moves under English on load.
   { const ctx = await b.newContext(); const p = await ctx.newPage();
     await p.addInitScript(([K, v]) => { if (!sessionStorage.d) { sessionStorage.d = 1; localStorage.setItem(K, JSON.stringify(v)); } },
