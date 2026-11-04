@@ -132,9 +132,19 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
   const fit = await p.evaluate(() => { const r = document.querySelector('#card .hanzi').getBoundingClientRect(); return [r.width, document.documentElement.scrollWidth]; });
   ok(fit[0] <= 375 && fit[1] <= 375, `375 px: characters ${Math.round(fit[0])} px wide, page ${fit[1]} px`);
-  const tall = await p.evaluate(() => document.documentElement.scrollHeight);
-  ok(tall <= 667, `375x667: no scrolling (page ${tall} px; Hermes R79.2)`);
   await p.context().close();
+  // A real phone (touch) starts on its own keyboard; with the on-screen one shown, the space bar must be on screen
+  // (Hermes R79.2, measured as R80 advised: a non-touch window always fills exactly, so it can't catch this).
+  { const ctx = await b.newContext({ viewport: { width: 375, height: 667 }, hasTouch: true, isMobile: true });
+    await ctx.addInitScript(([K, seed]) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem(K, JSON.stringify(seed)); sessionStorage.setItem('seeded', 1); }
+      speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5); }, [KEY, zseed([])]);
+    p = await ctx.newPage(); await p.goto(base); await p.waitForTimeout(500);
+    await p.tap('#continueBtn'); await p.waitForTimeout(300);
+    await p.tap('.mode[data-mode="spell"]'); await p.tap('#lenChoices button'); await p.waitForTimeout(900);
+    if (await p.isVisible('#kbdToggle') && !(await p.isVisible('.kbd'))) { await p.tap('#kbdToggle'); await p.waitForTimeout(300); }
+    const space = await p.evaluate(() => { window.scrollTo(0, 0); const k = document.querySelector('.kbd [data-key=" "]') || [...document.querySelectorAll('.kbd .key')].pop(); return Math.round(k.getBoundingClientRect().bottom); });
+    ok(space <= 667, `375x667 touch, on-screen keyboard shown: the space bar ends at ${space} px (Hermes R79.2)`);
+    await ctx.close(); }
   // 6. Wide, short screens: the characters, sentence and keyboard fit without scrolling (like English).
   for (const [w, h] of [[1024, 700], [1366, 768], [1180, 820]]) {
     p = await mk(zseed([]), '', w, h);
