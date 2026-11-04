@@ -25,7 +25,10 @@ const sess = (date, first) => ({ date, game: 'spell', level: 'Y4', minutes: 10, 
   // Spelling Bee: 8 garden words waiting, no misses or tricky words: each round of 10 takes exactly 2 of them.
   const counts = [];
   for (let i = 0; i < 8; i++) { const words = await round({ learned, sessions: [] }, 'spell'); counts.push([words.length, words.filter((w) => learnedWords.includes(w)).length]); }
-  ok(counts.every(([n, l]) => n === 10 && l >= 2 && l <= 4), `Spelling Bee rounds [words, garden words]: ${JSON.stringify(counts)} (2 favoured, the rest by the normal draw)`);
+  // 2 are favoured every round; any more come by chance from the normal draw (6 waiting words among ~240, about 0.2 a
+  // round), so the extras are checked over all 8 rounds, not per round (one round once drew 3 extra by chance).
+  const extra = counts.reduce((t, [, l]) => t + l - 2, 0);
+  ok(counts.every(([n, l]) => n === 10 && l >= 2) && extra <= 6, `Spelling Bee rounds [words, garden words]: ${JSON.stringify(counts)} (2 favoured each, ${extra} more by the normal draw in 8 rounds)`);
   // One garden word waiting: it comes in the round (still a little sooner than the others).
   const one = await round({ learned: { [Y4[5]]: at(0) }, sessions: [] }, 'spell');
   ok(one.includes(Y4[5]) && one.length === 10, 'a single garden word is in the next round');
