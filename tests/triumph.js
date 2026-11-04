@@ -13,10 +13,14 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
     await p.clock.install(); await p.goto(base); await p.clock.runFor(500);
     await p.click('#continueBtn'); await p.clock.runFor(300); await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300);
     await p.click('#lenChoices button'); await p.clock.runFor(900);
+    let typed = 0;
     for (const how of plan) {
       let w; for (let t = 0; t < 30 && !w; t++) { w = (await p.evaluate(() => window.__said)).find((x) => !/ /.test(x)); if (!w) await p.clock.runFor(100); }
       await p.evaluate(() => { window.__said = []; });
-      if (how !== 'ok') for (let k = 0; k < (how === 'many' ? 12 : 4); k++) { await p.keyboard.press(w[0] === 'q' ? 'z' : 'q'); await p.clock.runFor(200); }
+      typed += w.length;
+      // 'two': as many wrong keys as put the whole round at about 90% accuracy, i.e. 2 stars (85-94%) every time.
+      const wrong = how === 'many' ? 12 : how === 'two' ? Math.max(1, Math.round(typed / 9)) : 4;
+      if (how !== 'ok') for (let k = 0; k < wrong; k++) { await p.keyboard.press(w[0] === 'q' ? 'z' : 'q'); await p.clock.runFor(200); }
       for (const ch of w) { await p.keyboard.press(ch); await p.clock.runFor(300); }
       await p.clock.runFor(1700);
     }
@@ -31,11 +35,15 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
   // The words are random, so a round with a few wrong keys can land on 1 or 2 stars: the sound must match what's shown.
   const WANT = { 1: '[523,659,784]', 2: '[523,659,784,1047,523,659,784,1047]' };
   const seen = new Set();
-  for (let k = 0; k < 4 && !seen.has(2); k++) {
+  for (let k = 0; k < 2; k++) {
     r = await round(['typos', 'ok', 'ok']);
     seen.add(r.stars);
     ok(WANT[r.stars] === JSON.stringify(melody(r)), `${r.stars} star${r.stars === 1 ? '' : 's'} (${r.title}): ${JSON.stringify(melody(r))}`);
   }
+  // Always reaches 2 stars: the last word's wrong keys are worked out from the letters typed (it used to try 4 random rounds).
+  r = await round(['ok', 'ok', 'two']);
+  seen.add(r.stars);
+  ok(r.stars === 2 && WANT[2] === JSON.stringify(melody(r)), `2 stars (${r.title}): ${JSON.stringify(melody(r))}`);
   ok(seen.has(2), 'a 2-star round was reached and heard');
   r = await round(['many']);
   ok(r.stars === 1 && JSON.stringify(melody(r)) === '[523,659,784]', `1 star (${r.title}): three rising notes ${JSON.stringify(melody(r))}`);
