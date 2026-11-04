@@ -37,4 +37,5 @@ made-up users, so none of them changes anyone's real progress.
 | words, mastery, garden | the stats words and chart, mastered words, word picking |
 | capital, bksp, center, theme | capital first letter, the backspace key, the welcome column, light by default |
 | welcomeset, dk, r39fix | the welcome screen and its Settings, Danish |
+| zh | Chinese: 中文 in Settings, characters shown, pinyin typed (capitals, u for ü), the Mandarin voice, Practice and Word Garden |
 | motion, interrupted, dupvoice, keylog2, noplay, fold | Reduce Motion, iPad audio, voices, the key log, small screens |

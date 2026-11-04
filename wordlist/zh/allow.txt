@@ -1,0 +1,55 @@
+# Words whose reading differs from macOS's character-by-character transform, each checked by hand: word|why
+地|地 is dì (ground); de is only the adverb ending
+地方|地 dì (place)
+地球|地 dì
+草地|地 dì
+地图|地 dì
+地铁|地 dì
+地震|地 dì
+地理|地 dì
+盆地|地 dì
+欢天喜地|地 dì
+目的|的 dì (aim), not the particle de
+睡觉|觉 jiào (sleep); jué is "feel"
+长|长 cháng (long); zhǎng is "grow"
+长颈鹿|长 cháng (long neck)
+长城|长 cháng
+长江|长 cháng
+长方形|长 cháng
+周长|长 cháng (perimeter = length round)
+取长补短|长 cháng (strengths)
+还|还 huán (give back); hái is "still"
+干净|干 gān (clean, dry)
+干干净净|干 gān
+干燥|干 gān
+干|干 gān (dry); gàn is "do"
+音乐|乐 yuè (music); lè is "happy"
+乐器|乐 yuè
+种|种 zhòng (to plant); zhǒng is "kind, seed"
+银行|行 háng (bank); xíng is "go"
+着急|着 zháo; zhe is the particle
+认为|为 wéi (consider as)
+助人为乐|为 wéi (take as)
+数|数 shǔ (to count); shù is "number"
+首都|都 dū (capital); dōu is "all"
+调皮|调 tiáo (naughty)
+空调|调 tiáo (adjust)
+假期|假 jià (holiday); jiǎ is "false"
+暑假|假 jià
+寒假|假 jià
+爱好|好 hào (to like); hǎo is "good"
+好奇|好 hào
+叶公好龙|好 hào
+冠军|冠 guàn (champion); guān is "hat"
+宿舍|舍 shè (house); shě is "give up"
+便宜|便宜 pián yi (cheap); biàn is "convenient"
+宝藏|藏 zàng (treasure); cáng is "hide"
+钻石|钻 zuàn (diamond); zuān is "drill"
+灾难|难 nàn (disaster); nán is "hard"
+挑战|挑 tiǎo (challenge); tiāo is "choose"
+朝霞|朝 zhāo (morning); cháo is "towards"
+对牛弹琴|弹 tán (play an instrument); dàn is "bullet"
+一模一样|模 mú (mould)
+摇晃|晃 huàng (sway)
+少年|少 shào (young); shǎo is "few"
+处理|处 chǔ (deal with); chù is "place"

@@ -1,0 +1,251 @@
+# Chinese words for Year 3: characters|pinyin with tone marks|meaning in English
+世界|shì jiè|world
+国家|guó jiā|country
+地球|dì qiú|the Earth
+宇宙|yǔ zhòu|universe
+太空|tài kōng|outer space
+星球|xīng qiú|planet
+自然|zì rán|nature
+季节|jì jié|season
+温暖|wēn nuǎn|warm
+凉快|liáng kuai|cool
+寒冷|hán lěng|cold, frosty
+炎热|yán rè|scorching hot
+阳光|yáng guāng|sunshine
+雷|léi|thunder
+闪电|shǎn diàn|lightning
+雾|wù|fog
+露珠|lù zhū|dewdrop
+冰|bīng|ice
+池塘|chí táng|pond
+小溪|xiǎo xī|brook
+瀑布|pù bù|waterfall
+草地|cǎo dì|meadow, lawn
+田园|tián yuán|countryside fields
+山坡|shān pō|hillside
+山顶|shān dǐng|mountain top
+岛|dǎo|island
+沙漠|shā mò|desert
+草原|cǎo yuán|grassland
+荷花|hé huā|lotus flower
+梅花|méi huā|plum blossom
+桃花|táo huā|peach blossom
+柳树|liǔ shù|willow tree
+松树|sōng shù|pine tree
+枫叶|fēng yè|maple leaf
+蘑菇|mó gu|mushroom
+种|zhòng|plant (a seed)
+浇水|jiāo shuǐ|water (plants)
+发芽|fā yá|sprout
+开花|kāi huā|bloom
+结果|jié guǒ|bear fruit; result
+成熟|chéng shú|ripe
+收获|shōu huò|harvest
+秋风|qiū fēng|autumn wind
+落叶|luò yè|fallen leaves
+燕子|yàn zi|swallow (bird)
+喜鹊|xǐ què|magpie
+麻雀|má què|sparrow
+孔雀|kǒng què|peacock
+老鹰|lǎo yīng|eagle
+鹦鹉|yīng wǔ|parrot
+松鼠|sōng shǔ|squirrel
+狐狸|hú li|fox
+狼|láng|wolf
+熊|xióng|bear
+鹿|lù|deer
+蛇|shé|snake
+乌龟|wū guī|tortoise
+鲸鱼|jīng yú|whale
+海豚|hǎi tún|dolphin
+螃蟹|páng xiè|crab
+蜻蜓|qīng tíng|dragonfly
+蜗牛|wō niú|snail
+蚯蚓|qiū yǐn|earthworm
+小蝌蚪|xiǎo kē dǒu|tadpole
+尾巴|wěi ba|tail
+翅膀|chì bǎng|wing
+羽毛|yǔ máo|feather
+身边|shēn biān|nearby, by one's side
+周围|zhōu wéi|around
+附近|fù jìn|nearby
+对面|duì miàn|opposite
+到处|dào chù|everywhere
+方向|fāng xiàng|direction
+地图|dì tú|map
+旅行|lǚ xíng|travel
+出发|chū fā|set off
+到达|dào dá|arrive
+经过|jīng guò|pass by
+参观|cān guān|visit (a place)
+博物馆|bó wù guǎn|museum
+广场|guǎng chǎng|square, plaza
+桥|qiáo|bridge
+公路|gōng lù|road, highway
+地铁|dì tiě|underground train
+机场|jī chǎng|airport
+火车站|huǒ chē zhàn|railway station
+邮局|yóu jú|post office
+银行|yín háng|bank
+饭店|fàn diàn|restaurant
+菜单|cài dān|menu
+味道|wèi dao|taste, flavour
+甜|tián|sweet
+酸|suān|sour
+苦|kǔ|bitter
+辣|là|spicy
+咸|xián|salty
+香|xiāng|fragrant
+新鲜|xīn xiān|fresh
+健康|jiàn kāng|healthy
+营养|yíng yǎng|nutrition
+蔬菜|shū cài|vegetables
+胡萝卜|hú luó bo|carrot
+白菜|bái cài|Chinese cabbage
+玉米|yù mǐ|corn
+豆腐|dòu fu|tofu
+汤|tāng|soup
+早餐|zǎo cān|breakfast
+点心|diǎn xin|snack, dim sum
+衣柜|yī guì|wardrobe
+裙子|qún zi|skirt, dress
+裤子|kù zi|trousers
+袜子|wà zi|socks
+外套|wài tào|coat
+围巾|wéi jīn|scarf
+手套|shǒu tào|gloves
+眼镜|yǎn jìng|glasses
+手表|shǒu biǎo|watch
+钟|zhōng|clock
+日历|rì lì|calendar
+礼貌|lǐ mào|polite, manners
+勇敢|yǒng gǎn|brave
+诚实|chéng shí|honest
+友好|yǒu hǎo|friendly
+善良|shàn liáng|kind-hearted
+努力|nǔ lì|try hard
+仔细|zǐ xì|careful
+马虎|mǎ hu|careless
+骄傲|jiāo ào|proud
+害羞|hài xiū|shy
+着急|zháo jí|worried, in a hurry
+担心|dān xīn|worry
+放心|fàng xīn|be at ease
+小心|xiǎo xīn|be careful
+满意|mǎn yì|satisfied
+得意|dé yì|pleased with oneself
+吃惊|chī jīng|surprised
+激动|jī dòng|excited
+感谢|gǎn xiè|thank, be grateful
+欢迎|huān yíng|welcome
+祝贺|zhù hè|congratulate
+同意|tóng yì|agree
+相信|xiāng xìn|believe
+发现|fā xiàn|discover
+看到|kàn dào|see
+想到|xiǎng dào|think of
+学会|xué huì|learn (to do)
+练习|liàn xí|practise
+复习|fù xí|revise
+预习|yù xí|prepare a lesson
+成绩|chéng jì|marks, results
+比赛|bǐ sài|competition, match
+得到|dé dào|get, obtain
+失败|shī bài|fail
+成功|chéng gōng|succeed
+进步|jìn bù|improve, progress
+坚持|jiān chí|keep at it
+认为|rèn wéi|think, consider
+决定|jué dìng|decide
+选择|xuǎn zé|choose
+讨论|tǎo lùn|discuss
+介绍|jiè shào|introduce
+解释|jiě shì|explain
+表演|biǎo yǎn|perform
+节目|jié mù|programme, show
+电影|diàn yǐng|film
+动画片|dòng huà piàn|cartoon
+声音|shēng yīn|sound, voice
+安全|ān quán|safe
+危险|wēi xiǎn|dangerous
+保护|bǎo hù|protect
+环境|huán jìng|environment
+垃圾|lā jī|rubbish
+干燥|gān zào|dry
+潮湿|cháo shī|damp
+明亮|míng liàng|bright
+黑暗|hēi àn|dark
+美丽|měi lì|beautiful
+可怕|kě pà|frightening
+奇妙|qí miào|wonderful
+有名|yǒu míng|famous
+特别|tè bié|special, especially
+一定|yī dìng|certainly, must
+也许|yě xǔ|perhaps
+大概|dà gài|probably, roughly
+忽然|hū rán|suddenly
+突然|tū rán|suddenly
+终于|zhōng yú|at last
+一边|yī biān|while (doing)
+一直|yī zhí|all along, straight on
+慢慢|màn màn|slowly
+轻轻|qīng qīng|gently
+静静|jìng jìng|quietly
+高高|gāo gāo|very high
+弯弯|wān wān|curved
+圆|yuán|round
+方|fāng|square
+尖|jiān|pointed, sharp
+厚|hòu|thick
+薄|báo|thin
+宽|kuān|wide
+窄|zhǎi|narrow
+深|shēn|deep
+浅|qiǎn|shallow
+轻|qīng|light (in weight)
+重|zhòng|heavy
+软|ruǎn|soft
+硬|yìng|hard
+湿|shī|wet
+干|gān|dry
+满|mǎn|full
+空|kōng|empty
+数|shǔ|count
+数字|shù zì|number, digit
+加|jiā|add, plus
+减|jiǎn|subtract, minus
+米|mǐ|metre; rice
+公斤|gōng jīn|kilogram
+一半|yī bàn|half
+大约|dà yuē|about
+身高|shēn gāo|height
+体重|tǐ zhòng|weight
+手指|shǒu zhǐ|finger
+肩膀|jiān bǎng|shoulder
+肚子|dù zi|tummy
+心|xīn|heart
+脚|jiǎo|foot
+腿|tuǐ|leg
+胳膊|gē bo|arm
+声调|shēng diào|tone (of a syllable)
+拼音|pīn yīn|pinyin
+笔画|bǐ huà|stroke (of a character)
+词语|cí yǔ|words and phrases
+段落|duàn luò|paragraph
+日记|rì jì|diary
+信|xìn|letter
+写字|xiě zì|write characters
+看书|kàn shū|read a book
+画家|huà jiā|painter
+作家|zuò jiā|writer
+科学家|kē xué jiā|scientist
+厨师|chú shī|chef
+消防员|xiāo fáng yuán|firefighter
+邮递员|yóu dì yuán|postman
+主人|zhǔ rén|owner, host
+国王|guó wáng|king
+公主|gōng zhǔ|princess
+王子|wáng zǐ|prince
+巨人|jù rén|giant
+龙|lóng|dragon
+魔法|mó fǎ|magic

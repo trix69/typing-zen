@@ -1,0 +1,123 @@
+// Chinese (user's request, 2026-11-04): Settings > Language 中文, words-zh.js's words shown in characters and typed
+// as pinyin without tones on the English keyboard, with a Mandarin voice. node zh.js base storageKey
+const { chromium } = require('playwright');
+const base = process.argv[2], KEY = process.argv[3];
+const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process.exitCode = 1; };
+(async () => {
+  const b = await chromium.launch();
+  const mk = async (seed, hash = '', w = 1180, h = 820) => {
+    const ctx = await b.newContext({ viewport: { width: w, height: h } });
+    await ctx.addInitScript(([seed, KEY]) => {
+      if (seed && !sessionStorage.getItem('seeded')) { localStorage.setItem(KEY, JSON.stringify(seed)); sessionStorage.setItem('seeded', 1); }
+      window.__said = [];
+      speechSynthesis.speak = (u) => { window.__said.push([u.text, u.lang]); setTimeout(() => u.onend && u.onend(), 10); };
+    }, [seed, KEY]);
+    const p = await ctx.newPage(); p.errs = [];
+    p.on('pageerror', (e) => p.errs.push(e.message));
+    await p.goto(base + hash); await p.waitForTimeout(600);
+    return p;
+  };
+  const day = new Date().toISOString();
+  // The word list itself.
+  let p = await mk(null);
+  const list = await p.evaluate(() => WORD_GROUPS_ZH.map((g) => [g.level, g.words.length, g.words.every((w) => /^[a-z]+$/.test(w[5]) && w[1])]));
+  const total = list.reduce((n, x) => n + x[1], 0);
+  ok(list.length === 6 && list.every((x, i) => x[0] === 'Y' + (i + 1) && x[1] >= 230 && x[2]) && total >= 1450,
+    `words-zh.js: Year 1-6, ${total} words (${list.map((x) => x[1]).join('/')}), every one with a meaning and a-z pinyin`);
+  await p.context().close();
+
+  // 1. An English user with history switches to 中文: asked first, history cleared, Mandarin voice.
+  const seed = { current: 'u1', users: { u1: { id: 'u1', name: 'Luke', year: 'Y2', bucket: 'Y2', stars: 7, rounds: 3,
+    sessions: [{ date: day, game: 'spell', level: 'Y2', minutes: 1, length: 1, finished: true, firstTry: 1, struggled: 1, firstTryWords: ['dog'], struggledWords: ['because'] }] } } };
+  p = await mk(seed);
+  await p.click('#continueBtn'); await p.waitForTimeout(300);
+  await p.click('#settingsBtn'); await p.waitForTimeout(200);
+  ok(await p.isVisible('#segLang [data-lang=zh]') && (await p.textContent('#segLang [data-lang=zh]')) === '中文', 'Settings > Language has 中文');
+  const row = await p.$$eval('#segLang button', (l) => l.map((x) => Math.round(x.getBoundingClientRect().top)));
+  ok(new Set(row).size === 1, 'English, Dansk and 中文 on one row');
+  await p.click('#segLang [data-lang=zh]'); await p.waitForTimeout(200);
+  ok(await p.isVisible('#langConfirm') && /Switch Luke to 中文/.test(await p.textContent('#langAsk')), 'asks first: ' + (await p.textContent('#langAsk')).slice(0, 60));
+  await p.click('#langYes'); await p.waitForTimeout(300);
+  const st = await p.evaluate((K) => JSON.parse(localStorage.getItem(K)).users.u1, KEY);
+  ok(st.lang === 'zh' && st.voice === 'zh-female' && st.sessions.length === 0 && st.year === 'Y2', 'switched: lang zh, Mandarin voice, history cleared, year kept');
+  ok((await p.textContent('#sheetTitle')) === 'Settings' && (await p.getAttribute('#segLang [data-lang=zh]', 'aria-checked')) === 'true', 'the page text stays English; 中文 is chosen');
+  await p.click('#sheetDone'); await p.waitForTimeout(200);
+  const lvl = await p.textContent('.level[data-bucket="Y2"]');
+  ok(/Year 2/.test(lvl) && /时间, 帮助, 漂亮/.test(lvl), 'level button: Year 2 with Chinese sample words: ' + lvl.replace(/\s+/g, ' '));
+  ok(await p.evaluate(() => document.querySelectorAll('.kbd [data-key="["]').length === 1), 'English keyboard');
+
+  // 2. Spelling Bee: the characters and meaning, no pinyin shown; typed as pinyin; capitals and u for ü count.
+  await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
+  const card = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, meaning: document.querySelector('#card .meaning')?.textContent, pinyin: !!document.querySelector('#card .pinyin'), sentence: document.querySelectorAll('[data-say="sentence"]').length }));
+  const word = await p.evaluate((h) => WORD_GROUPS_ZH.flatMap((g) => g.words).find((w) => w[0] === h), card.hanzi);
+  ok(/Type its pinyin, without tones \(ü is v\)/.test(await p.textContent('#finger')), 'hint: ' + await p.textContent('#finger'));
+  ok(word && /^It means /.test(card.meaning) && !card.pinyin && !card.sentence, `card: ${card.hanzi} "${card.meaning}", no pinyin, no sentence button`);
+  const said = await p.evaluate(() => window.__said);
+  ok(said.length && said[0][0] === card.hanzi && /^zh/.test(said[0][1]) && said.every((x) => x[0]), `spoken in Mandarin: ${JSON.stringify(said.slice(0, 2))}`);
+  const gaps = await p.evaluate(() => document.querySelector('#line').textContent.length);
+  ok(gaps >= word[5].length, `the line has room for ${word[5]} (${gaps})`);
+  // Type it in capitals, ü as u.
+  for (const ch of word[5]) await p.keyboard.press(ch === 'v' ? 'U' : ch.toUpperCase()), await p.waitForTimeout(30);
+  await p.waitForTimeout(400);
+  const first = await p.evaluate(() => (window.__test_first = document.querySelector('#msg').textContent));
+  ok(!(await p.evaluate(() => document.querySelector('#line .miss'))) && /./.test(first), `typed ${word[5].toUpperCase()} (capitals, u for v): done, "${first}"`);
+  await p.waitForTimeout(1500);
+  const next = await p.textContent('#card .hanzi');
+  ok(next && next !== card.hanzi, 'the next word comes: ' + next);
+  // A wrong key is a miss.
+  await p.keyboard.press('q'); await p.keyboard.press('q'); await p.waitForTimeout(100);
+  const nw = await p.evaluate((h) => WORD_GROUPS_ZH.flatMap((g) => g.words).find((w) => w[0] === h)[5], next);
+  ok(nw[0] === 'q' || /type the orange letter/.test(await p.textContent('#msg')), 'two wrong keys show the orange hint');
+  await p.keyboard.press('Escape'); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+  ok(await p.isVisible('#home') || await p.isVisible('#results'), 'left the round');
+  ok(!p.errs.length, 'no errors ' + p.errs.join(' | '));
+  await p.context().close();
+
+  // 3. Practice and Word Garden show the pinyin with tones; Practice says the word, not its letters.
+  const zseed = (sessions) => ({ current: 'u1', lang: 'zh', users: { u1: { id: 'u1', name: 'Mei', year: 'Y1', bucket: 'Y1', lang: 'zh', voice: 'zh-female', sessions } } });
+  p = await mk(zseed([{ date: day, game: 'spell', level: 'Y1', minutes: 1, length: 1, finished: true, firstTry: 1, struggled: 1, firstTryWords: ['你好'], struggledWords: ['绿色'] }]));
+  ok((await p.textContent('#continueBtn')) === 'Continue as Mei', 'a Chinese user: the start screens are in English');
+  await p.click('#missedBtn'); await p.waitForTimeout(300);
+  const days = (await p.textContent('#missedDays')).replace(/\s+/g, ' ');
+  ok(/你好/.test(days) && /绿色/.test(days), 'See the words lists the characters: ' + days.slice(0, 80));
+  await p.click('#missedDays button[data-day]'); await p.waitForTimeout(600);
+  const pc = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, pinyin: document.querySelector('#card .pinyin')?.textContent, line: document.querySelector('#line').textContent }));
+  ok(pc.hanzi === '绿色' && pc.pinyin === 'lǜ sè' && /lvse/.test(pc.line.replace(/\s/g, '')), `Practice: 绿色 with "lǜ sè", type ${pc.line.replace(/\s/g, '')}`);
+  const ps = await p.evaluate(() => window.__said.map((x) => x[0]));
+  ok(ps.length >= 1 && ps.every((x) => x === '绿色'), 'Practice says the word, not its letters: ' + JSON.stringify(ps));
+  for (const ch of 'lvse') await p.keyboard.press(ch), await p.waitForTimeout(30);
+  await p.waitForTimeout(400);
+  ok((await p.$$eval('#card .reps i.on', (l) => l.length)) === 1, 'a clean go fills a dot');
+  await p.waitForFunction(() => document.querySelector('#line .caret, #line .cur') && !document.querySelector('#line .done'), null, { timeout: 4000 }).catch(() => {});
+  await p.waitForTimeout(300);
+  for (const ch of 'luse') await p.keyboard.press(ch), await p.waitForTimeout(30);
+  await p.waitForTimeout(400);
+  ok((await p.$$eval('#card .reps i.on', (l) => l.length)) === 2, 'ü typed as u (luse) counts as a clean go too');
+  ok(!p.errs.length, 'no errors ' + p.errs.join(' | '));
+  await p.context().close();
+  p = await mk(zseed([]));
+  await p.click('#continueBtn'); await p.waitForTimeout(300);
+  await p.click('.mode[data-mode="words"]'); await p.waitForTimeout(700);
+  const g = await p.evaluate(() => ({ hanzi: document.querySelector('#card .hanzi')?.textContent, pinyin: document.querySelector('#card .pinyin')?.textContent }));
+  const gw = await p.evaluate((h) => WORD_GROUPS_ZH[0].words.find((w) => w[0] === h), g.hanzi);
+  ok(gw && g.pinyin === gw[4], `Word Garden: ${g.hanzi} with its pinyin ${g.pinyin}`);
+  ok(!p.errs.length, 'no errors ' + p.errs.join(' | '));
+  await p.context().close();
+
+  // 4. #zh opens the start screens with 中文 chosen, and a new user made there starts in Chinese.
+  p = await mk(null, '#zh');
+  await p.fill('#newName', 'Lin'); await p.click('#newYear button[data-year="Y3"]'); await p.keyboard.press('Enter'); await p.waitForTimeout(400);
+  const nu = await p.evaluate((K) => Object.values(JSON.parse(localStorage.getItem(K)).users)[0], KEY);
+  ok(nu && nu.lang === 'zh' && nu.voice === 'zh-female', '#zh: a new user starts in Chinese');
+  ok(!p.errs.length, 'no errors ' + p.errs.join(' | '));
+  await p.context().close();
+
+  // 5. Phone size: the characters fit.
+  p = await mk(zseed([]), '', 375, 667);
+  await p.click('#continueBtn'); await p.waitForTimeout(300);
+  await p.click('.mode[data-mode="spell"]'); await p.click('#lenChoices button'); await p.waitForTimeout(900);
+  const fit = await p.evaluate(() => { const r = document.querySelector('#card .hanzi').getBoundingClientRect(); return [r.width, document.documentElement.scrollWidth]; });
+  ok(fit[0] <= 375 && fit[1] <= 375, `375 px: characters ${Math.round(fit[0])} px wide, page ${fit[1]} px`);
+  await p.context().close();
+  await b.close();
+})();

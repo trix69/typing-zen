@@ -39,7 +39,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "dist" / "test-site"
 REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
-FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", ".nojekyll"]
+FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", "words-zh.js", ".nojekyll"]
 PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, and a Google sign-in under way from the home screen
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
 LIVE_MASTER_RUN, TEST_MASTER_RUN = 3, 2  # right-first-try spellings in a row that make a word mastered: live and test
@@ -92,8 +92,8 @@ def build(out):
         sys.exit('test build: index.html needs exactly one <span id="appVersion">')
     html = must(html, '<span id="appVersion">', f'<span id="appVersion" data-build="{stamp}">', "appVersion span")
     html, n = version.ASSETS.subn(r'\g<1>?v=' + stamp + '"', html)
-    if n != 5:
-        sys.exit("test build: index.html should load style.css, words.js, words-da.js, data.js and app.js with ?v=")
+    if n != 6:
+        sys.exit("test build: index.html should load style.css, words.js, words-da.js, words-zh.js, data.js and app.js with ?v=")
     (out / "index.html").write_text(html, encoding="utf-8")
 
     # Keep the test site's progress apart from Luke's, and make any new storage key a conscious choice.

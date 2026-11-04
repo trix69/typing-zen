@@ -1,0 +1,252 @@
+# Chinese words for Year 2: characters|pinyin with tone marks|meaning in English
+百|bǎi|hundred
+千|qiān|thousand
+万|wàn|ten thousand
+半|bàn|half
+两|liǎng|two (of something)
+第一|dì yī|first
+每天|měi tiān|every day
+时候|shí hou|time, moment
+时间|shí jiān|time
+现在|xiàn zài|now
+以后|yǐ hòu|after, later
+以前|yǐ qián|before
+刚才|gāng cái|just now
+已经|yǐ jīng|already
+马上|mǎ shàng|right away
+常常|cháng cháng|often
+一会儿|yī huìr|a little while
+小时|xiǎo shí|hour
+分钟|fēn zhōng|minute
+早饭|zǎo fàn|breakfast
+午饭|wǔ fàn|lunch
+晚饭|wǎn fàn|dinner
+上午|shàng wǔ|morning (before noon)
+下午|xià wǔ|afternoon
+周末|zhōu mò|weekend
+春天|chūn tiān|spring
+夏天|xià tiān|summer
+秋天|qiū tiān|autumn
+冬天|dōng tiān|winter
+下雨|xià yǔ|to rain
+下雪|xià xuě|to snow
+刮风|guā fēng|the wind blows
+晴天|qíng tiān|sunny day
+阴天|yīn tiān|cloudy day
+彩虹|cǎi hóng|rainbow
+空气|kōng qì|air
+地方|dì fang|place
+城市|chéng shì|city
+农村|nóng cūn|countryside
+街道|jiē dào|street
+商店|shāng diàn|shop
+超市|chāo shì|supermarket
+医院|yī yuàn|hospital
+医生|yī shēng|doctor
+护士|hù shi|nurse
+工人|gōng rén|worker
+农民|nóng mín|farmer
+警察|jǐng chá|police officer
+司机|sī jī|driver
+工作|gōng zuò|work, job
+上班|shàng bān|go to work
+休息|xiū xi|rest
+帮助|bāng zhù|help
+帮忙|bāng máng|give a hand
+认识|rèn shi|know (a person), recognise
+知道|zhī dào|know (a fact)
+觉得|jué de|feel, think
+明白|míng bai|understand
+记得|jì de|remember
+忘记|wàng jì|forget
+希望|xī wàng|hope
+需要|xū yào|need
+开始|kāi shǐ|begin
+结束|jié shù|finish
+完成|wán chéng|complete
+准备|zhǔn bèi|prepare, get ready
+打开|dǎ kāi|open (up)
+关上|guān shàng|shut
+拿|ná|take, hold
+放|fàng|put
+找|zhǎo|look for
+给|gěi|give
+送|sòng|give as a gift, deliver
+借|jiè|borrow, lend
+还|huán|give back
+用|yòng|use
+做|zuò|do, make
+洗|xǐ|wash
+洗手|xǐ shǒu|wash hands
+洗澡|xǐ zǎo|have a bath
+刷牙|shuā yá|brush teeth
+穿|chuān|wear, put on
+脱|tuō|take off
+等|děng|wait
+问|wèn|ask
+答|dá|answer
+回答|huí dá|answer
+告诉|gào su|tell
+说话|shuō huà|talk
+听说|tīng shuō|hear that
+看见|kàn jiàn|see
+听见|tīng jiàn|hear
+游戏|yóu xì|game
+游泳|yóu yǒng|swim
+运动|yùn dòng|sport, exercise
+跑步|pǎo bù|jog, run
+踢足球|tī zú qiú|play football
+打篮球|dǎ lán qiú|play basketball
+骑车|qí chē|ride a bike
+自行车|zì xíng chē|bicycle
+汽车|qì chē|car
+火车|huǒ chē|train
+飞机|fēi jī|aeroplane
+公共汽车|gōng gòng qì chē|bus
+路|lù|road
+走路|zǒu lù|walk
+远|yuǎn|far
+近|jìn|near
+快|kuài|fast
+慢|màn|slow
+新|xīn|new
+旧|jiù|old (things)
+老|lǎo|old (people)
+年轻|nián qīng|young
+漂亮|piào liang|pretty
+可爱|kě ài|cute, lovely
+聪明|cōng ming|clever
+认真|rèn zhēn|careful, serious
+高兴|gāo xìng|glad, happy
+开心|kāi xīn|happy, cheerful
+难过|nán guò|sad
+生气|shēng qì|angry
+害怕|hài pà|afraid
+累|lèi|tired
+饿|è|hungry
+渴|kě|thirsty
+舒服|shū fu|comfortable
+容易|róng yì|easy
+难|nán|hard, difficult
+重要|zhòng yào|important
+干净|gān jìng|clean
+安静|ān jìng|quiet
+热闹|rè nao|lively, busy
+奇怪|qí guài|strange
+有趣|yǒu qù|interesting, fun
+非常|fēi cháng|very, extremely
+真|zhēn|really, true
+最|zuì|most
+更|gèng|even more
+太|tài|too (much)
+一点儿|yī diǎnr|a little
+一些|yī xiē|some
+所有|suǒ yǒu|all
+因为|yīn wèi|because
+所以|suǒ yǐ|so, therefore
+但是|dàn shì|but
+如果|rú guǒ|if
+还是|hái shi|or (in questions), still
+或者|huò zhě|or
+然后|rán hòu|then, after that
+怎么|zěn me|how
+为什么|wèi shén me|why
+怎么样|zěn me yàng|how is it
+哪个|nǎ ge|which
+这里|zhè lǐ|here
+那里|nà lǐ|there
+旁边|páng biān|beside
+中间|zhōng jiān|middle
+上面|shàng miàn|on top
+下面|xià miàn|below
+里面|lǐ miàn|inside
+外面|wài miàn|outside
+前面|qián miàn|in front
+后面|hòu miàn|behind
+教室|jiào shì|classroom
+黑板|hēi bǎn|blackboard
+作业|zuò yè|homework
+考试|kǎo shì|exam, test
+问题|wèn tí|question, problem
+汉字|hàn zì|Chinese character
+中文|zhōng wén|Chinese (language)
+英文|yīng wén|English (language)
+数学|shù xué|maths
+音乐|yīn yuè|music
+图书馆|tú shū guǎn|library
+故事|gù shi|story
+句子|jù zi|sentence
+字典|zì diǎn|dictionary
+铅笔|qiān bǐ|pencil
+书包|shū bāo|school bag
+橡皮|xiàng pí|eraser
+本子|běn zi|notebook
+纸|zhǐ|paper
+画|huà|picture, paint
+电脑|diàn nǎo|computer
+手机|shǒu jī|mobile phone
+照片|zhào piàn|photo
+房间|fáng jiān|room
+厨房|chú fáng|kitchen
+客厅|kè tīng|living room
+窗户|chuāng hu|window
+楼|lóu|building, floor
+电梯|diàn tī|lift
+灯|dēng|lamp, light
+碗|wǎn|bowl
+筷子|kuài zi|chopsticks
+勺子|sháo zi|spoon
+菜|cài|vegetable, dish
+肉|ròu|meat
+鸡肉|jī ròu|chicken (meat)
+饺子|jiǎo zi|dumpling
+包子|bāo zi|steamed bun
+果汁|guǒ zhī|juice
+茶|chá|tea
+冰淇淋|bīng qí lín|ice cream
+葡萄|pú tao|grape
+橙子|chéng zi|orange
+草莓|cǎo méi|strawberry
+西红柿|xī hóng shì|tomato
+土豆|tǔ dòu|potato
+动物|dòng wù|animal
+动物园|dòng wù yuán|zoo
+狮子|shī zi|lion
+长颈鹿|cháng jǐng lù|giraffe
+蜜蜂|mì fēng|bee
+蚂蚁|mǎ yǐ|ant
+小鸭|xiǎo yā|duckling
+公鸡|gōng jī|rooster
+天鹅|tiān é|swan
+企鹅|qǐ é|penguin
+袋鼠|dài shǔ|kangaroo
+森林|sēn lín|forest
+小河|xiǎo hé|stream
+湖|hú|lake
+大海|dà hǎi|the sea
+沙滩|shā tān|beach
+石头|shí tou|stone
+种子|zhǒng zi|seed
+苗|miáo|seedling
+果树|guǒ shù|fruit tree
+自己|zì jǐ|oneself
+别人|bié rén|other people
+孩子|hái zi|child
+小朋友|xiǎo péng you|child, little friend
+家人|jiā rén|family members
+叔叔|shū shu|uncle
+阿姨|ā yí|auntie
+外婆|wài pó|grandma (mum's mum)
+外公|wài gōng|grandpa (mum's dad)
+邻居|lín jū|neighbour
+客人|kè rén|guest
+生病|shēng bìng|be ill
+感冒|gǎn mào|catch a cold
+发烧|fā shāo|have a fever
+药|yào|medicine
+节日|jié rì|festival
+春节|chūn jié|Spring Festival
+新年|xīn nián|New Year
+中秋节|zhōng qiū jié|Mid-Autumn Festival
+月饼|yuè bing|mooncake
+红包|hóng bāo|red envelope

@@ -1,0 +1,269 @@
+# Chinese words for Year 1: characters|pinyin with tone marks|meaning in English
+一|yī|one
+二|èr|two
+三|sān|three
+四|sì|four
+五|wǔ|five
+六|liù|six
+七|qī|seven
+八|bā|eight
+九|jiǔ|nine
+十|shí|ten
+人|rén|person
+大|dà|big
+小|xiǎo|small
+上|shàng|up, on
+下|xià|down, under
+口|kǒu|mouth
+手|shǒu|hand
+足|zú|foot
+目|mù|eye
+耳|ěr|ear
+日|rì|sun, day
+月|yuè|moon, month
+水|shuǐ|water
+火|huǒ|fire
+山|shān|mountain
+石|shí|stone
+田|tián|field
+土|tǔ|soil, earth
+木|mù|wood, tree
+禾|hé|young rice plant
+天|tiān|sky, day
+地|dì|ground
+你|nǐ|you
+我|wǒ|I, me
+他|tā|he, him
+她|tā|she, her
+们|men|(makes a plural, as in 我们)
+我们|wǒ men|we, us
+你们|nǐ men|you (more than one)
+他们|tā men|they, them
+爸爸|bà ba|dad
+妈妈|mā ma|mum
+哥哥|gē ge|older brother
+姐姐|jiě jie|older sister
+弟弟|dì di|younger brother
+妹妹|mèi mei|younger sister
+爷爷|yé ye|grandpa (dad's dad)
+奶奶|nǎi nai|grandma (dad's mum)
+家|jiā|home, family
+好|hǎo|good
+你好|nǐ hǎo|hello
+谢谢|xiè xie|thank you
+再见|zài jiàn|goodbye
+不|bù|not, no
+是|shì|is, yes
+有|yǒu|have
+没有|méi yǒu|don't have, there isn't
+的|de|('s: shows belonging)
+了|le|(shows something has happened)
+在|zài|at, in
+这|zhè|this
+那|nà|that
+个|gè|(a measure word for many things)
+中|zhōng|middle
+中国|zhōng guó|China
+学|xué|learn
+学生|xué sheng|student
+老师|lǎo shī|teacher
+同学|tóng xué|classmate
+朋友|péng you|friend
+书|shū|book
+本|běn|(measure word for books)
+笔|bǐ|pen
+文具|wén jù|stationery
+尺子|chǐ zi|ruler
+红|hóng|red
+红色|hóng sè|red (colour)
+黄色|huáng sè|yellow
+蓝色|lán sè|blue
+绿色|lǜ sè|green
+白色|bái sè|white
+黑色|hēi sè|black
+颜色|yán sè|colour
+花|huā|flower
+草|cǎo|grass
+树|shù|tree
+叶子|yè zi|leaf
+鸟|niǎo|bird
+鱼|yú|fish
+牛|niú|cow
+羊|yáng|sheep, goat
+马|mǎ|horse
+狗|gǒu|dog
+猫|māo|cat
+虫|chóng|insect, bug
+兔子|tù zi|rabbit
+小狗|xiǎo gǒu|puppy
+小猫|xiǎo māo|kitten
+头|tóu|head
+脸|liǎn|face
+眼睛|yǎn jing|eyes
+鼻子|bí zi|nose
+嘴巴|zuǐ ba|mouth
+耳朵|ěr duo|ear
+头发|tóu fa|hair
+身体|shēn tǐ|body
+牙齿|yá chǐ|teeth
+吃|chī|eat
+喝|hē|drink
+看|kàn|look, watch
+听|tīng|listen
+说|shuō|speak, say
+读|dú|read aloud
+写|xiě|write
+走|zǒu|walk
+跑|pǎo|run
+跳|tiào|jump
+坐|zuò|sit
+站|zhàn|stand
+来|lái|come
+去|qù|go
+飞|fēi|fly
+玩|wán|play
+笑|xiào|laugh, smile
+哭|kū|cry
+唱歌|chàng gē|sing
+跳舞|tiào wǔ|dance
+画画|huà huà|draw pictures
+睡觉|shuì jiào|sleep
+起床|qǐ chuáng|get up
+吃饭|chī fàn|have a meal
+喝水|hē shuǐ|drink water
+米饭|mǐ fàn|cooked rice
+面条|miàn tiáo|noodles
+水果|shuǐ guǒ|fruit
+苹果|píng guǒ|apple
+香蕉|xiāng jiāo|banana
+西瓜|xī guā|watermelon
+牛奶|niú nǎi|milk
+鸡蛋|jī dàn|egg
+面包|miàn bāo|bread
+蛋糕|dàn gāo|cake
+糖|táng|sugar, sweets
+早上|zǎo shang|morning
+中午|zhōng wǔ|noon
+晚上|wǎn shang|evening
+今天|jīn tiān|today
+明天|míng tiān|tomorrow
+昨天|zuó tiān|yesterday
+年|nián|year
+星期|xīng qī|week
+春|chūn|spring
+夏|xià|summer
+秋|qiū|autumn
+冬|dōng|winter
+风|fēng|wind
+雨|yǔ|rain
+雪|xuě|snow
+云|yún|cloud
+星星|xīng xing|star
+太阳|tài yáng|sun
+月亮|yuè liang|moon
+东|dōng|east
+西|xī|west
+南|nán|south
+北|běi|north
+左|zuǒ|left
+右|yòu|right
+前|qián|front
+后|hòu|back, behind
+里|lǐ|inside
+外|wài|outside
+多|duō|many, much
+少|shǎo|few, little
+长|cháng|long
+短|duǎn|short
+高|gāo|tall, high
+早|zǎo|early
+晚|wǎn|late
+开|kāi|open
+关|guān|close
+门|mén|door
+窗|chuāng|window
+车|chē|car, vehicle
+船|chuán|boat
+衣服|yī fu|clothes
+帽子|mào zi|hat
+鞋|xié|shoe
+桌子|zhuō zi|table, desk
+椅子|yǐ zi|chair
+床|chuáng|bed
+杯子|bēi zi|cup
+电视|diàn shì|television
+电话|diàn huà|telephone
+球|qiú|ball
+玩具|wán jù|toy
+男|nán|male
+女|nǚ|female
+男孩|nán hái|boy
+女孩|nǚ hái|girl
+儿子|ér zi|son
+女儿|nǚ ér|daughter
+宝宝|bǎo bao|baby
+爱|ài|love
+喜欢|xǐ huan|like
+想|xiǎng|want, think
+要|yào|want, need
+会|huì|can, know how to
+能|néng|can, be able to
+叫|jiào|be called, shout
+名字|míng zi|name
+什么|shén me|what
+谁|shéi|who
+哪里|nǎ lǐ|where
+几|jǐ|how many (small number)
+多少|duō shao|how many, how much
+很|hěn|very
+也|yě|also, too
+都|dōu|all, both
+和|hé|and
+对|duì|right, correct
+错|cuò|wrong
+可以|kě yǐ|may, can
+请|qǐng|please
+对不起|duì bu qǐ|sorry
+没关系|méi guān xi|it doesn't matter
+生日|shēng rì|birthday
+快乐|kuài lè|happy
+礼物|lǐ wù|present, gift
+学校|xué xiào|school
+上学|shàng xué|go to school
+放学|fàng xué|school is over
+课|kè|lesson
+今年|jīn nián|this year
+岁|suì|years old
+钱|qián|money
+买|mǎi|buy
+卖|mài|sell
+大家|dà jiā|everyone
+一起|yī qǐ|together
+回家|huí jiā|go home
+公园|gōng yuán|park
+房子|fáng zi|house
+花园|huā yuán|garden
+小鸟|xiǎo niǎo|little bird
+白天|bái tiān|daytime
+天气|tiān qì|weather
+冷|lěng|cold
+热|rè|hot
+雨伞|yǔ sǎn|umbrella
+河|hé|river
+海|hǎi|sea
+田野|tián yě|open fields
+竹子|zhú zi|bamboo
+熊猫|xióng māo|panda
+老虎|lǎo hǔ|tiger
+大象|dà xiàng|elephant
+猴子|hóu zi|monkey
+青蛙|qīng wā|frog
+蝴蝶|hú dié|butterfly
+小鸡|xiǎo jī|chick
+鸭子|yā zi|duck
+王|wáng|king (also a family name)
+力|lì|strength
+门口|mén kǒu|doorway
+出来|chū lai|come out
+进去|jìn qu|go in
+回来|huí lai|come back
