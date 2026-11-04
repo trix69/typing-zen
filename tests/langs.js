@@ -113,7 +113,12 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
     `B: 中文 with its 1 session; English apart with ${u.byLang.en && u.byLang.en.sessions.length} sessions and ${u.byLang.en && u.byLang.en.stars} stars`);
 
   // 4. B goes back to English: English's history is back, the week counts English only.
+  await put(B.p, (u) => { u.share = true; });
+  await B.p.reload(); await B.p.waitForTimeout(400); await B.p.click('#continueBtn'); await B.p.waitForTimeout(900);
   await lang(B.p, 'en');
+  const entry = db[`${COL.replace('users', 'board')}/g-luke`];
+  const total = entry ? Object.values(entry.days).reduce((a, x) => a + x, 0) : -1;
+  ok(total === 21, `the board adds every language's words (English 16 + Chinese 5 = ${total})`);
   u = await me(B.p);
   ok(u.lang === 'en' && u.sessions.length === 2 && u.stars === 5 && u.tricky.because === 1 && u.byLang.zh.sessions.length === 1 && u.byLang.zh.stars === 2,
     `B: English restored (${u.sessions.length} sessions, ${u.stars} stars, tricky kept); 中文 put away (${u.byLang.zh.sessions.length}, ${u.byLang.zh.stars} stars)`);

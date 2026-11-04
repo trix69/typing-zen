@@ -56,8 +56,13 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
     `the line: ${typed.length} dashes, a gap after each syllable of "${word[5]}" (${JSON.stringify(brk)}), no space to type`);
   ok(/Type its pinyin, without tones \(ü is v\)/.test(await p.textContent('#finger')), 'hint: ' + await p.textContent('#finger'));
   ok(word && /^It means /.test(card.meaning), `card: ${card.hanzi} "${card.meaning}"`);
-  const hint = await p.evaluate(() => { const h = document.querySelector('#card .hint-pinyin'), l = document.querySelector('#line'); return h && [h.textContent, h.getBoundingClientRect().bottom <= l.getBoundingClientRect().top + 1]; });
-  ok(hint && hint[0] === word[4] && hint[1], `the pinyin with tones "${hint && hint[0]}" above the line before anything is typed`);
+  // Only the tone marks show above the line, over the letters that carry them (user's request, 2026-11-04).
+  const tones = await p.evaluate(() => [...document.querySelectorAll('#line span')].map((x, i) => [i, x.dataset.tone || '', x.textContent]).filter((x) => x[1]));
+  const wantT = []; { let n = 0; for (const c of word[4].normalize('NFD')) { const m = { '\u0304': 'ˉ', '\u0301': 'ˊ', '\u030c': 'ˇ', '\u0300': 'ˋ' }[c]; if (m) wantT.push([n - 1, m]); else if (/[a-z]/i.test(c)) n++; } }
+  ok(JSON.stringify(tones.map((x) => [x[0], x[1]])) === JSON.stringify(wantT) && tones.every((x) => x[2] === '_') && !(await p.$('#card .hint-pinyin')) && !(await p.textContent('#card')).includes(word[4]),
+    `tone marks only, over the right dashes: ${word[4]} -> ${JSON.stringify(tones.map((x) => x[0] + x[1]))}; no pinyin letters shown`);
+  const above = await p.evaluate(() => { const s = document.querySelector('#line span[data-tone]'); if (!s) return true; const b = getComputedStyle(s, '::before'); return b.content.length > 2 && b.position === 'absolute'; });
+  ok(above, 'the mark is drawn above its dash');
   ok(card.clue === word[2] && card.mark === card.hanzi && card.sentence === 1, `example sentence with the word marked: ${card.clue}, and a Hear the sentence button`);
   const said = await p.evaluate(() => window.__said);
   await p.waitForTimeout(1300);
