@@ -150,7 +150,9 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await beeToEnd(p);
   ok(await vis(p, '#results') && !(await vis(p, '#shareSheet')) && !(await vis(p, '#boardBtn')), 'after No in Settings: no question, no board button');
   await ctx.close();
-  // 2. No → asked again next time; Don't remind me again → never asked.
+  // 2. No → asked again next time; Don't remind me again → never asked. An undecided user again: section 1's choices
+  // reached the cloud (the entry is written after a sync), so they're dropped first.
+  for (const k of Object.keys(db)) if (k.startsWith(`${COL}/g-luke`) || k === `${BOARD}/g-luke`) delete db[k];
   ({ ctx, p } = await signedIn('B'));
   await beeToEnd(p); await p.click('#shareNo'); await p.clock.runFor(300);
   st = await store(p);

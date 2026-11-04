@@ -2472,6 +2472,14 @@
   // Puts this user's week on the board (or takes it off). Quietly does nothing offline or signed out.
   async function shareWrite(on, u = profile) {
     if (!u.google || !cloudOn()) return false;
+    // The entry is this user's words over every device, so it is written only after a sync has brought the other
+    // devices' sessions here (user's report, 2026-11-04: 100+ words dropped to 35 after a round on another device).
+    // A user not chosen yet (the stats card) isn't synced: the board is read, the entry left as it is.
+    if (on) {
+      if (u !== profile || !chosen) return false;
+      await syncNow();
+      if ((u.cloud || {}).state !== "ok") return false;
+    }
     try {
       const c = await userCloud(u.google.uid);
       if (!c.auth.currentUser || c.auth.currentUser.uid !== u.google.uid) return false;
