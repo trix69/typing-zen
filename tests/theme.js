@@ -17,5 +17,9 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) process
     }
     await ctx.close();
   }
+  // The tab icon is the hand-drawn logo (user's answer 2026-11-07, Hermes R85.1), not the old pebbles.
+  { const p = await b.newPage(); await p.goto(base);
+    const r = await p.evaluate(async () => { const l = document.querySelector('link[rel=icon]'); const res = await fetch(l.href); return [l.getAttribute('href'), res.status, res.headers.get('content-type')]; });
+    ok(/^(icons\/icon-192\.png|data:image\/png)/.test(r[0]) && r[1] === 200 && /png/.test(r[2] || 'png'), `tab icon is the logo: ${r[0].slice(0, 40)}, ${r[1]} ${r[2]}`); await p.close(); }
   await b.close();
 })();

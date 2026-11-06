@@ -52,15 +52,15 @@ def main():
         sys.exit("index.html no longer has one <!-- pwa: ... <!-- /pwa --> block; update tools/bundle.py")
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = re.sub(r'(href|src)="([\w.-]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
-    # The images the page loads from icons/ (the logo, the Support QR code: Hermes R76.2): inlined, since the single
+    # The images the page loads from icons/ (the logo, also the tab icon: Hermes R85.1; the Support QR code: R76.2): inlined, since the single
     # file has no icons/ beside it.
     imgs = {}
     def inline(m):
-        f = m.group(1)
+        f = m.group(2)
         if f not in imgs:
             imgs[f] = base64.b64encode((ROOT / "icons" / f).read_bytes()).decode()
-        return 'src="data:image/png;base64,' + imgs[f] + '"'
-    html = re.sub(r'src="icons/([\w.-]+\.png)"', inline, html)
+        return m.group(1) + '="data:image/png;base64,' + imgs[f] + '"'
+    html = re.sub(r'(src|href)="icons/([\w.-]+\.png)"', inline, html)
     if set(imgs) != {"bmc-qr.png", "icon-192.png"}:
         sys.exit(f"index.html's icons/ images changed ({sorted(imgs)}); update tools/bundle.py")
     tags = "\n".join(f'<script src="{f}"></script>' for f in SCRIPTS)
