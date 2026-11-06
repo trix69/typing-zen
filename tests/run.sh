@@ -29,7 +29,7 @@ cd $out
 failed=0
 echo "Typing Zen tests on $where ($B, version $VER)"
 for t in $suites; do
-  r=$(node "$here/$t.js" "$B" "$K" ${extra[$t]:-} 2>&1)
+  r=$(node -r "$here/quiet.js" "$here/$t.js" "$B" "$K" ${extra[$t]:-} 2>&1)
   p=$(print -r -- "$r" | grep -c '^PASS'); f=$(print -r -- "$r" | grep -c '^FAIL')
   e=$(print -r -- "$r" | grep -c 'Error')
   # A suite that throws stops early; say so on its row, so "0 fail" never hides it.
