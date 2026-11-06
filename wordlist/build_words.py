@@ -29,9 +29,11 @@ NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 
 # The spreadsheet stores some words in lower case or without punctuation.
 # Correct them so the child learns the proper spelling.
-FIXES = {"i": "I", "i'd": "I'd", "i've": "I've", "i'll": "I'll", "xbox": "Xbox", "xray": "X-ray"}
+FIXES = {"i": "I", "i'd": "I'd", "i've": "I've", "i'll": "I'll", "xbox": "Xbox", "xray": "X-ray",
+         # British spellings for American ones the list has no UK form of (user's request, 2026-11-06).
+         "colorful": "colourful", "honorably": "honourably", "airplane": "aeroplane"}
 # American spellings left out where the list already has the UK one (user's request, 2026-11-04: centre, not center).
-SKIP = {"center"}
+SKIP = {"center", "organize", "behavior"}  # organise and behaviour are in the list (2026-11-06)
 
 
 def read_sheet(path):

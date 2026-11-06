@@ -812,7 +812,7 @@ source|where something comes from|The sun is a source of light.
 stream|a small river|We paddled in the stream.
 unique|the only one of its kind|Every snowflake is unique.
 wealth|a lot of money or riches|The king had great wealth.
-airplane|an aeroplane|The airplane flew over the sea.
+aeroplane|a machine with wings that flies|The aeroplane flew over the sea.
 backyard|a garden behind a house|We camped in the backyard.
 birthday|the day you were born each year|My birthday is in May.
 cheerful|happy and bright|She has a cheerful smile.
@@ -1064,7 +1064,7 @@ acquaint|to get to know|Let me acquaint you with the rules.
 baseball|a game with a bat and a ball, played in America|We played baseball in the park.
 boundary|the edge or limit of an area|The ball went over the boundary.
 business|a company that sells things or services|My aunt runs a cake business.
-colorful|full of colour (American spelling of colourful)|The parrot is very colorful.
+colourful|full of bright colours|The parrot is very colourful.
 colossal|enormous|The ship was colossal.
 computer|a machine that stores and works with information|I typed my story on the computer.
 consider|to think carefully about|Consider every answer.
@@ -1096,7 +1096,6 @@ navigate|to find the way|Sailors used stars to navigate.
 nuisance|something annoying|The fly is a nuisance.
 optimist|someone who expects good things to happen|She is an optimist and always smiles.
 organise|to arrange or plan|Let's organise a party.
-organize|to arrange or plan (American spelling)|We need to organize the books.
 original|the first one, or new and unusual|This is the original painting.
 particle|a tiny piece|A particle of dust floated past.
 peculiar|strange or unusual|The soup had a peculiar smell.
@@ -1316,7 +1315,6 @@ wholly|completely|I wholly agree with you.
 willow|a tree with long drooping branches|We sat under the willow by the river.
 abnormal|not normal|The weather is abnormal for June.
 artistic|good at art|My sister is very artistic.
-behavior|the way you act (American spelling of behaviour)|The dog's behavior has improved.
 brutally|in a very harsh way|The wind was brutally cold.
 capacity|how much something can hold|The jug has a capacity of one litre.
 decorate|to make something look nicer|Let's decorate the tree.
@@ -1457,7 +1455,7 @@ classroom|the room where a class is taught|Our classroom has a fish tank.
 everybody|every person|Everybody loves ice cream.
 haphazard|without order or planning|The books were stacked in a haphazard way.
 hazardous|dangerous|Ice on the road is hazardous.
-honorably|in an honest and good way|He behaved honorably.
+honourably|in an honest and good way|He behaved honourably.
 judgement|a decision or opinion|Use your judgement.
 litigious|quick to take people to court|The litigious man sued his neighbour over a fence.
 mysteries|things that are hard to explain|The ocean is full of mysteries.

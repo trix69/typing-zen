@@ -30,7 +30,7 @@ No ads, no tracking. Works offline once added to your home screen.
 - Optional ranking board for children signed in with Google: names are masked (Lu******h), and only the number of words tested in the last 7 days is shared.
 
 **Languages**
-- **English**: 1,716 words in UK spelling, sorted into Year 1 to Year 6 by the National Curriculum spelling lists, each with a meaning and an example sentence.
+- **English**: 1,714 words in UK spelling, sorted into Year 1 to Year 6 by the National Curriculum spelling lists, each with a meaning and an example sentence.
 - **Dansk**: about 1,700 Danish words for 0. to 5. klasse, on a Danish keyboard layout, with the whole interface in Danish.
 - **中文**: 1,511 words for Year 1 to Year 6, each with an example sentence. The word is shown in characters and typed as pinyin without tones on an English keyboard (ü is typed v). The tone marks show above the letters as a hint.
 - Each language keeps its own history: switching language never loses progress.
