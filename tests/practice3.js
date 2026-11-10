@@ -24,6 +24,25 @@ const NEW = { colourful: 'full of bright colours', aeroplane: 'a machine with wi
   ok(w in NEW, `Practice says the UK spelling: ${JSON.stringify(said)}`);
   ok(w in NEW && card.includes(NEW[w]), `the card shows its meaning: "${card.replace(/\s+/g, ' ').slice(0, 90)}"`);
   ok(!/colorful|airplane/.test(card + said.join(' ')), 'no old spelling on the card or in the speech');
+  await ctx.close();
+  // Counts saved under the old spelling still count (Hermes R86.3): 5 of 5 keeps the day finished, 3 of 5 resumes.
+  for (const n of [5, 3]) {
+    const c = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await c.addInitScript(([K, n]) => { speechSynthesis.speak = (u) => setTimeout(() => u.onend && u.onend(), 5);
+      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u',
+        practised: { [new Date().toDateString()]: { airplane: n } },
+        sessions: [{ date: new Date().toISOString(), game: 'spell', lang: 'en', level: 'Y4', minutes: 10, length: 10, finished: true, firstTry: 0, struggled: 1, firstTryWords: [], struggledWords: ['airplane'] }] } } })); }, [KEY, n]);
+    const q = await c.newPage(); q.on('pageerror', (e) => errs.push(e.message));
+    await q.goto(base); await q.waitForTimeout(400);
+    await q.click('#missedBtn'); await q.waitForTimeout(300);
+    const sheet = (await q.evaluate(() => document.querySelector('#missedDays').innerText)).replace(/\s+/g, ' ');
+    await q.keyboard.press('Escape'); await q.waitForTimeout(200);
+    await q.click('#continueBtn'); await q.waitForTimeout(300);
+    const dis = await q.$eval('#practiseBtn', (x) => x.disabled);
+    if (n === 5) ok(/Practised \(1\)[^]*aeroplane/.test(sheet) && !/To practise/.test(sheet) && dis, `airplane done 5 times: the day stays finished (Practice card ${dis ? 'disabled' : 'enabled'}; "${(sheet.match(/(Practised|To practise)[^.]{0,40}/) || [''])[0]}")`);
+    else ok(/aeroplane 3\/5/.test(sheet) && !dis, `airplane done 3 times: shows "aeroplane 3/5" and Practice is open (${(sheet.match(/aeroplane[^ ]* ?\S*/) || [''])[0]})`);
+    await c.close();
+  }
   ok(!errs.length, 'no page errors ' + errs.join(' | '));
   await b.close();
 })();
