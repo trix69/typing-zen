@@ -52,11 +52,11 @@ const seed = (K, lang) => { if (!sessionStorage.done) { sessionStorage.done = 1;
     ok((await p.textContent('#continueBtn')) === 'Fortsæt som Luke' && (await p.textContent('#intro-back h2')).includes('Velkommen'), 'R39.2: stats panel redrawn in Danish');
     await p.click('#switchBtn'); await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(150);
     const dis2 = await p.evaluate(() => [...document.querySelectorAll('#sheet .user-only button, #sheet .user-only select')].filter(e => e.disabled).length);
-    ok(dis2 === 21, `R39.2: Who's typing still greys out (${dis2})`);
+    ok(dis2 === 22, `R39.2: Who's typing still greys out (${dis2})`);
     await p.keyboard.press('Escape');
     await p.click('#switchBack'); await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(150);
     const dis3 = await p.evaluate(() => [...document.querySelectorAll('#sheet .user-only button, #sheet .user-only select')].filter(e => e.disabled).length);
-    ok(dis3 === 21, `R39.2: Back from Who's typing greys out again (${dis3})`);
+    ok(dis3 === 22, `R39.2: Back from Who's typing greys out again (${dis3})`);
     ok(!errs.length, 'R39.2 no errors ' + errs.join('|'));
     await ctx.close();
   }

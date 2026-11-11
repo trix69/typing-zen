@@ -17,7 +17,10 @@ Google suites). It exits 1 if any check fails.
 A suite can also be run by hand: `node tests/<suite>.js <site> <storage key> [extra]`, with Playwright on
 `NODE_PATH` (here `~/tools/playwright/node_modules`).
 
-The Google suites (`google`, `multi`, `homeapp`, `reset`, `board`) replace the Firebase SDK with an in-page
+Every suite is started through `quiet.js` (`node -r`), which silences the browser's speech (headless Chromium on
+macOS speaks aloud) and accepts the privacy policy once per tab, so the suites start where they always did.
+
+The Google suites (`google`, `multi`, `homeapp`, `reset`, `board`, `erase`) replace the Firebase SDK with an in-page
 fake, so they never touch the real database. Every suite uses a fresh browser profile and seeds its own
 made-up users, so none of them changes anyone's real progress.
 
@@ -30,7 +33,9 @@ made-up users, so none of them changes anyone's real progress.
 | google, multi, homeapp, reset | Google sign-in and sync, two accounts on one device, home-screen sign-in, Clear history |
 | remove | Log out and Remove account |
 | board | sharing and the ranking board |
-| update | the update question on opening, Automatic update check On/Off, Buy me a coffee |
+| update | the update question on opening and from Check for updates (no reload until Update), Automatic update check On/Off, Buy me a coffee |
+| privacy | the privacy policy screen: first run, Decline, re-acceptance, #pp=reset, Danish, small screens, offline with no requests, docs/privacy.html with the service worker |
+| erase | Delete my data from Google: asked twice, everything of the account deleted, Google refusing, offline |
 | practice, practice2, pcard | Practice: counting, spoken spelling, the home card |
 | gap | the pause before Practice spells a word |
 | triumph | the fanfare for each star level |
@@ -40,3 +45,4 @@ made-up users, so none of them changes anyone's real progress.
 | langs | each language keeps its own history: switching, sync between two devices, untagged sessions as English |
 | zh | Chinese: 中文 in Settings, characters shown, pinyin typed (capitals, u for ü), the Mandarin voice, Practice and Word Garden |
 | motion, interrupted, dupvoice, keylog2, noplay, fold | Reduce Motion, iPad audio, voices, the key log, small screens |
+| caseless, practice3 | X-ray and Xbox in any case; renamed (American) spellings in old sessions |

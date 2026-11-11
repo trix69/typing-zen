@@ -39,7 +39,11 @@ No ads, no tracking. Works offline once added to your home screen.
 - An on-screen keyboard coloured by finger, highlighting the next key; or the device's own keyboard on phones.
 - Five mechanical key sounds to choose from (recordings from [kbsim](https://github.com/tplai/kbsim)).
 - Several children per device, each with their own year and progress. Sign in with Google to keep progress in step across devices; or just type a name to keep it on this device only.
-- Light and dark appearance, automatic update check, and offline use from the home screen.
+- Light and dark appearance, an update check that asks before installing, and offline use from the home screen.
+
+## Privacy
+
+Typing Zen signs a child in with Google only if you choose to, so their progress can follow them between devices; everything else stays on the device. No advertising, no analytics, no trackers. The app asks for the [privacy policy](https://trix69.github.io/typing-zen/docs/privacy.html) to be accepted before it is used, and Settings has **Delete my data from Google**.
 
 ## Running it yourself
 
@@ -61,6 +65,7 @@ Then open http://localhost:8800/. Google sign-in needs a Firebase project of you
 | `wordlist/` | The word list sources and the scripts that build them |
 | `sw.js`, `manifest.webmanifest`, `icons/` | Offline copy and home-screen app (`sw.js` is written by `tools/make_sw.py`) |
 | `fonts/`, `sounds/` | Self-hosted fonts and key-sound recordings, with their licences |
+| `docs/privacy.html` | The privacy policy (English and Danish); its date is `PP_DATE` in `tools/version.py` (`python3 tools/version.py pp`) |
 | `tests/` | Browser tests ([tests/README.md](tests/README.md)) |
 | `tools/` | Versioning, offline copy, single-file bundle, test-site deploy, Firestore rules |
 

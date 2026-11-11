@@ -18,9 +18,9 @@ esac
 VER=$(curl -s "${B}version.json?x=$RANDOM" | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')
 export NODE_PATH=${NODE_PATH:-$HOME/tools/playwright/node_modules}
 # Every suite and the extra argument it needs, if any.
-typeset -A extra=(offline "$VER" lengths "$LEN" m2 "$RUN" google "$COL" multi "$COL" reset "$COL" homeapp "$COL" board "$COL" langs "$COL")
+typeset -A extra=(offline "$VER" lengths "$LEN" m2 "$RUN" google "$COL" multi "$COL" reset "$COL" homeapp "$COL" board "$COL" langs "$COL" erase "$COL")
 all=(offline lengths m2 fill google multi remove homeapp reset board update practice practice2 pcard gap triumph words mastery
-     garden capital bksp center theme welcomeset dk zh langs r39fix motion interrupted dupvoice keylog2 noplay fold caseless practice3)
+     garden capital bksp center theme welcomeset dk zh langs r39fix motion interrupted dupvoice keylog2 noplay fold caseless practice3 erase privacy)
 # mastery.js expects the live rule (3 in a row); the test build masters after 2, which m2.js covers there.
 [[ $where == test ]] && all=(${all:#mastery})
 suites=(${@:-$all})

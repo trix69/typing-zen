@@ -56,11 +56,14 @@ const FILES = [
   %FILES%
 ];
 self.addEventListener("install", (e) => {
-  /* Everything at once, so a half-saved copy is never used; the old copy stays until this one is complete. */
+  /* Everything at once, so a half-saved copy is never used; the old copy stays until this one is complete.
+     A new copy then waits: it takes over only when the page asks (Update in the app, user's request 2026-11-12:
+     Later keeps this build), or by itself once every page of the app is closed. The first copy has nothing to
+     wait for. */
   e.waitUntil(caches.open(VERSION)
-    .then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: "reload" }))))
-    .then(() => self.skipWaiting()));
+    .then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: "reload" })))));
 });
+self.addEventListener("message", (e) => { if (e.data === "skipWaiting") self.skipWaiting(); });
 self.addEventListener("activate", (e) => {
   e.waitUntil(caches.keys()
     .then((ks) => Promise.all(ks.filter((k) => k !== VERSION && MINE(k)).map((k) => caches.delete(k))))
@@ -69,7 +72,12 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET" || req.cache === "no-store") return; /* Settings > Check for updates asks the network */
-  if (new URL(req.url).origin !== location.origin) return;
+  const url = new URL(req.url);
+  if (url.origin !== location.origin) return;
+  /* Only the app itself opens from the saved copy: any other page (docs/privacy.html) goes to the network, or it
+     would open the app instead (the Violin Toolkit rule). */
+  const scope = new URL(self.registration.scope).pathname;
+  if (req.mode === "navigate" && url.pathname !== scope && url.pathname !== scope + "index.html") return;
   e.respondWith((async () => {
     const c = await caches.open(VERSION);
     /* Pages open from the saved copy (any ?v= in the address is ignored); files come from it too. */

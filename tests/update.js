@@ -156,5 +156,39 @@ const NEWER = JSON.stringify({ version: '99.0', build: 'ffffffffff' });
   ok(await p.inputValue('#newName') === 'Luke', 'the name types in full');
   ok(!errs.length, 'no errors ' + errs.join('|'));
   await ctx.close();
+
+  // 12. Settings > Check for updates asks too (user's request, 2026-11-12): no reload until Update; Later keeps
+  // this build and says it is ready; Check again asks again; with the automatic check Off it still asks.
+  for (const off of [false, true]) {
+    const T = (m) => `manual check, automatic ${off ? 'Off' : 'On'}: ${m}`;
+    ({ ctx, p, errs } = await open({ newer: true, off }));
+    const url0 = p.url(), ver0 = await p.textContent('#appVersion');
+    await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(300);
+    await p.click('#verBtn'); await p.waitForTimeout(800);
+    ok(await shown(p), T('the question appears over Settings'));
+    ok(p.url() === url0 && await p.textContent('#appVersion') === ver0, T(`no reload (${p.url().replace(base, '/') || '/'}, version ${ver0})`));
+    await p.click('#updLater'); await p.waitForTimeout(300);
+    ok(!(await shown(p)) && /99\.0 is ready/.test(await p.textContent('#verMsg')), T(`Later: "${await p.textContent('#verMsg')}"`));
+    await p.waitForTimeout(6000); // the automatic check's 5 s retry has had its chance
+    ok(!(await shown(p)), T('not asked again by itself after Later'));
+    await p.click('#verBtn'); await p.waitForTimeout(800);
+    ok(await shown(p), T('Check again asks again'));
+    if (off) {
+      await p.click('#updNow'); await p.waitForTimeout(1500);
+      ok(/\?v=ffffffffff$/.test(p.url()), T('Update installs it: ' + p.url().replace(base, '')));
+    }
+    ok(!errs.length, T('no errors ' + errs.join('|')));
+    await ctx.close();
+  }
+  // 13. Up to date, and offline: the old messages, no question.
+  ({ ctx, p, errs } = await open({}));
+  await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(300);
+  await p.click('#verBtn'); await p.waitForTimeout(800);
+  ok(await p.textContent('#verMsg') === 'Up to date' && !(await shown(p)), 'manual check, same version: "Up to date", no question');
+  await ctx.setOffline(true);
+  await p.click('#verBtn'); await p.waitForTimeout(800);
+  ok(await p.textContent('#verMsg') === "Can't check while offline" && !(await shown(p)), 'manual check offline: "' + await p.textContent('#verMsg') + '", no question');
+  ok(!errs.length, 'no errors ' + errs.join('|'));
+  await ctx.close();
   await b.close();
 })();

@@ -50,7 +50,16 @@ def main():
     html, n = re.subn(r"<!-- pwa:.*?<!-- /pwa -->\n", "", html, flags=re.S)
     if n != 1:
         sys.exit("index.html no longer has one <!-- pwa: ... <!-- /pwa --> block; update tools/bundle.py")
+    # The privacy policy's date rides on <html data-pp>, which goes with the tag: set it again first thing, and point
+    # "Read the full policy" at the live site, since the single file has no docs/ beside it.
+    pp = re.findall(r'<html lang="en-GB" data-pp="([^"]+)">', html)
+    if len(pp) != 1:
+        sys.exit("index.html needs <html lang=\"en-GB\" data-pp=\"…\">; update tools/bundle.py")
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
+    html = f'<script>document.documentElement.dataset.pp = "{pp[0]}";</script>\n' + html
+    html, n = re.subn(r'href="docs/privacy\.html"', 'href="https://trix69.github.io/typing-zen/docs/privacy.html"', html)
+    if n != 1:
+        sys.exit("index.html should link docs/privacy.html once; update tools/bundle.py")
     html = re.sub(r'(href|src)="([\w.-]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
     # The images the page loads from icons/ (the logo, also the tab icon: Hermes R85.1; the Support QR code: R76.2): inlined, since the single
     # file has no icons/ beside it.

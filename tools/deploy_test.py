@@ -40,7 +40,7 @@ SITE = ROOT / "dist" / "test-site"
 REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", "words-zh.js", ".nojekyll"]
-PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, and a Google sign-in under way from the home screen
+PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board", "typingZen.pp"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, a Google sign-in under way from the home screen, the board, and the privacy policy accepted (kept apart, so accepting on the test site never counts for the live one)
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
 LIVE_MASTER_RUN, TEST_MASTER_RUN = 3, 2  # right-first-try spellings in a row that make a word mastered: live and test
 SHARED = {"typingZen.theme", "typingZen.autoUpd"}  # device settings, the same on both sites
@@ -70,6 +70,10 @@ def build(out):
     if (out / "icons").exists():
         shutil.rmtree(out / "icons")
     shutil.copytree(ROOT / "icons", out / "icons")
+    # The privacy policy and its date (docs/privacy.html, docs/privacy-version.json), and the README pictures.
+    if (out / "docs").exists():
+        shutil.rmtree(out / "docs")
+    shutil.copytree(ROOT / "docs", out / "docs")
     # Its own home-screen app: another name and id, so it installs beside the live one.
     manifest = (ROOT / "manifest.webmanifest").read_text(encoding="utf-8")
     manifest = must(manifest, '"name": "Typing Zen"', '"name": "Typing Zen (Test)"', "manifest name")
@@ -78,7 +82,7 @@ def build(out):
     (out / "manifest.webmanifest").write_text(manifest, encoding="utf-8")
     # Every file the offline copy holds, so a change to only an icon, a font or a sound still counts as a new
     # build for "Check for updates" (it would otherwise say "Up to date" while sw.js has changed).
-    extra = sorted(p for d in ("icons", "fonts", "sounds") for p in (ROOT / d).rglob("*") if p.is_file())
+    extra = sorted(p for d in ("icons", "fonts", "sounds", "docs") for p in (ROOT / d).rglob("*") if p.is_file())
     stamp = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in FILES + ["manifest.webmanifest"])
                          + b"".join(p.read_bytes() for p in extra)).hexdigest()[:10]
     (out / "version.json").write_text('{"version": "%s", "build": "%s"}\n' % (shown, stamp), encoding="utf-8")
@@ -137,7 +141,7 @@ def main():
 
     shown = build(SITE)
     src = git("rev-parse", "--short", "HEAD", cwd=ROOT)
-    dirty = " + uncommitted changes" if git("status", "--porcelain", "--", *FILES, "fonts", "sounds", "icons", "manifest.webmanifest", cwd=ROOT) else ""
+    dirty = " + uncommitted changes" if git("status", "--porcelain", "--", *FILES, "fonts", "sounds", "icons", "docs", "manifest.webmanifest", cwd=ROOT) else ""
     git("add", "-A")
     if not git("status", "--porcelain"):
         print("Test site unchanged")

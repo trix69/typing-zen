@@ -10,7 +10,7 @@ as before. This is done once, in a browser, by the project owner (about 10 minut
    support email, **Save**.
 3. **Authentication > Settings > Authorized domains > Add domain**: `trix69.github.io`.
    (`localhost` is there already, for testing on this Mac.)
-4. **Build > Firestore Database > Create database**: location `europe-west2 (London)`, start in
+4. **Build > Firestore Database > Create database**: location `australia-southeast1 (Sydney)` (the project was created there; docs/privacy.html says so), start in
    **production mode**, create.
 5. **Firestore Database > Rules**: replace everything with the contents of `tools/firestore.rules`,
    then **Publish**.
