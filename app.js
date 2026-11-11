@@ -1777,14 +1777,18 @@
   // a miss takes it away until it has 3 in a row again.
   const MASTER_RUN = 3;
   // { word: [right first try?, …] } in one level, oldest first, from the sessions that ended before `until` (ms).
+  // A spelling since taken out of the list (RENAMED) is skipped: it is in no level, so it can't add to the
+  // mastered figures (Hermes R87.1). Old results still don't count for the new spelling. (Not "the level's own
+  // words only": a Spelling Bee also brings in tricky words from other years, and those count where played.)
   function resultsIn(u, level, until = Infinity) {
     const out = {};
+    const current = (w) => listSpelling(w) === w;
     const list = (u.sessions || []).filter((s) => s && s.game === "spell" && s.level === level && Date.parse(s.date) < until)
       .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
     for (const s of list) {
       // Within a session a word missed and then spelled right again later was missed first.
-      for (const w of Array.isArray(s.struggledWords) ? s.struggledWords : []) (out[w] = out[w] || []).push(false);
-      for (const w of Array.isArray(s.firstTryWords) ? s.firstTryWords : []) (out[w] = out[w] || []).push(true);
+      for (const w of Array.isArray(s.struggledWords) ? s.struggledWords : []) if (current(w)) (out[w] = out[w] || []).push(false);
+      for (const w of Array.isArray(s.firstTryWords) ? s.firstTryWords : []) if (current(w)) (out[w] = out[w] || []).push(true);
     }
     return out;
   }

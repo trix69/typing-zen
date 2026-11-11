@@ -43,6 +43,18 @@ const NEW = { colourful: 'full of bright colours', aeroplane: 'a machine with wi
     else ok(/aeroplane 3\/5/.test(sheet) && !dis, `airplane done 3 times: shows "aeroplane 3/5" and Practice is open (${(sheet.match(/aeroplane[^ ]* ?\S*/) || [''])[0]})`);
     await c.close();
   }
+  // A word mastered under a spelling since taken out of the list isn't counted in the mastered figures (Hermes R87.1).
+  {
+    const c = await b.newContext({ viewport: { width: 1180, height: 820 } });
+    await c.addInitScript((K) => { if (localStorage.getItem(K)) return;
+      const sess = (d) => ({ date: new Date(Date.now() - d * 864e5).toISOString(), game: 'spell', lang: 'en', level: 'Y4', minutes: 10, length: 10, finished: true, firstTry: 1, struggled: 0, firstTryWords: ['program'], struggledWords: [] });
+      localStorage.setItem(K, JSON.stringify({ current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: [sess(3), sess(2), sess(1)] } } })); }, KEY);
+    const q = await c.newPage(); q.on('pageerror', (e) => errs.push(e.message));
+    await q.goto(base); await q.waitForTimeout(500);
+    const line = await q.evaluate(() => { const l = document.querySelector('#masterLine'); return l && !l.hidden && l.offsetParent ? l.textContent.replace(/\s+/g, ' ') : ''; });
+    ok(!/\(1 of /.test(line), `"program" mastered under the old spelling isn't counted: ${line ? '"' + line + '"' : 'no mastered line'}`);
+    await c.close();
+  }
   ok(!errs.length, 'no page errors ' + errs.join(' | '));
   await b.close();
 })();
