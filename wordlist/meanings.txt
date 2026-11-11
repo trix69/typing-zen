@@ -741,7 +741,7 @@ process|a series of steps|Making bread is a long process.
 procure|to get hold of something|We need to procure more paint.
 produce|to make|Cows produce milk.
 product|something that is made to be sold|This product is made from recycled plastic.
-program|instructions for a computer|We wrote a program to move the robot.
+programme|a show on TV or radio, or a plan of events|My favourite programme is on after tea.
 protect|to keep safe|A helmet will protect your head.
 provide|to give or supply|The school will provide lunch.
 purpose|the reason for something|What is the purpose of this button?
