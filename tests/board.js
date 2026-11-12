@@ -45,7 +45,9 @@ export function writeBatch() { const ops = []; return { set: (r, d) => ops.push(
 
 const db = {}; let clock = 1000;
 const ts = (v) => (v && typeof v === 'object' && '__ts' in v ? v.__ts : v);
+let failSync = false; // the user's own documents can't be read: the sync fails, the board still can be
 function fakeDb(op, a) {
+  if (failSync && (op === 'get' || op === 'query') && String(a.path || a).startsWith(COL + '/')) throw new Error('unavailable');
   if (op === 'get') return db[a] ? JSON.parse(JSON.stringify(db[a])) : null;
   if (op === 'query') {
     return Object.entries(db).filter(([p]) => p.startsWith(a.path + '/') && !p.slice(a.path.length + 1).includes('/'))
@@ -53,6 +55,11 @@ function fakeDb(op, a) {
       .map(([p, d]) => [p, JSON.parse(JSON.stringify(d))]);
   }
   if (op === 'commit') {
+    // commitDelay: real Firestore takes a second or so; a slow commit keeps a sync in flight (R89, Stella).
+    if (commitDelay) return new Promise((r) => setTimeout(() => r(fakeDb('commitNow', a)), commitDelay));
+    return fakeDb('commitNow', a);
+  }
+  if (op === 'commitNow') {
     for (const [o, p, d] of a) {
       if (o === 'del') delete db[p];
       else db[p] = JSON.parse(JSON.stringify(d, (k, v) => (v && v.__server ? { __ts: ++clock } : v)));
@@ -60,6 +67,7 @@ function fakeDb(op, a) {
     return null;
   }
 }
+let commitDelay = 0;
 const LUKE = { uid: 'g-luke', email: 'luke@example.com', displayName: 'luke smith' };
 const sessionsOf = (uid) => Object.keys(db).filter((p) => p.startsWith(`${COL}/${uid}/sessions/`));
 // n days ago, m minutes before now (always in the past, and on today's date for n = 0 unless it is just after midnight)
@@ -128,9 +136,46 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   async function boardLoaded(p) {
     for (let t = 0; t < 40; t++) {
       await p.clock.runFor(250);
-      if (await p.evaluate(() => !!document.querySelector('#boardBody .podium') || /Couldn't|offline/.test(document.querySelector('#boardBody')?.textContent || ''))) return;
+      if (await p.evaluate(() => !!document.querySelector('#boardBody .podium') || /Couldn't|offline/.test(document.querySelector('#boardBody')?.textContent || ''))) break;
       await p.waitForTimeout(50);
     }
+    // Done counts down 2 s before it can close the board (2026-11-12).
+    for (let t = 0; t < 12 && await p.evaluate(() => document.querySelector('#boardDone').disabled); t++) await p.clock.runFor(250);
+  }
+  // 0. Stella's case (user's report, 2026-11-12): Yes tapped while the sync after the round is still going. The entry
+  // must still be written, so everyone else sees her (it used to be skipped: the queued sync left the state "busy").
+  {
+    const saved = JSON.stringify(db);
+    const { ctx, p } = await signedIn('S');
+    await beeToEnd(p);
+    delete db[`${BOARD}/g-luke`];
+    commitDelay = 700;
+    await p.evaluate(() => document.dispatchEvent(new Event('visibilitychange'))); // a sync starts and is in flight
+    await p.clock.runFor(50);
+    await p.click('#shareYes');
+    for (let t = 0; t < 20 && !db[`${BOARD}/g-luke`]; t++) { await p.clock.runFor(250); await p.waitForTimeout(150); }
+    ok(!!db[`${BOARD}/g-luke`], `Yes during a sync still writes the entry (${db[`${BOARD}/g-luke`] ? JSON.stringify(db[`${BOARD}/g-luke`].days) : 'missing'})`);
+    commitDelay = 0;
+    await ctx.close();
+    for (const k of Object.keys(db)) delete db[k];
+    Object.assign(db, JSON.parse(saved)); // the next sections start from the same cloud as before
+  }
+  // 0b. See where you rank always writes the entry, even when the sync fails (user's request, 2026-11-12), and each day
+  // keeps the higher of this device's count and the server's, so it can't go down.
+  {
+    const saved = JSON.stringify(db);
+    const today = new Date(); const iso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    db[`${BOARD}/g-luke`] = { name: 'Lu*******h', days: { [iso]: 999 }, updated: 'x' };
+    const { ctx, p } = await signedIn('T', { share: true });
+    failSync = true;
+    await p.click('#rankBtn'); await boardLoaded(p);
+    failSync = false;
+    const e = db[`${BOARD}/g-luke`], others = Object.entries(e.days).filter(([d]) => d !== iso);
+    ok(e.updated !== 'x' && e.days[iso] === 999 && others.length > 0 && others.every(([, n]) => n > 0),
+      `sync failed, entry still written: today keeps the server's higher 999, this device's other days added (${JSON.stringify(e.days)})`);
+    await ctx.close();
+    for (const k of Object.keys(db)) delete db[k];
+    Object.assign(db, JSON.parse(saved));
   }
   // 1. First Bee: asked, Yes → the board.
   let { ctx, p } = await signedIn('A');
@@ -176,6 +221,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   // 3. Already sharing: never asked; the button is there and the week is updated.
   ({ ctx, p } = await signedIn('C', { share: true }));
   await beeToEnd(p);
+  for (let t = 0; t < 20 && !db[`${BOARD}/g-luke`]; t++) { await p.clock.runFor(250); await p.waitForTimeout(150); } // written after a sync, in the background
   ok(!(await vis(p, '#shareSheet')) && await vis(p, '#boardBtn') && db[`${BOARD}/g-luke`], 'a sharer: no question, the button, and the entry written');
   await ctx.close();
   // Each section from here starts with an undecided user: drop the synced profile (share/shareAsk sync) and entry.
@@ -224,9 +270,20 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   // 7. The stats card (Welcome back) has "See where you rank" for a sharer (user's request, 2026-11-04).
   ({ ctx, p } = await signedIn('H', { share: true }));
   ok(await vis(p, '#intro-back') && await vis(p, '#rankBtn'), 'stats card: a sharer sees "See where you rank"');
-  await p.click('#rankBtn'); await boardLoaded(p);
+  const hadEntry = JSON.stringify(db[`${BOARD}/g-luke`] || null);
+  delete db[`${BOARD}/g-luke`]; // as for a sharer whose entry was never written (Stella, 2026-11-12)
+  await p.click('#rankBtn');
+  ok(/Loading this week's ranking/.test(await p.textContent('#boardBody')) && await p.isVisible('#boardBody .spinner'), 'while loading: "' + (await p.textContent('#boardBody')).trim() + '" with a spinner');
+  ok(await p.textContent('#boardDone') === 'Done (2)' && await p.evaluate(() => document.querySelector('#boardDone').disabled), 'Done counts down from 2 and cannot be pressed yet');
+  await p.keyboard.press('Escape'); await p.mouse.click(5, 5); await p.clock.runFor(1000);
+  ok(await vis(p, '#boardSheet') && await p.textContent('#boardDone') === 'Done (1)', 'Esc and a click outside wait too; after 1 s "Done (1)"');
+  for (let k = 0; k < 3; k++) await p.keyboard.press('Tab');
+  ok(await p.evaluate(() => document.querySelector('#boardSheet').contains(document.activeElement)), 'Tab stays in the board while Done waits');
+  await boardLoaded(p);
+  ok(await p.textContent('#boardDone') === 'Done' && await p.evaluate(() => !document.querySelector('#boardDone').disabled && document.activeElement.id === 'boardDone'), 'after 2 s: "Done", pressable and focused');
   ok(await vis(p, '#boardSheet') && /^You're #\d+ of 10\.$/.test(await p.textContent('#boardBody .note')), `stats card: the board opens before Continue ("${await p.textContent('#boardBody .note')}")`);
   ok(await p.$$eval('.board-list li.me', (l) => l.length) === 1 && /Luke Smith \(you\)/.test(await p.textContent('.board-list')), 'stats card: the board shows Luke Smith (you)');
+  ok(!!db[`${BOARD}/g-luke`] && db[`${BOARD}/g-luke`].name === 'Lu*******h', `stats card: syncs first, then writes the entry, so others see it too (${db[`${BOARD}/g-luke`] ? JSON.stringify(db[`${BOARD}/g-luke`].days) : 'missing'}; before: ${hadEntry === 'null' ? 'none' : 'one'})`);
   await p.keyboard.press('Escape'); await p.clock.runFor(200);
   ok(!(await vis(p, '#boardSheet')) && (await p.evaluate(() => document.activeElement.id)) === 'rankBtn' && await vis(p, '#intro-back'), 'stats card: Esc closes it, focus back on the button, still on Welcome back');
   await ctx.close();
