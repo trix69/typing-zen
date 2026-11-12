@@ -115,6 +115,19 @@ const sess = (m) => ({ date: iso(m), game: 'spell', lang: 'en', level: 'Y4', min
   ok(await p.isVisible('#welcome') && (await users(p)).length === 0, 'OK: Luke leaves this device, back to the welcome screen');
   await ctx.close();
 
+  // 1b. The outcome showing, Settings closed another way (Escape, Done) instead of OK: finished all the same (Hermes R88.1).
+  for (const how of ['Escape', 'Done']) {
+    ({ ctx, p } = await device());
+    await p.click('#eraseBtn'); await p.click('#eraseYes'); await p.click('#eraseYes'); await p.waitForTimeout(1500);
+    ok(mine().length === 0 && /Deleted from Google/.test(await p.textContent('#syncNote')), `${how}: deleted, and the note no longer says synced ("${await p.textContent('#syncNote')}")`);
+    if (how === 'Escape') await p.keyboard.press('Escape'); else await p.click('#sheetDone');
+    await p.waitForTimeout(400);
+    ok(!(await p.isVisible('#sheet')) && await p.isVisible('#welcome') && (await users(p)).length === 0, `${how} instead of OK: Luke leaves this device too`);
+    await p.evaluate(() => document.dispatchEvent(new Event('visibilitychange'))); await p.waitForTimeout(1500);
+    ok(mine().length === 0, `${how}: nothing goes up afterwards`);
+    await ctx.close();
+  }
+
   // 2. Google refuses to delete its sign-in (needs a recent sign-in): the data still goes, signed out, told to e-mail.
   ({ ctx, p } = await device({ refuse: true }));
   await p.click('#eraseBtn'); await p.click('#eraseYes'); await p.click('#eraseYes'); await p.waitForTimeout(1500);
