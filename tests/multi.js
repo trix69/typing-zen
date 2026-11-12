@@ -94,13 +94,13 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   const note = (p) => p.evaluate(() => { document.querySelector('#settingsBtn').click(); const t = document.querySelector('#syncNote').textContent; document.querySelector('#sheetDone').click(); return t; });
   // One device: Luke signs in and is set up, then Trix signs in as a second user.
   const A = await device('A', LUKE);
-  await A.p.click('#googleNew'); await A.p.waitForTimeout(400);
+  await A.p.click('#googleNew'); await A.p.click('#gContinue'); await A.p.waitForTimeout(400);
   await A.p.click('#newYear button[data-year="Y4"]'); await A.p.click('#newForm [type=submit]'); await settle(A.p, 600);
   A.ctx.account = TRIX;
   await A.p.click('#settingsBtn'); await A.p.waitForTimeout(200); await A.p.click('#switchUserBtn, [id*=switch i]').catch(() => {});
   await A.p.evaluate(() => { const s = document.querySelector('#sheet'); if (s && !s.hidden) document.querySelector('#sheetDone').click(); });
   await A.p.goto(base); await A.p.waitForTimeout(400); await A.p.click('#switchBtn'); await A.p.waitForTimeout(200);
-  await A.p.click('#googleSwitch'); await A.p.waitForTimeout(500);
+  await A.p.click('#googleSwitch'); await A.p.click('#gContinue'); await A.p.waitForTimeout(500);
   await A.p.click('#newYear button[data-year="Y5"]'); await A.p.click('#newForm [type=submit]'); await settle(A.p, 600);
   let s = await store(A.p);
   ok(Object.values(s.users).length === 2, `two Google users on one device (${Object.values(s.users).map((u) => u.name).join(', ')})`);
@@ -121,7 +121,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   await A.ctx.close();
   // An older build's sign-in (on the default app) moves to the user's own app on the next sync.
   const B = await device('B', LUKE);
-  await B.p.click('#googleNew'); await settle(B.p, 800); // Luke's progress is in the cloud: straight to home
+  await B.p.click('#googleNew'); await B.p.click('#gContinue'); await settle(B.p, 800); // Luke's progress is in the cloud: straight to home
   await B.p.evaluate(() => { const v = localStorage.getItem('fakeAuth:u-g-luke'); localStorage.removeItem('fakeAuth:u-g-luke'); localStorage.setItem('fakeAuth', v); });
   await B.p.reload(); await B.p.waitForTimeout(400); await B.p.click('#continueBtn'); await settle(B.p, 1500);
   ok(/Synced with Google \(luke@example.com\)/.test(await note(B.p)), 'an old-style sign-in still syncs');

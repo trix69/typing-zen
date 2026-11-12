@@ -73,7 +73,7 @@ function fakeDb(op, a) {
 
     // 1. A new Google account from the home screen: off to Google and back, the name filled in and locked.
     const A = await device({ uid: 'g-new', email: 'new@example.com', displayName: 'new kid' });
-    await A.p.click('#googleNew'); await A.p.waitForTimeout(3000);
+    await A.p.click('#googleNew'); await A.p.click('#gContinue'); await A.p.waitForTimeout(3000);
     const g = A.ctx.google[0] || {};
     ok(A.ctx.google.length === 1, T('went to Google once'));
     ok(g.client_id === '264177378932-18e7s9sn645bslvufmr48gkk75c0lib9.apps.googleusercontent.com' && g.response_type === 'id_token' && g.nonce && g.state && g.prompt === 'select_account', T('Google request: client, id_token, nonce, state'));
@@ -89,28 +89,28 @@ function fakeDb(op, a) {
     // 2. An account with progress elsewhere: straight to home.
     db[`${COL}/g-old`] = { p: { year: 'Y5', stars: 7 }, updated: new Date().toISOString(), resetAt: '' };
     const B = await device({ uid: 'g-old', email: 'old@example.com', displayName: 'Old Hand' });
-    await B.p.click('#googleNew'); await B.p.waitForTimeout(3000);
+    await B.p.click('#googleNew'); await B.p.click('#gContinue'); await B.p.waitForTimeout(3000);
     const sb = await B.p.evaluate((K) => JSON.parse(localStorage.getItem(K)), KEY); const ub = sb.users[sb.current] || {};
     ok(await vis(B.p, '#home') && ub.name === 'Old Hand' && ub.year === 'Y5', T(`existing account straight to home (${ub.name}/${ub.year})`));
     await B.ctx.close();
 
     // 3. Cancelled at Google: back on the form, no error, nobody signed in.
     const C = await device({ uid: 'g-x' }, { answer: 'cancel' });
-    await C.p.click('#googleNew'); await C.p.waitForTimeout(3000);
+    await C.p.click('#googleNew'); await C.p.click('#gContinue'); await C.p.waitForTimeout(3000);
     ok(await vis(C.p, '#googleNewRow') && !(await C.p.textContent('#googleErr')).trim() && !(await C.p.evaluate(() => window.__creds)), T('cancel: form again, no error, no sign-in'));
     ok(!(await C.p.evaluate(() => location.hash)), T('cancel: address cleaned'));
     await C.ctx.close();
 
     // 4. A token whose state doesn't match is ignored.
     const D = await device({ uid: 'g-evil', email: 'e@example.com', displayName: 'Evil' }, { answer: 'badstate' });
-    await D.p.click('#googleNew'); await D.p.waitForTimeout(3000);
+    await D.p.click('#googleNew'); await D.p.click('#gContinue'); await D.p.waitForTimeout(3000);
     ok(!(await D.p.evaluate(() => window.__creds)) && !(await D.p.$eval('#newName', (e) => e.readOnly)), T('wrong state: token not used'));
     ok(!(await D.p.evaluate(() => location.hash)), T(`wrong state: token gone from the address ("${await D.p.evaluate(() => location.hash)}")`));
     await D.ctx.close();
 
     // 5. In the browser (not from the home screen) the Google window is still used.
     const E = await device({ uid: 'g-pop' }, { standalone: false });
-    await E.p.click('#googleNew'); await E.p.waitForTimeout(800);
+    await E.p.click('#googleNew'); await E.p.click('#gContinue'); await E.p.waitForTimeout(800);
     ok(E.ctx.google.length === 0 && (await E.p.evaluate(() => window.__popups)) === 1, T('browser: Google window, no page change'));
     await E.ctx.close();
 

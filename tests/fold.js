@@ -39,7 +39,7 @@ export function writeBatch() { return { set() {}, delete() {}, commit: async () 
   }
   for (const [name, want] of [['Rachel Alexandra Smithson', 'Rachel'], ['luke smith', 'Luke smith'], ['Christopher Montgomery-Smith', 'Christopher'], ['Abcdefghijklmnopqrstuvwxyz', 'Abcdefghijklmnopqrst']]) {
     const { ctx, p } = await page({ width: 1280, height: 800 }, name);
-    await p.click('#googleNew'); await p.waitForTimeout(300);
+    await p.click('#googleNew'); await p.click('#gContinue'); await p.waitForTimeout(300);
     const v = await p.inputValue('#newName');
     ok(v === want && v.length <= 20, `Google name "${name}" -> "${v}"`);
     await p.click('#newYear button[data-year="Y3"]'); await p.click('#newForm [type=submit]'); await p.waitForTimeout(200);

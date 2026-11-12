@@ -39,6 +39,7 @@ const TEST = /typing-zen-test/.test(base), PPK = TEST ? 'typingZen.pp-test' : 't
   ok(await p.evaluate(() => !!document.querySelector('#welcome').closest('[inert]') && !document.querySelector('#ppSheet').closest('[inert]')), 'the welcome screen behind is inert, the policy is not');
   ok(await p.evaluate(() => { const r = document.querySelector('#welcome h1, #welcome .brand, #welcome').getBoundingClientRect(); const top = document.elementFromPoint(r.left + 5, r.top + 5); return !!top.closest('#ppSheet'); }), 'the welcome screen is covered (the policy is on top)');
   ok(await p.evaluate(() => document.activeElement.id) === 'ppAccept', 'Accept has the focus');
+  ok(!/Google|sync/i.test(await p.textContent('#ppSheet')), 'the first-launch screen says nothing about Google: "' + (await p.textContent('#ppText')).trim() + '"');
   await p.keyboard.press('Escape'); await p.waitForTimeout(150);
   ok(await shown(p), 'Escape does nothing');
   await p.mouse.click(5, 5); await p.waitForTimeout(150);
@@ -83,7 +84,7 @@ const TEST = /typing-zen-test/.test(base), PPK = TEST ? 'typingZen.pp-test' : 't
   // 3. Danish.
   ({ ctx, p } = await open({ lang: 'da' }));
   ok(await p.textContent('#ppTitle') === 'Privatlivspolitik' && await p.textContent('#ppDate') === 'Sidst opdateret ' + PP, 'Danish title and date');
-  ok(/^Typing Zen logger dig ind med Google/.test(await p.textContent('#ppText')) && await p.textContent('#ppLink') === 'Læs hele politikken', 'Danish text and link');
+  ok(/^Typing Zen gemmer din fremgang på denne enhed/.test(await p.textContent('#ppText')) && await p.textContent('#ppLink') === 'Læs hele politikken', 'Danish text and link');
   ok(await p.textContent('#ppAccept') === 'Accepter' && await p.textContent('#ppDecline') === 'Afvis', 'Danish buttons');
   await ctx.close();
 
@@ -95,6 +96,30 @@ const TEST = /typing-zen-test/.test(base), PPK = TEST ? 'typingZen.pp-test' : 't
       return { date: box('#ppDate'), accept: box('#ppAccept'), decline: box('#ppDecline'), scroll: document.scrollingElement.scrollTop, wide: document.documentElement.scrollWidth - innerWidth };
     });
     ok(r.date && r.accept && r.decline && r.scroll === 0 && r.wide <= 0, `${vw}×${vh} ${lang}: date, Accept, Decline on screen, no page scroll (${JSON.stringify(r)})`);
+    await ctx.close();
+  }
+
+  // 4b. Sign in with Google: a reminder first, every time; Cancel opens nothing, Continue goes on to Google.
+  {
+    ({ ctx, p } = await open({ stored: PP }));
+    let sdk = 0;
+    await ctx.route(/gstatic\.com\/firebasejs/, (r) => { sdk++; r.abort(); });
+    ok(!(await shown(p)) && await p.isVisible('#googleNew'), 'accepted: the new-user form with Sign in with Google');
+    await p.click('#googleNew'); await p.waitForTimeout(200);
+    ok(await p.isVisible('#gSheet') && /follow you to your other devices/.test(await p.textContent('#gText')) && /Sydney/.test(await p.textContent('#gText')), 'Sign in with Google: the reminder about Google first');
+    ok(await p.evaluate(() => document.activeElement.id) === 'gContinue' && await p.textContent('#gContinue') === 'Continue' && await p.textContent('#gCancel') === 'Cancel', 'Continue (focused) and Cancel');
+    for (let i = 0; i < 3; i++) await p.keyboard.press('Tab');
+    ok(await p.evaluate(() => !!document.activeElement.closest('#gSheet')), 'Tab stays inside, the policy link included');
+    await p.click('#gCancel'); await p.waitForTimeout(400);
+    ok(!(await p.isVisible('#gSheet')) && sdk === 0, `Cancel: closed, Google not contacted (${sdk} SDK requests)`);
+    await p.click('#googleNew'); await p.waitForTimeout(200); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+    ok(!(await p.isVisible('#gSheet')) && sdk === 0, 'asked again on the next click; Escape cancels too');
+    await p.click('#googleNew'); await p.waitForTimeout(200); await p.click('#gContinue'); await p.waitForTimeout(800);
+    ok(!(await p.isVisible('#gSheet')) && sdk > 0, `Continue: sign-in starts (${sdk} SDK requests)`);
+    await ctx.close();
+    ({ ctx, p } = await open({ stored: PP, lang: 'da' }));
+    await p.click('#googleNew'); await p.waitForTimeout(200);
+    ok(/^Når du logger ind med Google/.test(await p.textContent('#gText')) && await p.textContent('#gContinue') === 'Fortsæt' && await p.textContent('#gCancel') === 'Annuller', 'Danish reminder');
     await ctx.close();
   }
 

@@ -58,8 +58,8 @@ def main():
     html = re.sub(r'<!doctype html>\s*|</?html[^>]*>|</?head>|</?body>|<meta charset="utf-8">\s*|<meta name="viewport"[^>]*>\s*', "", html)
     html = f'<script>document.documentElement.dataset.pp = "{pp[0]}";</script>\n' + html
     html, n = re.subn(r'href="docs/privacy\.html"', 'href="https://trix69.github.io/typing-zen/docs/privacy.html"', html)
-    if n != 1:
-        sys.exit("index.html should link docs/privacy.html once; update tools/bundle.py")
+    if n != 2:
+        sys.exit("index.html should link docs/privacy.html twice (the policy screen, the Google reminder); update tools/bundle.py")
     html = re.sub(r'(href|src)="([\w.-]+)\?v=[^"]*"', r'\1="\2"', html)  # drop the cache stamps (see version.py)
     # The images the page loads from icons/ (the logo, also the tab icon: Hermes R85.1; the Support QR code: R76.2): inlined, since the single
     # file has no icons/ beside it.

@@ -91,7 +91,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   const vis = (p, s) => p.isVisible(s);
   // R46.4: Clear history on a Google user stays cleared after the sync, here and in the cloud.
   const A = await device('A', LUKE);
-  await A.p.click('#googleNew'); await A.p.waitForTimeout(400);
+  await A.p.click('#googleNew'); await A.p.click('#gContinue'); await A.p.waitForTimeout(400);
   await A.p.click('#newYear button[data-year="Y4"]'); await A.p.click('#newForm [type=submit]'); await A.p.waitForTimeout(300);
   let s = await store(A.p); const id = s.current;
   Object.assign(s.users[id], { stars: 12, bestWpm: 31, rounds: 5, tricky: { because: 2 }, seen: { because: 3 }, learned: { because: '2026-10-30' },
@@ -119,7 +119,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   ok(u.year === 'Y4', `year kept: ${u.year}`);
   // A second device signing in now gets the cleared copy.
   const B = await device('B', LUKE);
-  await B.p.click('#googleNew'); await settle(B.p, 1200);
+  await B.p.click('#googleNew'); await B.p.click('#gContinue'); await settle(B.p, 1200);
   const sb = await store(B.p); const ub = sb.users[sb.current];
   ok(ub.stars === 0 && ub.bestWpm === 0 && ub.sessions.length === 0, `device B: ${ub.stars}/${ub.bestWpm}/${ub.sessions.length}`);
   ok(!errs.length, 'no page errors ' + errs.join(' | '));

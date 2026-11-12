@@ -94,7 +94,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   const A = await device('A', LUKE);
   ok(await vis(A.p, '#googleNew'), 'A: Sign in with Google shown on the new-user form');
   ok(await vis(A.p, '#newName') && !(await A.p.$eval('#newName', (e) => e.readOnly)), 'A: typed name box editable before Google');
-  await A.p.click('#googleNew'); await A.p.waitForTimeout(400);
+  await A.p.click('#googleNew'); await A.p.click('#gContinue'); await A.p.waitForTimeout(400);
   ok((await A.p.inputValue('#newName')) === 'Luke smith', `A: name from Google = "${await A.p.inputValue('#newName')}"`);
   ok(await A.p.$eval('#newName', (e) => e.readOnly), 'A: name box is read-only');
   ok(await vis(A.p, '#googleAs') && !(await vis(A.p, '#googleNewRow')), 'A: "name comes from Google" shown, Google button hidden');
@@ -115,7 +115,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
 
   // 3. Device B signs in with the same account from Who's typing: no form, straight in, 7 days synced.
   const B = await device('B', LUKE);
-  await B.p.click('#googleNew'); await B.p.waitForTimeout(400); await settle(B.p, 800);
+  await B.p.click('#googleNew'); await B.p.click('#gContinue'); await B.p.waitForTimeout(400); await settle(B.p, 800);
   ok(await vis(B.p, '#home'), 'B: same Google account goes straight to home');
   let sb = await store(B.p); let ub = sb.users[sb.current];
   ok(ub.name === 'Luke smith' && ub.year === 'Y4' && ub.sessions.length === 3, `B: name/year/sessions = ${ub.name}/${ub.year}/${ub.sessions.length}`);
@@ -174,7 +174,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   // Who's typing offers Google too; signing in again brings Luke back with his year.
   await A.p.click('#settingsBtn'); await A.p.click('#switchUserBtn'); await A.p.waitForTimeout(200);
   ok(await vis(A.p, '#googleSwitch'), 'A: Who\'s typing has Sign in with Google');
-  await A.p.click('#googleSwitch'); await settle(A.p, 800);
+  await A.p.click('#googleSwitch'); await A.p.click('#gContinue'); await settle(A.p, 800);
   s = await store(A.p);
   const back = Object.values(s.users).find((u) => u.google);
   ok(back && back.year === 'Y5' && (await vis(A.p, '#home')), 'A: Luke back after signing in again, year Y5');
@@ -182,7 +182,7 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
 
   // 8. A cancelled popup shows nothing.
   const C = await device('C', null);
-  await C.p.click('#googleNew'); await C.p.waitForTimeout(300);
+  await C.p.click('#googleNew'); await C.p.click('#gContinue'); await C.p.waitForTimeout(300);
   ok(!(await vis(C.p, '#googleErr')) && (await vis(C.p, '#intro-new')), 'C: closing the Google window is silent');
   await C.ctx.close();
 

@@ -87,7 +87,7 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
 
   // 1. Device A: a Google user, English, with two sessions (one saved before sessions had a language).
   const A = await device('A', LUKE);
-  await A.p.click('#googleNew'); await A.p.waitForTimeout(400);
+  await A.p.click('#googleNew'); await A.p.click('#gContinue'); await A.p.waitForTimeout(400);
   await A.p.click('#newYear button[data-year="Y4"]'); await A.p.click('#newForm [type=submit]'); await A.p.waitForTimeout(800);
   await put(A.p, (u) => { u.sessions = [sess(day(2), 8, 2), sess(day(0, 5), 6, 0, 'en')]; u.stars = 5; u.tricky = { because: 1 }; });
   await reopen(A.p);
@@ -107,7 +107,7 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
 
   // 3. Device B signs in: Chinese now, English apart, each with its own sessions.
   const B = await device('B', LUKE);
-  await B.p.click('#googleNew'); await B.p.waitForTimeout(400); await B.p.waitForTimeout(1200);
+  await B.p.click('#googleNew'); await B.p.click('#gContinue'); await B.p.waitForTimeout(400); await B.p.waitForTimeout(1200);
   u = await me(B.p);
   ok(u.lang === 'zh' && u.sessions.length === 1 && u.sessions[0].lang === 'zh' && u.byLang.en && u.byLang.en.sessions.length === 2 && u.byLang.en.stars === 5,
     `B: 中文 with its 1 session; English apart with ${u.byLang.en && u.byLang.en.sessions.length} sessions and ${u.byLang.en && u.byLang.en.stars} stars`);
