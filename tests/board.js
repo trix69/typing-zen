@@ -177,6 +177,26 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
     for (const k of Object.keys(db)) delete db[k];
     Object.assign(db, JSON.parse(saved));
   }
+  // 0c. Clear history takes this week off the entry (Hermes R89.1): the per-day max doesn't keep the cleared days.
+  {
+    const saved = JSON.stringify(db);
+    const { ctx, p } = await signedIn('R', { share: true });
+    const total = () => Object.values((db[`${BOARD}/g-luke`] || {}).days || {}).reduce((a, n) => a + n, 0);
+    await p.click('#rankBtn'); await boardLoaded(p); await p.click('#boardDone'); await p.clock.runFor(200);
+    const before = total();
+    await p.click('#continueBtn'); await p.clock.runFor(600);
+    await p.click('#settingsBtn'); await p.clock.runFor(300);
+    await p.click('#clearBtn'); await p.click('#clearYes'); await p.click('#clearYes'); await p.clock.runFor(300);
+    await p.click('#sheetDone'); await p.clock.runFor(5000);
+    await p.reload(); await p.clock.runFor(600);
+    await p.click('#rankBtn'); await boardLoaded(p); await p.click('#boardDone'); await p.clock.runFor(200);
+    const after = total();
+    await p.click('#rankBtn'); await boardLoaded(p);
+    ok(before > 0 && after === 0 && total() === 0, `Clear history: the entry's week goes ${before} → ${after}, and stays ${total()} on the next open`);
+    await ctx.close();
+    for (const k of Object.keys(db)) delete db[k];
+    Object.assign(db, JSON.parse(saved));
+  }
   // 1. First Bee: asked, Yes → the board.
   let { ctx, p } = await signedIn('A');
   await beeToEnd(p);
