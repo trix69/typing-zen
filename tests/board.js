@@ -45,8 +45,9 @@ export function writeBatch() { const ops = []; return { set: (r, d) => ops.push(
 
 const db = {}; let clock = 1000;
 const ts = (v) => (v && typeof v === 'object' && '__ts' in v ? v.__ts : v);
-let failSync = false; // the user's own documents can't be read: the sync fails, the board still can be
+let failSync = false, hangDb = false; // the user's own documents can't be read: the sync fails, the board still can be
 function fakeDb(op, a) {
+  if (hangDb && op !== 'commitNow') return new Promise(() => {}); // Firestore never answers (iPhone, 2026-11-13)
   if (failSync && (op === 'get' || op === 'query') && String(a.path || a).startsWith(COL + '/')) throw new Error('unavailable');
   if (op === 'get') return db[a] ? JSON.parse(JSON.stringify(db[a])) : null;
   if (op === 'query') {
@@ -338,6 +339,21 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
     const e = row('g:g-luke');
     ok(e.days[iso(0)] === 300 && e.days[iso(1)] === 77 && e.days[iso(5)] === 4, `sync failed, row still written: today keeps 300, the old Firestore day 77 is counted in, this device's day 5 added (${JSON.stringify(e.days)})`);
     ok(!db[`${BOARD}/g-luke`], 'the old Firestore row is deleted once moved');
+    await ctx.close();
+  }
+  // 7b. Firestore never answers (user's report, 2026-11-13: stuck on "Loading this week's ranking…"): the board
+  // still loads, and the row is written with this device's week.
+  seed(); forget();
+  {
+    ({ ctx, p } = await signedIn('H', { share: true }));
+    hangDb = true;
+    await p.click('#rankBtn');
+    await p.clock.runFor(13000);
+    await boardLoaded(p);
+    const txt = await p.textContent('#boardBody');
+    ok(/You're #\d+ of \d+/.test(txt), 'Firestore hangs: the ranking still shows (' + txt.slice(0, 40) + ')');
+    ok(sum(row('g:g-luke')) === 9, 'Firestore hangs: the row is written with this device\'s week (' + sum(row('g:g-luke')) + ')');
+    hangDb = false;
     await ctx.close();
   }
   // 8. Clear history: the row goes, sharing is undecided again, and the rank button with it.
