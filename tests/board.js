@@ -87,11 +87,12 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
     async all() { return { results: [...table.values()].filter((r) => r.site === a[0] && r.updated >= a[1]) }; },
     async first() { return table.get(a[0] + '|' + a[1]) || null; },
     async run() {
+      if (/hits/.test(sql)) { hitCount++; return {}; } // launch counts: not part of the board
       if (/^INSERT/.test(sql)) { const k = a[0] + '|' + a[1], had = table.get(k); table.set(k, had ? { ...had, name: a[2], days: a[3], updated: a[5] } : { site: a[0], id: a[1], name: a[2], days: a[3], key_hash: a[4], updated: a[5] }); }
       if (/^DELETE/.test(sql)) table.delete(a[0] + '|' + a[1]);
       return {};
     } }) }) };
-  let workerDown = false, workerCalls = 0;
+  let workerDown = false, workerCalls = 0, hitCount = 0;
   async function routeWorker(ctx) {
     await ctx.route(API + '/**', async (r) => {
       workerCalls++;

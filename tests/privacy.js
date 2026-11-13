@@ -70,6 +70,23 @@ const TEST = /typing-zen-test/.test(base), PPK = TEST ? 'typingZen.pp-test' : 't
   ok(!(await shown(p)) && await p.isVisible('#sheet'), 'Accept returns to Settings');
   await ctx.close();
 
+  // 1b. Launch counts (2026-11-13): nothing before the policy is accepted; one POST /hit after Accept; none offline.
+  {
+    ({ ctx, p } = await open());
+    const sent = [];
+    await ctx.route('https://typing-zen-board.trix69.workers.dev/**', (r) => { const q = r.request(); if (q.method() === 'POST') sent.push(JSON.parse(q.postData())); r.fulfill({ status: q.method() === 'OPTIONS' ? 204 : 200, headers: { 'access-control-allow-origin': '*', 'access-control-allow-headers': 'Content-Type', 'access-control-allow-methods': 'POST', 'content-type': 'application/json' }, body: '{"ok":true}' }); });
+    await p.waitForTimeout(2500);
+    ok(sent.length === 0, `not accepted: no launch count sent (${sent.length})`);
+    await p.click('#ppAccept'); await p.waitForTimeout(800);
+    const h = sent[0] || {};
+    ok(sent.length === 1 && /^[A-Za-z0-9_-]{24}$/.test(h.id) && h.c === 'web' && h.u === 'none' && h.v === (await p.textContent('#appVersion')).trim() && Object.keys(h).sort().join() === 'c,id,site,u,v',
+      `Accept: one launch count, only site/id/c/v/u (${JSON.stringify({ ...h, id: h.id && h.id.slice(0, 4) + '…' })})`);
+    await p.reload(); await p.waitForTimeout(2500);
+    ok(sent.length === 2, `the next launch: counted once more (${sent.length})`);
+    // Offline with the offline copy installed is section 5: 0 requests, so no launch count either.
+    await ctx.close();
+  }
+
   // 2. An older date accepted: asked again, titled "updated"; Accept saves the new date.
   ({ ctx, p } = await open({ stored: '2020-01-01' }));
   ok(await shown(p) && await p.textContent('#ppTitle') === 'Privacy policy updated', 'older date accepted: "' + await p.textContent('#ppTitle') + '"');

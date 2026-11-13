@@ -25,3 +25,9 @@ if grep -q 'database_id = "DATABASE_ID"' wrangler.toml; then
 fi
 $W d1 execute typing-zen-board --remote --file schema.sql 2>&1 | tail -2
 $W deploy 2>&1 | tee /tmp/tz-board-deploy.log | tail -8
+
+# The stats page's key (Trix): made once into ~/projects/typing-zen-stats.env (mode 600), sent as the Worker secret
+# STATS_KEY. Never printed.
+KEYF="$HOME/projects/typing-zen-stats.env"
+if [ ! -f "$KEYF" ]; then (umask 077; printf 'STATS_KEY=%s\n' "$(openssl rand -hex 24)" > "$KEYF"); fi
+read_env "$KEYF" STATS_KEY | $W secret put STATS_KEY 2>&1 | tail -1

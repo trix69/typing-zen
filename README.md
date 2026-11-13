@@ -2,7 +2,7 @@
 
 **A calm touch-typing and spelling app for primary-school children, Year 1 to Year 6.**
 Practise touch typing while learning to spell, in English, Danish (Dansk) or Chinese (中文, typed as pinyin).
-No ads, no tracking. Works offline once added to your home screen.
+No ads, no third-party trackers. Works offline once added to your home screen.
 
 ### ▶ [Open the app](https://trix69.github.io/typing-zen/)
 
@@ -43,7 +43,7 @@ No ads, no tracking. Works offline once added to your home screen.
 
 ## Privacy
 
-Typing Zen signs a child in with Google only if you choose to, so their progress can follow them between devices; everything else stays on the device. No advertising, no analytics, no trackers. The app asks for the [privacy policy](https://trix69.github.io/typing-zen/docs/privacy.html) to be accepted before it is used, and Settings has **Delete my data from Google**.
+Typing Zen signs a child in with Google only if you choose to, so their progress can follow them between devices; everything else stays on the device. No advertising and no third-party trackers; the app counts its own launches with a random device id. The app asks for the [privacy policy](https://trix69.github.io/typing-zen/docs/privacy.html) to be accepted before it is used, and Settings has **Delete my data from Google**.
 
 ## Running it yourself
 

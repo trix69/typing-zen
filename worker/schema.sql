@@ -10,3 +10,16 @@ CREATE TABLE IF NOT EXISTS rows (
   PRIMARY KEY (site, id)
 );
 CREATE INDEX IF NOT EXISTS rows_by_site_updated ON rows (site, updated);
+-- Launch counts (Trix, 2026-11-13): one row per device (random install id), UTC day, app type, version and kind of
+-- user on the device; n = launches that day. Kept 400 days.
+CREATE TABLE IF NOT EXISTS hits (
+  site TEXT NOT NULL,
+  day TEXT NOT NULL,
+  install TEXT NOT NULL,
+  client TEXT NOT NULL,
+  version TEXT NOT NULL,
+  who TEXT NOT NULL,
+  n INTEGER NOT NULL,
+  PRIMARY KEY (site, day, install, client, version, who)
+);
+CREATE INDEX IF NOT EXISTS hits_by_day ON hits (site, day);
