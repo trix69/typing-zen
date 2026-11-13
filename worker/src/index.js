@@ -212,7 +212,7 @@ async function stats(url, env, now) {
   const iso = (dd) => new Date(now - dd * 864e5).toISOString().slice(0, 10), wk = new Set([...Array(8)].map((_, i) => iso(i)));
   const words = (r) => Object.entries(r.days).reduce((t, [d, x]) => t + (wk.has(d) ? x : 0), 0);
   const active = board.filter((r) => words(r) > 0);
-  const all = await q("SELECT SUBSTR(id, 1, 2) AS kind, COUNT(*) AS n FROM rows WHERE site = ?1 GROUP BY kind", site);
+  const all = await q("SELECT SUBSTR(id, 1, 2) AS kind, COUNT(*) AS n FROM rows WHERE site = ?1 AND updated >= ?2 GROUP BY kind", site, now - WINDOW_DAYS * 864e5);
   const mk = by(all, 'kind');
   const boardT = '<h2>Ranking board</h2><div class="cards">' +
     `<div class="card"><span class="lab">Sharing</span><b>${num((mk['g:'] || {}).n) + num((mk['l:'] || {}).n)}</b><span>rows on the board</span><em>${num((mk['g:'] || {}).n)} Google · ${num((mk['l:'] || {}).n)} typed name</em></div>` +

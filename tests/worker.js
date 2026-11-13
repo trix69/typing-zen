@@ -18,7 +18,7 @@ function fakeD1(fail = false) {
           for (const h of hs) { const k = keys.map((x) => h[x]).join('|'); const o = out[k] || (out[k] = { ...Object.fromEntries(keys.map((x) => [x, h[x]])), ids: new Set(), visits: 0 }); o.ids.add(h.install); o.visits += h.n; }
           return { results: Object.values(out).map((o) => { const { ids, ...r } = o; return { ...r, vis: ids.size }; }) };
         }
-        if (/SUBSTR\(id/.test(sql)) { const c = {}; for (const r of table.values()) if (r.site === a[0]) c[r.id.slice(0, 2)] = (c[r.id.slice(0, 2)] || 0) + 1; return { results: Object.entries(c).map(([kind, n]) => ({ kind, n })) }; }
+        if (/SUBSTR\(id/.test(sql)) { const c = {}; for (const r of table.values()) if (r.site === a[0] && r.updated >= a[1]) c[r.id.slice(0, 2)] = (c[r.id.slice(0, 2)] || 0) + 1; return { results: Object.entries(c).map(([kind, n]) => ({ kind, n })) }; }
         return { results: [...table.values()].filter((r) => r.site === a[0] && r.updated >= a[1]) };
       },
       async first() { if (fail) throw new Error('down'); if (/COUNT\(\*\)/.test(sql)) return { n: [...table.values()].filter((r) => r.site === a[0]).length }; return table.get(a[0] + '|' + a[1]) || null; },
@@ -128,6 +128,8 @@ function fakeD1(fail = false) {
   const envK = { DB: env.DB, STATS_KEY: 'k'.repeat(48) };
   const st = async (p) => { const res = await handle(new Request('https://w.example' + p), envK); return { status: res.status, text: await res.text() }; };
   ok((await st('/stats')).status === 404 && (await st('/stats?k=wrong')).status === 404 && (await handle(new Request('https://w.example/stats?k=x'), env)).status === 404, 'stats: 404 without the right key (and when no key is set)');
+  // A row that left the board (12 days without a write) is not counted as sharing (R92.1).
+  env.DB.table.set('live|g:' + 'z'.repeat(20), { site: 'live', id: 'g:' + 'z'.repeat(20), name: 'Za*y', days: '{}', key_hash: 'x', updated: Date.now() - 12 * 864e5 });
   const page = await st('/stats?k=' + 'k'.repeat(48));
   const cardsTxt = page.text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
   ok(page.status === 200 && /Today \(UTC\) 2 unique visitors 3 visits/.test(cardsTxt), 'stats: today 2 unique visitors, 3 visits: ' + (cardsTxt.match(/Today \(UTC\)[^L]*/) || [''])[0].trim());
