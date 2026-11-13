@@ -259,6 +259,14 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   ok(!(await vis(p, '#shareSheet')) && (await store(p)).users.u.shareAt === 10, 'Esc closes it (a No for this milestone)');
   await ctx.close();
 
+  // 3b. A Spelling Bee left early (Esc twice, straight to Home) that reached a milestone: asked on Home.
+  ({ ctx, p } = await typed('N2', mia()));
+  await p.click('#continueBtn'); await p.clock.runFor(800);
+  await p.click('.mode[data-mode="spell"]'); await p.clock.runFor(300); await p.evaluate(() => { window.__said = []; });
+  await p.click('#lenChoices button'); await p.clock.runFor(900); await spellOne(p);
+  await p.keyboard.press('Escape'); await p.clock.runFor(200); await p.keyboard.press('Escape'); await p.clock.runFor(1500);
+  ok(await vis(p, '#home') && await vis(p, '#shareSheet') && (await store(p)).users.u.shareAt === 10, 'a Bee left early at the 10th word: asked on Home');
+  await ctx.close();
   // 4. A typed-name user who says Yes: an l: row with this browser's install id; two users here are two rows; the
   // stats card has the rank button; Remove account deletes the row.
   ({ ctx, p } = await typed('T', { u: { name: 'Mia', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', sessions: WEEK }, v: { name: 'Noah', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'v', sessions: WEEK, share: true } }));
