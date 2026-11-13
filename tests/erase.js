@@ -147,6 +147,16 @@ const sess = (m) => ({ date: iso(m), game: 'spell', lang: 'en', level: 'Y4', min
   ok(/offline/i.test(await p.textContent('#syncNote')), 'offline message: ' + await p.textContent('#syncNote'));
   await ctx.close();
 
+  // 3b. A sync stuck on Firestore (an iPhone, 2026-11-13): deletion waits for it at most 8 s, then goes ahead (Hermes R93.1).
+  ({ ctx, p } = await device());
+  await p.evaluate(() => { window.__fakeDbReal = window.__fakeDb; window.__fakeDb = () => new Promise(() => {}); });
+  await p.evaluate(() => document.dispatchEvent(new Event('visibilitychange'))); await p.waitForTimeout(300);
+  await p.evaluate(() => { window.__fakeDb = window.__fakeDbReal; });
+  await p.click('#eraseBtn'); await p.click('#eraseYes'); await p.click('#eraseYes');
+  for (let t = 0; t < 30 && mine().length; t++) await p.waitForTimeout(500);
+  ok(mine().length === 0 && /has been deleted from Google's servers/.test(await p.textContent('#eraseAsk')), `stuck sync: still deleted, within ~9 s ("${await p.textContent('#eraseAsk')}")`);
+  await ctx.close();
+
   // 4. A typed-name user has no such button.
   ctx = await b.newContext();
   await ctx.addInitScript((K) => { speechSynthesis.speak = () => {}; localStorage.setItem(K, JSON.stringify({ current: 'u1', users: { u1: { id: 'u1', name: 'Mia', year: 'Y2', lang: 'en' } } })); }, KEY);
