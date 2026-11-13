@@ -9,6 +9,6 @@ One row per user who chose to share, Google or not: a masked name and words test
 - Each row has a key; only its sha256 is stored. Without the key a row can't be changed or deleted.
 - Kept: site, id, masked name, days, key hash, time of the last write. Not kept: IP address, user agent, referrer,
   cookies; nothing is logged. CORS: https://trix69.github.io only.
-- Deploy: `worker/deploy.sh` (headless; the token comes from `~/projects/cloudflare.env` and is never printed). The
-  token needs Workers Scripts: Edit and **D1: Edit**. The first run creates the database and applies the schema.
+- Deploy: `worker/deploy.sh` (headless; Typing Zen's own token comes from `~/projects/typing-zen-cloudflare.env` and is
+  never printed). The token needs Workers Scripts: Edit and **D1: Edit**. The first run creates the database and applies the schema.
 - Tests: `tests/worker.js` (the Worker against an in-memory D1) and `tests/board.js` (the app against it).

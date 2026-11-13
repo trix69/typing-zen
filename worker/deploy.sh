@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Deploy the ranking board. Headless: wrangler with CLOUDFLARE_API_TOKEN read from ~/projects/cloudflare.env (never
+# Deploy the ranking board. Headless: wrangler with CLOUDFLARE_API_TOKEN read from ~/projects/typing-zen-cloudflare.env (never
 # printed), the account id asked of the API when the file has none. Creates the D1 database the first time, puts its id
 # into wrangler.toml (an id, not a secret) and applies schema.sql. Usage: worker/deploy.sh
 set -euo pipefail
 cd "$(dirname "$0")"
-CREDS="$HOME/projects/cloudflare.env"
+# Typing Zen's own token (Workers Scripts: Edit, D1: Edit), kept apart from the other projects' (Trix, 2026-11-13).
+CREDS="$HOME/projects/typing-zen-cloudflare.env"
+[ -f "$CREDS" ] || { echo "missing $CREDS (a line CLOUDFLARE_API_TOKEN=...)" >&2; exit 1; }
 read_env() { [ -f "$1" ] || return 1; sed -n "s/^[[:space:]]*$2[[:space:]]*=[[:space:]]*//p" "$1" | head -1 | tr -d '"' | tr -d "'" | tr -d '\r'; }
 if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then CLOUDFLARE_API_TOKEN=$(read_env "$CREDS" CLOUDFLARE_API_TOKEN || true); export CLOUDFLARE_API_TOKEN; fi
 [ -n "${CLOUDFLARE_API_TOKEN:-}" ] || { echo "no CLOUDFLARE_API_TOKEN" >&2; exit 1; }

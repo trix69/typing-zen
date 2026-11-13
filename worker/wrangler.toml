@@ -1,5 +1,5 @@
 # Typing Zen's ranking board (see README.md). Deployed headless with worker/deploy.sh (wrangler +
-# CLOUDFLARE_API_TOKEN from ~/projects/cloudflare.env, never printed; no browser login).
+# CLOUDFLARE_API_TOKEN from ~/projects/typing-zen-cloudflare.env, never printed; no browser login).
 name = "typing-zen-board"
 main = "src/index.js"
 compatibility_date = "2026-11-01"
@@ -8,4 +8,4 @@ workers_dev = true
 [[d1_databases]]
 binding = "DB"
 database_name = "typing-zen-board"
-database_id = "DATABASE_ID"
+database_id = "b3375c69-6455-4f07-b53d-531fcdc28b73"
