@@ -329,14 +329,14 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   {
     const KEYHEX = 'ab'.repeat(20);
     const h = require('crypto').createHash('sha256').update(KEYHEX).digest('hex');
-    table.set(`${SITE}|g:g-luke`, { site: SITE, id: 'g:g-luke', name: 'Lu*******h', days: JSON.stringify({ [iso(0)]: 999 }), key_hash: h, updated: Date.now() });
+    table.set(`${SITE}|g:g-luke`, { site: SITE, id: 'g:g-luke', name: 'Lu*******h', days: JSON.stringify({ [iso(0)]: 300 }), key_hash: h, updated: Date.now() });
     db[`${BOARD}/g-luke`] = { name: 'Lu*******h', days: { [iso(1)]: 77 }, updated: 'x' };
     ({ ctx, p } = await signedIn('T2', { share: true, boardKey: KEYHEX }));
     failSync = true;
     await p.click('#rankBtn'); await boardLoaded(p);
     failSync = false;
     const e = row('g:g-luke');
-    ok(e.days[iso(0)] === 999 && e.days[iso(1)] === 77 && e.days[iso(5)] === 4, `sync failed, row still written: today keeps 999, the old Firestore day 77 is counted in, this device's day 5 added (${JSON.stringify(e.days)})`);
+    ok(e.days[iso(0)] === 300 && e.days[iso(1)] === 77 && e.days[iso(5)] === 4, `sync failed, row still written: today keeps 300, the old Firestore day 77 is counted in, this device's day 5 added (${JSON.stringify(e.days)})`);
     ok(!db[`${BOARD}/g-luke`], 'the old Firestore row is deleted once moved');
     await ctx.close();
   }

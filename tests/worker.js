@@ -21,12 +21,13 @@ function fakeD1(fail = false) {
         if (/SUBSTR\(id/.test(sql)) { const c = {}; for (const r of table.values()) if (r.site === a[0]) c[r.id.slice(0, 2)] = (c[r.id.slice(0, 2)] || 0) + 1; return { results: Object.entries(c).map(([kind, n]) => ({ kind, n })) }; }
         return { results: [...table.values()].filter((r) => r.site === a[0] && r.updated >= a[1]) };
       },
-      async first() { if (fail) throw new Error('down'); return table.get(a[0] + '|' + a[1]) || null; },
+      async first() { if (fail) throw new Error('down'); if (/COUNT\(\*\)/.test(sql)) return { n: [...table.values()].filter((r) => r.site === a[0]).length }; return table.get(a[0] + '|' + a[1]) || null; },
       async run() {
         if (fail) throw new Error('down');
         if (/^INSERT/.test(sql)) { const k = a[0] + '|' + a[1], had = table.get(k); table.set(k, had ? { ...had, name: a[2], days: a[3], updated: a[5] } : { site: a[0], id: a[1], name: a[2], days: a[3], key_hash: a[4], updated: a[5] }); }
         if (/^INSERT INTO hits/.test(sql)) { const k = a.join('|'), h = hits.get(k); hits.set(k, h ? { ...h, n: h.n + 1 } : { site: a[0], day: a[1], install: a[2], client: a[3], version: a[4], who: a[5], n: 1 }); return {}; }
         if (/^DELETE FROM hits/.test(sql)) { for (const [k, h] of hits) if (h.day < a[0]) hits.delete(k); return {}; }
+        if (/^DELETE FROM rows WHERE updated/.test(sql)) { for (const [k, r] of table) if (r.updated < a[0]) table.delete(k); return {}; }
         if (/^DELETE/.test(sql)) table.delete(a[0] + '|' + a[1]);
         return {};
       },
@@ -72,9 +73,21 @@ function fakeD1(fail = false) {
   const bad = [[{ site: 'prod', id: L1, name: 'Lu**e', days: {} }, 'site'], [{ site: 'live', id: 'l:short:x', name: 'Lu**e', days: {} }, 'id'],
     [{ site: 'live', id: L1, name: 'Luke', days: {}, key: k1 }, 'name without a mask'], [{ site: 'live', id: L1, name: 'L'.repeat(41) + '*', days: {}, key: k1 }, 'name too long'],
     [{ site: 'live', id: L1, name: '<b>*', days: {}, key: k1 }, 'name with markup'], [{ site: 'live', id: L1, name: 'Lu**e', days: { [today]: -1 }, key: k1 }, 'negative count'],
-    [{ site: 'live', id: L1, name: 'Lu**e', days: { [today]: 1.5 }, key: k1 }, 'fraction'], [{ site: 'live', id: L1, name: 'Lu**e', days: { [today]: 50000 }, key: k1 }, 'too many words'],
+    [{ site: 'live', id: L1, name: 'Lu**e', days: { [today]: 1.5 }, key: k1 }, 'fraction'], [{ site: 'live', id: L1, name: 'Lu**e', days: { [today]: 501 }, key: k1 }, 'more than 500 words in a day (R91.1)'],
     [{ site: 'live', id: L1, name: 'Lu**e', days: { 'not-a-day': 1 }, key: k1 }, 'bad date']];
   for (const [b, what] of bad) { r = await call('POST', '/board', b); ok(r.status === 400, `rejected: ${what} (${r.status} ${JSON.stringify(r.body)})`); }
+  r = await call('POST', '/board', { site: 'live', id: 'l:' + 'q'.repeat(24) + ':' + 'r'.repeat(10), name: 'No*e', days: {} });
+  ok(r.status === 400 && r.body.error === 'empty', `a new row with no words this week: refused (${r.status} ${JSON.stringify(r.body)})`);
+  const noOrigin = await handle(new Request('https://w.example/board', { method: 'POST', body: JSON.stringify({ site: 'live', id: 'l:' + 'z'.repeat(24) + ':' + 'y'.repeat(10), name: 'Z*', days: { [today]: 5 } }) }), env);
+  ok(noOrigin.status === 403, `a write without the app's Origin: 403 (${noOrigin.status})`);
+  const evil = await handle(new Request('https://w.example/hit', { method: 'POST', headers: { Origin: 'https://evil.example' }, body: '{}' }), env);
+  ok(evil.status === 403, `a count from another site's page: 403 (${evil.status})`);
+  // Rows not written for 30 days are deleted (R91.2): an old row goes once a write tidies up.
+  env.DB.table.set('live|l:' + 'o'.repeat(24) + ':' + 'p'.repeat(10), { site: 'live', id: 'l:' + 'o'.repeat(24) + ':' + 'p'.repeat(10), name: 'Ol*d', days: '{}', key_hash: 'x', updated: Date.now() - 31 * 864e5 });
+  const rnd = Math.random; Math.random = () => 0;
+  await call('POST', '/board', { site: 'live', id: L1, name: 'Lu**e', days: { [today]: 7 }, key: k1 });
+  Math.random = rnd;
+  ok(![...env.DB.table.keys()].some((k) => k.includes('oooo')) && env.DB.table.has('live|' + L1), 'a row not written for 31 days is deleted; a current one stays');
   const big = await handle(new Request('https://w.example/board', { method: 'POST', headers: { Origin: ORIGIN }, body: 'x'.repeat(3000) }), env);
   ok(big.status === 413, `a body over 2 KB: 413 (${big.status})`);
   // Delete needs the key; a missing row is fine.

@@ -19,7 +19,9 @@ const ID_OK = /^(g:[A-Za-z0-9_-]{6,128}|l:[A-Za-z0-9_-]{20,64}:[A-Za-z0-9_-]{8,6
 const NAME_OK = /^[\p{L}\p{M}\p{N}' .*-]{1,40}$/u;
 const DAY_OK = /^\d{4}-\d{2}-\d{2}$/;
 const KEY_OK = /^[0-9a-f]{40}$/;
-const MAX_BODY = 2048, MAX_WORDS = 20000, WINDOW_DAYS = 9;
+// MAX_WORDS: what one day can claim (a 20-minute Spelling Bee is well under 200 words; Hermes R91.1). MAX_ROWS per
+// site bounds the board; rows not written for KEEP_DAYS are deleted (Hermes R91.2, in the privacy policy).
+const MAX_BODY = 2048, MAX_WORDS = 500, WINDOW_DAYS = 9, MAX_ROWS = 5000, KEEP_DAYS = 30;
 
 const cors = (req) => {
   const o = req.headers.get('Origin') || '';
@@ -72,6 +74,9 @@ export async function handle(req, env, now = Date.now()) {
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(req) });
   const path = url.pathname.replace(/\/+$/, '');
   if (!env.DB) return json(req, 503, { error: 'store' });
+  // Writes only from the app's own pages (not authentication, which a typed-name user can't have, but it keeps a
+  // stray script or a pasted curl from writing; Hermes R91.1).
+  if (req.method === 'POST' || req.method === 'DELETE') { if (!ORIGINS.includes(req.headers.get('Origin') || '')) return json(req, 403, { error: 'origin' }); }
   try {
     if (req.method === 'GET' && path === '/board') {
       const site = url.searchParams.get('site') || '';
@@ -94,10 +99,18 @@ export async function handle(req, env, now = Date.now()) {
       let minted = null;
       if (had) {
         if (!key || (await sha256(key)) !== had.key_hash) return json(req, 403, { error: 'key' });
-      } else minted = key || newKey(); // a row seen for the first time: its key is the one given, or a new one
+      } else {
+        // A new row must have words this week, and the board has room for it (Hermes R91.1).
+        if (!Object.keys(days).length) return json(req, 400, { error: 'empty' });
+        const n = await env.DB.prepare('SELECT COUNT(*) AS n FROM rows WHERE site = ?1').bind(site).first();
+        if (n && n.n >= MAX_ROWS) return json(req, 503, { error: 'full' });
+        minted = key || newKey(); // a row seen for the first time: its key is the one given, or a new one
+      }
       const hash = had ? had.key_hash : await sha256(minted);
       await env.DB.prepare('INSERT INTO rows (site, id, name, days, key_hash, updated) VALUES (?1, ?2, ?3, ?4, ?5, ?6) ' +
         'ON CONFLICT (site, id) DO UPDATE SET name = ?3, days = ?4, updated = ?6').bind(site, id, name, JSON.stringify(days), hash, now).run();
+      // Rows not written for KEEP_DAYS go (Hermes R91.2): one write in 20 tidies up.
+      if (Math.random() < 0.05) await env.DB.prepare('DELETE FROM rows WHERE updated < ?1').bind(now - KEEP_DAYS * 864e5).run();
       return json(req, 200, { ok: true, ...(minted && !key ? { key: minted } : {}), h: (await sha256(id)).slice(0, 16), rows: await rows(env, site, now) });
     }
     if (req.method === 'POST' && path === '/hit') return hit(req, env, now);
