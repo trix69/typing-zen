@@ -11,7 +11,7 @@ const sess = (date, first, again, level = 'Y4') => ({ date, game: 'spell', level
   async function open(user, { vw = 1180, vh = 820, said = false } = {}) {
     const ctx = await b.newContext({ viewport: { width: vw, height: vh } });
     await ctx.addInitScript(([K, v]) => { window.__said = []; speechSynthesis.speak = (u) => { window.__said.push(u.text); setTimeout(() => u.onend && u.onend(), 5); };
-      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); }, [KEY, { current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', ...user, sessions: (user.sessions || []).map((x) => ({ ...x, lang: user.lang || 'en' })) } } }]); // sessions carry their language
+      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); }, [KEY, { current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', share: false /* the board's milestone question isn't part of these checks */, ...user, sessions: (user.sessions || []).map((x) => ({ ...x, lang: user.lang || 'en' })) } } }]); // sessions carry their language
     const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(base); await p.waitForTimeout(400); return { ctx, p };
   }
@@ -54,7 +54,7 @@ const sess = (date, first, again, level = 'Y4') => ({ date, game: 'spell', level
   async function play(user, plan, vw = 1180, vh = 820) {
     const ctx = await b.newContext({ viewport: { width: vw, height: vh } });
     await ctx.addInitScript(([K, v]) => { window.__said = []; speechSynthesis.speak = (u) => { window.__said.push(u.text); setTimeout(() => u.onend && u.onend(), 5); };
-      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); }, [KEY, { current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', ...user, sessions: (user.sessions || []).map((x) => ({ ...x, lang: user.lang || 'en' })) } } }]); // sessions carry their language
+      if (!localStorage.getItem(K)) localStorage.setItem(K, JSON.stringify(v)); }, [KEY, { current: 'u', users: { u: { name: 'Luke', year: 'Y4', bucket: 'Y4', lang: 'en', id: 'u', share: false /* the board's milestone question isn't part of these checks */, ...user, sessions: (user.sessions || []).map((x) => ({ ...x, lang: user.lang || 'en' })) } } }]); // sessions carry their language
     const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message));
     await p.clock.install();
     await p.goto(base); await p.clock.runFor(500);

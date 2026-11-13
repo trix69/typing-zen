@@ -40,7 +40,7 @@ SITE = ROOT / "dist" / "test-site"
 REPO = "https://github.com/trix69/typing-zen-test.git"
 URL = "https://trix69.github.io/typing-zen-test/"
 FILES = ["index.html", "style.css", "app.js", "data.js", "words.js", "words-da.js", "words-zh.js", ".nojekyll"]
-PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board", "typingZen.pp"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, a Google sign-in under way from the home screen, the board, and the privacy policy accepted (kept apart, so accepting on the test site never counts for the live one)
+PROGRESS = ["typingZen.v2", "typingZen.v1", "typingZen.users", "typingZen.google", "typingZen.board", "typingZen.pp", "typingZen.install"]  # the users store, the 1.0 profile it is made from, the Firestore collection of Google users, a Google sign-in under way from the home screen, the board, the privacy policy accepted (kept apart, so accepting on the test site never counts for the live one), and this browser's install id for the ranking board
 LIVE_LENGTHS, TEST_LENGTHS = "{ short: 10, long: 20 }", "{ quick: 5, short: 10, long: 20 }"  # Spelling Bee lengths in minutes: live and test
 LIVE_MASTER_RUN, TEST_MASTER_RUN = 3, 2  # right-first-try spellings in a row that make a word mastered: live and test
 SHARED = {"typingZen.theme", "typingZen.autoUpd"}  # device settings, the same on both sites
@@ -105,6 +105,8 @@ def build(out):
     for key in PROGRESS:
         js = must(js, f'"{key}"', f'"{key}-test"', f'"{key}" key in app.js')
     js = must(js, f"const LENGTHS = {LIVE_LENGTHS};", f"const LENGTHS = {TEST_LENGTHS}; // test build only (live: {LIVE_LENGTHS})", "LENGTHS line in app.js")
+    # The ranking board on the Worker: the test build writes and reads site "test", never the live board.
+    js = must(js, 'const BOARD_SITE = "live";', 'const BOARD_SITE = "test"; // test build only', "BOARD_SITE line in app.js")
     js = must(js, f"const MASTER_RUN = {LIVE_MASTER_RUN};", f"const MASTER_RUN = {TEST_MASTER_RUN}; // test build only (live: {LIVE_MASTER_RUN})", "MASTER_RUN line in app.js")
     keys = set(re.findall(r"""["'`](typingZen[.\w-]*)""", js + html))
     unknown = sorted(k for k in keys if k not in SHARED and not k.endswith("-test"))

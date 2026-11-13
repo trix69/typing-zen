@@ -65,6 +65,7 @@ const sessionsOf = (uid) => Object.keys(db).filter((p) => p.startsWith(`${COL}/$
 const day = (n, m = 0) => new Date(Date.now() - n * 864e5 - m * 6e4).toISOString();
 const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang ? { lang } : {}), level: 'Y4', minutes: 10, length: 10, finished: true, firstTry: first, struggled, firstTryWords: [], struggledWords: [] });
 
+const boardRows = {}; // id -> the last row written to the Worker
 (async () => {
   const b = await chromium.launch();
   const errs = [];
@@ -74,6 +75,9 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
     await ctx.exposeFunction('__fakeDb', fakeDb);
     await ctx.exposeFunction('__fakePopup', () => account);
     for (const n of Object.keys(FAKE)) await ctx.route(SDK + n + '.js', (r) => r.fulfill({ contentType: 'text/javascript', body: FAKE[n] }));
+    // The ranking board's Worker: keeps the last week written for each id (the board itself is tested in board.js).
+    await ctx.route('https://typing-zen-board.trix69.workers.dev/**', (r) => { const q = r.request(); if (q.method() === 'POST') { const x = JSON.parse(q.postData()); boardRows[x.id] = x; }
+      r.fulfill({ status: q.method() === 'OPTIONS' ? 204 : 200, headers: { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET, POST, DELETE', 'access-control-allow-headers': 'Content-Type, X-Board-Key', 'content-type': 'application/json' }, body: q.method() === 'OPTIONS' ? '' : JSON.stringify({ ok: true, rows: [] }) }); });
     const p = await ctx.newPage();
     p.on('pageerror', (e) => errs.push(name + ': ' + e.message));
     await p.goto(base); await p.waitForTimeout(400);
@@ -116,7 +120,8 @@ const sess = (date, first, struggled, lang) => ({ date, game: 'spell', ...(lang 
   await put(B.p, (u) => { u.share = true; });
   await B.p.reload(); await B.p.waitForTimeout(400); await B.p.click('#continueBtn'); await B.p.waitForTimeout(900);
   await lang(B.p, 'en');
-  const entry = db[`${COL.replace('users', 'board')}/g-luke`];
+  for (let t = 0; t < 20 && !boardRows['g:g-luke']; t++) await B.p.waitForTimeout(250);
+  const entry = boardRows['g:g-luke'];
   const total = entry ? Object.values(entry.days).reduce((a, x) => a + x, 0) : -1;
   ok(total === 21, `the board adds every language's words (English 16 + Chinese 5 = ${total})`);
   u = await me(B.p);

@@ -42,7 +42,7 @@ const greyed = (p) => p.evaluate(() => {
     ok(u.lang === 'da' && u.voice === 'da-female', 'new: user made in Danish');
     await p.click('#settingsBtn'); await p.waitForTimeout(200);
     g = await greyed(p);
-    ok(!g.noUser && g.disabled === 2 && g.note === false, 'home: settings all usable (Share needs Google, so its 2 buttons are off) ' + JSON.stringify(g));
+    ok(!g.noUser && g.disabled === 0 && g.note === false, 'home: settings all usable (Share too, for a typed name since 2026-11-13) ' + JSON.stringify(g));
     ok(!errs.length, 'new: no errors ' + errs.join('|'));
     await ctx.close();
   }
@@ -69,7 +69,7 @@ const greyed = (p) => p.evaluate(() => {
     ok((await p.evaluate(() => document.documentElement.lang)) === 'en-GB', 'back: Continue goes back to Luke\'s English');
     await p.click('#settingsBtn'); await p.waitForTimeout(200);
     g = await greyed(p);
-    ok(!g.noUser && g.disabled === 2 && g.checked >= 2, 'home: settings usable, Luke\'s picks shown ' + JSON.stringify(g));
+    ok(!g.noUser && g.disabled === 0 && g.checked >= 2, 'home: settings usable, Luke\'s picks shown ' + JSON.stringify(g));
     await p.click('#switchUserBtn'); await p.waitForTimeout(200);
     await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(200);
     g = await greyed(p);

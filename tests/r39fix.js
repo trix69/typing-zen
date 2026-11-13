@@ -42,7 +42,7 @@ const seed = (K, lang) => { if (!sessionStorage.done) { sessionStorage.done = 1;
     await p.click('#continueBtn'); await p.click('#statsBtn'); await p.waitForTimeout(200);
     await p.click('#welcomeSettingsBtn'); await p.waitForTimeout(150);
     const dis = await p.evaluate(() => [...document.querySelectorAll('#sheet .user-only button, #sheet .user-only select')].filter(e => e.disabled).length);
-    ok(dis === 2 && await p.isHidden('#langNote'), `R39.2: from View stats, Luke's settings usable (${dis} disabled: only Share, which needs Google)`);
+    ok(dis === 0 && await p.isHidden('#langNote'), `R39.2: from View stats, Luke's settings usable (${dis} disabled)`);
     await p.click('#segLang [data-lang="da"]'); await p.waitForTimeout(100);
     ok(!(await p.$('#langConfirm')), 'R39.2: language change from View stats switches straight away (history kept per language)');
     await p.waitForTimeout(150);

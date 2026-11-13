@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 VERSION = ROOT / "VERSION"
 JSON = ROOT / "version.json"
 HTML = ROOT / "index.html"
-PP_DATE = "2026-11-12"  # the privacy policy's date (see the docstring)
+PP_DATE = "2026-11-13"  # the privacy policy's date (see the docstring)
 PP_HTML = ROOT / "docs" / "privacy.html"
 PP_JSON = ROOT / "docs" / "privacy-version.json"
 # Where the date is written: the policy's meta tag and its visible date line, and <html data-pp> in index.html.
