@@ -2727,9 +2727,15 @@
     profile.askNext = false;
     stamp("shareAt");
     save();
-    // The example is this user's own name, masked as the board will show it (never a made-up one).
-    $("#shareAbout").innerHTML = tx(`Others will only see your name partly hidden, like <b>${escapeHtml(maskName(profile.name))}</b>.`,
-      `Andre ser kun dit navn delvist skjult, fx <b>${escapeHtml(maskName(profile.name))}</b>.`);
+    // This week's words, then the question (user's wording, 2026-11-13), then this user's own name masked as the board
+    // will show it (never a made-up one).
+    const n = Object.values(myWeek(profile)).reduce((a, b) => a + b, 0), mask = `<b>${escapeHtml(maskName(profile.name))}</b>`;
+    $("#shareTitle").textContent = n > 0 ? tx(`You've practised ${n} word${n === 1 ? "" : "s"} in the last 7 days.`, `Du har øvet ${n} ord de sidste 7 dage.`)
+      : tx("Compare your words with other users?", "Sammenlign dine ord med andre brugere?");
+    $("#shareAbout").innerHTML = tx(`Would you like to share these and compare with other users? Others will only see your name partly hidden, like ${mask}.`,
+      `Vil du dele dem og sammenligne med andre brugere? Andre ser kun dit navn delvist skjult, fx ${mask}.`);
+    $("#shareYes").textContent = tx("Yes, share", "Ja, del");
+    $("#shareNo").textContent = tx("No", "Nej");
     shareOpener = document.activeElement;
     shareSheet.hidden = false;
     document.addEventListener("keydown", onShareKey, true);

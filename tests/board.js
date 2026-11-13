@@ -174,8 +174,8 @@ const sess = (date, first, struggled) => ({ date, game: 'spell', level: 'Year 4'
   let { ctx, p } = await signedIn('A');
   await beeToEnd(p);
   ok(await vis(p, '#results') && await vis(p, '#shareSheet'), 'the 10th word in Spelling Bee: asked on the results');
-  ok(await p.textContent('#shareTitle') === 'Do you want to share your details with others and view your rank?', 'the question: ' + await p.textContent('#shareTitle'));
-  ok(await p.textContent('#shareAbout') === 'Others will only see your name partly hidden, like Lu*******h.' && await p.textContent('#shareAbout b') === 'Lu*******h', `the line, with this user's own mask in bold: "${await p.textContent('#shareAbout')}"`);
+  ok(await p.textContent('#shareTitle') === "You've practised 10 words in the last 7 days.", 'the title, with this week\'s words: ' + await p.textContent('#shareTitle'));
+  ok(await p.textContent('#shareAbout') === 'Would you like to share these and compare with other users? Others will only see your name partly hidden, like Lu*******h.' && await p.textContent('#shareAbout b') === 'Lu*******h', `the question and the line, with this user's own mask in bold: "${await p.textContent('#shareAbout')}"`);
   ok((await p.$$eval('#shareSheet button', (l) => l.map((x) => x.textContent))).join('|') === 'Yes, share|No', 'two choices: Yes, share / No');
   ok((await store(p)).users.u.shareAt === 10, 'shareAt = 10');
   await p.click('#shareYes'); await boardLoaded(p);
